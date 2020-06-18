@@ -7,8 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/Joystick Pack/Examples/Player.mat
   m_Name: Player
+=======
+<<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon1/handgrip.mat
+  m_Name: handgrip
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 =======
   m_Name: grass
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/grass.mat
@@ -77,8 +82,13 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/Joystick Pack/Examples/Player.mat
     - _Color: {r: 0, g: 0.5844655, b: 1, a: 1}
+=======
+<<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon1/handgrip.mat
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 =======
     - _Color: {r: 1, g: 1, b: 1, a: 1}
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/grass.mat

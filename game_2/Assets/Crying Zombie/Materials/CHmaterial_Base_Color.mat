@@ -7,8 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon1/Metal_Chrome.mat
   m_Name: Metal_Chrome
+=======
+<<<<<<< HEAD:game_2/Assets/paper texture/Materials/1001_Base_Color.mat
+  m_Name: 1001_Base_Color
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 =======
   m_Name: CHmaterial_Base_Color
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/Materials/CHmaterial_Base_Color.mat
@@ -44,8 +49,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon1/Metal_Chrome.mat
         m_Texture: {fileID: 0}
+=======
+<<<<<<< HEAD:game_2/Assets/paper texture/Materials/1001_Base_Color.mat
+        m_Texture: {fileID: 2800000, guid: 7f1c8ce913937ff479b99c7335a26752, type: 3}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 =======
         m_Texture: {fileID: 2800000, guid: 81a5c5f068f7580489ffc954ee701b3b, type: 3}
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/Materials/CHmaterial_Base_Color.mat
@@ -69,11 +79,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon1/Metal_Chrome.mat
     - _Glossiness: 0
 =======
     - _Glossiness: 0.5
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/Materials/CHmaterial_Base_Color.mat
+=======
+    - _Glossiness: 0.5
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -85,5 +99,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD
     - _Color: {r: 0.90196085, g: 0.90196085, b: 0.90196085, a: 1}
+=======
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

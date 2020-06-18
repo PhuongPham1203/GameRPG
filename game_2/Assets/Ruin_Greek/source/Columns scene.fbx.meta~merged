@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
-<<<<<<< HEAD:game_2/Assets/paper.FBX.meta
-guid: 66e1ed29aed20604da49a40e0650fba5
+<<<<<<< HEAD:game_2/Assets/Ruin_Greek/source/Columns scene.fbx.meta
+guid: 5e74005f4dd2a29469172b6f4abc4905
+=======
+guid: f2c2b2d9db2177c4d9beaba2242a05e0
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/source/stonehenge2-01.fbx.meta
 =======
 guid: 5e74005f4dd2a29469172b6f4abc4905
->>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin_Greek/source/Columns scene.fbx.meta
-=======
-guid: 66e1ed29aed20604da49a40e0650fba5
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 ModelImporter:
   serializedVersion: 19301

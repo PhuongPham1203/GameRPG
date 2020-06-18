@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:game_2/Assets/SURIYUN/character01/Ami(Character)/Prefab/Camera/FrontPos.prefab.meta
 guid: 5ab36471a20d548e1b89d3501e011ada
+=======
+guid: 5bcb0c1e61073184a869e779780a58c6
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/Materials/CHmaterial_Base_Color.mat.meta
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

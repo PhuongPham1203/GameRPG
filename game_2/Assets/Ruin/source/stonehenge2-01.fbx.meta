@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon2/Sword.fbx.meta
 guid: caacf0b6400b9324c80d0d63b7842dbf
 ModelImporter:
@@ -12,11 +13,21 @@ ModelImporter:
     second: {fileID: 2100000, guid: 59f87ff224697374591e5f47c85f8fb2, type: 2}
 =======
 guid: f2c2b2d9db2177c4d9beaba2242a05e0
+=======
+<<<<<<< HEAD:game_2/Assets/Ruin_Greek/source/Columns scene.fbx.meta
+guid: 5e74005f4dd2a29469172b6f4abc4905
+=======
+guid: f2c2b2d9db2177c4d9beaba2242a05e0
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/source/stonehenge2-01.fbx.meta
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
   externalObjects: {}
+<<<<<<< HEAD
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/source/stonehenge2-01.fbx.meta
+=======
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
   materials:
     materialImportMode: 1
     materialName: 0
@@ -47,13 +58,18 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
+<<<<<<< HEAD
     globalScale: 0.1
+=======
+    globalScale: 1
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon2/Sword.fbx.meta
     importCameras: 0
     importLights: 0
@@ -62,6 +78,11 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/source/stonehenge2-01.fbx.meta
+=======
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -87,11 +108,15 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon2/Sword.fbx.meta
   importAnimation: 0
 =======
   importAnimation: 1
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/source/stonehenge2-01.fbx.meta
+=======
+  importAnimation: 1
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
   humanDescription:
     serializedVersion: 3
     human: []
@@ -103,11 +128,15 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/PrefabsPhuong/Prefabs/Weapon/Weapon2/Sword.fbx.meta
     globalScale: 0.001
 =======
     globalScale: 1
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/source/stonehenge2-01.fbx.meta
+=======
+    globalScale: 1
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

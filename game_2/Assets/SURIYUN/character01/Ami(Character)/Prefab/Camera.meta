@@ -1,9 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:game_2/Assets/SURIYUN/character01/Ami(Character)/Prefab/Camera.meta
 guid: 74d4a1a2bb8de0641bc1fa09a21f45f8
 folderAsset: yes
 timeCreated: 1432307306
 licenseType: Store
+=======
+guid: 904499a3f8bd58147b0defad556a8ecd
+folderAsset: yes
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/StoneFence/Meshes.meta
 DefaultImporter:
+  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

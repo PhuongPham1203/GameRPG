@@ -7,8 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/Joystick Pack/Examples/Ground.mat
   m_Name: Ground
+=======
+<<<<<<< HEAD:game_2/Assets/Ruin/Materials/06_DIFFUSE.mat
+  m_Name: 06_DIFFUSE
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 =======
   m_Name: 05_NORMAL
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/05_NORMAL.mat
@@ -44,7 +49,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: 2417afa77ebfc69479875357a81244d4, type: 3}
+=======
+<<<<<<< HEAD:game_2/Assets/Ruin/Materials/06_DIFFUSE.mat
+        m_Texture: {fileID: 2800000, guid: 16100b620723dca4c9f0f3d246654676, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: 2417afa77ebfc69479875357a81244d4, type: 3}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/05_NORMAL.mat
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,7 +78,11 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
+<<<<<<< HEAD
     - _Glossiness: 0
+=======
+    - _Glossiness: 0.5
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -77,9 +94,13 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD
 <<<<<<< HEAD:game_2/Assets/Joystick Pack/Examples/Ground.mat
     - _Color: {r: 0.372, g: 0.36052892, b: 0.351168, a: 1}
 =======
     - _Color: {r: 1, g: 1, b: 1, a: 1}
 >>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/05_NORMAL.mat
+=======
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

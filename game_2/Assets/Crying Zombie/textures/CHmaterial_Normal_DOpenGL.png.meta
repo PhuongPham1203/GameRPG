@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:game_2/Assets/Crying Zombie/textures/CHmaterial_Normal_DOpenGL.png.meta
 guid: 7cc121f20b776634cafdbd22c88ade44
+=======
+guid: 81a5c5f068f7580489ffc954ee701b3b
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/textures/CHmaterial_Base_Color.png.meta
+=======
+guid: 7cc121f20b776634cafdbd22c88ade44
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

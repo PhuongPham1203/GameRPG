@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:game_2/Assets/Crying Zombie/textures/CHmaterial_Roughness.png.meta
 guid: c18b723a1fd0b0e47b07864bc2f174a0
+=======
+guid: c3224a95413c70d488ac66def4b2cc93
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/textures/CHmaterial_Metallic.png.meta
+=======
+guid: c18b723a1fd0b0e47b07864bc2f174a0
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

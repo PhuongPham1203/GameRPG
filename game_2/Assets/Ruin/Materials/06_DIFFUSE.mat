@@ -7,7 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+<<<<<<< HEAD:game_2/Assets/Ruin/Materials/06_DIFFUSE.mat
   m_Name: 06_DIFFUSE
+=======
+  m_Name: 05_NORMAL
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/05_NORMAL.mat
+=======
+  m_Name: 06_DIFFUSE
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,7 +48,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD
+<<<<<<< HEAD:game_2/Assets/Ruin/Materials/06_DIFFUSE.mat
         m_Texture: {fileID: 2800000, guid: 16100b620723dca4c9f0f3d246654676, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: 2417afa77ebfc69479875357a81244d4, type: 3}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/05_NORMAL.mat
+=======
+        m_Texture: {fileID: 2800000, guid: 16100b620723dca4c9f0f3d246654676, type: 3}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

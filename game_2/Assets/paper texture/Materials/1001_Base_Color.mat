@@ -7,7 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+<<<<<<< HEAD:game_2/Assets/paper texture/Materials/1001_Base_Color.mat
   m_Name: 1001_Base_Color
+=======
+  m_Name: CHmaterial_Base_Color
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/Materials/CHmaterial_Base_Color.mat
+=======
+  m_Name: 1001_Base_Color
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,7 +48,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD
+<<<<<<< HEAD:game_2/Assets/paper texture/Materials/1001_Base_Color.mat
         m_Texture: {fileID: 2800000, guid: 7f1c8ce913937ff479b99c7335a26752, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: 81a5c5f068f7580489ffc954ee701b3b, type: 3}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/Materials/CHmaterial_Base_Color.mat
+=======
+        m_Texture: {fileID: 2800000, guid: 7f1c8ce913937ff479b99c7335a26752, type: 3}
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

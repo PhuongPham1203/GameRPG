@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 2c72d03879df64440a7226244db4baf5
+=======
+<<<<<<< HEAD:game_2/Assets/Joystick Pack/Scripts.meta
+guid: 81cd5bf24ac71de46ae030a71885ae25
+=======
+guid: 2c72d03879df64440a7226244db4baf5
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Crying Zombie/Materials.meta
+>>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
