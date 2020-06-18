@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SelectAbleSwing
+  - SelectAbleTarget
   layers:
   - Default
   - TransparentFX
@@ -25,11 +27,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - HighGround
+  - TargetSwing
+  - Enemy
+  - Player
   - 
   - 
   - 
