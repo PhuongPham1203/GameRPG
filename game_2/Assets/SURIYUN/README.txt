@@ -1,21 +1,22 @@
-v1.3
+﻿Animations Rig source = AvataA_v1.0
+Animation setting Mask source = AvatarA_Mask_v1.0
+Emotions setting Mask source = Emotion_Mask_v1.0
+ 
+- Root joint = Root_M
+- Weapon parent = Wrist_R
 
-Important
-This update (v1.3) is using new skeleton and will not compatible with older version.
-It'll break the prefab. For those who did not found any problem there's no need to update.
-
-This fix
-- Reworked every joint in the character.
-- Reworked all animations.
-- Add Emotion
-- Unity-Chan Shader update from http://unity-chan.com/
+Please note that character outline may look weird in scene view but will render correctly in game view
+depend on shader setting - outline thickness  and the rendering camera setting - distance and field of view 
+so adjusting these values will ensure the model look best on your setup.
+----------------------------------------------
 
 If you found any problem, please contact us.
 Mail : akaraphob_sur@suriyun.com
 Site : www.suriyun.com
+
 ----------------------------------------------
-- Root joint = Root_M
-- Weapon parent = Wrist_R
-----------------------------------------------
-Camera Scripts ThirdPersonCamera Credit by Unity ??????????? N.Kobyasahi.
-Shader by Unitychan! from http://unity-chan.com/
+
+ThirdPersonCamera Credit by Unity ちゃん用の三人称カメラ N.Kobyasahi.
+Shader by Unitychan! 
+Download last version of shader http://unity-chan.com/
+

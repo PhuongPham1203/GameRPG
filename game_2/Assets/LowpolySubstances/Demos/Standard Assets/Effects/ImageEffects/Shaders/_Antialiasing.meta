@@ -1,15 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:game_2/Assets/LowpolySubstances/Demos/Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing.meta
 guid: 6d55b5e91b95c41739cdf4f804dd383d
 folderAsset: yes
-timeCreated: 1426329914
+timeCreated: 1430584938
 licenseType: Store
-=======
-guid: 961ae4964ebf4b04596a03664dd63741
-folderAsset: yes
->>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/StoneFence/Prefabs.meta
 DefaultImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

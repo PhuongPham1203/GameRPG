@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:game_2/Assets/SURIYUN/character01/Ami(Character)/Animation/Animation_controller.controller.meta
 guid: e20915225dce8f947bb802f531bde5a5
 timeCreated: 1430547008
 licenseType: Store
-=======
-guid: 2ae749a06815a3e4ebfd4ef78f54eb64
->>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/Ruin/Materials/05_DIFFUSE.mat.meta
 NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

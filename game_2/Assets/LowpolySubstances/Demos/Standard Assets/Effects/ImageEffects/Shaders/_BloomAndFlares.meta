@@ -1,15 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:game_2/Assets/LowpolySubstances/Demos/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares.meta
 guid: d6ef58fc6f637406bbe6814a19c377f8
 folderAsset: yes
-timeCreated: 1426329914
+timeCreated: 1430584938
 licenseType: Store
-=======
-guid: 904499a3f8bd58147b0defad556a8ecd
-folderAsset: yes
->>>>>>> 7a9ba292cdf0218d02fa11eff5a4a7957a538adc:game_2/Assets/StoneFence/Meshes.meta
 DefaultImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
