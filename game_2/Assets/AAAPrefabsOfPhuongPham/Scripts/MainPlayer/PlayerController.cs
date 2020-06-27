@@ -153,10 +153,16 @@ public class PlayerController : MonoBehaviour
 
         if (animatorPlayer.GetBool("LockTarget"))
         {
+            /*
             Vector3 tftarget = targetGroup.transform.position;
 
             Vector3 tg = new Vector3(tftarget.x, transform.position.y, tftarget.z);
             transform.LookAt(tg);
+            */
+            Transform tftarget = targetGroup.transform;
+            Vector3 direction = (tftarget.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 
 
 
@@ -404,7 +410,7 @@ public class PlayerController : MonoBehaviour
         {
             if (actionLeaveAction != null)
             {
-                Debug.Log("stop");
+                //Debug.Log("stop");
                 StopCoroutine(actionLeaveAction);
             }
             targetSwing = targetSwingDetect;

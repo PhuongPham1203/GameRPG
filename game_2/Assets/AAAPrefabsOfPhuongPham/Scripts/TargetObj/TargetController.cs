@@ -30,7 +30,7 @@ public class TargetController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            targetObj.gameObject.layer = 10;
+            targetObj.gameObject.layer = 22;
 
             //targetObj.GetComponent<BoxCollider>().enabled = true;
             //GetComponent<SphereCollider>().enabled = false;

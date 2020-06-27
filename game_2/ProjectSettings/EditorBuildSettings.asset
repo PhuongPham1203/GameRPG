@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Apocalypse.unity
     guid: 2b69c911fc8a2e8488dc7c0a704a9ee6
+  - enabled: 1
+    path: Assets/AAAPrefabsOfPhuongPham/Scene/SceneOfPlayer.unity
+    guid: b9e9714f848b60d46b59779ccbaa7a9f
   m_configObjects: {}
