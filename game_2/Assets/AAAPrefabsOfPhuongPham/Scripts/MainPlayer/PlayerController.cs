@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float gravity = 6f;
 
     public float jumpValue = 6f;
+
     //public float timeJump = 0f;
     public float timeJumpValue = 0.6f;
     public float timeDashValue = 0.75f;
@@ -137,12 +138,13 @@ public class PlayerController : MonoBehaviour
                 characterController.Move(new Vector3(0, jumpValue * Time.deltaTime, 0));
             }
         }
-
+        
 
     }
 
     private void FixedUpdate()
     {
+
 
 
 

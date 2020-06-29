@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Readme : MonoBehaviour
 {
+	
+
+	public  PlayerController playercontroller;
+
     //some information in game player
     /*
      
