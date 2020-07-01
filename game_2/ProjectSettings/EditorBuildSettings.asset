@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Apocalypse.unity
+    path: Assets/Scene/Apocalypse.unity
     guid: 2b69c911fc8a2e8488dc7c0a704a9ee6
   m_configObjects: {}
