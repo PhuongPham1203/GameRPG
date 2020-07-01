@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float gravity = 6f;
 
     public float jumpValue = 6f;
+
     //public float timeJump = 0f;
     public float timeJumpValue = 0.6f;
     public float timeDashValue = 0.75f;
@@ -137,12 +138,13 @@ public class PlayerController : MonoBehaviour
                 characterController.Move(new Vector3(0, jumpValue * Time.deltaTime, 0));
             }
         }
-
+        
 
     }
 
     private void FixedUpdate()
     {
+
 
 
 
@@ -153,10 +155,16 @@ public class PlayerController : MonoBehaviour
 
         if (animatorPlayer.GetBool("LockTarget"))
         {
+            /*
             Vector3 tftarget = targetGroup.transform.position;
 
             Vector3 tg = new Vector3(tftarget.x, transform.position.y, tftarget.z);
             transform.LookAt(tg);
+            */
+            Transform tftarget = targetGroup.transform;
+            Vector3 direction = (tftarget.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 
 
 
@@ -404,7 +412,7 @@ public class PlayerController : MonoBehaviour
         {
             if (actionLeaveAction != null)
             {
-                Debug.Log("stop");
+                //Debug.Log("stop");
                 StopCoroutine(actionLeaveAction);
             }
             targetSwing = targetSwingDetect;

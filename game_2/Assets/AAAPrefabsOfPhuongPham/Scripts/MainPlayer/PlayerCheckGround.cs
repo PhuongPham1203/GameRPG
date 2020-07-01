@@ -38,7 +38,7 @@ public class PlayerCheckGround : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         
-        if (other.gameObject.layer == 20 || other.gameObject.layer == 22)
+        if (other.gameObject.layer == 20 || other.gameObject.layer == 21)
         {
             animatorObj.SetBool("OnGround", false);
         }
