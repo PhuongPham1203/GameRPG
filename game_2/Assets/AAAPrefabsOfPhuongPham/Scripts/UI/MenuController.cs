@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
 
     public void OpenMenu()
     {
-        Debug.Log("press");
+        //Debug.Log("press");
         if (isGamePlaused)
         {
 
@@ -37,14 +37,14 @@ public class MenuController : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         isGamePlaused = false;
     }
 
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         isGamePlaused = true;
 
     }
