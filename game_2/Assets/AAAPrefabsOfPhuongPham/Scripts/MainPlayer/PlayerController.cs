@@ -371,7 +371,12 @@ public class PlayerController : MonoBehaviour
 
         if ((animatorPlayer.GetInteger("InAction")==2 || canAction) && animatorPlayer.GetInteger("InAction") != 3)
         {
+            if (actionLeaveAction != null)
+            {
+                StopCoroutine(actionLeaveAction);
+            }
             OnCombat(block);
+            
             //animatorPlayer.SetBool("Block", block);
             if (block)
             {
@@ -430,7 +435,7 @@ public class PlayerController : MonoBehaviour
         if (canAction)
         {
 
-            if (animatorPlayer.GetInteger("InAction") == 3)
+            if (animatorPlayer.GetInteger("InAction") == 3)// player jump
             {
 
             }
@@ -447,6 +452,7 @@ public class PlayerController : MonoBehaviour
                 actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
 
                 StartCoroutine(CanAcion(0.6f));
+                #region Singleton 
                 /*
                 switch (comboAttack)
                 {
@@ -494,6 +500,7 @@ public class PlayerController : MonoBehaviour
                         break;
                 }
                 */
+                #endregion
 
                 animatorPlayer.SetBool("Crouch", false);
                 if (!animatorPlayer.GetBool("InCombat"))

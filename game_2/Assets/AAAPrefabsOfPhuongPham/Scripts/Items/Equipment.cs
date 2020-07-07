@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotator : MonoBehaviour
+[CreateAssetMenu(fileName ="New Equipment",menuName ="Inventory/Equipment")]
+public class Equipment : Item
 {
-    public float speed = 1;
-    public Vector3 direction = new Vector3(1,0,0);
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +14,6 @@ public class Rotator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(direction * speed *Time.deltaTime);
+        
     }
 }
