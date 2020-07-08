@@ -13,11 +13,6 @@ public class InventorySlot : MonoBehaviour
     public Button addButton;// Add button
     public Button removeButton;// Delete button
 
-
-
-
-
-
     Item item;
     public void AddItem(Item newItem)
     {
@@ -36,11 +31,16 @@ public class InventorySlot : MonoBehaviour
         item = null;
         icon.sprite = null;
         icon.enabled = false;
+        nameItem.text = "";
         //removeButton.interactable = false;
+        inforButton.gameObject.SetActive(false);
+        addButton.gameObject.SetActive(false);
+        removeButton.gameObject.SetActive(false);
 
     }
     public void OnRemoveButton()
     {
+
         Inventory.instance.Remove(item);
     }
 
