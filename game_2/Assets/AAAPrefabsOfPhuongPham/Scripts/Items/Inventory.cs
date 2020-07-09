@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     }
     #endregion
     public List<Item> items = new List<Item>();
-    public int space = 25;
+    public int space = 50;
     public GameObject ButtonActionWithObj ;
     public bool Add(Item item)
     {
