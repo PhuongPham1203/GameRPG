@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     private bool canSwing = true;
     public Transform targetSwing;
     public Transform targetSwingDetect;
-
+    public GameObject buttonSwing;
+    
     [Space]
     [Header("Times")]
 

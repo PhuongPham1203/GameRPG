@@ -13,8 +13,8 @@ public class InventorySlot : MonoBehaviour
     public Button addButton;// Add button
     public Button removeButton;// Delete button
 
-    Item item;
-    public void AddItem(Item newItem)
+    SourceItemSlot item;
+    public void AddItem(SourceItemSlot newItem)
     {
         item = newItem;
         icon.sprite = item.icon;

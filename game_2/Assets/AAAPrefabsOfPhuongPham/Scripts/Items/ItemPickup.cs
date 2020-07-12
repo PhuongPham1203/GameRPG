@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ItemPickup : Interactable
+public class ItemPickup: Interactable
 {
     // Start is called before the first frame update
-    public Item item;
+    public SourceItemSlot item;
     public override void Interact()
     {
         base.Interact();

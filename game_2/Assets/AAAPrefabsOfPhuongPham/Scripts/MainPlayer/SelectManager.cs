@@ -44,10 +44,13 @@ public class SelectManager : MonoBehaviour
         if (isInFov)
         {
             player.targetSwingDetect = target;
+            player.buttonSwing.SetActive(true);
         }
         else
         {
             player.targetSwingDetect = null;
+            player.buttonSwing.SetActive(false);
+
         }
         isInFov2 = inFOVForLockTarget(transformCamera, maxAngle, maxRadius);// check target can Swing
 
@@ -70,7 +73,7 @@ public class SelectManager : MonoBehaviour
 
     }
 
-
+    /* Test Camera
     public void OnDrawGizmos()
     {
         
@@ -108,6 +111,7 @@ public class SelectManager : MonoBehaviour
         
     }
 
+    */
 
     public bool inFOVForSwing(Transform checkingObj, float maxAngleView, float maxRadiusView)
     {

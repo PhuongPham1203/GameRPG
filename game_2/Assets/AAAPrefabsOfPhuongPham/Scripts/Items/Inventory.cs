@@ -21,10 +21,10 @@ public class Inventory : MonoBehaviour
 
     }
     #endregion
-    public List<Item> items = new List<Item>();
+    public List<SourceItemSlot> items = new List<SourceItemSlot>();
     public int space = 50;
     public GameObject ButtonActionWithObj ;
-    public bool Add(Item item)
+    public bool Add(SourceItemSlot item)
     {
         if (!item.isDefaultItem)
         {
@@ -43,7 +43,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void Remove(Item item)
+    public void Remove(SourceItemSlot item)
     {
         items.Remove(item);
         if (onItemChangedCallback != null)
