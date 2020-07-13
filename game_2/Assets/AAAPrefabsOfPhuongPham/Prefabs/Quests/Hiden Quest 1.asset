@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: New Quest
-  type: 2
+  type: 3
   statusQuest: 0
   information: New Item information
   listRequest: []

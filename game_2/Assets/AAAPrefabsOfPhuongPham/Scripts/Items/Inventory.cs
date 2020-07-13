@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
 
     }
     #endregion
-    public List<SourceItemSlot> items = new List<SourceItemSlot>();
+    public List<SourceItemSlot> items ;
     public int space = 50;
     public GameObject ButtonActionWithObj ;
     public bool Add(SourceItemSlot item)

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     public Image icon;
-
-
-    public Button itemButton;// self button
     public Text nameItem;
     public Button inforButton;// Check infor button
     public Button addButton;// Add button
@@ -44,10 +41,7 @@ public class InventorySlot : MonoBehaviour
         Inventory.instance.Remove(item);
     }
 
-    public void PressSlot()
-    {
 
-    }
 
     public void UseItem()
     {
