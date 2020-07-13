@@ -18,13 +18,13 @@ MonoBehaviour:
   statusQuest: 0
   information: New Item information
   listRequest:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 7885284db8525c547a05b55ae5a109a5, type: 2}
+  - {fileID: 11400000, guid: db96548884007534a8e751d0a53d23bc, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   numberTarget: 0
   numberCurrent: 0
   listReward:
-  - {fileID: 11400000, guid: 5c8cc657a2bc46d429ea2be5f7d3bde4, type: 2}
+  - {fileID: 11400000, guid: 219b1773b0386a548b17c1560b780d2b, type: 2}
   - {fileID: 11400000, guid: 7885284db8525c547a05b55ae5a109a5, type: 2}
   numberReward: 0

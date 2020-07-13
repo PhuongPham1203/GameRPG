@@ -10,7 +10,7 @@ public class SelectManager : MonoBehaviour
 {
 
     public PlayerController player;
-    private Animator animatorPlayer;
+    public Animator animatorPlayer;
     public Transform target;//for Swing
     public Transform target2;//for Lock Target
     public Transform transformCamera;
@@ -28,8 +28,8 @@ public class SelectManager : MonoBehaviour
     //public Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2);
     void Start()
     {
-        player = GetComponent<PlayerController>();
-        animatorPlayer = GetComponent<Animator>();
+        //player = GetComponent<PlayerController>();
+        //animatorPlayer = GetComponent<Animator>();
         //Camera.main.transform;
         //center = new Vector3(Screen.width / 2, Screen.height / 2);
     }

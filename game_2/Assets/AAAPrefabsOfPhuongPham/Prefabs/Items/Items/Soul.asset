@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37e1f4505f759844bffeaa8bfc7182f, type: 3}
   m_Name: Soul
   m_EditorClassIdentifier: 
+  id: 0
   name: Soul PickUp
+  typeItem: 1
+  information: New Item information
   icon: {fileID: 21300000, guid: 43aac570ba9d7194fa41c6fa15d03c80, type: 3}
   isDefaultItem: 0

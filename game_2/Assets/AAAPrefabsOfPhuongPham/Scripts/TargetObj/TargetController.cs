@@ -9,11 +9,12 @@ public class TargetController : MonoBehaviour
     
     public Transform targetObj;
     // Start is called before the first frame update
-
+    /*
     void Start()
     {
-        targetObj = transform.Find("target");
+        //targetObj = transform.Find("target");
     }
+    */
 
     private void OnTriggerEnter(Collider other)
     {
