@@ -6,7 +6,7 @@ using System;
 public class ItemPickup: Interactable
 {
     // Start is called before the first frame update
-    public SourceItemSlot item;
+    public SourceItemSlot slot;
     public override void Interact()
     {
         base.Interact();
@@ -18,7 +18,7 @@ public class ItemPickup: Interactable
     {
 
 
-        bool wasPickedUp = Inventory.instance.Add(item);
+        bool wasPickedUp = Inventory.instance.Add(slot);
         //Debug.Log("Pickup");
         if (wasPickedUp)
         {
@@ -30,7 +30,7 @@ public class ItemPickup: Interactable
             }
             catch (Exception e)
             {
-                Debug.Log("can't Destroy");
+                Debug.Log("can't Destroy"+e.Message);
             }
 
         }

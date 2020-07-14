@@ -84,7 +84,7 @@ public class EquipmentManager : MonoBehaviour
 
             // add item to inventory
             Equipment oldItem = currentEquipment[slotIndex];
-            SetEquipmentBlendShapes(oldItem, 0);
+            //SetEquipmentBlendShapes(oldItem, 0);
             inventory.Add(oldItem);
             //remove item from equipment
             currentEquipment[slotIndex] = null;

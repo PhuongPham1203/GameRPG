@@ -22,8 +22,8 @@ public class CharacterStats : MonoBehaviour
     public Stat defend; // Defend
 
 
-    public Stat damage;
-    public Stat armor;
+    public Stat damage; // old damage
+    public Stat armor; // old Armor
 
     private void Awake()
     {

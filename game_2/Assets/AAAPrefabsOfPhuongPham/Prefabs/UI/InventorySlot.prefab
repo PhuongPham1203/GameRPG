@@ -315,7 +315,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6182285207392110407}
-        m_MethodName: UseItem
+        m_MethodName: UseItemButtonSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -444,7 +444,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6182285207392110407}
-        m_MethodName: OnRemoveButton
+        m_MethodName: RemoveButtonSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -508,7 +508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 8302812766863594856}
-  itemButton: {fileID: 8302812767822103792}
   nameItem: {fileID: 5189045697511223137}
   inforButton: {fileID: 6086801346012526527}
   addButton: {fileID: 6947532408150551867}

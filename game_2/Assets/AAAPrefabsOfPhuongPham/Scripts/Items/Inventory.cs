@@ -21,39 +21,66 @@ public class Inventory : MonoBehaviour
 
     }
     #endregion
-    public List<SourceItemSlot> items ;
-    public int space = 50;
-    public GameObject ButtonActionWithObj ;
+    [Header("List Item")]
+    public List<SourceItemSlot> items;
+    public int spaceItem = 100;
+    [Header("List Weapon")]
+    public List<SourceItemSlot> weapons;
+    public int spaceWeapon = 50;
+    public GameObject ButtonActionWithObj;
     public bool Add(SourceItemSlot item)
     {
-        if (!item.isDefaultItem)
+        if (!item.isDefaultItem)// if is Defaul Item
         {
-            if (items.Count >= space)
+            if (item.typeUnit == 2)// Check if item is Weapon
             {
-                Debug.Log("not enough room");
-                return false;
-            }
-            items.Add(item);
-            if (onItemChangedCallback != null)
-            {
-                onItemChangedCallback.Invoke();
+                if (weapons.Count >= spaceWeapon)
+                {
+                    Debug.Log("not enough room Weapon");
+                    return false;
+                }
+                weapons.Add(item);
+                if (onItemChangedCallback != null)
+                {
+                    onItemChangedCallback.Invoke();
 
+                }
             }
+            else// Item is Item ( Item/ReadOnly )
+            {
+                if (items.Count >= spaceItem)
+                {
+                    Debug.Log("not enough room Item");
+                    return false;
+                }
+                items.Add(item);
+                if (onItemChangedCallback != null)
+                {
+                    onItemChangedCallback.Invoke();
+
+                }
+            }
+
         }
         return true;
     }
 
     public void Remove(SourceItemSlot item)
     {
-        items.Remove(item);
-        if (onItemChangedCallback != null)
+        if (item.typeUnit == 2)//Weapon
         {
-            onItemChangedCallback.Invoke();
+            weapons.Remove(item);
+            if (onItemChangedCallback != null)
+            {
+                onItemChangedCallback.Invoke();
 
+            }
         }
+
+
 
     }
 
 
-    
+
 }

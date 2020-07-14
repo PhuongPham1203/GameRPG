@@ -22,8 +22,8 @@ public class PlayerStats : CharacterStats
 
         if (oldItem != null)
         {
-            armor.AddModifier(oldItem.defendModifier);
-            damage.AddModifier(oldItem.attackDameModifier);
+            armor.RemoveModifier(oldItem.defendModifier);
+            damage.RemoveModifier(oldItem.attackDameModifier);
 
         }
     }

@@ -17,6 +17,7 @@ public class Equipment : SourceItemSlot
     {
         base.Use();
         // Equip the Item
+        Debug.Log("Equip Weapon" + this.name);
         EquipmentManager.instance.Equip(this);
 
         // Remove it from the inventory

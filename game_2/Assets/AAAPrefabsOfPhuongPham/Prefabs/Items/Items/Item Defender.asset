@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: Item Defender
-  typeItem: 1
+  typeUnit: 1
   information: New Item information
   icon: {fileID: 21300000, guid: 1e5c96da2b8f669428509d834b0b51e3, type: 3}
   isDefaultItem: 0

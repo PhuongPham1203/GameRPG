@@ -10,13 +10,13 @@ public class InventorySlot : MonoBehaviour
     public Button addButton;// Add button
     public Button removeButton;// Delete button
 
-    SourceItemSlot item;
+    SourceItemSlot slot;
     public void AddItem(SourceItemSlot newItem)
     {
-        item = newItem;
-        icon.sprite = item.icon;
+        slot = newItem;
+        icon.sprite = slot.icon;
         icon.enabled = true;
-        nameItem.text = item.name;
+        nameItem.text = slot.name;
 
         inforButton.gameObject.SetActive(true);
         addButton.gameObject.SetActive(true);
@@ -25,7 +25,7 @@ public class InventorySlot : MonoBehaviour
     }
     public void ClearSlot()
     {
-        item = null;
+        slot = null;
         icon.sprite = null;
         icon.enabled = false;
         nameItem.text = "";
@@ -35,19 +35,22 @@ public class InventorySlot : MonoBehaviour
         removeButton.gameObject.SetActive(false);
 
     }
-    public void OnRemoveButton()
-    {
 
-        Inventory.instance.Remove(item);
+    public void CheckInforButtonSlot(){
+        Debug.Log("Open Information"+nameItem.text);
     }
 
-
-
-    public void UseItem()
+    public void UseItemButtonSlot()
     {
-        if (item != null)
+        if (slot != null)
         {
-            item.Use();
+            slot.Use();
         }
+    }
+
+    public void RemoveButtonSlot()
+    {
+
+        Inventory.instance.Remove(slot);
     }
 }

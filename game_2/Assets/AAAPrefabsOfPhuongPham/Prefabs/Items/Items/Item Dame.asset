@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: Item Dame
-  typeItem: 1
+  typeUnit: 1
   information: New Item information
   icon: {fileID: 21300000, guid: 1b247637a8cb99b4b9943c94ff781653, type: 3}
   isDefaultItem: 0
