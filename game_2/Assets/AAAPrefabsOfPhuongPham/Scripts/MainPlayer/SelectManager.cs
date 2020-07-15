@@ -43,41 +43,48 @@ public class SelectManager : MonoBehaviour
 
         if (isInFov)
         {
-            player.targetSwingDetect = target;
-            player.buttonSwing.SetActive(true);
+            if (player.targetSwingDetect != target)
+            {
+                player.targetSwingDetect = target;
+                player.buttonSwing.SetActive(true);
+            }
+
         }
-        else
+        else if (player.targetSwingDetect != null)
         {
             player.targetSwingDetect = null;
             player.buttonSwing.SetActive(false);
 
         }
-        isInFov2 = inFOVForLockTarget(transformCamera, maxAngle, maxRadius);// check target can Swing
-
-        if (isInFov2)
+        if (!animatorPlayer.GetBool("LockTarget"))
         {
-            if (!animatorPlayer.GetBool("LockTarget"))
+            isInFov2 = inFOVForLockTarget(transformCamera, maxAngle, maxRadius);// check target can Swing
+            if (isInFov2 && player.targetGroupCiner.m_Targets[1].target != target2)
             {
-                player.targetGroupCiner.m_Targets[1].target = target2;
+                
+                player.targetGroupCiner.m_Targets[1].target = target2.GetChild(0);
+
+
             }
-            
+            else if (player.targetGroupCiner.m_Targets[1].target != null)
+            {
+
+                player.targetGroupCiner.m_Targets[1].target = null;
+
+
+
+            }
         }
-        else
-        {
-            player.targetGroupCiner.m_Targets[1].target = null;
-
-        }
-
-
 
 
     }
 
-    /* Test Camera
-    public void OnDrawGizmos()
+
+    public void OnDrawGizmos()//Test Camera
     {
-        
-        
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transformCamera.position, transformCamera.forward * maxRadius);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transformCamera.position, maxRadius);
 
@@ -91,27 +98,33 @@ public class SelectManager : MonoBehaviour
         Gizmos.DrawRay(transformCamera.position, fovLine2down);
         Gizmos.DrawRay(transformCamera.position, fovLine3right);
         Gizmos.DrawRay(transformCamera.position, fovLine4left);
+        
+        //draw in end
+        Gizmos.DrawLine(transformCamera.position +fovLine1up,transformCamera.position+ fovLine3right);
+        Gizmos.DrawLine(transformCamera.position +fovLine3right, transformCamera.position +fovLine2down);
+        Gizmos.DrawLine(transformCamera.position +fovLine2down ,transformCamera.position + fovLine4left);
+        Gizmos.DrawLine(transformCamera.position +fovLine4left ,transformCamera.position + fovLine1up);
 
-        Gizmos.color = Color.green;
 
+        
 
         if (target != null)
         {
+            Gizmos.color = Color.green;
             Gizmos.DrawRay(transformCamera.position, (target.position - transformCamera.position).normalized * maxRadius);
 
         }
         if (target2 != null)
         {
+            Gizmos.color = Color.green;
             Gizmos.DrawRay(transformCamera.position, (target2.position - transformCamera.position).normalized * maxRadius);
 
         }
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transformCamera.position, transformCamera.forward * maxRadius);
         
     }
 
-    */
+
 
     public bool inFOVForSwing(Transform checkingObj, float maxAngleView, float maxRadiusView)
     {
@@ -124,7 +137,7 @@ public class SelectManager : MonoBehaviour
         {
             if (overlaps[i] != null)
             {
-               
+
                 if (target == null)// if dont have target
                 {
                     Vector3 directionBetween = (overlaps[i].transform.position - checkingObj.position).normalized;
@@ -139,9 +152,9 @@ public class SelectManager : MonoBehaviour
                             {
 
                                 target = overlaps[i].transform;
-                                
+
                             }
-                            
+
                         }
 
                     }
@@ -175,7 +188,7 @@ public class SelectManager : MonoBehaviour
                         target.gameObject.GetComponent<VisualEffect>().enabled = false;
 
                         target = null;
-                      
+
                     }
 
 
@@ -196,7 +209,7 @@ public class SelectManager : MonoBehaviour
 
                         }
                     }
-                    else if (target != null && angleNew2 < angle)
+                    else if (target != null && angleNew2 < angle) // !check if newTarget close than targetNow
                     {
                         Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
                         RaycastHit hit;
@@ -246,23 +259,23 @@ public class SelectManager : MonoBehaviour
 
     public bool inFOVForLockTarget(Transform checkingObj, float maxAngleView, float maxRadiusView)
     {
-        
+
         int layer = 1 << 23;
         int layerRay = ~(1 << 24);
-        
+
         Collider[] overlaps = new Collider[10];
         int count = Physics.OverlapSphereNonAlloc(checkingObj.position, maxRadiusView, overlaps, layer);
-        
+
         for (int i = 0; i < count; i++)
         {
-            
+
 
             if (overlaps[i] != null)
             {
-              
+
                 if (target2 == null)// if dont have target
                 {
-                    
+
                     Vector3 directionBetween = (overlaps[i].transform.position - checkingObj.position).normalized;
                     float angle = Vector3.Angle(checkingObj.forward, directionBetween);
                     if (angle < maxAngleView)
@@ -301,7 +314,7 @@ public class SelectManager : MonoBehaviour
                                 if (animatorPlayer.GetBool("LockTarget"))
                                 {
                                     player.LockTarget();
-                                    
+
                                 }
                                 target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
                                 target2 = null;
@@ -358,7 +371,7 @@ public class SelectManager : MonoBehaviour
                                     target2 = overlaps[i].transform;
 
                                 }
-                                
+
 
                             }
 
@@ -381,7 +394,7 @@ public class SelectManager : MonoBehaviour
 
         if (count == 0 && target2 != null)
         {
-            
+
             if (animatorPlayer.GetBool("LockTarget"))
             {
                 player.LockTarget();

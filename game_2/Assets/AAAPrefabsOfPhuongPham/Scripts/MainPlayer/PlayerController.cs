@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeedValue = 8f;
+
+    [SerializeField]
+    private float moveSpeedValueOnCombat = 3f;
     private float moveSpeed;
     private float currentSpeed = 0f;
     private float speedSmoothVelocity = 0f;
@@ -29,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public Transform targetSwing;
     public Transform targetSwingDetect;
     public GameObject buttonSwing;
-    
+
     [Space]
     [Header("Times")]
 
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
     public CinemachineVirtualCamera LookCamera1;
     public CinemachineFreeLook LookCamera3;
     public GameObject targetGroup;
-    public CinemachineTargetGroup targetGroupCiner ;
+    public CinemachineTargetGroup targetGroupCiner;
 
 
     private Transform maincameraTranform;
@@ -88,12 +91,12 @@ public class PlayerController : MonoBehaviour
         maincameraTranform = Camera.main.transform;
         moveSpeed = moveSpeedValue;
 
-
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Time.deltaTime != 0)
         {
             fps.text = (1 / Time.deltaTime).ToString();
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour
             timeSwing -= Time.deltaTime;
             Vector3 tg = new Vector3(targetSwing.position.x, transform.position.y, targetSwing.position.z);
             transform.LookAt(tg);
-            
+
         }
         if (animatorPlayer.GetInteger("InAction") == 1 && timeSwing <= 0)
         {
@@ -139,7 +142,7 @@ public class PlayerController : MonoBehaviour
                 characterController.Move(new Vector3(0, jumpValue * Time.deltaTime, 0));
             }
         }
-        
+
 
     }
 
@@ -291,7 +294,7 @@ public class PlayerController : MonoBehaviour
             LookCamera3.enabled = true;
 
         }
-        else if(targetGroupCiner.m_Targets[1].target!=null)
+        else if (targetGroupCiner.m_Targets[1].target != null)
         {
             //Debug.Log(targetGroupCiner.m_Targets[1].target);
             //Debug.Log(targetGroupCiner.m_Targets.Length);
@@ -370,14 +373,14 @@ public class PlayerController : MonoBehaviour
             }
             */
 
-        if ((animatorPlayer.GetInteger("InAction")==2 || canAction) && animatorPlayer.GetInteger("InAction") != 3)
+        if ((animatorPlayer.GetInteger("InAction") == 2 || canAction) && animatorPlayer.GetInteger("InAction") != 3)
         {
             if (actionLeaveAction != null)
             {
                 StopCoroutine(actionLeaveAction);
             }
             OnCombat(block);
-            
+
             //animatorPlayer.SetBool("Block", block);
             if (block)
             {
@@ -392,7 +395,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        
+
 
 
     }
@@ -414,7 +417,7 @@ public class PlayerController : MonoBehaviour
 
     public void SwingPlayer()
     {
-        if (canAction && targetSwingDetect!=null && animatorPlayer.GetInteger("InAction") != 3)
+        if (canAction && targetSwingDetect != null && animatorPlayer.GetInteger("InAction") != 3)
         {
             if (actionLeaveAction != null)
             {
@@ -453,55 +456,6 @@ public class PlayerController : MonoBehaviour
                 actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
 
                 StartCoroutine(CanAcion(0.6f));
-                #region Singleton 
-                /*
-                switch (comboAttack)
-                {
-                    case 1:
-                        if (actionLeaveAction != null)
-                        {
-                            StopCoroutine(actionLeaveAction);
-                            StopCoroutine(actionLeaveAttackCombo);
-                        }
-                        actionLeaveAction = StartCoroutine(LeaveAttack(2f));
-                        actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
-
-                        StartCoroutine(CanAcion(0.5f));
-                        break;
-                    case 2:
-                        if (actionLeaveAction != null)
-                        {
-                            StopCoroutine(actionLeaveAction);
-                            StopCoroutine(actionLeaveAttackCombo);
-                        }
-                        actionLeaveAction = StartCoroutine(LeaveAttack(2f));
-                        actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
-                        StartCoroutine(CanAcion(0.5f));
-
-                        break;
-                    case 3:
-                        if (actionLeaveAction != null)
-                        {
-                            StopCoroutine(actionLeaveAction);
-                            StopCoroutine(actionLeaveAttackCombo);
-                        }
-                        actionLeaveAction = StartCoroutine(LeaveAttack(2f));
-                        actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
-                        StartCoroutine(CanAcion(0.5f));
-                        break;
-                    case 4:
-                        if (actionLeaveAction != null)
-                        {
-                            StopCoroutine(actionLeaveAction);
-                            StopCoroutine(actionLeaveAttackCombo);
-                        }
-                        actionLeaveAction = StartCoroutine(LeaveAttack(2f));
-                        actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
-                        StartCoroutine(CanAcion(0.5f));
-                        break;
-                }
-                */
-                #endregion
 
                 animatorPlayer.SetBool("Crouch", false);
                 if (!animatorPlayer.GetBool("InCombat"))
@@ -574,16 +528,16 @@ public class PlayerController : MonoBehaviour
             characterController.Move(-direction * step);
         }
 
-        
+
         //Debug.Log("Intarget"+ -direction*step);
 
     }
 
-    private void OnCombat(bool combat)
+    public void OnCombat(bool combat)
     {
         if (combat)
         {
-            moveSpeed = moveSpeedValue / 4;
+            moveSpeed = moveSpeedValueOnCombat;
             typeMove = 0.5f;
             //animatorPlayer.SetBool("InCombat",true);
         }
@@ -605,8 +559,8 @@ public class PlayerController : MonoBehaviour
             targetSwing = null;
             canAction = true;
             //animatorPlayer.SetBool("isSwing", false);
-            animatorPlayer.SetInteger("InAction",0);
-            
+            animatorPlayer.SetInteger("InAction", 0);
+
             //other.GetComponent<BoxCollider>().enabled = false;
             //Debug.Log("Intarget");
         }

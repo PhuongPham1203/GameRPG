@@ -13,7 +13,7 @@ public class CharacterStats : MonoBehaviour
 
     //
 
-    public int maxHealth = 100;
+    public int maxHealth = 0;
     public int currentHealth { get; private set; }
 
     public Stat hp; // HP
@@ -27,7 +27,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
     }
 
 

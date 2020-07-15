@@ -17,6 +17,7 @@ public class PlayerStats : CharacterStats
         {
             armor.AddModifier(newItem.defendModifier);
             damage.AddModifier(newItem.attackDameModifier);
+            
 
         }
 
