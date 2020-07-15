@@ -5,25 +5,36 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
 
-    // Source Start
+    // !Source Start
+    [Header("Source Start")]
     public int startHP = 100;
     public int startAttackDame = 0;
     public int startPosture = 100;
     public int startDefend = 0;
 
-    //
+    // !Max and current Stat
+    [Header("Max and Current Stat")]
+    public int maxHP = 0;
+    public int currentHP { get; protected set; }
+    //public int maxAttackDame = 0;
+    public int currentAttackDame { get; protected set; }
+    public int maxPosture = 0;
+    public int currentPosture { get; protected set; }
+    //public int maxDefend = 0;
+    public int currentDefend { get; protected set; }
 
-    public int maxHealth = 0;
-    public int currentHealth { get; private set; }
-
+    // !Stats
+    [Header("Stats")]
     public Stat hp; // HP
     public Stat attackDame; // AttacK Dame
     public Stat posture; // Posture
     public Stat defend; // Defend
 
 
-    public Stat damage; // old damage
-    public Stat armor; // old Armor
+    //public Stat damage; // old damage
+    //public Stat armor; // old Armor
+
+    protected Animator animator;
 
     private void Awake()
     {
@@ -40,20 +51,52 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public void TakeDamege(int damage)
+    public virtual void TakeDamege(int damage)
     {
-        damage -= armor.GetValue();
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+        if (currentPosture != maxPosture)
+        {
+            if (animator.GetInteger("InAction") == 6)
+            {
+                animator.SetTrigger("InBlock");
 
-        currentHealth -= damage;
-        Debug.Log(transform.name + " Take " + damage + " damege.");
+            }
+        }
+        else
+        {
+            Debug.Log("can't block anymore");
+        }
+        if (animator.GetInteger("InAction") == 6) // ! In Block
+        {
+            damage -= currentDefend;
+            damage = Mathf.Clamp(damage, 0, 999999);
 
-        if (currentHealth <= 0)
+            currentPosture += damage;
+            currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
+
+            Debug.Log(transform.name + " Posture plus " + damage + " damege.");
+
+
+
+        }
+        else
+        { // ! Not Block
+            currentPosture += damage;
+
+            damage -= currentDefend;
+            damage = Mathf.Clamp(damage, 0, 999999);
+
+            currentHP -= damage;
+
+            Debug.Log(transform.name + " HP Take " + damage + " damege.");
+            Debug.Log(transform.name + " Posture plus " + damage + " damege.");
+        }
+
+
+        if (currentHP <= 0)
         {
             Die();
 
         }
-
     }
 
     public virtual void Die()

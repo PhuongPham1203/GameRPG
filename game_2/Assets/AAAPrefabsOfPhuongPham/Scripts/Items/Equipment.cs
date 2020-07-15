@@ -6,6 +6,7 @@ using UnityEngine;
 public class Equipment : SourceItemSlot
 {
     public EquipmentSlot equipSlot;
+    public GameObject prefabObj;
     //public SkinnedMeshRenderer mesh;
     public int hpModifier;// HP
     public int attackDameModifier;// attack
@@ -15,7 +16,7 @@ public class Equipment : SourceItemSlot
 
     public override void Use()
     {
-        base.Use();
+        //base.Use();
         // Equip the Item
         Debug.Log("Equip Weapon" + this.name);
         EquipmentManager.instance.Equip(this);

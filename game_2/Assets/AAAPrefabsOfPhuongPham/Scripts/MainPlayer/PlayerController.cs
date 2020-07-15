@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float typeMove = 1f;
+    public bool onCombat = false;
 
     [Space]
     [Header("Equips")]
@@ -373,26 +374,33 @@ public class PlayerController : MonoBehaviour
             }
             */
 
-        if ((animatorPlayer.GetInteger("InAction") == 2 || canAction) && animatorPlayer.GetInteger("InAction") != 3)
+        if (( /*animatorPlayer.GetInteger("InAction") == 2 || */ canAction) && animatorPlayer.GetInteger("InAction") != 3)
         {
             if (actionLeaveAction != null)
             {
                 StopCoroutine(actionLeaveAction);
             }
-            OnCombat(block);
+            //OnCombat(block);
 
             //animatorPlayer.SetBool("Block", block);
-            if (block)
+            if (block)// Block
             {
-
+                //OnCombat(block);
+                moveSpeed = moveSpeedValueOnCombat;
+                typeMove = 0.5f;
                 animatorPlayer.SetInteger("InAction", 6);
-
             }
-            else
+            else // Not Block
             {
-
+                if (!onCombat) // Not in Combat
+                {
+                    moveSpeed = moveSpeedValue;
+                    typeMove = 1f;
+                }
                 animatorPlayer.SetInteger("InAction", 0);
             }
+
+
 
         }
 
@@ -535,6 +543,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnCombat(bool combat)
     {
+        
+        onCombat = combat;
         if (combat)
         {
             moveSpeed = moveSpeedValueOnCombat;
@@ -544,7 +554,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             moveSpeed = moveSpeedValue;
-            typeMove = 1;
+            typeMove = 1f;
             //animatorPlayer.SetBool("InCombat", false);
 
 

@@ -19,6 +19,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 843ad3b5e1d21403799cd295e6b58371, type: 3}
   isDefaultItem: 0
   equipSlot: 3
+  prefabObj: {fileID: 5791625885996696114, guid: 884e21bca655e5d49922ec916ea69a64,
+    type: 3}
   hpModifier: 10
   attackDameModifier: 70
   postureModifier: 10

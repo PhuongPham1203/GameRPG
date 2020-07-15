@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7013345642105961095}
   - component: {fileID: 1569690287763377149}
   - component: {fileID: 2631215353872053807}
-  m_Layer: 24
+  m_Layer: 0
   m_Name: blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4650905024164423139}
   - component: {fileID: 4886998284778762637}
   - component: {fileID: 5422796192211454258}
-  m_Layer: 24
+  m_Layer: 0
   m_Name: tsuba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,13 +167,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8465321212999130223}
-  m_Layer: 24
+  - component: {fileID: 784886324}
+  m_Layer: 0
   m_Name: katana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8465321212999130223
 Transform:
   m_ObjectHideFlags: 0
@@ -193,6 +194,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &784886324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4837293787899407996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707c4ec86ddafa94a9aee3a8e4d89c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 11400000, guid: db96548884007534a8e751d0a53d23bc, type: 2}
 --- !u!1 &7354026820680621918
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +218,7 @@ GameObject:
   - component: {fileID: 3441036716003731898}
   - component: {fileID: 1275724599609872857}
   - component: {fileID: 8515885525565021963}
-  m_Layer: 24
+  m_Layer: 0
   m_Name: handgrip2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +297,7 @@ GameObject:
   - component: {fileID: 7522440083722307264}
   - component: {fileID: 1825708765536396283}
   - component: {fileID: 9212684726844317871}
-  m_Layer: 24
+  m_Layer: 0
   m_Name: blade base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +376,7 @@ GameObject:
   - component: {fileID: 1777396469425164835}
   - component: {fileID: 4196744261543650207}
   - component: {fileID: 8007903176468207500}
-  m_Layer: 24
+  m_Layer: 0
   m_Name: handgrip1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

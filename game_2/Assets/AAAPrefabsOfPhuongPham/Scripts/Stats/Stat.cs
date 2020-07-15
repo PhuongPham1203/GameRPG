@@ -19,7 +19,9 @@ public class Stat
         return finalValue;
 
     }
-
+    public void SetBaseValue(int baseVar){
+        baseValue = baseVar;
+    }
     public void AddModifier(int modifier)
     {
         if(modifier != 0)

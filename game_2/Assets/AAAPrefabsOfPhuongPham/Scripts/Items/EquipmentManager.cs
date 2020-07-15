@@ -16,8 +16,8 @@ public class EquipmentManager : MonoBehaviour
     //public SkinnedMeshRenderer targetMesh;
     Equipment[] currentEquipment;
     //SkinnedMeshRenderer[] currentMeshes;
-
-
+    public GameObject[] parentEquipment = new GameObject[5];
+    
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
@@ -28,7 +28,7 @@ public class EquipmentManager : MonoBehaviour
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
         //currentMeshes = new SkinnedMeshRenderer[numSlots];
-        EquipDefaultItems();
+        EquipAllDefaultItems();
 
     }
 
@@ -46,10 +46,16 @@ public class EquipmentManager : MonoBehaviour
         //UnEquip(slotIndex);
         Equipment oldItem = UnEquip(slotIndex);
 
+
         if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            inventory.Add(oldItem);
+            //inventory.Add(oldItem);
+            if (!oldItem.isDefaultItem)// if Equipment is not default Equipment
+            {
+                inventory.Add(oldItem); // Add back Inventory
+
+            }
         }
 
         if (onEquipmentChanged != null)
@@ -61,6 +67,9 @@ public class EquipmentManager : MonoBehaviour
 
         //insert item to slot
         currentEquipment[slotIndex] = newItem;
+        Instantiate(newItem.prefabObj,parentEquipment[slotIndex].transform);
+        
+
         /*
         SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
         
@@ -75,17 +84,22 @@ public class EquipmentManager : MonoBehaviour
     {
         if (currentEquipment[slotIndex] != null)
         {
-            /*
-            if(currentMeshes[slotIndex] != null)
+            
+            if(currentEquipment[slotIndex] != null)
             {
-                Destroy(currentMeshes[slotIndex].gameObject);
+                //Destroy(currentEquipment[slotIndex].prefabObj);
+                Destroy(parentEquipment[slotIndex].GetComponentInChildren<ItemPickup>().gameObject);
             }
-            */
+            
 
             // add item to inventory
             Equipment oldItem = currentEquipment[slotIndex];
-            //SetEquipmentBlendShapes(oldItem, 0);
-            inventory.Add(oldItem);
+
+            if (!oldItem.isDefaultItem)// if Equipment is not default Equipment
+            {
+                inventory.Add(oldItem); // Add back Inventory
+
+            }
             //remove item from equipment
             currentEquipment[slotIndex] = null;
 
@@ -98,7 +112,7 @@ public class EquipmentManager : MonoBehaviour
         return null;
     }
 
-    void SetEquipmentBlendShapes(Equipment item,int weight)
+    void SetEquipmentBlendShapes(Equipment item, int weight)
     {
         /*
         foreach(EquipmentMeshRegion blendShape in item.coveredMeshRegions)
@@ -107,7 +121,7 @@ public class EquipmentManager : MonoBehaviour
         }
         */
     }
-    void EquipDefaultItems()
+    void EquipAllDefaultItems()
     {
         foreach (Equipment item in defaultItems)
         {
@@ -115,13 +129,25 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 
+    void EquipDefaultItems(int positon) // ! 0=Hair 1=Clothes 2=LightWeapon 3=HeavyWeapon 4=Bow
+    {
+        if (positon == 2)
+        {
+            Equip(defaultItems[0]);
+        }
+        else if (positon == 3)
+        {
+            Equip(defaultItems[1]);
+
+        }
+    }
     public void UnEquipAll()
     {
         for (int i = 0; i < currentEquipment.Length; i++)
         {
             UnEquip(i);
         }
-        EquipDefaultItems();
+        EquipAllDefaultItems();
     }
 
 
