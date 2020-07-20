@@ -6,17 +6,21 @@ using UnityEngine.UI;
 
 public class SceneManagerOfGame : MonoBehaviour
 {
-    /*
+
     public static SceneManagerOfGame instance;
     public GameObject loadingScene;
     public GameObject canvasMainMenu;
     public GameObject camera;
+    public Slider sliderBar;
+    public Text numberPercen;
     private void Awake()
     {
         instance = this;
 
     }
 
+    [Header("List Scene Index")]
+    public List<SceneIndexes> listSceneIndex;
     List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
     public void LoadGame()
     {
@@ -24,10 +28,21 @@ public class SceneManagerOfGame : MonoBehaviour
         loadingScene.gameObject.SetActive(true);
         canvasMainMenu.gameObject.SetActive(false);
 
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_PLAYER, LoadSceneMode.Additive));
-        //sceneLoading.Add( SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_APOCALYPSE,LoadSceneMode.Additive) );
-        //SceneManager.UnloadSceneAsync((int)SceneIndexes.SCENE_MANAGER,LoadSceneMode.Additive);
+        foreach (SceneIndexes scene in listSceneIndex)
+        {
+            if(scene != null){
+                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneId, LoadSceneMode.Additive));
 
+            }
+        }
+
+        /*
+        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_PLAYER, LoadSceneMode.Additive));
+        //sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_APOCALYPSE, LoadSceneMode.Additive));
+        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CITY, LoadSceneMode.Additive));
+        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CLOUDFOREST, LoadSceneMode.Additive));
+        //SceneManager.UnloadSceneAsync((int)SceneIndexes.SCENE_MANAGER,LoadSceneMode.Additive);
+        */
         StartCoroutine(GetSceneLoadProgress());
 
     }
@@ -46,20 +61,24 @@ public class SceneManagerOfGame : MonoBehaviour
                 totalSceneProgess = 0;
                 foreach (AsyncOperation operation in sceneLoading)
                 {
-                    totalSceneProgess += operation.progress;
+                    totalSceneProgess += (operation.progress / sceneLoading.Count);
                 }
+                Debug.Log(totalSceneProgess);
+                sliderBar.value = totalSceneProgess / 0.9f;
 
-                totalSceneProgess = (totalSceneProgess/sceneLoading.Count)*100f;
+                totalSceneProgess = totalSceneProgess * 100f;
+                totalSceneProgess = Mathf.RoundToInt(totalSceneProgess);
+                numberPercen.text = totalSceneProgess.ToString();
 
-                //bar.current = Mathf.RoundToInt(totalSceneProgess);
-
-                Debug.Log(Mathf.RoundToInt(totalSceneProgess));
+                //Debug.Log(Mathf.RoundToInt(totalSceneProgess));
+                Debug.Log(totalSceneProgess + " percent");
 
 
                 yield return null;
             }
         }
 
+        Debug.Log("Done");
         camera.gameObject.SetActive(false);
         loadingScene.gameObject.SetActive(false);
 
@@ -68,7 +87,7 @@ public class SceneManagerOfGame : MonoBehaviour
 
 
     }
-    */
+
 
     /*
     public Image loadingBar;
