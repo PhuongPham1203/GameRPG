@@ -13,6 +13,8 @@ public class SceneManagerOfGame : MonoBehaviour
     public GameObject camera;
     public Slider sliderBar;
     public Text numberPercen;
+
+    public Animator animatorIcon;
     private void Awake()
     {
         instance = this;
@@ -30,10 +32,16 @@ public class SceneManagerOfGame : MonoBehaviour
 
         foreach (SceneIndexes scene in listSceneIndex)
         {
-            if(scene != null){
+            if (scene != null)
+            {
                 sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneId, LoadSceneMode.Additive));
 
             }
+        }
+
+        foreach (AsyncOperation async in sceneLoading)
+        {
+            async.allowSceneActivation = false;
         }
 
         /*
@@ -44,6 +52,8 @@ public class SceneManagerOfGame : MonoBehaviour
         //SceneManager.UnloadSceneAsync((int)SceneIndexes.SCENE_MANAGER,LoadSceneMode.Additive);
         */
         StartCoroutine(GetSceneLoadProgress());
+        Debug.Log("point");
+        animatorIcon.SetInteger("type", 2);
 
     }
 
@@ -61,6 +71,12 @@ public class SceneManagerOfGame : MonoBehaviour
                 totalSceneProgess = 0;
                 foreach (AsyncOperation operation in sceneLoading)
                 {
+                    /*
+                    if(operation.allowSceneActivation == false && operation.progress >= 0.9f)
+                    {
+                        operation.allowSceneActivation = true;
+                    }
+                    */
                     totalSceneProgess += (operation.progress / sceneLoading.Count);
                 }
                 Debug.Log(totalSceneProgess);
@@ -73,14 +89,36 @@ public class SceneManagerOfGame : MonoBehaviour
                 //Debug.Log(Mathf.RoundToInt(totalSceneProgess));
                 Debug.Log(totalSceneProgess + " percent");
 
+                if (totalSceneProgess >= 90)
+                {
+                    foreach (AsyncOperation async in sceneLoading)//Activate the Scene
+                    {
+                        if (!async.allowSceneActivation)
+                        {
+                            async.allowSceneActivation = true;
+
+                        }
+                    }
+                }
+
+
 
                 yield return null;
             }
+
+
         }
 
         Debug.Log("Done");
+
+
+
+        animatorIcon.SetInteger("type", 0);
         camera.gameObject.SetActive(false);
         loadingScene.gameObject.SetActive(false);
+
+
+
 
 
 
