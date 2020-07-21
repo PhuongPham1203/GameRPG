@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-
+            
             if (!characterController.isGrounded && animatorPlayer.GetInteger("InAction") == 0)
             {
                 characterController.Move(new Vector3(0, -gravity * Time.deltaTime, 0));
@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
             {
                 characterController.Move(new Vector3(0, jumpValue * Time.deltaTime, 0));
             }
+            
         }
 
 

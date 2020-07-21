@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+
 
 public class CharacterStats : MonoBehaviour
 {
@@ -16,12 +19,12 @@ public class CharacterStats : MonoBehaviour
     [Header("Max and Current Stat")]
     public int maxHP = 0;
     public int currentHP { get; protected set; }
-    //public int maxAttackDame = 0;
     public int currentAttackDame { get; protected set; }
     public int maxPosture = 0;
     public int currentPosture { get; protected set; }
-    //public int maxDefend = 0;
     public int currentDefend { get; protected set; }
+
+    public Vector3 teleportNearest { get; protected set; }
 
     // !Stats
     [Header("Stats")]
@@ -105,4 +108,23 @@ public class CharacterStats : MonoBehaviour
         // this method is meant to be overwritter;
         Debug.Log(transform.name + " Die.");
     }
+
+    public float[] GetTransformCurrent()
+    {
+        //Vector3 positionCur = transform.position;
+        return new float[] { teleportNearest.x, teleportNearest.y, teleportNearest.z };
+    }
+    public void SetTransformCurrent(float x, float y, float z)
+    {
+        teleportNearest = new Vector3(x, y, z);
+        //Debug.Log("teleportNearest : "+ teleportNearest);
+
+
+        Debug.Log("befo " + teleportNearest);
+        //cube.transform.position = teleportNearest;
+        //transform.position = teleportNearest;
+
+        transform.TransformPoint(teleportNearest);
+    }
+    public GameObject cube;
 }

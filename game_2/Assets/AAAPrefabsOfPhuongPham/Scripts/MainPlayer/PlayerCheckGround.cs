@@ -25,16 +25,7 @@ public class PlayerCheckGround : MonoBehaviour
             
         }
     }
-    private void OnTriggerStay(Collider other)
-    {
-        /*
-         
-        if (other.gameObject.layer == 8)
-        {
-            animatorObj.SetBool("OnGround", true);
-        }
-        * */
-    }
+
     private void OnTriggerExit(Collider other)
     {
         
@@ -44,12 +35,4 @@ public class PlayerCheckGround : MonoBehaviour
         }
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-    }
 }
