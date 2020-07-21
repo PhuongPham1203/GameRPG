@@ -10,7 +10,7 @@ public class SceneManagerOfGame : MonoBehaviour
     public static SceneManagerOfGame instance;
     public GameObject loadingScene;
     public GameObject canvasMainMenu;
-    public GameObject camera;
+    public GameObject cameraInScene;
     public Slider sliderBar;
     public Text numberPercen;
 
@@ -114,7 +114,7 @@ public class SceneManagerOfGame : MonoBehaviour
 
 
         animatorIcon.SetInteger("type", 0);
-        camera.gameObject.SetActive(false);
+        cameraInScene.gameObject.SetActive(false);
         loadingScene.gameObject.SetActive(false);
 
 

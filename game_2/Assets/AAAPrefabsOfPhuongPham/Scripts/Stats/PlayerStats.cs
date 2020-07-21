@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 
@@ -18,11 +19,17 @@ public class PlayerStats : CharacterStats
 
     [Header("UI contron")]
     public GameObject uiTeleport;
-    public Vector3 potisionCurrenNearest;
+    public GameObject uiLoading;
+    public Vector3 potisionCurrenNearestNow;
+    private Coroutine loadingMoveToPosition;
+
+    Vector3 pNow;
+    bool needchange = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
         /*
         Vector3 a = transform.position;
         a.y += 10f;
@@ -117,7 +124,7 @@ public class PlayerStats : CharacterStats
 
         SetAllBaseValue();
         //SetAllCurrentAndMaxValue(hp.GetValue(), attackDame.GetValue(), posture.GetValue(), defend.GetValue());
-        SetAllCurrentAndMaxValue(playerData.baseMaxHP, playerData.baseCurrentAttackDame,playerData.baseMaxPoseture, playerData.baseCurrentDefend);
+        SetAllCurrentAndMaxValue(playerData.baseMaxHP, playerData.baseCurrentAttackDame, playerData.baseMaxPoseture, playerData.baseCurrentDefend);
 
         money = playerData.baseMoney;
         realMoney = playerData.baseRealMoney;
@@ -128,16 +135,52 @@ public class PlayerStats : CharacterStats
         expToLevelUp = playerData.baseExpToLevelUp;
 
 
-        SetTransformCurrent(playerData.positon[0], playerData.positon[1], playerData.positon[2]);
-        sceneIndex = playerData.sceneIndexCurrent;
+        teleportNearest = new Vector3(playerData.positon[0], playerData.positon[1], playerData.positon[2]);
+
+        loadingMoveToPosition = StartCoroutine(Loading(1.5f,teleportNearest));//Loading After 1.5s
 
         //Debug.Log(gameObject.transform.position);
+        pNow = transform.position;
+        needchange = true;
+        sceneIndex = playerData.sceneIndexCurrent;
+
+
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (needchange && pNow == transform.position)
+        {
+
+            transform.position = teleportNearest;
+            //loadingMoveToPosition = StartCoroutine(Loading(1.5f, teleportNearest));//Loading After 1.5s
+            needchange = false;
+            //Debug.Log("asd");
+        }
+
+    }
+
+    public IEnumerator Loading(float waitTime, Vector3 postionNearest)
+    {
+        Debug.Log("Start loading");
+        uiLoading.gameObject.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        Cance();
+        uiLoading.gameObject.SetActive(false);
+        //PlayerManager.instance.player.transform.position = postionNearest;
+        //transform.position = postionNearest;
+
+        //PlayerManager.instance.MoveToPoint(postionNearest.x, postionNearest.y, postionNearest.z);
+
+        Debug.Log("End loading");
+
 
     }
 
     public void OpenUI()
     {
-        
+
         uiTeleport.gameObject.SetActive(true);
     }
     public void Cance()
@@ -145,7 +188,7 @@ public class PlayerStats : CharacterStats
         uiTeleport.gameObject.SetActive(false);
     }
 
-
+    /*
     #region Money
     public void AddMoney(int number) // add more money
     {
@@ -235,5 +278,5 @@ public class PlayerStats : CharacterStats
         expToLevelUp -= number;
     }
     #endregion
-
+    */
 }

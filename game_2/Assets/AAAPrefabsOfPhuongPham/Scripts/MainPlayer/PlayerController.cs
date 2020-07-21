@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Contexts;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public float timeSwing = 0f;
     public float timeSwingValue = 1f;
-    private bool canSwing = true;
+    //private bool canSwing = true;
     public Transform targetSwing;
     public Transform targetSwingDetect;
     public GameObject buttonSwing;
@@ -55,6 +56,9 @@ public class PlayerController : MonoBehaviour
     private int comboAttack = 1;
     private int maxComboValue = 4;
     public bool canAction = true;
+    [SerializeField]
+    private bool isPressBlock = false;
+
     private Coroutine actionCanAction;
     private Coroutine actionLeaveAction;
     private Coroutine actionLeaveAttackCombo;
@@ -98,6 +102,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+
         if (Time.deltaTime != 0)
         {
             fps.text = (1 / Time.deltaTime).ToString();
@@ -132,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            
+
             if (!characterController.isGrounded && animatorPlayer.GetInteger("InAction") == 0)
             {
                 characterController.Move(new Vector3(0, -gravity * Time.deltaTime, 0));
@@ -142,7 +147,7 @@ public class PlayerController : MonoBehaviour
             {
                 characterController.Move(new Vector3(0, jumpValue * Time.deltaTime, 0));
             }
-            
+
         }
 
 
@@ -171,9 +176,11 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = (tftarget.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
 
-
-
+        if (isPressBlock)
+        {
+            Block(isPressBlock);
         }
     }
 
@@ -374,6 +381,7 @@ public class PlayerController : MonoBehaviour
                 StopCoroutine(actionLeaveAction);
             }
             */
+        
 
         if (( /*animatorPlayer.GetInteger("InAction") == 2 || */ canAction) && animatorPlayer.GetInteger("InAction") != 3)
         {
@@ -399,11 +407,20 @@ public class PlayerController : MonoBehaviour
                     typeMove = 1f;
                 }
                 animatorPlayer.SetInteger("InAction", 0);
+                isPressBlock = block;
             }
 
-
-
         }
+        else if(block)
+        {
+            isPressBlock = block;
+        }
+        else if(!block)
+        {
+            isPressBlock = block;
+        }
+
+        
 
 
 
@@ -544,7 +561,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCombat(bool combat)
     {
-        
+
         onCombat = combat;
         if (combat)
         {

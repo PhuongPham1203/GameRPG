@@ -121,10 +121,19 @@ public class CharacterStats : MonoBehaviour
 
 
         Debug.Log("befo " + teleportNearest);
-        //cube.transform.position = teleportNearest;
-        //transform.position = teleportNearest;
+        PlayerManager.instance.player.transform.position = teleportNearest;
 
-        transform.TransformPoint(teleportNearest);
     }
-    public GameObject cube;
+    //public GameObject cube;
+    public virtual void SetTest()
+    {
+        //teleportNearest = new Vector3(x, y, z);
+        //Debug.Log("teleportNearest : "+ teleportNearest);
+
+
+        //Debug.Log("befo " + teleportNearest);
+        PlayerManager.instance.player.transform.position = new Vector3(0,0);
+        Debug.Log("befo " + PlayerManager.instance.player.transform.position);
+
+    }
 }

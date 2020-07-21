@@ -14,7 +14,7 @@ public class TeleportController : MonoBehaviour
         {
             PlayerStats playerStats = other.gameObject.GetComponent<PlayerStats>();
 
-            playerStats.potisionCurrenNearest = pos.position;
+            playerStats.potisionCurrenNearestNow = pos.position;
 
             Inventory.instance.ButtonActionWithObj.SetActive(true);
             Button btn = Inventory.instance.ButtonActionWithObj.GetComponent<Button>();

@@ -36,9 +36,9 @@ public class PlayerData
         baseExpToLevelUp = playerStats.expToLevelUp;
 
         positon = new float[3];
-        positon[0] = playerStats.potisionCurrenNearest.x;
-        positon[1] = playerStats.potisionCurrenNearest.y;
-        positon[2] = playerStats.potisionCurrenNearest.z;
+        positon[0] = playerStats.potisionCurrenNearestNow.x;
+        positon[1] = playerStats.potisionCurrenNearestNow.y;
+        positon[2] = playerStats.potisionCurrenNearestNow.z;
 
         sceneIndexCurrent = playerStats.sceneIndex;
     }

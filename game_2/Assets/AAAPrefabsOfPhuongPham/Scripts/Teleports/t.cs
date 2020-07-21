@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class t : MonoBehaviour
 {
+    public GameObject pl;
+    public Transform target;
+    public Coroutine loadingMoveToPosition;
+    public GameObject uiLoading;
+
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 position = new Vector3(Random.Range(0, 10.0f), Random.Range(0, 10.0f), Random.Range(0, 10.0f));
-        transform.position = position;
+        pl = PlayerManager.instance.player;
     }
 
     private void FixedUpdate()
-    {
+    {   
+        
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+
+
+        }
         
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 24)
+        {
+            //loadingMoveToPosition = StartCoroutine(Loading(1.5f, target.position));//Loading After 1.5s
+            other.transform.position = target.position;
+            Debug.Log(other.transform.position);
+        }
+    }
+    
 }
