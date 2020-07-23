@@ -347,9 +347,19 @@ public class SelectManager : MonoBehaviour
                             {
                                 if (!animatorPlayer.GetBool("LockTarget"))
                                 {
-                                    target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
-                                    target2 = overlaps[i].transform;
+                                    try
+                                    {
+                                        target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
+                                        target2 = overlaps[i].transform;
 
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                    
+
+                                    
                                 }
 
                             }

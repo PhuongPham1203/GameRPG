@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+
 
 public class SceneManagerOfGame : MonoBehaviour
 {
@@ -10,9 +12,12 @@ public class SceneManagerOfGame : MonoBehaviour
     public static SceneManagerOfGame instance;
     public GameObject loadingScene;
     public GameObject canvasMainMenu;
+    public GameObject optionMenu;
     public GameObject cameraInScene;
     public Slider sliderBar;
     public Text numberPercen;
+
+    public AudioMixer audioMixer;
 
     public Animator animatorIcon;
     private void Awake()
@@ -23,6 +28,7 @@ public class SceneManagerOfGame : MonoBehaviour
 
     [Header("List Scene Index")]
     public List<SceneIndexes> listSceneIndex;
+    public List<SceneIndexes> listSceneIndex2;
     List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
     public void LoadGame()
     {
@@ -55,6 +61,37 @@ public class SceneManagerOfGame : MonoBehaviour
         Debug.Log("point");
         animatorIcon.SetInteger("type", 2);
 
+    }
+
+    public void LoadGameTestContinue()
+    {
+        loadingScene.gameObject.SetActive(true);
+        canvasMainMenu.gameObject.SetActive(false);
+
+        foreach (SceneIndexes scene in listSceneIndex2)
+        {
+            if (scene != null)
+            {
+                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneId, LoadSceneMode.Additive));
+
+            }
+        }
+
+        foreach (AsyncOperation async in sceneLoading)
+        {
+            async.allowSceneActivation = false;
+        }
+
+        /*
+        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_PLAYER, LoadSceneMode.Additive));
+        //sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_APOCALYPSE, LoadSceneMode.Additive));
+        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CITY, LoadSceneMode.Additive));
+        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CLOUDFOREST, LoadSceneMode.Additive));
+        //SceneManager.UnloadSceneAsync((int)SceneIndexes.SCENE_MANAGER,LoadSceneMode.Additive);
+        */
+        StartCoroutine(GetSceneLoadProgress());
+        Debug.Log("point");
+        animatorIcon.SetInteger("type", 2);
     }
 
     float totalSceneProgess;
@@ -115,16 +152,17 @@ public class SceneManagerOfGame : MonoBehaviour
 
         animatorIcon.SetInteger("type", 0);
         cameraInScene.gameObject.SetActive(false);
-        loadingScene.gameObject.SetActive(false);
-
-
-
-
-
-
-
+        loadingScene.gameObject.SetActive(false);   
 
     }
+    public void SetVolume(float number)
+    {
+        audioMixer.SetFloat("volume", number);
+    }
 
+    public void OpenOption(bool open)
+    {
+        optionMenu.gameObject.SetActive(open);
+    }
 
 }

@@ -31,8 +31,9 @@ public class t : MonoBehaviour
         if(other.gameObject.layer == 24)
         {
             //loadingMoveToPosition = StartCoroutine(Loading(1.5f, target.position));//Loading After 1.5s
-            other.transform.position = target.position;
-            Debug.Log(other.transform.position);
+            //other.transform.position = target.position;
+            //Debug.Log(other.transform.position);
+            AudioManager.instance.PlaySoundOfTheme("Theme Apocalypse");
         }
     }
     

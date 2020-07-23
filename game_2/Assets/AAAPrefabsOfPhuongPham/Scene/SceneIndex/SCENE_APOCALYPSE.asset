@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247fb5cbb9999cf4d89aa49b52c014ce, type: 3}
   m_Name: SCENE_APOCALYPSE
   m_EditorClassIdentifier: 
-  sceneId: 2
+  sceneId: 3
   nameScene: SCENE_APOCALYPSE
   information: SCENE_APOCALYPSE

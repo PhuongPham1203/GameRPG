@@ -9,6 +9,9 @@ public class AnimatorControllers : MonoBehaviour
     private LineRenderer lr;
     public GameObject startRope;
     private bool isSwing = false;
+    [SerializeField]
+    private Transform parentContentVFXPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,7 +102,16 @@ public class AnimatorControllers : MonoBehaviour
         //Debug.Log(Effects[EffectNumber].StartPositionRotation.rotation);
         //Debug.Log(Effects[EffectNumber].StartPositionRotation.localRotation);
 
-        var instance = Instantiate(Effects[EffectNumber].Effect, Effects[EffectNumber].StartPositionRotation.position, rot);//Effects[EffectNumber].StartPositionRotation.rotation);
+        var instance = Instantiate(Effects[EffectNumber].Effect, Effects[EffectNumber].StartPositionRotation.position, rot,parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
+        if (EffectNumber+1==4)
+        {
+            AudioManager.instance.PlaySoundOfPlayer("Light Attack "+2);
+        }
+        else
+        {
+            AudioManager.instance.PlaySoundOfPlayer("Light Attack " + (int)(EffectNumber+1));
+        }
+
         /*
         if (Effects[EffectNumber].UseLocalPosition)
         {
