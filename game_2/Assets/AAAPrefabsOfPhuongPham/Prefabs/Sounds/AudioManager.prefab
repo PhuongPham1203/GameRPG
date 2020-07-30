@@ -43,7 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0c38af48c498c44a449132fb8c6e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 5661b1e1384275041ad13514fe4c383a, type: 2}
+  audioMixerMaster: {fileID: 24100000, guid: 5661b1e1384275041ad13514fe4c383a, type: 2}
+  sfxGroups: {fileID: 5337331771877265780, guid: 5661b1e1384275041ad13514fe4c383a,
+    type: 2}
+  themeGroups: {fileID: -8202505388349612432, guid: 5661b1e1384275041ad13514fe4c383a,
+    type: 2}
   soundsOfPlayer:
   - name: Light Attack 1
     clip: {fileID: 8300000, guid: 4f4d50561ba2bf94b948322b7027d584, type: 3}
@@ -59,6 +63,36 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Light Attack 3
     clip: {fileID: 8300000, guid: 1721f14fc421b4a4caae44f06997b183, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - name: Light Attack 4
+    clip: {fileID: 8300000, guid: 33d390caaf74ca54bbe27620167e51e0, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - name: Heavy Attack 1
+    clip: {fileID: 8300000, guid: 55137ac20b00643448d8b56ec0b0fe36, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - name: Heavy Attack 2
+    clip: {fileID: 8300000, guid: 73ea880b86dcdd749b49e3a96d861cdc, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - name: Heavy Attack 3
+    clip: {fileID: 8300000, guid: 5cf0969939aabcc448738b05a990e92a, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - name: Heavy Attack 4
+    clip: {fileID: 8300000, guid: a44bf98a0100cbc45a5fca75333f9efa, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1

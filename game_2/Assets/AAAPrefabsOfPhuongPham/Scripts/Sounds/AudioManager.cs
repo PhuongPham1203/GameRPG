@@ -1,12 +1,15 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioMixer audioMixer;
+    public AudioMixer audioMixerMaster;
+    public AudioMixerGroup sfxGroups;
+    public AudioMixerGroup themeGroups;
 
     public Sound[] soundsOfPlayer;
     public Sound[] soundsOfTheme;
@@ -33,6 +36,9 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = sfxGroups;
+            //Debug.Log(audioMixerMaster.FindMatchingGroups("Master")[0]);
+            //audioMixerVFX.outputAudioMixerGroup;
         }
 
         foreach (Sound s in soundsOfTheme)
@@ -44,6 +50,8 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = themeGroups;
+
         }
     }
     void Start()
@@ -80,8 +88,13 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-    public void SetVolume(float number)
+    public void SetVolumeSFX(Slider number)
     {
-        audioMixer.SetFloat("volume", number);
+        audioMixerMaster.SetFloat("Volume SFX", number.value);
+    }
+
+    public void SetVolumeTheme(Slider number)
+    {
+        audioMixerMaster.SetFloat("Volume Theme", number.value);
     }
 }

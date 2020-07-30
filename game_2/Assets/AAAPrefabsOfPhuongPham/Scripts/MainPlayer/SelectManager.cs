@@ -261,7 +261,7 @@ public class SelectManager : MonoBehaviour
     {
 
         int layer = 1 << 23;
-        int layerRay = ~(1 << 24);
+        int layerRay = ~(1 << 24) ;
 
         Collider[] overlaps = new Collider[10];
         int count = Physics.OverlapSphereNonAlloc(checkingObj.position, maxRadiusView, overlaps, layer);

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Remoting.Contexts;
 
 
 public class CharacterStats : MonoBehaviour
@@ -37,8 +38,14 @@ public class CharacterStats : MonoBehaviour
     //public Stat damage; // old damage
     //public Stat armor; // old Armor
 
+    [Header("UI Profile")]
+    public Image hpUI;
+    public Image postureUI;
+
+
     protected Animator animator;
 
+    public int d = 100;
     private void Awake()
     {
         //currentHealth = maxHealth;
@@ -50,7 +57,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            TakeDamege(90);
+            TakeDamege(d);
         }
     }
 
@@ -76,9 +83,8 @@ public class CharacterStats : MonoBehaviour
             currentPosture += damage;
             currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
 
+
             Debug.Log(transform.name + " Posture plus " + damage + " damege.");
-
-
 
         }
         else
@@ -94,12 +100,25 @@ public class CharacterStats : MonoBehaviour
             Debug.Log(transform.name + " Posture plus " + damage + " damege.");
         }
 
+        UpdateHPAndPosture();
 
         if (currentHP <= 0)
         {
             Die();
 
         }
+    }
+
+    public void UpdateHPAndPosture()
+    {
+        float hp01 = Mathf.Clamp01((float)currentHP / (float)maxHP);
+        float posture01 = Mathf.Clamp01((float)currentPosture / (float)maxPosture);
+        hpUI.fillAmount = hp01;
+        postureUI.fillAmount = posture01;
+
+        Debug.Log(hp01);
+        Debug.Log(posture01);
+
     }
 
     public virtual void Die()
@@ -132,7 +151,7 @@ public class CharacterStats : MonoBehaviour
 
 
         //Debug.Log("befo " + teleportNearest);
-        PlayerManager.instance.player.transform.position = new Vector3(0,0);
+        PlayerManager.instance.player.transform.position = new Vector3(0, 0);
         Debug.Log("befo " + PlayerManager.instance.player.transform.position);
 
     }

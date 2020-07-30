@@ -10,6 +10,8 @@ InAction : 0 Idle - can do any thing
             4 Dash - time : 0.75s
             5 Walk
             6 Block
+            7 Damage - time : 0.5s
+            8 Die
 
 
 

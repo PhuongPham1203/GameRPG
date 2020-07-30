@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -49,18 +48,43 @@ public class PlayerController : MonoBehaviour
     [Header("Equips")]
     [SerializeField]
     private int weaponPlayer = 1;
+
     [Space]
     [Header("Attack Light")]
     [SerializeField]
     private int comboAttack = 1;
     private int maxComboValue = 4;
     public bool canAction = true;
+
+    public ParticleSystem weaponIn;
+    public ParticleSystem weaponOut;
+
+    [SerializeField]
+    private GameObject weapon1;
+    [SerializeField]
+    private GameObject weapon2;
+
+    [SerializeField]
+    private float timeLeaveLightAttack = 2f;
+    [SerializeField]
+    private float timeCanLightAttackAction = 0.6f;
+
+    [SerializeField]
+    private float timeLeaveHeavyAttack = 4f;
+    [SerializeField]
+    private float timeCanHeavyAttackAction = 1.6f;
+    [SerializeField]
+    private float timeDisableWeapon = 5f;
+
     [SerializeField]
     private bool isPressBlock = false;
 
     private Coroutine actionCanAction;
     private Coroutine actionLeaveAction;
     private Coroutine actionLeaveAttackCombo;
+
+    private Coroutine actionDisableWeapon;
+
 
     [Header("Input")]
     public bool isPressMove = false;
@@ -182,7 +206,11 @@ public class PlayerController : MonoBehaviour
             Block(isPressBlock);
         }
     }
-
+    public void PlayerDie()
+    {
+        StopAllCoroutines();
+        canAction = false;
+    }
     public void PressToMovePlayer(bool move)
     {
         isPressMove = move;
@@ -339,7 +367,8 @@ public class PlayerController : MonoBehaviour
             {
                 StopCoroutine(actionLeaveAction);
             }
-            actionCanAction = StartCoroutine(LeaveJump(timeJumpValue));
+            //actionCanAction = StartCoroutine(LeaveJump(timeJumpValue));
+            actionLeaveAction = StartCoroutine(LeaveJump(timeJumpValue));
 
             //animatorPlayer.SetTrigger("Jump");
             animatorPlayer.SetBool("Crouch", false);
@@ -360,7 +389,9 @@ public class PlayerController : MonoBehaviour
             {
                 StopCoroutine(actionLeaveAction);
             }
-            actionCanAction = StartCoroutine(LeaveDash(timeDashValue));
+            //actionCanAction = StartCoroutine(LeaveDash(timeDashValue));
+            actionLeaveAction = StartCoroutine(LeaveDash(timeDashValue));
+
             animatorPlayer.SetTrigger("Dash");
             animatorPlayer.SetInteger("InAction", 4);
 
@@ -372,73 +403,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Block(bool block)
-    {
-        /*
-            if (actionLeaveAction != null)
-            {
-                StopCoroutine(actionLeaveAction);
-            }
-            */
-        
-
-        if (( /*animatorPlayer.GetInteger("InAction") == 2 || */ canAction) && animatorPlayer.GetInteger("InAction") != 3)
-        {
-            if (actionLeaveAction != null)
-            {
-                StopCoroutine(actionLeaveAction);
-            }
-            //OnCombat(block);
-
-            //animatorPlayer.SetBool("Block", block);
-            if (block)// Block
-            {
-                //OnCombat(block);
-                moveSpeed = moveSpeedValueOnCombat;
-                typeMove = 0.5f;
-                animatorPlayer.SetInteger("InAction", 6);
-            }
-            else // Not Block
-            {
-                if (!onCombat) // Not in Combat
-                {
-                    moveSpeed = moveSpeedValue;
-                    typeMove = 1f;
-                }
-                animatorPlayer.SetInteger("InAction", 0);
-                isPressBlock = block;
-            }
-
-        }
-        else if(block)
-        {
-            isPressBlock = block;
-        }
-        else if(!block)
-        {
-            isPressBlock = block;
-        }
-
-        
-
-
-
-    }
-
-    public void ChangeWeapon()
-    {
-        if (weaponPlayer == 2)
-        {
-            weaponPlayer = 1;
-            animatorPlayer.SetInteger("Weapon", weaponPlayer);
-        }
-        else
-        {
-            weaponPlayer = 2;
-            animatorPlayer.SetInteger("Weapon", weaponPlayer);
-        }
-
-    }
 
     public void SwingPlayer()
     {
@@ -458,7 +422,20 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    public void ChangeWeapon()
+    {
+        if (weaponPlayer == 2)
+        {
+            weaponPlayer = 1;
+            animatorPlayer.SetInteger("Weapon", weaponPlayer);
+        }
+        else
+        {
+            weaponPlayer = 2;
+            animatorPlayer.SetInteger("Weapon", weaponPlayer);
+        }
 
+    }
     public void Attack()
     {
         if (canAction)
@@ -475,18 +452,46 @@ public class PlayerController : MonoBehaviour
                 if (actionLeaveAction != null)
                 {
                     StopCoroutine(actionLeaveAction);
+                }
+                if (actionLeaveAttackCombo != null)
+                {
                     StopCoroutine(actionLeaveAttackCombo);
                 }
-                actionLeaveAction = StartCoroutine(LeaveAttack(2f));
-                actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
 
-                StartCoroutine(CanAcion(0.6f));
+                SetActivateWeapon(weaponPlayer);
+
+
+                if (weaponPlayer == 1)
+                {//Light Weapon
+
+
+                    
+
+                    actionLeaveAction = StartCoroutine(LeaveAttack(timeLeaveLightAttack));
+                    actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(timeLeaveLightAttack));
+
+                    StartCoroutine(CanAcion(timeCanLightAttackAction));
+                }
+                else// Heavy Weapon
+                {
+                    
+
+                    actionLeaveAction = StartCoroutine(LeaveAttack(timeLeaveHeavyAttack));
+                    actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(timeLeaveHeavyAttack));
+
+                    StartCoroutine(CanAcion(timeCanHeavyAttackAction));
+                }
+
+                animatorPlayer.SetTrigger("TriggerAttack");
+
 
                 animatorPlayer.SetBool("Crouch", false);
+                /*
                 if (!animatorPlayer.GetBool("InCombat"))
                 {
                     OnCombat(false);
                 }
+                */
                 animatorPlayer.SetInteger("InAction", 2);
                 animatorPlayer.SetInteger("AttackCombo", comboAttack);
 
@@ -504,7 +509,136 @@ public class PlayerController : MonoBehaviour
 
         }
 
+
     }
+
+    public void Block(bool block)
+    {
+        /*
+            if (actionLeaveAction != null)
+            {
+                StopCoroutine(actionLeaveAction);
+            }
+            */
+
+
+        if (( /*animatorPlayer.GetInteger("InAction") == 2 || */ canAction) && animatorPlayer.GetInteger("InAction") != 3)
+        {
+            if (actionLeaveAction != null)
+            {
+                StopCoroutine(actionLeaveAction);
+            }
+            //OnCombat(block);
+
+            //animatorPlayer.SetBool("Block", block);
+            if (block)// Block
+            {
+                SetActivateWeapon(weaponPlayer);
+                StopCoroutine(actionDisableWeapon);
+
+                //OnCombat(block);
+                moveSpeed = moveSpeedValueOnCombat;
+                typeMove = 0.5f;
+                animatorPlayer.SetInteger("InAction", 6);
+            }
+            else // Not Block
+            {
+                if (actionDisableWeapon != null)
+                {
+                    StopCoroutine(actionDisableWeapon);
+                }
+                actionDisableWeapon = StartCoroutine(OutWeapon(weaponPlayer, timeDisableWeapon));
+
+                if (!onCombat) // Not in Combat
+                {
+                    moveSpeed = moveSpeedValue;
+                    typeMove = 1f;
+                }
+                animatorPlayer.SetInteger("InAction", 0);
+                isPressBlock = block;
+            }
+
+        }
+        else if (block)
+        {
+            isPressBlock = block;
+        }
+        else if (!block)
+        {
+            isPressBlock = block;
+        }
+
+
+
+    }
+
+    public void Damage()
+    {
+        animatorPlayer.SetTrigger("TriggerDamage");
+
+        if (actionCanAction != null)
+        {
+            StopCoroutine(actionCanAction);
+
+        }
+
+
+        canAction = false;
+        actionCanAction = StartCoroutine(CanAcion(0.5f));
+    }
+
+    void SetActivateWeapon(int weapon)
+    {
+
+
+        if (actionDisableWeapon != null)
+        {
+            StopCoroutine(actionDisableWeapon);
+        }
+        actionDisableWeapon = StartCoroutine(OutWeapon(weapon, timeDisableWeapon));
+        
+        
+        if (weapon == 1)
+        {
+            if (!weapon1.active)
+            {
+                weaponIn.Play();
+            }
+
+            weapon1.SetActive(true);
+            weapon2.SetActive(false);
+            
+        }
+        else
+        {
+            if (!weapon2.active)
+            {
+                weaponIn.Play();
+            }
+
+            weapon1.SetActive(false);
+            weapon2.SetActive(true);
+
+        }
+
+
+    }
+
+    private IEnumerator OutWeapon(int type, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (type == 1)
+        {
+            weapon1.SetActive(false);
+            weaponOut.Play();
+        }
+        else
+        {
+            weapon2.SetActive(false);
+            weaponOut.Play();
+        }
+    }
+
     private IEnumerator LeaveDash(float waitTime)
     {
 

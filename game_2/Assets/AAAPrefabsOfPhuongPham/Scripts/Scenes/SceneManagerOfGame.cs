@@ -155,9 +155,15 @@ public class SceneManagerOfGame : MonoBehaviour
         loadingScene.gameObject.SetActive(false);   
 
     }
-    public void SetVolume(float number)
+    public void SetVolumeTheme(Slider number)
     {
-        audioMixer.SetFloat("volume", number);
+        //AudioManager.instance.SetVolumeTheme(number);
+        audioMixer.SetFloat("Volume Theme", number.value);
+    }
+    public void SetVolumeSFX(Slider number)
+    {
+        //AudioManager.instance.SetVolumeSFX(number);
+        audioMixer.SetFloat("Volume SFX", number.value);
     }
 
     public void OpenOption(bool open)

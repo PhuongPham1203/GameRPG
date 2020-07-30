@@ -51,76 +51,65 @@ public class AnimatorControllers : MonoBehaviour
 
 
     }
+    [Space]
+    [Header("VFX for Light Attack")]
+    public GameObject effectLightAttack;
+    public Transform startPositionRotationLightAttack;
+    public float lightAttackDestroyAfter = 3f;
 
-    public EffectInfo[] Effects;
+    public EffectInfo[] effectsLightAttack;
+
+    [Space]
+    [Header("VFX for Heavy Attack")]
+    public GameObject effectHeavyAttack;
+    public Transform startPositionRotationHeavyAttack;
+    public float heavyAttackDestroyAfter = 3f;
+
+    public EffectInfo[] effectsHeavyAttack;
 
     [System.Serializable]
     public class EffectInfo
     {
-        public GameObject Effect;
-        public Transform StartPositionRotation;
         public Vector3 StartRotation;
-        public float DestroyAfter = 10;
         //public bool UseLocalPosition = true;
     }
 
-    void InstantiateEffect(int EffectNumber)
-    {
-        EffectNumber = animatorPlayer.GetInteger("AttackCombo");
-        if (Effects == null || Effects.Length <= EffectNumber)
-        {
-            Debug.LogError("Incorrect effect number or effect is null");
-        }
 
-        var instance = Instantiate(Effects[EffectNumber].Effect, Effects[EffectNumber].StartPositionRotation.position, Effects[EffectNumber].StartPositionRotation.rotation);
-        /*
-        if (Effects[EffectNumber].UseLocalPosition)
-        {
-            instance.transform.parent = Effects[EffectNumber].StartPositionRotation.transform;
-            instance.transform.localPosition = Vector3.zero;
-            instance.transform.localRotation = new Quaternion();
-        }
-        */
-        Destroy(instance, Effects[EffectNumber].DestroyAfter);
-    }
-
-
-
-
-    void EffectBaseComboAttack()
+    void EffectBaseComboLightAttack()
     {
         int EffectNumber = animatorPlayer.GetInteger("AttackCombo") - 1;
-        if (Effects == null || Effects.Length <= EffectNumber)
+        if (effectsLightAttack == null || effectsLightAttack.Length <= EffectNumber)
         {
             Debug.LogError("Incorrect effect number or effect is null");
         }
 
-        Quaternion rot = Quaternion.Euler(Effects[EffectNumber].StartPositionRotation.eulerAngles + Effects[EffectNumber].StartRotation);
+        Quaternion rot = Quaternion.Euler(startPositionRotationLightAttack.eulerAngles + effectsLightAttack[EffectNumber].StartRotation);
 
-        //Debug.Log(rot);
-        //Debug.Log(Effects[EffectNumber].StartPositionRotation.localEulerAngles);
-        //Debug.Log(Effects[EffectNumber].StartPositionRotation.rotation);
-        //Debug.Log(Effects[EffectNumber].StartPositionRotation.localRotation);
+        var instance = Instantiate(effectLightAttack, startPositionRotationLightAttack.position, rot, parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
 
-        var instance = Instantiate(Effects[EffectNumber].Effect, Effects[EffectNumber].StartPositionRotation.position, rot,parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
-        if (EffectNumber+1==4)
+
+        AudioManager.instance.PlaySoundOfPlayer("Light Attack " + (int)(EffectNumber + 1));
+
+
+        Destroy(instance, lightAttackDestroyAfter);
+    }
+
+    void EffectBaseComboHeavyAttack()
+    {
+        int EffectNumber = animatorPlayer.GetInteger("AttackCombo") - 1;
+        if (effectsHeavyAttack == null || effectsHeavyAttack.Length <= EffectNumber)
         {
-            AudioManager.instance.PlaySoundOfPlayer("Light Attack "+2);
-        }
-        else
-        {
-            AudioManager.instance.PlaySoundOfPlayer("Light Attack " + (int)(EffectNumber+1));
+            Debug.LogError("Incorrect effect number or effect is null");
         }
 
-        /*
-        if (Effects[EffectNumber].UseLocalPosition)
-        {
-            instance.transform.parent = Effects[EffectNumber].StartPositionRotation.transform;
-            instance.transform.localPosition = Vector3.zero;
-            instance.transform.localRotation = new Quaternion();
-        }
-        */
-        Destroy(instance, Effects[EffectNumber].DestroyAfter);
+        Quaternion rot = Quaternion.Euler(startPositionRotationHeavyAttack.eulerAngles + effectsHeavyAttack[EffectNumber].StartRotation);
+
+        var instance = Instantiate(effectHeavyAttack, startPositionRotationHeavyAttack.position, rot, parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
+
+        AudioManager.instance.PlaySoundOfPlayer("Heavy Attack " + (int)(EffectNumber + 1));
+
+
+        Destroy(instance, heavyAttackDestroyAfter);
     }
 
 }

@@ -17,14 +17,17 @@ public class PlayerStats : CharacterStats
     public int expToLevelUp { get; protected set; }
     public int sceneIndex { get; protected set; }
 
-    [Header("UI contron")]
+    [Header("UI controll")]
     public GameObject uiTeleport;
     public GameObject uiLoading;
     public Vector3 potisionCurrenNearestNow;
     private Coroutine loadingMoveToPosition;
 
+
     Vector3 pNow;
     bool needchange = false;
+
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,7 @@ public class PlayerStats : CharacterStats
         SetAllCurrentAndMaxValue(hp.GetValue(), attackDame.GetValue(), posture.GetValue(), defend.GetValue());
 
         animator = GetComponent<Animator>();
+        playerController = GetComponent<PlayerController>();
 
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
@@ -104,12 +108,7 @@ public class PlayerStats : CharacterStats
 
         }
     }
-    public override void Die()
-    {
-        base.Die();
-        // Kill the Player
-        //PlayerManager.instance.KillPlayer();
-    }
+
 
 
 
@@ -137,7 +136,7 @@ public class PlayerStats : CharacterStats
 
         teleportNearest = new Vector3(playerData.positon[0], playerData.positon[1], playerData.positon[2]);
 
-        loadingMoveToPosition = StartCoroutine(Loading(1.5f,teleportNearest));//Loading After 1.5s
+        loadingMoveToPosition = StartCoroutine(Loading(1.5f, teleportNearest));//Loading After 1.5s
 
         //Debug.Log(gameObject.transform.position);
         pNow = transform.position;
@@ -159,6 +158,74 @@ public class PlayerStats : CharacterStats
             //Debug.Log("asd");
         }
 
+    }
+
+    public override void TakeDamege(int damage)
+    {
+        bool canBlockMore = true;
+        if (currentPosture < maxPosture)
+        {
+            if (animator.GetInteger("InAction") == 6)
+            {
+                animator.SetTrigger("InBlock");
+
+            }
+        }
+        else
+        {
+            canBlockMore = false;
+            Debug.Log("can't block anymore");
+        }
+
+        if ( canBlockMore && animator.GetInteger("InAction") == 6) // ! In Block
+        {
+            damage -= currentDefend;
+            damage = Mathf.Clamp(damage, 0, 999999);
+
+            currentPosture += damage;
+            currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
+
+
+            Debug.Log(transform.name + " Posture plus " + damage + " damege.");
+
+        }
+        else
+        { // ! Not Block
+            currentPosture += damage;
+            currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
+
+            damage -= currentDefend;
+            damage = Mathf.Clamp(damage, 0, 999999);
+
+            currentHP -= damage;
+
+            playerController.Damage();
+
+
+            Debug.Log(transform.name + " HP Take " + damage + " damege.");
+            Debug.Log(transform.name + " Posture plus " + damage + " damege.");
+        }
+
+        UpdateHPAndPosture();
+
+        if (currentHP <= 0)
+        {
+            Die();
+
+        }
+    }
+    public override void Die()
+    {
+        base.Die();
+        playerController.PlayerDie();
+        animator.SetInteger("InAction", 8);
+        // Kill the Player
+        //PlayerManager.instance.KillPlayer();
+    }
+
+    public void Standing(){
+        playerController.canAction = true;
+        animator.SetInteger("InAction", 0);
     }
 
     public IEnumerator Loading(float waitTime, Vector3 postionNearest)
