@@ -11,18 +11,22 @@ public class SelectManager : MonoBehaviour
 
     public PlayerController player;
     public Animator animatorPlayer;
-    public Transform target;//for Swing
-    public Transform target2;//for Lock Target
-    public Transform transformCamera;
+    public Transform targetSwing;//for Swing
+    public Transform targetEnemy;//for Lock Target
+    protected Transform currentTargetEnemy;
+    public Transform transformRoot;
 
-    public float maxAngle;
+    public float maxAngle = 30f;
     public float maxRadius = 20f;
 
     private bool isInFov = false;
-    private bool isInFov2 = false;
+    //private bool isInFov2 = false;
     private string ableSwing = "SelectAbleSwing";
     private string ableTarget = "SelectAbleTarget";
-    private Coroutine leaveAction;
+    //private Coroutine leaveAction;
+
+    public LayerMask layerEnemyTarget ;
+    public LayerMask layerLineCastToTarget ;
 
 
     //public Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2);
@@ -31,21 +35,22 @@ public class SelectManager : MonoBehaviour
         //player = GetComponent<PlayerController>();
         //animatorPlayer = GetComponent<Animator>();
         //Camera.main.transform;
-        //center = new Vector3(Screen.width / 2, Screen.height / 2);
+        //center = new Vector3(Screen.width / 2, Screen.height / 2
+        //selectIgnore = ( 1 << 24 ) & (1 << 2);
     }
 
     private void Update()
     {
-        transformCamera = Camera.main.transform;
+        transformRoot = Camera.main.transform;
         //Debug.Log(Time.deltaTime);
-        //isInFov = inFOV(transformCamera, target, maxAngle, maxRadius);
-        isInFov = inFOVForSwing(transformCamera, maxAngle, maxRadius);// check target can Swing
+        //isInFov = inFOV(transformRoot, target, maxAngle, maxRadius);
+        isInFov = inFOVForSwing(transformRoot, maxAngle, maxRadius);// check target can Swing
 
         if (isInFov)
         {
-            if (player.targetSwingDetect != target)
+            if (player.targetSwingDetect != targetSwing)
             {
-                player.targetSwingDetect = target;
+                player.targetSwingDetect = targetSwing;
                 player.buttonSwing.SetActive(true);
             }
 
@@ -56,25 +61,69 @@ public class SelectManager : MonoBehaviour
             player.buttonSwing.SetActive(false);
 
         }
-        if (!animatorPlayer.GetBool("LockTarget"))
+
+        inFOVForLockTarget(transformRoot, maxAngle, maxRadius);// check target can Lock
+
+        if (!animatorPlayer.GetBool("LockTarget"))// Don't Lock Target
         {
-            isInFov2 = inFOVForLockTarget(transformCamera, maxAngle, maxRadius);// check target can Swing
-            if (isInFov2 && player.targetGroupCiner.m_Targets[1].target != target2)
+            if (targetEnemy != null && ( player.targetGroupCiner.m_Targets[1].target == null || targetEnemy.gameObject.GetInstanceID() != player.targetGroupCiner.m_Targets[1].target.gameObject.GetInstanceID()) ) // have current target but have new target closer center point
             {
-                
-                player.targetGroupCiner.m_Targets[1].target = target2.GetChild(0);
-
-
+                //currentTargetEnemy = targetEnemy;
+                player.targetGroupCiner.m_Targets[1].target = targetEnemy.GetChild(0);
+            }else if(targetEnemy == null && player.targetGroupCiner.m_Targets[1].target!=null)
+            {
+                player.targetGroupCiner.m_Targets[1].target = null;
             }
-            else if (player.targetGroupCiner.m_Targets[1].target != null)
-            {
 
+            /*
+            else if (targetEnemy == null && player.targetGroupCiner.m_Targets[1].target != null)
+            {
+                //targetEnemy = null;
+                //currentTargetEnemy = null;
                 player.targetGroupCiner.m_Targets[1].target = null;
 
+            }
+            */
 
+        }
+        /*
+        else if (targetEnemy == null && player.targetGroupCiner.m_Targets[1].target != null) // On Lock target Enemy
+        {
+
+            //currentTargetEnemy = null;
+            player.targetGroupCiner.m_Targets[1].target = null;
+            player.LockTarget();
+
+        }
+        */
+        /*
+        isInFov2 = inFOVForLockTarget(transformRoot, maxAngle, maxRadius);// check target can Lock
+        if (!animatorPlayer.GetBool("LockTarget"))// Don't Lock Target
+        {
+            if (isInFov2 && player.targetGroupCiner.m_Targets[1].target != targetEnemy.GetChild(0)) // have current target but have new target closer center point
+            {
+                //currentTargetEnemy = targetEnemy;
+                player.targetGroupCiner.m_Targets[1].target = targetEnemy.GetChild(0);
+            }
+            else if (!isInFov2 && player.targetGroupCiner.m_Targets[1].target != null)
+            {
+                //targetEnemy = null;
+                //currentTargetEnemy = null;
+                player.targetGroupCiner.m_Targets[1].target = null;
 
             }
+
         }
+        else if (!isInFov2) // On Lock target Enemy
+        {
+
+            //currentTargetEnemy = null;
+            player.targetGroupCiner.m_Targets[1].target = null;
+            player.LockTarget();
+
+        }
+
+        */
 
 
     }
@@ -83,49 +132,51 @@ public class SelectManager : MonoBehaviour
     public void OnDrawGizmos()//Test Camera
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transformCamera.position, transformCamera.forward * maxRadius);
+        Gizmos.DrawRay(transformRoot.position, transformRoot.forward * maxRadius);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transformCamera.position, maxRadius);
+        Gizmos.DrawWireSphere(transformRoot.position, maxRadius);
 
-        Vector3 fovLine1up = Quaternion.AngleAxis(maxAngle, transformCamera.up) * transformCamera.forward * maxRadius;
-        Vector3 fovLine2down = Quaternion.AngleAxis(-maxAngle, transformCamera.up) * transformCamera.forward * maxRadius;
-        Vector3 fovLine3right = Quaternion.AngleAxis(maxAngle, transformCamera.right) * transformCamera.forward * maxRadius;
-        Vector3 fovLine4left = Quaternion.AngleAxis(-maxAngle, transformCamera.right) * transformCamera.forward * maxRadius;
+        Vector3 fovLine1up = Quaternion.AngleAxis(maxAngle, transformRoot.up) * transformRoot.forward * maxRadius;
+        Vector3 fovLine2down = Quaternion.AngleAxis(-maxAngle, transformRoot.up) * transformRoot.forward * maxRadius;
+        Vector3 fovLine3right = Quaternion.AngleAxis(maxAngle, transformRoot.right) * transformRoot.forward * maxRadius;
+        Vector3 fovLine4left = Quaternion.AngleAxis(-maxAngle, transformRoot.right) * transformRoot.forward * maxRadius;
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transformCamera.position, fovLine1up);
-        Gizmos.DrawRay(transformCamera.position, fovLine2down);
-        Gizmos.DrawRay(transformCamera.position, fovLine3right);
-        Gizmos.DrawRay(transformCamera.position, fovLine4left);
-        
+        Gizmos.DrawRay(transformRoot.position, fovLine1up);
+        Gizmos.DrawRay(transformRoot.position, fovLine2down);
+        Gizmos.DrawRay(transformRoot.position, fovLine3right);
+        Gizmos.DrawRay(transformRoot.position, fovLine4left);
+
         //draw in end
-        Gizmos.DrawLine(transformCamera.position +fovLine1up,transformCamera.position+ fovLine3right);
-        Gizmos.DrawLine(transformCamera.position +fovLine3right, transformCamera.position +fovLine2down);
-        Gizmos.DrawLine(transformCamera.position +fovLine2down ,transformCamera.position + fovLine4left);
-        Gizmos.DrawLine(transformCamera.position +fovLine4left ,transformCamera.position + fovLine1up);
+        Gizmos.DrawLine(transformRoot.position + fovLine1up, transformRoot.position + fovLine3right);
+        Gizmos.DrawLine(transformRoot.position + fovLine3right, transformRoot.position + fovLine2down);
+        Gizmos.DrawLine(transformRoot.position + fovLine2down, transformRoot.position + fovLine4left);
+        Gizmos.DrawLine(transformRoot.position + fovLine4left, transformRoot.position + fovLine1up);
 
 
-        
 
-        if (target != null)
+
+        if (targetSwing != null)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawRay(transformCamera.position, (target.position - transformCamera.position).normalized * maxRadius);
-
-        }
-        if (target2 != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(transformCamera.position, (target2.position - transformCamera.position).normalized * maxRadius);
+            //Gizmos.DrawRay(transformRoot.position, (targetSwing.position - transformRoot.position).normalized * maxRadius);
+            Gizmos.DrawLine(transformRoot.position, targetSwing.position );
 
         }
 
-        
+        if (targetEnemy != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transformRoot.position, targetEnemy.position );
+
+        }
+
+
     }
 
 
-
+    // For Swing
     public bool inFOVForSwing(Transform checkingObj, float maxAngleView, float maxRadiusView)
     {
         int layer = 1 << 22;
@@ -138,7 +189,7 @@ public class SelectManager : MonoBehaviour
             if (overlaps[i] != null)
             {
 
-                if (target == null)// if dont have target
+                if (targetSwing == null)// if dont have target
                 {
                     Vector3 directionBetween = (overlaps[i].transform.position - checkingObj.position).normalized;
                     float angle = Vector3.Angle(checkingObj.forward, directionBetween);
@@ -151,7 +202,7 @@ public class SelectManager : MonoBehaviour
                             if (hit.transform.CompareTag(ableSwing))
                             {
 
-                                target = overlaps[i].transform;
+                                targetSwing = overlaps[i].transform;
 
                             }
 
@@ -163,21 +214,21 @@ public class SelectManager : MonoBehaviour
                 }
                 else  //aready have target
                 {
-                    Vector3 directionBetween = (target.position - checkingObj.position).normalized;
+                    Vector3 directionBetween = (targetSwing.position - checkingObj.position).normalized;
                     float angle = Vector3.Angle(checkingObj.forward, directionBetween);
                     //Debug.Log(angle);
                     if (angle < maxAngleView)
                     {
-                        Ray ray = new Ray(checkingObj.position, target.position - checkingObj.position);
+                        Ray ray = new Ray(checkingObj.position, targetSwing.position - checkingObj.position);
                         RaycastHit hit;
                         if (Physics.Raycast(ray, out hit, maxRadiusView))
                         {
-                            if (hit.transform != target)
+                            if (hit.transform != targetSwing)
                             {
 
-                                target.gameObject.GetComponent<VisualEffect>().enabled = false;
+                                targetSwing.gameObject.GetComponent<VisualEffect>().enabled = false;
 
-                                target = null;
+                                targetSwing = null;
                                 //havetarget = false;
                             }
                         }
@@ -185,9 +236,9 @@ public class SelectManager : MonoBehaviour
                     }
                     else
                     {
-                        target.gameObject.GetComponent<VisualEffect>().enabled = false;
+                        targetSwing.gameObject.GetComponent<VisualEffect>().enabled = false;
 
-                        target = null;
+                        targetSwing = null;
 
                     }
 
@@ -195,7 +246,7 @@ public class SelectManager : MonoBehaviour
                     Vector3 directionBetweenNew2 = (overlaps[i].transform.position - checkingObj.position).normalized;
                     float angleNew2 = Vector3.Angle(checkingObj.forward, directionBetweenNew2);
 
-                    if (target == null && angleNew2 < maxRadiusView)
+                    if (targetSwing == null && angleNew2 < maxAngleView)
                     {
                         Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
                         RaycastHit hit;
@@ -203,13 +254,13 @@ public class SelectManager : MonoBehaviour
                         {
                             if (hit.transform.CompareTag(ableSwing))
                             {
-                                target = overlaps[i].transform;
+                                targetSwing = overlaps[i].transform;
 
                             }
 
                         }
                     }
-                    else if (target != null && angleNew2 < angle) // !check if newTarget close than targetNow
+                    else if (targetSwing != null && angleNew2 < angle) // !check if newTarget close than targetNow
                     {
                         Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
                         RaycastHit hit;
@@ -217,7 +268,7 @@ public class SelectManager : MonoBehaviour
                         {
                             if (hit.transform.CompareTag(ableSwing))
                             {
-                                target = overlaps[i].transform;
+                                targetSwing = overlaps[i].transform;
 
                             }
 
@@ -233,176 +284,208 @@ public class SelectManager : MonoBehaviour
 
 
             }
+            else
+            {
+                break;
+            }
 
 
         }
 
-        if (count == 0 && target != null)
+        if (count == 0 && targetSwing != null)
         {
 
-            target.gameObject.GetComponent<VisualEffect>().enabled = false;
-            target = null;
+            targetSwing.gameObject.GetComponent<VisualEffect>().enabled = false;
+            targetSwing = null;
 
         }
 
-        if (target == null)
+        if (targetSwing == null)
         {
             return false;
         }
         else
         {
-            target.gameObject.GetComponent<VisualEffect>().enabled = true;
+            targetSwing.gameObject.GetComponent<VisualEffect>().enabled = true;
 
             return true;
         }
     }
 
-    public bool inFOVForLockTarget(Transform checkingObj, float maxAngleView, float maxRadiusView)
+    // For Lock target Enemy
+    public void inFOVForLockTarget(Transform checkingObj, float maxAngleView, float maxRadiusView)
     {
 
-        int layer = 1 << 23;
-        int layerRay = ~(1 << 24) ;
-
+        //int layer = 1 << 23; // Find Only Enemy ( Layer 23 )
+        //int layerRay = ~((1 << 24) | (1 << 2)); // For ray cast find something between theme and ignore some layer ( 24 and 2 )
+        //layerRay = ~layerRay;
         Collider[] overlaps = new Collider[10];
-        int count = Physics.OverlapSphereNonAlloc(checkingObj.position, maxRadiusView, overlaps, layer);
+        int count = Physics.OverlapSphereNonAlloc(checkingObj.position, maxRadiusView, overlaps, layerEnemyTarget);
+        //Debug.Log("Number Enemy Find : " + count);
 
+
+        //if (GameObject.ReferenceEquals(overlaps[i].transform.gameObject, targetEnemy.gameObject))
+        //if (overlaps[i].gameObject.GetInstanceID() == targetEnemy.gameObject.GetInstanceID())
+        //{
+        // Check if current target is avalible or not
+
+        if (targetEnemy!=null) // check if current target avable or not
+        {
+
+            Vector3 directionBetween = (targetEnemy.position - checkingObj.position).normalized;
+            float angle = Vector3.Angle(checkingObj.forward, directionBetween);
+            bool removeT = false;
+
+            if (angle < maxAngleView) // check if still in angle
+            {
+                //Ray ray = new Ray(checkingObj.position, targetEnemy.position - checkingObj.position);
+                RaycastHit hit;
+                //if (Physics.Raycast(ray, out hit, maxRadiusView, layerRatcastToTarget))
+                if(Physics.Linecast(checkingObj.position, targetEnemy.position,out hit,layerLineCastToTarget))
+                {
+                    //if (!GameObject.ReferenceEquals(hit.transform.gameObject, targetEnemy.gameObject)) // Check if have something between target and player => remove target
+                    if (hit.transform.gameObject.GetInstanceID() != targetEnemy.gameObject.GetInstanceID())
+                    {
+                        //Debug.DrawLine(checkingObj.position, targetEnemy.position);
+
+                        //Debug.Log(hit.transform.name);
+                        removeT = true;
+
+                    }
+
+                }
+
+            }
+            else // if not in angle
+            {
+                removeT = true;
+            }
+
+            if (removeT)
+            {
+                //Debug.Log("remove");
+                if (animatorPlayer.GetBool("LockTarget"))
+                {
+                    player.LockTarget();
+                }
+                targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false;
+                targetEnemy = null;
+            }/*
+            else
+            {
+                Debug.Log("not remove");
+
+            }*/
+            // End check current target is avalible or not
+            //ontinue;
+            //
+        }
+
+
+        //Debug.Log(overlaps[1]);
         for (int i = 0; i < count; i++)
         {
 
-
             if (overlaps[i] != null)
             {
+                
+                Vector3 directionBetween0 = (overlaps[i].transform.position - checkingObj.position).normalized;
+                float angleInView0 = Vector3.Angle(checkingObj.forward, directionBetween0); // check angle over view or not
 
-                if (target2 == null)// if dont have target
+                if (angleInView0 >= maxAngleView) // if it over view ==> continue
                 {
-
-                    Vector3 directionBetween = (overlaps[i].transform.position - checkingObj.position).normalized;
-                    float angle = Vector3.Angle(checkingObj.forward, directionBetween);
-                    if (angle < maxAngleView)
-                    {
-                        Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
-                        RaycastHit hit;
-                        if (Physics.Raycast(ray, out hit, maxRadiusView, layerRay))
-                        {
-                            if (hit.transform.CompareTag(ableTarget))
-                            {
-                                //Debug.Log("sda");
-                                target2 = overlaps[i].transform;
-
-                            }
-
-                        }
-
-                    }
-
-
+                    continue;
                 }
-                else  //aready have target
+                Debug.Log(i);
+
+                if (targetEnemy != null)
                 {
-                    Vector3 directionBetween = (target2.position - checkingObj.position).normalized;
+                    //Debug.Log("Have Target");
+
+
+                    if(overlaps[i].transform.gameObject.GetInstanceID() == targetEnemy.gameObject.GetInstanceID()) //  new and old target is the same
+                    {
+                        continue;
+                    }
+                    Debug.Log("Have Target");
+
+
+
+                    Vector3 directionBetween = (targetEnemy.position - checkingObj.position).normalized;
                     float angle = Vector3.Angle(checkingObj.forward, directionBetween);
-                    //Debug.Log(angle);
-                    if (angle < maxAngleView)
+
+                    // Check if overlaps[i] is target 
+                    Vector3 directionBetween1 = (overlaps[i].transform.position - checkingObj.position).normalized;
+                    float angleInView = Vector3.Angle(checkingObj.forward, directionBetween1); // check angle over view or not
+
+                    if (angleInView < angle)//|| angleInView < maxRadiusView )
                     {
-                        Ray ray = new Ray(checkingObj.position, target2.position - checkingObj.position);
+                        //Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
                         RaycastHit hit;
-                        if (Physics.Raycast(ray, out hit, maxRadiusView, layerRay))
-                        {
-                            if (hit.transform != target2)
-                            {
-
-                                if (animatorPlayer.GetBool("LockTarget"))
-                                {
-                                    player.LockTarget();
-
-                                }
-                                target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
-                                target2 = null;
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        if (animatorPlayer.GetBool("LockTarget"))
-                        {
-                            player.LockTarget();
-
-                        }
-                        target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
-                        target2 = null;
-                    }
-
-
-                    Vector3 directionBetweenNew2 = (overlaps[i].transform.position - checkingObj.position).normalized;
-                    float angleNew2 = Vector3.Angle(checkingObj.forward, directionBetweenNew2);
-
-                    if (target2 == null && angleNew2 < maxRadiusView)
-                    {
-                        Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
-                        RaycastHit hit;
-                        if (Physics.Raycast(ray, out hit, maxRadiusView, layerRay))
+                        //if (Physics.Raycast(ray, out hit, maxRadiusView, layerLineCastToTarget))
+                        if(Physics.Linecast(checkingObj.position,overlaps[i].transform.position,out hit,layerLineCastToTarget))
                         {
                             if (hit.transform.CompareTag(ableTarget))
                             {
+                                //Debug.DrawLine(checkingObj.position, overlaps[i].transform.position,Color.black);
+
                                 if (!animatorPlayer.GetBool("LockTarget"))
                                 {
-                                    try
-                                    {
-                                        target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
-                                        target2 = overlaps[i].transform;
+                                    targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false; // disable old targetEnemy
+                                    targetEnemy = overlaps[i].transform;
+                                    targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = true; // enable new targetEnemy
 
-                                    }
-                                    catch
-                                    {
-
-                                    }
-                                    
-
-                                    
                                 }
+
 
                             }
 
                         }
                     }
-                    else if (target2 != null && angleNew2 < angle)
+                    // End check current target and new target what closer with center point more 
+
+
+
+                    // End if dont have target
+                }
+                else //(targetEnemy == null)
+                {
+
+
+                    //Debug.Log("Don't Have Target");
+                    //Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
+
+                    RaycastHit hit;
+                    //if (Physics.Raycast(ray, out hit, maxRadiusView, layerLineCastToTarget))
+                    if(Physics.Linecast(checkingObj.position, overlaps[i].transform.position,out hit, layerLineCastToTarget))
                     {
-                        Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
-                        RaycastHit hit;
-                        if (Physics.Raycast(ray, out hit, maxRadiusView, layerRay))
+                        //Debug.Log(" Layer : " + hit.transform.gameObject.layer + "Hit : " + hit.transform.name); 
+                        if (hit.transform.CompareTag(ableTarget))
                         {
-                            if (hit.transform.CompareTag(ableTarget))
-                            {
-                                if (!animatorPlayer.GetBool("LockTarget"))
-                                {
-
-                                    target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
-                                    target2 = overlaps[i].transform;
-
-                                }
-
-
-                            }
+                            //Debug.DrawLine(checkingObj.position, overlaps[i].transform.position,Color.yellow);
+                            targetEnemy = overlaps[i].transform;
+                            targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = true;
 
                         }
-                    }
 
+                    }
 
 
 
                 }
 
 
-                //}
-
-
+            }
+            else // overlaps[i] == null
+            {
+                break;
             }
 
 
         }
 
-        if (count == 0 && target2 != null)
+
+        if (count == 0 || targetEnemy == null)
         {
 
             if (animatorPlayer.GetBool("LockTarget"))
@@ -410,24 +493,244 @@ public class SelectManager : MonoBehaviour
                 player.LockTarget();
 
             }
+            if (targetEnemy != null)
+            {
+                targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false;
+                targetEnemy = null;
 
-            target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = false;
-            target2 = null;
+            }
+
 
         }
 
-        if (target2 == null)
+        /*
+        if (targetEnemy == null)
         {
             return false;
         }
         else
         {
-            target2.Find("LockTarget").GetComponent<VisualEffect>().enabled = true;
-
             return true;
         }
+        */
+
     }
 
+
+
+    // For Lock target Enemy
+    public void inFOVForLockTargetOld(Transform checkingObj, float maxAngleView, float maxRadiusView)
+    {
+
+        //int layer = 1 << 23; // Find Only Enemy ( Layer 23 )
+        //int layerRay = ~((1 << 24) | (1 << 2)); // For ray cast find something between theme and ignore some layer ( 24 and 2 )
+        //layerRay = ~layerRay;
+        Collider[] overlaps = new Collider[10];
+        int count = Physics.OverlapSphereNonAlloc(checkingObj.position, maxRadiusView, overlaps, layerEnemyTarget);
+        Debug.Log("Number Enemy Find : " + count);
+
+
+        //if (GameObject.ReferenceEquals(overlaps[i].transform.gameObject, targetEnemy.gameObject))
+        //if (overlaps[i].gameObject.GetInstanceID() == targetEnemy.gameObject.GetInstanceID())
+        //{
+        // Check if current target is avalible or not
+
+        if (targetEnemy != null) // check if current target avable or not
+        {
+
+            Vector3 directionBetween = (targetEnemy.position - checkingObj.position).normalized;
+            float angle = Vector3.Angle(checkingObj.forward, directionBetween);
+            bool removeT = false;
+
+            if (angle < maxAngleView) // check if still in angle
+            {
+                Ray ray = new Ray(checkingObj.position, targetEnemy.position - checkingObj.position);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, maxRadiusView, layerLineCastToTarget))
+                {
+                    //if (!GameObject.ReferenceEquals(hit.transform.gameObject, targetEnemy.gameObject)) // Check if have something between target and player => remove target
+                    if (hit.transform.gameObject.GetInstanceID() != targetEnemy.gameObject.GetInstanceID())
+                    {
+                        Debug.DrawRay(checkingObj.position, targetEnemy.position - checkingObj.position);
+
+                        Debug.Log(hit.transform.name);
+                        removeT = true;
+                        /*
+                        if (animatorPlayer.GetBool("LockTarget"))
+                        {
+                            player.LockTarget();
+                        }
+                        targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false;
+                        targetEnemy = null;
+                        */
+
+                    }
+
+                }
+
+            }
+            else // if not in angle
+            {
+                removeT = true;
+                /*
+                if (animatorPlayer.GetBool("LockTarget"))
+                {
+                    player.LockTarget();
+                }
+                targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false;
+                targetEnemy = null;
+                */
+
+            }
+
+            if (removeT)
+            {
+                Debug.Log("remove");
+                if (animatorPlayer.GetBool("LockTarget"))
+                {
+                    player.LockTarget();
+                }
+                targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false;
+                targetEnemy = null;
+            }
+            else
+            {
+                Debug.Log("not remove");
+
+            }
+            // End check current target is avalible or not
+            //ontinue;
+            //
+        }
+
+
+        //Debug.Log(overlaps[1]);
+        for (int i = 0; i < count; i++)
+        {
+
+            if (overlaps[i] != null)
+            {
+
+                Vector3 directionBetween0 = (overlaps[i].transform.position - checkingObj.position).normalized;
+                float angleInView0 = Vector3.Angle(checkingObj.forward, directionBetween0); // check angle over view or not
+
+                if (angleInView0 >= maxAngleView) // if it over view ==> continue
+                {
+                    continue;
+                }
+                Debug.Log(i);
+
+                if (targetEnemy != null)
+                {
+                    Debug.Log("Have Target");
+
+
+                    if (overlaps[i].transform.gameObject.GetInstanceID() == targetEnemy.gameObject.GetInstanceID()) //  new and old target is the same
+                    {
+                        continue;
+                    }
+
+
+
+                    Vector3 directionBetween = (targetEnemy.position - checkingObj.position).normalized;
+                    float angle = Vector3.Angle(checkingObj.forward, directionBetween);
+
+                    // Check if overlaps[i] is target 
+                    Vector3 directionBetween1 = (overlaps[i].transform.position - checkingObj.position).normalized;
+                    float angleInView = Vector3.Angle(checkingObj.forward, directionBetween1); // check angle over view or not
+
+                    if (angleInView < angle)//|| angleInView < maxRadiusView )
+                    {
+                        Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
+                        RaycastHit hit;
+                        if (Physics.Raycast(ray, out hit, maxRadiusView, layerLineCastToTarget))
+                        {
+                            if (hit.transform.CompareTag(ableTarget))
+                            {
+                                if (!animatorPlayer.GetBool("LockTarget"))
+                                {
+                                    targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false; // disable old targetEnemy
+                                    targetEnemy = overlaps[i].transform;
+                                    targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = true; // enable new targetEnemy
+
+                                }
+
+
+                            }
+
+                        }
+                    }
+                    // End check current target and new target what closer with center point more 
+
+
+
+                    // End if dont have target
+                }
+                else //(targetEnemy == null)
+                {
+
+
+                    Debug.Log("Don't Have Target");
+                    Ray ray = new Ray(checkingObj.position, overlaps[i].transform.position - checkingObj.position);
+
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, maxRadiusView, layerLineCastToTarget))
+                    {
+                        //Debug.Log(" Layer : " + hit.transform.gameObject.layer + "Hit : " + hit.transform.name); 
+                        if (hit.transform.CompareTag(ableTarget))
+                        {
+                            targetEnemy = overlaps[i].transform;
+                            targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = true;
+
+                        }
+
+                    }
+
+
+
+                }
+
+
+            }
+            else // overlaps[i] == null
+            {
+                break;
+            }
+
+
+        }
+
+
+        if (count == 0 || targetEnemy == null)
+        {
+
+            if (animatorPlayer.GetBool("LockTarget"))
+            {
+                player.LockTarget();
+
+            }
+            if (targetEnemy != null)
+            {
+                targetEnemy.GetChild(1).GetComponent<VisualEffect>().enabled = false;
+                targetEnemy = null;
+
+            }
+
+
+        }
+
+        /*
+        if (targetEnemy == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        */
+
+    }
 
 
 }

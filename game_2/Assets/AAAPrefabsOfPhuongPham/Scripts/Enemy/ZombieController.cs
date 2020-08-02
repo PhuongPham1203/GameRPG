@@ -8,26 +8,38 @@ public class ZombieController : EnemyController
     private void Update()
     {
         FOVDetectTarget();
-        if (alert == 2) // have target
+        if (alertEnemy == AlertEnemy.OnTarget) // have target
         {
             // Action with Target When OnCombat
             distance = Vector3.Distance(target.position, transform.position);
             if(distance > distanceCanAttack){
                 MoveToTarget();    
+            }else if (distance <= distanceCanAttack)
+            {
+                animator.SetFloat("SpeedMove", 0);
+
+                if (canAction)
+                {
+                    
+                    Attack(1);
+                }
             }
 
-        }else if (alert == 1) // Warning
+        }
+        else if (alertEnemy == AlertEnemy.Warning) // Warning
         {
             // Action When Waring
         }
-        else if (alert == 0) //Idle
+        else if (alertEnemy == AlertEnemy.Idle) //Idle
         {
             // Action When Idle
+
         }
-        
+
     }
 
 
+    
 
 
 }

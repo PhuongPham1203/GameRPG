@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class EnemyController : MonoBehaviour
 {
     [Header("Information")]
@@ -20,29 +21,50 @@ public class EnemyController : MonoBehaviour
     protected Coroutine actionLeaveWaring;
     protected bool isInFov = false;
     public Transform target;
+
     protected PlayerController playerController;
     protected CharacterController characterController;
+    protected Animator animator;
+
     public TextMesh textAlert;
     private string ablePlayer = "Player";
 
-    [Header("Alent : 0-Idle 1:Warning 2-OnTarget")]
-    [Range(0, 2)]
-    public int alert = 0;
 
+
+    [Header("Alent : 0:die 1-Idle 2:Warning 3-OnTarget")]
+    public AlertEnemy alertEnemy = AlertEnemy.Idle;
+    //public int alert = (int)AlertEnemy.Idle;
+
+    [Space]
+    [Header("Combat")]
+    public bool canAction = true;
+    public float timeCanAction = 0.5f;
+    public float timeCanAttack = 2f;
+    protected Coroutine actionLeaveAction;
+    protected Coroutine actionLeaveAttack;
+
+
+
+    private void Awake()
+    {
+        characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+
         //SetTarget(0);
         playerController = PlayerManager.instance.player.GetComponent<PlayerController>();
-        characterController = GetComponent<CharacterController>();
+        
 
     }
 
 
     void LateUpdate()
     {
-        if (alert == 2)
+        if (alertEnemy == AlertEnemy.OnTarget)
         {
             Vector3 direction = (target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -56,7 +78,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * lookRadius);
 
-        Gizmos.color = Color.yellow;
+        Gizmos.color = new Color(245f,99f,28f,96f);
         Gizmos.DrawWireSphere(transform.position, lookRadius);
 
         Vector3 fovLine1up = Quaternion.AngleAxis(lookAngle, transform.up) * transform.forward * lookRadius;
@@ -91,14 +113,14 @@ public class EnemyController : MonoBehaviour
         //transform , lookRadius, lookAngle
         int layer = 1 << 24; // find only Player
         //int layerRay = ~(1 << 24);
-        Collider[] overlaps = new Collider[4];
+        Collider[] overlaps = new Collider[5];
         int count = Physics.OverlapSphereNonAlloc(transform.position, lookRadius, overlaps, layer);
-        //Debug.Log(count);
+        //Debug.Log("Number Player Find : " +count);
         for (int i = 0; i < count; i++)
         {
             if (overlaps[i] != null)
             {
-                if (alert != 2)// !if dont have target
+                if (alertEnemy != AlertEnemy.OnTarget)// !if dont have target
                 {
                     Vector3 directionBetween = (overlaps[i].transform.position - transform.position).normalized;
                     float angle = Vector3.Angle(transform.forward, directionBetween);
@@ -117,7 +139,7 @@ public class EnemyController : MonoBehaviour
                                     StopCoroutine(actionLeaveWaring);
                                     actionLeaveWaring = null;
                                 }
-                                SetAlentCombat(2);
+                                SetAlentCombat(AlertEnemy.OnTarget);
 
                             }
 
@@ -138,7 +160,7 @@ public class EnemyController : MonoBehaviour
                         if (hit.transform != target)
                         {
                             // !Have Target but Missing , not looking target
-                            SetAlentCombat(1);
+                            SetAlentCombat(AlertEnemy.Warning);
                             if (actionLeaveWaring == null)
                             {
                                 //StopCoroutine(actionLeaveWaring);
@@ -168,7 +190,7 @@ public class EnemyController : MonoBehaviour
                                     StopCoroutine(actionLeaveWaring);
                                     actionLeaveWaring = null;
                                 }
-                                SetAlentCombat(2);
+                                SetAlentCombat(AlertEnemy.OnTarget);
                             }
 
                         }
@@ -180,28 +202,41 @@ public class EnemyController : MonoBehaviour
 
                 }
             }
+            else
+            {
+                break;
+            }
         }
 
         if (count == 0)
         {
-            switch (alert)
+            switch (alertEnemy)
             {
-                case 0:// !Idle
+                case AlertEnemy.Die: // Die
+
                     break;
-                case 1:// !Warning
+
+                case AlertEnemy.Idle:// !Idle
+                    break;
+
+                case AlertEnemy.Warning:// !Warning
+
                     if (actionLeaveWaring == null)
                     {
-                        Debug.Log("Can detec in Sphere but alert = 1 : Waring");
-                        SetAlentCombat(0);
+                        Debug.Log("Can detec in Sphere but alert = 2 : Waring");
+                        SetAlentCombat(AlertEnemy.Idle);
                     }
                     break;
-                case 2:// !OnTarget
+
+                case AlertEnemy.OnTarget:// !OnTarget
+
                     if (actionLeaveWaring == null)
                     {
                         //Debug.Log("Set corotin " + timeLeaveWaring);
                         actionLeaveWaring = StartCoroutine(LeaveWaring(timeLeaveWaring));
                     }
-                    SetAlentCombat(1);
+                    SetAlentCombat(AlertEnemy.Warning);
+
                     break;
             }
         }
@@ -222,46 +257,55 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         //Debug.Log("Time end , Enemy is Idle now");
 
-        SetAlentCombat(0);
+        SetAlentCombat(AlertEnemy.Idle);
         actionLeaveWaring = null;
         //Debug.Log(actionLeaveWaring);
 
     }
-    public void SetAlentCombat(int setAlent)
+    public void SetAlentCombat(AlertEnemy setAlent)
     {
-        alert = setAlent;
-        SetTarget(alert);
-        switch (alert)
+        alertEnemy = setAlent;
+        SetTarget();
+        switch (alertEnemy)
         {
+            case AlertEnemy.Die:// ! Die
 
-            case 0:// !Idle
+                break;
+
+            case AlertEnemy.Idle:// !Idle
                 textAlert.text = "";
                 playerController.OnCombat(false);
                 break;
-            case 1:// !Warning
+
+            case AlertEnemy.Warning:// !Warning
                 textAlert.text = "?";
                 playerController.OnCombat(false);
                 break;
-            case 2:// !OnTarget
+
+            case AlertEnemy.OnTarget:// !OnTarget
                 textAlert.text = "!";
                 playerController.OnCombat(true);
                 break;
         }
     }
 
-    public void SetTarget(int alentWarning)
+    public void SetTarget()
     {
-        switch (alert)
+        switch (alertEnemy)
         {
-            case 0:// !Idle
+            case AlertEnemy.Die: // Die
 
                 target = null;
                 break;
-            case 1:// !Warning
+            case AlertEnemy.Idle:// !Idle
 
                 target = null;
                 break;
-            case 2:// !OnTarget
+            case AlertEnemy.Warning:// !Warning
+
+                target = null;
+                break;
+            case AlertEnemy.OnTarget:// !OnTarget
 
                 target = PlayerManager.instance.player.transform;
                 break;
@@ -272,7 +316,7 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void MoveToTarget()
     {
-        if (alert == 2)
+        if (alertEnemy == AlertEnemy.OnTarget)
         {
             MoveLockTarget();
         }
@@ -288,11 +332,51 @@ public class EnemyController : MonoBehaviour
         forward.Normalize();
 
         characterController.Move(forward * moveSpeed * Time.deltaTime);
-
+        animator.SetFloat("SpeedMove",0.5f);
     }
 
     private void MoveNotLockTarget()
     {
 
     }
+
+    public virtual void Attack(int attackCombo)
+    {
+        if (canAction)
+        {
+            canAction = false;
+            if (actionLeaveAttack != null)
+            {
+                StopCoroutine(actionLeaveAttack);
+
+            }
+            actionLeaveAttack = StartCoroutine(CanAttack(timeCanAttack));// time can Attack Again
+            if (actionLeaveAction != null)
+            {
+                StopCoroutine(actionLeaveAction);
+
+            }
+            actionLeaveAction = StartCoroutine(CanAcion(timeCanAttack)); // time can do something again
+
+            animator.SetInteger("InAction", 2);
+            animator.SetInteger("AttackCombo", attackCombo);
+            animator.SetInteger("ActionInCombat", 3);
+        }
+        
+    }
+    protected IEnumerator CanAcion(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        canAction = true;
+
+    }
+    protected IEnumerator CanAttack(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        animator.SetInteger("InAction", 0);
+
+    }
+
 }
+
+public enum AlertEnemy { Die, Idle, Warning, OnTarget }

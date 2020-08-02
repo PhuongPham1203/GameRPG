@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
     }
     void Start()
     {
-        this.PlaySoundOfTheme("Theme Apocalypse");
+        //this.PlaySoundOfTheme("Theme Apocalypse");
     }
 
 
@@ -72,7 +72,6 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Play();
-        Debug.Log("play theme");
     }
 
     public void PlaySoundOfTheme(string name)
@@ -86,6 +85,8 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Play();
+        Debug.Log("play theme");
+
     }
 
     public void SetVolumeSFX(Slider number)

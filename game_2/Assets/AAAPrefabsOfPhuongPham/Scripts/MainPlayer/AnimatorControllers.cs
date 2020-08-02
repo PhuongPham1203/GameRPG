@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AnimatorControllers : MonoBehaviour
 {
@@ -53,7 +54,6 @@ public class AnimatorControllers : MonoBehaviour
     }
     [Space]
     [Header("VFX for Light Attack")]
-    public GameObject effectLightAttack;
     public Transform startPositionRotationLightAttack;
     public float lightAttackDestroyAfter = 3f;
 
@@ -61,7 +61,6 @@ public class AnimatorControllers : MonoBehaviour
 
     [Space]
     [Header("VFX for Heavy Attack")]
-    public GameObject effectHeavyAttack;
     public Transform startPositionRotationHeavyAttack;
     public float heavyAttackDestroyAfter = 3f;
 
@@ -70,7 +69,8 @@ public class AnimatorControllers : MonoBehaviour
     [System.Serializable]
     public class EffectInfo
     {
-        public Vector3 StartRotation;
+        public GameObject effectAttack;
+        //public Vector3 StartRotation;
         //public bool UseLocalPosition = true;
     }
 
@@ -83,9 +83,9 @@ public class AnimatorControllers : MonoBehaviour
             Debug.LogError("Incorrect effect number or effect is null");
         }
 
-        Quaternion rot = Quaternion.Euler(startPositionRotationLightAttack.eulerAngles + effectsLightAttack[EffectNumber].StartRotation);
+        Quaternion rot = Quaternion.Euler(startPositionRotationLightAttack.eulerAngles + effectsLightAttack[EffectNumber].effectAttack.transform.eulerAngles);
 
-        var instance = Instantiate(effectLightAttack, startPositionRotationLightAttack.position, rot, parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
+        var instance = Instantiate(effectsLightAttack[EffectNumber].effectAttack,startPositionRotationLightAttack.position,rot, parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
 
 
         AudioManager.instance.PlaySoundOfPlayer("Light Attack " + (int)(EffectNumber + 1));
@@ -102,9 +102,9 @@ public class AnimatorControllers : MonoBehaviour
             Debug.LogError("Incorrect effect number or effect is null");
         }
 
-        Quaternion rot = Quaternion.Euler(startPositionRotationHeavyAttack.eulerAngles + effectsHeavyAttack[EffectNumber].StartRotation);
+        Quaternion rot = Quaternion.Euler(startPositionRotationHeavyAttack.eulerAngles + effectsHeavyAttack[EffectNumber].effectAttack.transform.eulerAngles);
 
-        var instance = Instantiate(effectHeavyAttack, startPositionRotationHeavyAttack.position, rot, parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
+        var instance = Instantiate(effectsHeavyAttack[EffectNumber].effectAttack, startPositionRotationHeavyAttack.position, rot, parentContentVFXPlayer);//Effects[EffectNumber].StartPositionRotation.rotation);
 
         AudioManager.instance.PlaySoundOfPlayer("Heavy Attack " + (int)(EffectNumber + 1));
 

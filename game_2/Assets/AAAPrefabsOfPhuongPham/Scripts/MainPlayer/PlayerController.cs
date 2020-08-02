@@ -103,8 +103,8 @@ public class PlayerController : MonoBehaviour
     private Transform maincameraTranform;
 
 
-    private CharacterController characterController;
-    private Animator animatorPlayer;
+    public CharacterController characterController;
+    public Animator animatorPlayer;
 
     public Text fps;
 
@@ -113,9 +113,9 @@ public class PlayerController : MonoBehaviour
     {
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
-        characterController = GetComponent<CharacterController>();
-        animatorPlayer = GetComponent<Animator>();
-        targetGroupCiner = targetGroup.GetComponent<CinemachineTargetGroup>();
+        //characterController = GetComponent<CharacterController>();
+        //animatorPlayer = GetComponent<Animator>();
+        //targetGroupCiner = targetGroup.GetComponent<CinemachineTargetGroup>();
         maincameraTranform = Camera.main.transform;
         moveSpeed = moveSpeedValue;
 
@@ -210,6 +210,13 @@ public class PlayerController : MonoBehaviour
     {
         StopAllCoroutines();
         canAction = false;
+    }
+    public void PlayerStun()
+    {
+        canAction = false;
+        StopAllCoroutines();
+        animatorPlayer.SetInteger("InAction",9);
+        StartCoroutine(CanAcion(2f));
     }
     public void PressToMovePlayer(bool move)
     {
@@ -320,17 +327,17 @@ public class PlayerController : MonoBehaviour
     public void LockTarget()
     {
         //if(targetGroup.)
-        if (animatorPlayer.GetBool("LockTarget"))
+        if (animatorPlayer.GetBool("LockTarget")) // if On Lock Target Enemy
         {
             animatorPlayer.SetBool("LockTarget", false);
-            LookCamera3.m_XAxis.Value = LookCamera1.transform.eulerAngles.y;//GetComponent<Transform>().rotation.y;
-            LookCamera3.m_YAxis.Value = 0.5f;
+            LookCamera3.m_XAxis.Value = LookCamera1.transform.eulerAngles.y;
+            LookCamera3.m_YAxis.Value = 0.4f;
 
             LookCamera1.enabled = false;
             LookCamera3.enabled = true;
 
         }
-        else if (targetGroupCiner.m_Targets[1].target != null)
+        else if (targetGroupCiner.m_Targets[1].target != null) // if have target in fond
         {
             //Debug.Log(targetGroupCiner.m_Targets[1].target);
             //Debug.Log(targetGroupCiner.m_Targets.Length);
@@ -600,7 +607,7 @@ public class PlayerController : MonoBehaviour
         
         if (weapon == 1)
         {
-            if (!weapon1.active)
+            if (!weapon1.activeSelf)
             {
                 weaponIn.Play();
             }
@@ -611,7 +618,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (!weapon2.active)
+            if (!weapon2.activeSelf)
             {
                 weaponIn.Play();
             }
