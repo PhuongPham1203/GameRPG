@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.outputAudioMixerGroup = sfxGroups;
+            s.source.spatialBlend = s.is3dSound;
             //Debug.Log(audioMixerMaster.FindMatchingGroups("Master")[0]);
             //audioMixerVFX.outputAudioMixerGroup;
         }
@@ -85,8 +87,61 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Play();
+        s.source.volume = 0;
+        StartCoroutine( FadeIn(s) );
+
         Debug.Log("play theme");
 
+    }
+
+    IEnumerator FadeIn(Sound s)
+    {
+
+        float i = 0;
+        while (i < 10)
+        {
+            //Debug.Log(s.source.volume);
+            yield return new WaitForSeconds(0.2f);
+
+            i++;
+            float x = (i / 10);
+            s.source.volume = Mathf.Clamp(x, 0 ,s.volume);
+
+            //Debug.Log(s.volume);
+            
+        }
+    }
+
+    IEnumerator FadeOut(Sound s)
+    {
+
+        float i = 10;
+        while (i > 0)
+        {
+            //Debug.Log(s.source.volume);
+            yield return new WaitForSeconds(0.2f);
+
+            i--;
+            float x = (i / 10);
+            s.source.volume = Mathf.Clamp(x, 0, s.volume);
+
+            //Debug.Log(s.volume);
+
+        }
+        s.source.Stop();
+    }
+
+    public void StopSoundOfTheme(string name)
+    {
+        Sound s = Array.Find(soundsOfTheme, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+        StartCoroutine(FadeOut(s));
+        //s.source.Stop();
+        Debug.Log("stop theme");
     }
 
     public void SetVolumeSFX(Slider number)
@@ -98,4 +153,22 @@ public class AudioManager : MonoBehaviour
     {
         audioMixerMaster.SetFloat("Volume Theme", number.value);
     }
+
+    public bool IsPlayTheme(string name)
+    {
+        Sound s = Array.Find(soundsOfTheme, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound in IsPlay " + name + " not found!");
+            return false;
+        }
+
+        if (s.source.isPlaying)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 }

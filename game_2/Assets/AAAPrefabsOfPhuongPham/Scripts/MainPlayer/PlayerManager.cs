@@ -1,10 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
     public GameObject player;
+    [Space]
+    [Header("UX / UI")]
+    public GameObject UITarget;
+    public Image hpTarget;
+    public Image postureTarget;
+    public Text nameTarget;
+    public GameObject buttonFinish;
     //[SerializeField]
     //private PlayerStats plStats;
 
@@ -13,6 +21,10 @@ public class PlayerManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        QualitySettings.vSyncCount = 1;
+
+        //Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
         //plStats = player.GetComponent<PlayerStats>();
     }
 

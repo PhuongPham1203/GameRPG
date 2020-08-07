@@ -4,9 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public int baseMaxHP;
+    public float baseMaxHP;
     public int baseCurrentAttackDame;
-    public int baseMaxPoseture;
+    public float baseMaxPoseture;
     public int baseCurrentDefend;
 
     public int baseMoney;
@@ -25,7 +25,7 @@ public class PlayerData
         baseMaxHP = playerStats.maxHP;
         baseCurrentAttackDame = playerStats.currentAttackDame;
         baseMaxPoseture = playerStats.maxPosture;
-        baseCurrentDefend = playerStats.currentDefend;
+        //baseCurrentDefend = playerStats.currentDefend;
 
         baseMoney = playerStats.money;
         baseRealMoney = playerStats.realMoney;

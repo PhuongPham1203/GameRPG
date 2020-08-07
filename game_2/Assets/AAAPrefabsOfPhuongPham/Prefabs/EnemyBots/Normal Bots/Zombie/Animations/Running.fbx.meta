@@ -18,17 +18,11 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Avatar creation failed:\n\tTransform 'Bip01 Pelvis' for human
+      bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\n\t'palm.02.L' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'palm.03.L' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'palm.04.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'palm.02.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'palm.03.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'palm.04.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -695,12 +689,12 @@ ModelImporter:
     - name: forearm.R
       parentName: upper_arm.R
       position: {x: -0, y: 0.003421, z: 0}
-      rotation: {x: -0.0007250158, y: -0.13163248, z: 0.017783213, w: 0.9911388}
+      rotation: {x: -0.00072495634, y: -0.13163297, z: 0.017782755, w: 0.9911388}
       scale: {x: 1, y: 1, z: 1}
     - name: hand.R
       parentName: forearm.R
       position: {x: -0, y: 0.002102, z: 0}
-      rotation: {x: 0.014998548, y: -0.124851406, z: 0.045523908, w: 0.99101704}
+      rotation: {x: 0.014998048, y: -0.124851525, z: 0.04552298, w: 0.99101704}
       scale: {x: 1, y: 1, z: 1}
     - name: palm.01.R
       parentName: hand.R
@@ -715,7 +709,7 @@ ModelImporter:
     - name: f_index.02.R
       parentName: f_index.01.R
       position: {x: -0, y: 0.00033399998, z: 0}
-      rotation: {x: 0.03629901, y: -0.0155899, z: -0.00005578381, w: 0.99921936}
+      rotation: {x: 0.0363036, y: -0.0155899, z: -0.000054232823, w: 0.9992192}
       scale: {x: 1, y: 1, z: 1}
     - name: f_index.03.R
       parentName: f_index.02.R
@@ -725,12 +719,12 @@ ModelImporter:
     - name: thumb.01.R
       parentName: palm.01.R
       position: {x: -0.000118, y: -0.000096, z: 0.000249}
-      rotation: {x: 0.08222932, y: 0.742044, z: 0.12516326, w: 0.653409}
+      rotation: {x: 0.08223165, y: 0.7420447, z: 0.1251626, w: 0.65340805}
       scale: {x: 1, y: 1, z: 1}
     - name: thumb.02.R
       parentName: thumb.01.R
       position: {x: -0, y: 0.00038199997, z: 0}
-      rotation: {x: 0.037631977, y: 0.04192294, z: -0.010636169, w: 0.99835527}
+      rotation: {x: 0.037627872, y: 0.04192287, z: -0.010637694, w: 0.9983554}
       scale: {x: 1, y: 1, z: 1}
     - name: thumb.03.R
       parentName: thumb.02.R
@@ -745,7 +739,7 @@ ModelImporter:
     - name: f_middle.01.R
       parentName: palm.02.R
       position: {x: -0, y: 0.00036099998, z: 0}
-      rotation: {x: 0.06307821, y: 0.0317774, z: -0.01025321, w: 0.9974499}
+      rotation: {x: 0.06307381, y: 0.03177761, z: -0.010250546, w: 0.9974502}
       scale: {x: 1, y: 1, z: 1}
     - name: f_middle.02.R
       parentName: f_middle.01.R
@@ -770,7 +764,7 @@ ModelImporter:
     - name: f_ring.02.R
       parentName: f_ring.01.R
       position: {x: -0, y: 0.00038699998, z: 0}
-      rotation: {x: 0.038540944, y: -0.011017071, z: -0.008719175, w: 0.9991583}
+      rotation: {x: 0.03854607, y: -0.011017154, z: -0.0087197665, w: 0.9991581}
       scale: {x: 1, y: 1, z: 1}
     - name: f_ring.03.R
       parentName: f_ring.02.R
@@ -790,7 +784,7 @@ ModelImporter:
     - name: f_pinky.02.R
       parentName: f_pinky.01.R
       position: {x: -0, y: 0.000171, z: 0}
-      rotation: {x: 0.03361769, y: -0.0036515808, z: -0.0053663678, w: 0.9994137}
+      rotation: {x: 0.033619303, y: -0.0036507973, z: -0.005366836, w: 0.99941367}
       scale: {x: 1, y: 1, z: 1}
     - name: f_pinky.03.R
       parentName: f_pinky.02.R

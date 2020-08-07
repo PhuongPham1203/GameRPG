@@ -13,6 +13,7 @@ InAction : 0 Idle - can do any thing
             7 Damage - time : 0.5s
             8 Die
             9 Stun - 2s
+            10 Finish Bot : 3s
 
 
 //some information in Normal Enemy
@@ -28,6 +29,7 @@ InAction : 0 Idle - can do any thing
             7 Damage - time : 0.5s
             8 Die
             9 Stun - time : 2s ( still action )
+            10 Finish Bot 3s
 
 ActionInCombat : 0 - Nothing
                     1 - Move
@@ -35,7 +37,10 @@ ActionInCombat : 0 - Nothing
                     3 - Attack
                
 
-
+TypeFinishBot : 1 - Small Bot
+                2 - Normal Bot
+                3 - Mini Boss
+                4 - Main Boss
 
 
 

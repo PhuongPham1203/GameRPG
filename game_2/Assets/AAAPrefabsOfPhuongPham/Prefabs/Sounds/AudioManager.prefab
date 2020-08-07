@@ -54,48 +54,126 @@ MonoBehaviour:
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   - name: Light Attack 2
     clip: {fileID: 8300000, guid: 33d390caaf74ca54bbe27620167e51e0, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   - name: Light Attack 3
     clip: {fileID: 8300000, guid: 1721f14fc421b4a4caae44f06997b183, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   - name: Light Attack 4
     clip: {fileID: 8300000, guid: 33d390caaf74ca54bbe27620167e51e0, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   - name: Heavy Attack 1
     clip: {fileID: 8300000, guid: 55137ac20b00643448d8b56ec0b0fe36, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   - name: Heavy Attack 2
     clip: {fileID: 8300000, guid: 73ea880b86dcdd749b49e3a96d861cdc, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   - name: Heavy Attack 3
     clip: {fileID: 8300000, guid: 5cf0969939aabcc448738b05a990e92a, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   - name: Heavy Attack 4
     clip: {fileID: 8300000, guid: a44bf98a0100cbc45a5fca75333f9efa, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 1
+    clip: {fileID: 8300000, guid: 074834dbf4fa977499be18554234a348, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 2
+    clip: {fileID: 8300000, guid: 50f8a4125e4eb834bbb29c4d3c1b3b2e, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 3
+    clip: {fileID: 8300000, guid: 6f78695624cfa1347bb5318d6e308b65, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 4
+    clip: {fileID: 8300000, guid: 50f8a4125e4eb834bbb29c4d3c1b3b2e, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 1
+    clip: {fileID: 8300000, guid: 3866c592e7f2088419cab4b3e5c31040, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 2
+    clip: {fileID: 8300000, guid: f119ac3219c07c34789a7d36b1622eee, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 3
+    clip: {fileID: 8300000, guid: 308f2c524e1844a4bbb9f098316f738b, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 4
+    clip: {fileID: 8300000, guid: 41268590bdb5f184dad86d43b1282cc2, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Damage
+    clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: FinishBot
+    clip: {fileID: 8300000, guid: 9c0aa6851a460c541993686ca6c847f1, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
   soundsOfTheme:
   - name: Theme Apocalypse
@@ -103,4 +181,12 @@ MonoBehaviour:
     loop: 0
     volume: 0.237
     pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: OnCombat
+    clip: {fileID: 8300000, guid: d3b51d041605b5b498f93acd036689dc, type: 3}
+    loop: 1
+    volume: 0.5
+    pitch: 1
+    is3dSound: 0
     source: {fileID: 0}

@@ -31,6 +31,7 @@ public class EquipmentManager : MonoBehaviour
         EquipAllDefaultItems();
 
     }
+    
 
     private void Update()
     {

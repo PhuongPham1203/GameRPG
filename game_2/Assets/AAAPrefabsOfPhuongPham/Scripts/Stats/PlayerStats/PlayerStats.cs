@@ -8,6 +8,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : CharacterStats
 {
+    // !Stats
+    [Header("Stats")]
+    public Stat hp; // HP
+    public Stat attackDame; // AttacK Dame
+    public Stat posture; // Posture
+    //public Stat defend; // Defend
+
+    public int attackLightDamage { get; protected set; }
+    public int attackHeavyDamage { get; protected set; }
+
     // Money and Soul
     public int money { get; protected set; }
     public int realMoney { get; protected set; }
@@ -28,8 +38,14 @@ public class PlayerStats : CharacterStats
     bool needchange = false;
 
     private PlayerController playerController;
-
+    //private AudioManager audioManager;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+
+    }
     void Start()
     {
 
@@ -41,26 +57,32 @@ public class PlayerStats : CharacterStats
 
         //SetTransformCurrent(teleportNearest.x, teleportNearest.y, teleportNearest.z);
 
-        SetAllBaseValue();
-        SetAllCurrentAndMaxValue(hp.GetValue(), attackDame.GetValue(), posture.GetValue(), defend.GetValue());
+        //SetAllBaseValue();
 
         animator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
+        //audioManager = AudioManager.instance;
 
-        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+        ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
+
     }
 
-    private void SetAllBaseValue()
+    /*
+    protected override void SetAllBaseValue()
     {
-        hp.SetBaseValue(startHP);
-        attackDame.SetBaseValue(startAttackDame);
-        posture.SetBaseValue(startPosture);
-        defend.SetBaseValue(startDefend);
-
+        
+        //hp.SetBaseValue(startHP);
+        //attackDame.SetBaseValue(startAttackDame);
+        //posture.SetBaseValue(startPosture);
+        //defend.SetBaseValue(startDefend);
+        
+        base.SetAllBaseValue();
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
+    */
 
-    private void SetAllCurrentAndMaxValue(int maxHPValue, int currentAttackDameValue, int maxPostureValue, int currentDefendValue)
+    /*
+    protected override void SetAllCurrentAndMaxValue(int maxHPValue, int currentAttackDameValue, int maxPostureValue, int currentDefendValue)
     {
 
         maxHP = maxHPValue;
@@ -73,21 +95,36 @@ public class PlayerStats : CharacterStats
 
         currentDefend = currentDefendValue;
     }
+    */
 
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
         if (newItem != null)
         {
-            hp.AddModifier(newItem.hpModifier);
-            attackDame.AddModifier(newItem.attackDameModifier);
-            posture.AddModifier(newItem.postureModifier);
-            defend.AddModifier(newItem.defendModifier);
+            //Debug.Log(newItem.hpModifier);
 
-            maxHP = hp.GetValue();
-            currentAttackDame = attackDame.GetValue();
-            maxPosture = posture.GetValue();
-            currentDefend = defend.GetValue();
+            hp.AddModifier(newItem.hpModifier);
+
+            if (newItem.equipSlot == EquipmentSlot.LightWeapon)
+            {
+                attackLightDamage = newItem.attackDameModifier;
+            }else if (newItem.equipSlot == EquipmentSlot.HeavyWeapon)
+            {
+                attackHeavyDamage = newItem.attackDameModifier;
+            }
+            else
+            {
+                attackDame.AddModifier(newItem.attackDameModifier);
+            }
+
+            posture.AddModifier(newItem.postureModifier);
+            //defend.AddModifier(newItem.defendModifier);
+
+            maxHP = startHP + hp.GetValue();
+            currentAttackDame = startAttackDame + attackDame.GetValue();
+            maxPosture = startPosture + posture.GetValue();
+            //currentDefend = defend.GetValue();
 
         }
 
@@ -97,14 +134,18 @@ public class PlayerStats : CharacterStats
             //damage.RemoveModifier(oldItem.attackDameModifier);
 
             hp.RemoveModifier(oldItem.hpModifier);
-            attackDame.RemoveModifier(oldItem.attackDameModifier);
-            posture.RemoveModifier(oldItem.postureModifier);
-            defend.RemoveModifier(oldItem.defendModifier);
 
-            maxHP = hp.GetValue();
-            currentAttackDame = attackDame.GetValue();
-            maxPosture = posture.GetValue();
-            currentDefend = defend.GetValue();
+            if (oldItem.equipSlot != EquipmentSlot.LightWeapon && oldItem.equipSlot != EquipmentSlot.HeavyWeapon)
+            { 
+                attackDame.RemoveModifier(oldItem.attackDameModifier);
+            }
+            posture.RemoveModifier(oldItem.postureModifier);
+            //defend.RemoveModifier(oldItem.defendModifier);
+
+            maxHP = startHP + hp.GetValue();
+            currentAttackDame = startAttackDame + attackDame.GetValue();
+            maxPosture = startPosture + posture.GetValue();
+            //currentDefend = defend.GetValue();
 
         }
     }
@@ -121,9 +162,10 @@ public class PlayerStats : CharacterStats
     {
         PlayerData playerData = SaveSystem.LoadPlayer();
 
-        SetAllBaseValue();
+        //SetAllBaseValue();
         //SetAllCurrentAndMaxValue(hp.GetValue(), attackDame.GetValue(), posture.GetValue(), defend.GetValue());
-        SetAllCurrentAndMaxValue(playerData.baseMaxHP, playerData.baseCurrentAttackDame, playerData.baseMaxPoseture, playerData.baseCurrentDefend);
+
+        // // SetAllCurrentAndMaxValue(playerData.baseMaxHP, playerData.baseCurrentAttackDame, playerData.baseMaxPoseture, playerData.baseCurrentDefend);
 
         money = playerData.baseMoney;
         realMoney = playerData.baseRealMoney;
@@ -160,10 +202,31 @@ public class PlayerStats : CharacterStats
 
     }
 
+    public override int GetAttackDame(int weapon)
+    {
+        if (weapon == 1)
+        {
+            return base.GetAttackDame(weapon) + attackLightDamage;
+
+        }
+        else
+        {
+            return base.GetAttackDame(weapon) + attackHeavyDamage;
+        }
+    }
+
     public override void TakeDamege(int damage)
     {
+        //Debug.Log(damage);
+
         if (animator.GetInteger("InAction") != 8)
         {
+            if (animator.GetBool("Crouch"))
+            {
+                playerController.CrouchPlayer();
+            }
+
+            //Debug.Log("a" + currentPosture);
 
             bool canBlockMore = true;
             if (currentPosture < maxPosture)
@@ -172,54 +235,67 @@ public class PlayerStats : CharacterStats
                 {
                     animator.SetTrigger("InBlock");
 
+                    int n = Random.Range(1, 5);
+                    //Debug.Log(n);
+                    if (animator.GetInteger("Weapon") == 1)
+                    {
+                        AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
+                    }
+                    else
+                    {
+                        AudioManager.instance.PlaySoundOfPlayer("Block Heavy " + n);
+                    }
+                    vfxSteel.Play();
+
+                    this.Reduction(3f);
+
                 }
             }
             else
             {
                 canBlockMore = false;
                 Debug.Log("can't block anymore");
+
+
             }
+
+            float x = 1f - (currentHP / maxHP); // percent HP lost
+            //Debug.Log(x);
+            currentPosture += (int)(damage + damage * x);
+            currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
+            //Debug.Log(transform.name + " Posture plus " + (int)(damage + damage * x ) + " damege.");
+            
 
             if (canBlockMore && animator.GetInteger("InAction") == 6) // ! In Block
             {
-                damage -= currentDefend;
-                damage = Mathf.Clamp(damage, 0, 999999);
-
-                currentPosture += damage;
-                currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
-
-
-                Debug.Log(transform.name + " Posture plus " + damage + " damege.");
-
+                //Debug.Log("b"+currentPosture);
             }
             else
             { // ! Not Block
-                currentPosture += damage;
-                currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
-
-                damage -= currentDefend;
-                damage = Mathf.Clamp(damage, 0, 999999);
+                //Debug.Log("c"+currentPosture);
 
                 currentHP -= damage;
 
-                playerController.Damage();
+                playerController.Damage(0.5f);
+                AudioManager.instance.PlaySoundOfPlayer("Damage");
+                vfxBlood.Play();
+                this.Reduction(3f);
+                //Debug.Log(transform.name + " HP Take " + damage + " damege.");
 
-
-                Debug.Log(transform.name + " HP Take " + damage + " damege.");
-                Debug.Log(transform.name + " Posture plus " + damage + " damege.");
             }
 
             UpdateHPAndPosture();
 
-
-
             if (currentHP <= 0)
             {
+
+                //Debug.Log("Can Finish");
                 Die();
 
             }
             else if (currentPosture >= maxPosture)
             {
+
                 playerController.PlayerStun();
             }
         }

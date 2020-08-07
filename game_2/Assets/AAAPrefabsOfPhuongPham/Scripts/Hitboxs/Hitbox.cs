@@ -6,8 +6,15 @@ public class Hitbox : MonoBehaviour
 {
     [Range(0,3f)]
     public float timeDetroy=0.25f;
+
+    public CharacterStats characterStats;
     private void Awake()
     {
-        Destroy(gameObject, 0.25f);
+
+        Destroy(gameObject, timeDetroy);
     }
+
+
+
+
 }
