@@ -40,4 +40,20 @@ public class AudioEnemy : MonoBehaviour
 
         s.source.Play();
     }
+    public bool IsPlaySFX(string name)
+    {
+        Sound s = Array.Find(soundOfEnemy, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound in IsPlay " + name + " not found!");
+            return false;
+        }
+
+        if (s.source.isPlaying)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

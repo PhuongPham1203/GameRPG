@@ -219,7 +219,7 @@ public class PlayerStats : CharacterStats
     {
         //Debug.Log(damage);
 
-        if (animator.GetInteger("InAction") != 8)
+        if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") !=10)
         {
             if (animator.GetBool("Crouch"))
             {
@@ -306,6 +306,7 @@ public class PlayerStats : CharacterStats
         base.Die();
         playerController.PlayerDie();
         animator.SetInteger("InAction", 8);
+        gameObject.layer = 2;
         // Kill the Player
         //PlayerManager.instance.KillPlayer();
     }

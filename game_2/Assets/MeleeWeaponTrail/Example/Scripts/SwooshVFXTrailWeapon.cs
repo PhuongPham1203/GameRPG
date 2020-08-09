@@ -82,6 +82,26 @@ public class SwooshVFXTrailWeapon : MonoBehaviour
 		}
 	}
 
+	public void SetTrailAll(int type)
+    {
+		bool status;
+
+		if (type == 0)
+		{
+			status = false;
+		}
+		else
+		{
+			status = true;
+		}
+
+		for (int i = 0; i < _trail.Length; i++)
+		{
+			_trail[i].Emit = status;
+		}
+	}
+
+
 	/*
 	void Update()
 	{

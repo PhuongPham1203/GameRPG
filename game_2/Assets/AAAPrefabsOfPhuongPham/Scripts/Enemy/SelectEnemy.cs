@@ -10,6 +10,7 @@ public class SelectEnemy : SelectManager
 
     private string ablePlayer = "Player";
 
+    
     private void Start()
     {
         enemyController = GetComponent<EnemyController>();
@@ -21,7 +22,7 @@ public class SelectEnemy : SelectManager
 
     private void Update()
     {
-        if(enemyController.alertEnemy != AlertEnemy.Die)
+        if (enemyController.alertEnemy != AlertEnemy.Die)
         {
             inFOVForLockTarget(transformRoot, maxAngle, maxRadius);
 
@@ -35,7 +36,16 @@ public class SelectEnemy : SelectManager
         int count = Physics.OverlapSphereNonAlloc(checkingObj.position, maxRadiusView, overlaps, layerEnemyTarget);
         //Debug.Log(transform.name + " Find : " + count);
 
+        if (count==0 && enemyController.alertEnemy == AlertEnemy.OnTarget)
+        {
+            
 
+            enemyController.SetAlentCombat(AlertEnemy.Warning);
+            targetEnemy = null;
+
+            AudioManager.instance.ResetCoroutineStopSoundTheme();
+            return;
+        }
 
         if (targetEnemy != null)// have current target
         {
@@ -88,11 +98,7 @@ public class SelectEnemy : SelectManager
                 enemyController.SetAlentCombat(AlertEnemy.Warning);
                 targetEnemy = null;
 
-                if (AudioManager.instance.IsPlayTheme("OnCombat"))
-                {
-                    AudioManager.instance.StopSoundOfTheme("OnCombat");
-                }
-               
+                AudioManager.instance.ResetCoroutineStopSoundTheme();
             }
         }
 
@@ -100,13 +106,14 @@ public class SelectEnemy : SelectManager
         {
             if (overlaps[i] != null)
             {
-                
+
                 //Debug.Log(i);
 
                 if (targetEnemy != null)
                 {
                     if (overlaps[i].transform.gameObject.GetInstanceID() == targetEnemy.gameObject.GetInstanceID()) //  new and old target is the same
                     {
+                        AudioManager.instance.StopCoroutineSoundTheme();
                         continue;
                     }
                     //Debug.Log("Have Target");
@@ -149,7 +156,14 @@ public class SelectEnemy : SelectManager
                             else
                             {
                                 AudioManager.instance.PlaySoundOfTheme("OnCombat");
+                                AudioManager.instance.StopCoroutineSoundTheme();
+
                             }
+
+                            // Warning for all enemy near
+                            WarningAllEnemy();
+
+
                         }
 
                     }
@@ -191,5 +205,22 @@ public class SelectEnemy : SelectManager
 
     }
 
+    
 
+    public void WarningAllEnemy()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRadius, (1 << 23));
+        foreach (var hitCollider in hitColliders)
+        {
+            //hitCollider.SendMessage("AddDamage");
+            EnemyController e = hitCollider.transform.GetComponent<EnemyController>();
+
+            if (e.alertEnemy == AlertEnemy.Idle)
+            {
+                e.alertEnemy = AlertEnemy.Warning;
+                e.TryMoveToPlayerPosition(targetEnemy.position);
+                Debug.Log(e.alertEnemy);
+            }
+        }
+    }
 }

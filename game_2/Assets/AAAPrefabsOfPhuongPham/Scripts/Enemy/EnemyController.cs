@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PathCreation;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,11 +14,20 @@ public class EnemyController : MonoBehaviour
     public float lookRadius = 10f; // Range view look
     public float lookAngle = 45f; // Angle look
 
+    public PathCreator way;
+    //[Range(0f,1f)]
+    public int pathWay = 0;
+    public bool flipWay = false;
+
     [Header("Speed Tracking LookAt Target")]
     [Range(0.1f, 10f)]
     public double speedTrackTarget = 3f;
     public float distanceCanAttack;
     public float distance = 0f;
+
+    public float timeTryMoveToPos=0;
+    public Vector3 posionTryMoveTo;
+
     [Range(2f, 15f)]
     public float timeLeaveWaring = 5f;
     protected Coroutine actionLeaveWaring;
@@ -46,19 +57,22 @@ public class EnemyController : MonoBehaviour
     [Header("Combat")]
     public bool canAction = true;
     public float timeCanAction = 0.5f;
-    public float timeWait = 1f;
+    //public float timeWait = 1f;
     public float curTimeWait = 1f;
-    public List<float> timeCanAttack;
+    public List<float> timeToNextAction;
 
     public int numberListAttack = 1;
     public int startListAttack = 0;
     public int currentListAttack = 0;
     public bool currentAttackDone = false;
 
+    public Vector3 directionShoulGo = Vector3.zero;
+
     public Transform centerPoint;
 
     protected Coroutine actionLeaveAction;
     protected Coroutine actionLeaveAttack;
+    protected Coroutine actionFinishBot;
 
 
     [Header("Hit Box")]
@@ -72,6 +86,11 @@ public class EnemyController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        if (flipWay && way!=null)
+        {
+            pathWay = way.path.NumPoints-1;
+            //Debug.Log(pathWay);
+        }
     }
 
     // Start is called before the first frame update
@@ -83,7 +102,7 @@ public class EnemyController : MonoBehaviour
         audioEnemy = GetComponent<AudioEnemy>();
         characterStats = GetComponent<CharacterStats>();
 
-
+        numberListAttack = timeToNextAction.Count;
     }
 
 
@@ -130,6 +149,10 @@ public class EnemyController : MonoBehaviour
     public void SetAlentCombat(AlertEnemy setAlent)
     {
         alertEnemy = setAlent;
+        if(alertEnemy == AlertEnemy.Die)
+        {
+            return;
+        }
         SetTarget();
         switch (alertEnemy)
         {
@@ -185,9 +208,12 @@ public class EnemyController : MonoBehaviour
                     SetFinishVFX(false);
 
                 }
+                if (!AudioManager.instance.IsPlaySFX("AlertDetecterTarget"))
+                {
+                    AudioManager.instance.PlaySoundOfPlayer("AlertDetecterTarget");
 
-                audioEnemy.PlaySoundOfEnemy("AlertDetecterTarget");
-                
+                }
+
                 //playerController.OnCombat(true);
                 break;
         }
@@ -216,13 +242,14 @@ public class EnemyController : MonoBehaviour
                 target = null;
                 break;
             case AlertEnemy.OnTarget:// !OnTarget
-
+                timeTryMoveToPos = 0;
                 target = PlayerManager.instance.player.transform;
                 break;
         }
 
     }
 
+    
 
     protected virtual void MoveToTarget()
     {
@@ -230,10 +257,12 @@ public class EnemyController : MonoBehaviour
         {
             MoveLockTarget();
         }
+        /*
         else
         {
             MoveNotLockTarget();
         }
+        */
     }
     private void MoveLockTarget()
     {
@@ -245,11 +274,24 @@ public class EnemyController : MonoBehaviour
         animator.SetFloat("SpeedMove", 0.5f);
     }
 
-    private void MoveNotLockTarget()
+    public virtual void MoveLockTargetWalkAround( Vector3 way,float typeMove,float speed )
     {
+        way.y = 0;
+        characterController.Move(way * speed * Time.deltaTime);
+        animator.SetFloat("SpeedMove", typeMove);
+
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(way.x, 0, way.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (float)speedTrackTarget);
+
 
     }
-    public virtual void MoveToPosition(Vector3 positionTarget, float typeMove, float speed)
+    public void TryMoveToPlayerPosition(Vector3 pos)
+    {
+        timeTryMoveToPos = 5f;
+        posionTryMoveTo = pos;
+
+    }
+    public virtual bool MoveToPosition(Vector3 positionTarget, float typeMove, float speed)
     {
         Vector3 way = (positionTarget - transform.position).normalized;
         way.y = 0;
@@ -258,6 +300,15 @@ public class EnemyController : MonoBehaviour
 
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(way.x, 0, way.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (float)speedTrackTarget);
+
+        Vector3 a = transform.position;
+        
+        if(Math.Abs(a.x - positionTarget.x) < 1 && Math.Abs(a.z - positionTarget.z)<1)
+        {
+            return true;
+        }
+
+        return false;
 
 
     }
@@ -268,18 +319,27 @@ public class EnemyController : MonoBehaviour
         if (canAction)
         {
             canAction = false;
+            /*
             if (actionLeaveAttack != null)
             {
                 StopCoroutine(actionLeaveAttack);
 
             }
-            actionLeaveAttack = StartCoroutine(CanAttack(timeCanAttack[attackCombo]));// time can Attack Again
+            actionLeaveAttack = StartCoroutine(CanAttack(timeToNextAction[attackCombo]));// time can Attack Again
+            */
+            if (target != null)
+            {
+                transform.LookAt(target);
+
+            }
+
+
             if (actionLeaveAction != null)
             {
                 StopCoroutine(actionLeaveAction);
 
             }
-            actionLeaveAction = StartCoroutine(CanAcion(timeCanAttack[attackCombo])); // time can do something again
+            actionLeaveAction = StartCoroutine(CanAttack(timeToNextAction[attackCombo])); // time can do something again
 
             animator.SetInteger("InAction", 2);
             animator.SetInteger("AttackCombo", attackCombo+1);
@@ -293,14 +353,43 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
+    public void CanFinishBot(float t)
+    {
+        Stun(t);
 
-    protected IEnumerator CanAcion(float waitTime)
+        if (actionFinishBot != null)
+        {
+            StopCoroutine(actionFinishBot);
+        }
+        actionFinishBot = StartCoroutine(CanFinishInSecond(t));
+
+    }
+
+    public void Stun(float t)
+    {
+        canAction = false;
+        if (actionLeaveAction != null)
+        {
+            StopCoroutine(actionLeaveAction);
+        }
+        actionLeaveAction = StartCoroutine(CanAction(t));
+    }
+
+    protected IEnumerator CanAction(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         canAction = true;
 
     }
     protected IEnumerator CanAttack(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        canAction = true;
+        animator.SetInteger("InAction", 0);
+
+    }
+
+    protected IEnumerator LeaveActionDamage(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         animator.SetInteger("InAction", 0);
@@ -313,6 +402,17 @@ public class EnemyController : MonoBehaviour
         tranTarget.y = transform.position.y;
         transform.LookAt(tranTarget);
     }
+
+    
+    public IEnumerator CanFinishInSecond( float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        canFinish = false;
+        SetFinishVFX(false);
+    }
+
+    
+
 
     protected virtual void AttackFirstTime()
     {
@@ -333,7 +433,7 @@ public class EnemyController : MonoBehaviour
         startListAttack = number;
         if (number == 0)
         {
-            curTimeWait = timeWait;
+            curTimeWait = 1f;//timeWait;
         }
     }
 
@@ -347,7 +447,21 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("hit");
     }
+    public virtual void Finish1()
+    {
+        //Debug.Log("Finish1");
+        StopAllCoroutines();
+        canAction = false;
+        alertEnemy = AlertEnemy.Die;
+        animator.SetInteger("InAction",10);
 
+    }
+    public virtual void Finish2()
+    {
+        //Debug.Log("Finish2");
+        characterStats.TakeTrueDamegeFinish(999999);
+        characterStats.Die();
+    }
     public virtual void EnemyDie()
     {
         StopAllCoroutines();
@@ -363,9 +477,24 @@ public class EnemyController : MonoBehaviour
             StopCoroutine(actionLeaveAction);
 
         }
+        AudioManager.instance.PlaySoundOfPlayer("Damage");
         animator.SetTrigger("Damage");
-        actionLeaveAction = StartCoroutine(CanAcion(timeStun)); // time can do something again
+        animator.SetInteger("InAction",7);
+        actionLeaveAction = StartCoroutine(CanAttack(timeStun)); // time can do something again
     }
+
+    public virtual void BlockDamage(float time)
+    {
+        if (actionLeaveAction != null)
+        {
+            StopCoroutine(actionLeaveAction);
+
+        }
+        animator.SetTrigger("Damage");
+        animator.SetInteger("InAction", 6);
+        actionLeaveAction = StartCoroutine(CanAttack(time)); // time can do something again
+    }
+
     /*
     private void OnCollisionEnter(Collision collision)
     {

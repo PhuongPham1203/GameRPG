@@ -47,7 +47,7 @@ public class ZombieStats : CharacterStats
     */
     public override void TakeDamege(int damage){
         //base.TakeDamege(damage);
-        if (animator.GetInteger("InAction") != 8)
+        if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
         {
             if(enemyController.alertEnemy == AlertEnemy.Idle)
             {
@@ -73,20 +73,14 @@ public class ZombieStats : CharacterStats
             bool canBlockMore = true;
             if (currentPosture < maxPosture)
             {
-                if (animator.GetInteger("InAction") == 6)
+                if (animator.GetBool("Block"))
                 {
                     animator.SetTrigger("InBlock");
 
-                    int n = Random.Range(1, 3);
-                    if (animator.GetInteger("Weapon") == 1)
-                    {
-                        audioEnemy.PlaySoundOfEnemy("Block" + n);
-                    }
-                    else
-                    {
-                        audioEnemy.PlaySoundOfEnemy("Block" + n);
-                    }
+                    audioEnemy.PlaySoundOfEnemy("Block" + Random.Range(1, 3));
+
                     vfxSteel.Play();
+                    enemyController.BlockDamage(0.5f);
 
                     this.Reduction(3f);
                 }
@@ -105,9 +99,9 @@ public class ZombieStats : CharacterStats
             currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
             //Debug.Log(transform.name + " Posture plus " + (int)(damage + damage * x) + " damege.");
 
-            if (canBlockMore && animator.GetInteger("InAction") == 6) // ! In Block
+            if (canBlockMore && animator.GetBool("Block")) // ! In Block
             {
-
+                
             }
             else
             { // ! Not Block
@@ -115,10 +109,14 @@ public class ZombieStats : CharacterStats
                 currentHP -= damage;
 
                 enemyController.Damage(0.5f);
-                AudioManager.instance.PlaySoundOfPlayer("Damage");
+                //AudioManager.instance.PlaySoundOfPlayer("Damage");
                 vfxBlood.Play();
                 this.Reduction(3f);
 
+                if (canBlockMore)
+                {
+                    animator.SetBool("Block",true);
+                }
 
                 //Debug.Log(transform.name + " HP Take " + damage + " damege.");
 
@@ -136,11 +134,33 @@ public class ZombieStats : CharacterStats
             else if (currentPosture >= maxPosture)
             {
 
+                enemyController.CanFinishBot(2f);
+                //enemyController.Stun(2f);
                 //playerController.PlayerStun();
                 
             }
         }
     }
+    /*
+    public override void Finish1()
+    {
+        base.Finish1();
+        enemyController.StopAllCoroutines();
+        enemyController.canAction = false;
+
+        //AudioManager.instance.PlaySoundOfPlayer("Damage");
+
+
+    }
+
+    public override void Finish2()
+    {
+        base.Finish2();
+        currentHP = 0;
+
+        Die();
+    }
+    */
     public override void Die()
     {
         base.Die();
@@ -151,7 +171,7 @@ public class ZombieStats : CharacterStats
         enemyController.EnemyDie();
         //animator.SetInteger("InAction", 8);
         PlayerManager.instance.player.GetComponent<PlayerController>().LockTarget();
-        this.gameObject.layer = 0;
+        this.gameObject.layer = 2;
 
         //new WaitForSeconds(0.2f);
 
@@ -215,7 +235,7 @@ public class ZombieStats : CharacterStats
     {
         if (!PlayerManager.instance.player.GetComponent<PlayerController>().onCombat && AudioManager.instance.IsPlayTheme("OnCombat"))
         {
-            Debug.Log("STop");
+            //Debug.Log("STop");
             AudioManager.instance.StopSoundOfTheme("OnCombat");
         }
         //Debug.Log("Hello!");

@@ -42,6 +42,7 @@ public class CharacterStats : MonoBehaviour
     [Header("VFX")]
     public ParticleSystem vfxBlood;
     public ParticleSystem vfxSteel;
+    public ParticleSystem vfxFinish;
     public GameObject vfxDie;
 
 
@@ -105,6 +106,22 @@ public class CharacterStats : MonoBehaviour
        
     }
 
+    public virtual void TakeTrueDamegeFinish(int damage)
+    {
+        //float x = 1f - ((float)currentHP / (float)maxHP); // percent HP lost
+                                                          //Debug.Log(x);
+        //currentPosture += (int)(damage + damage * x);
+        //currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
+
+        currentHP -= damage;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        UpdateHPAndPosture();
+        vfxFinish.Play();
+
+        AudioManager.instance.PlaySoundOfPlayer("Damage");
+
+    }
+
     public virtual void SetUIActivate(bool activate)
     {
         if (activate)
@@ -142,7 +159,16 @@ public class CharacterStats : MonoBehaviour
         //Debug.Log(posture01);
 
     }
-
+    /* 
+    public virtual void Finish1()
+    {
+        Debug.Log("Finish1");
+    }
+    public virtual void Finish2()
+    {
+        Debug.Log("Finish2");
+    }
+    */
     public virtual void Die()
     {
         //Die in some way

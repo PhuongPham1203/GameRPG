@@ -259,7 +259,7 @@ public class SelectPlayer : SelectManager
                 if (distan < maxRadiusView)
                 {
 
-
+                    /*
                     RaycastHit hit;
                     //if (Physics.Raycast(ray, out hit, maxRadiusView, layerRatcastToTarget))
                     if (Physics.Linecast(checkingObj.position, targetEnemy.position, out hit, layerLineCastToTarget))
@@ -275,6 +275,7 @@ public class SelectPlayer : SelectManager
                         }
 
                     }
+                    */
                 }
                 else
                 {

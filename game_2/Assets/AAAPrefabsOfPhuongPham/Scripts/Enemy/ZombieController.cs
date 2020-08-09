@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZombieController : EnemyController
 {
-    
+
     private void Update()
     {
         /*
@@ -38,36 +38,71 @@ public class ZombieController : EnemyController
         }
         */
 
-        if (alertEnemy == AlertEnemy.OnTarget)
+        if (curTimeWait > 0)
         {
-            distance = Vector3.Distance(target.position, transform.position);
-
-
-            RunListAttack();
-
-            /*
-            // Action with Target When OnCombat
-            distance = Vector3.Distance(target.position, transform.position);
-            if (distance > distanceCanAttack)
-            {
-                MoveToPosition(target.position,1f,runSpeed);
-            }
-            else if (distance <= distanceCanAttack)
-            {
-                animator.SetFloat("SpeedMove", 0);
-
-                if (canAction)
-                {
-
-                    Attack(1);
-                }
-            }
-            */
-
-        }else if(alertEnemy == AlertEnemy.Die)
-        {
+            curTimeWait -= Time.deltaTime;
 
         }
+
+        if (canAction)
+        {
+
+
+            if (alertEnemy == AlertEnemy.OnTarget)
+            {
+                distance = Vector3.Distance(target.position, transform.position);
+
+
+                RunListAttack();
+
+
+
+            }
+            else if (alertEnemy == AlertEnemy.Idle)
+            {
+                if (way != null)
+                {
+
+                    Vector3 point = way.path.GetPoint(pathWay);
+                    //Debug.Log(pathWay);
+                    if (this.MoveToPosition(point, 0.5f, moveSpeed))
+                    {
+                        if (flipWay)
+                        {
+                            pathWay -= 1;
+                            if (pathWay < 0)
+                            {
+                                pathWay = way.path.NumPoints - 1;
+                            }
+                        }
+                        else
+                        {
+                            pathWay += 1;
+                            if (pathWay >= way.path.NumPoints)
+                            {
+                                pathWay = 0;
+                            }
+                        }
+
+                    }
+                }
+            }
+            else if (alertEnemy == AlertEnemy.Warning)
+            {
+                if (timeTryMoveToPos > 0)
+                {
+                    timeTryMoveToPos -= Time.deltaTime;
+                    if (MoveToPosition(posionTryMoveTo, 1f, runSpeed))
+                    {
+                        timeTryMoveToPos = 0;
+                    }
+                }
+
+
+
+            }
+        }
+
 
 
 
@@ -85,21 +120,53 @@ public class ZombieController : EnemyController
 
             case 0:
                 // code
+
                 AttackFirstTime();
                 break;
             case 1:
                 // code
+
                 AttackSecondTime();
                 break;
             case 2:
                 // code
-                AttackThirdTime();
+
+
+
+                if (curTimeWait > 0)
+                {
+                    MoveLockTargetWalkAround(directionShoulGo, 0.5f, moveSpeed);
+
+                }
+                else
+                {
+                    currentAttackDone = true;
+                    animator.SetBool("Block", false);
+
+                }
+
                 break;
             case 3:
                 // code
+
+                AttackThirdTime();
+
                 break;
             case 4:
                 // code
+
+                if (curTimeWait > 0)
+                {
+                    MoveLockTargetWalkAround(directionShoulGo, 0.5f, moveSpeed);
+
+                }
+                else
+                {
+                    currentAttackDone = true;
+                    animator.SetBool("Block", false);
+
+
+                }
                 break;
 
         }
@@ -119,15 +186,10 @@ public class ZombieController : EnemyController
     protected override void AttackFirstTime()
     {
         //base.AttackFirstTime();
-        if (curTimeWait>0)
+        if (distance < distanceCanAttack)
         {
-            curTimeWait -= Time.deltaTime;
 
-        }
-        else if (distance < distanceCanAttack)
-        {
-            
-            currentAttackDone = Attack(0);
+            currentAttackDone = Attack(currentListAttack);
             animator.SetFloat("SpeedMove", 0);
 
         }
@@ -151,8 +213,8 @@ public class ZombieController : EnemyController
 
         if (distance < distanceCanAttack)
         {
-            
-            currentAttackDone = Attack(1);
+
+            currentAttackDone = Attack(currentListAttack);
             animator.SetFloat("SpeedMove", 0);
 
         }
@@ -162,17 +224,56 @@ public class ZombieController : EnemyController
 
         }
 
-        /*
+        
         if (currentAttackDone)
         {
-            startListAttack = 1;
+            //startListAttack = 1;
+            Vector3 direc = (transform.position - PlayerManager.instance.player.transform.position).normalized;
+            direc.x += Random.Range(-0.7f,0.7f);
+            direc.z += Random.Range(-0.7f, 0.7f);
+            directionShoulGo = direc.normalized;
+
+            curTimeWait = timeToNextAction[currentListAttack+1];
+
+            animator.SetBool("Block",true);
+
         }
-        */
+        
+
     }
 
     protected override void AttackThirdTime()
     {
         base.AttackThirdTime();
+
+        if (distance < distanceCanAttack)
+        {
+
+            currentAttackDone = Attack(2);
+            animator.SetFloat("SpeedMove", 0);
+
+        }
+        else
+        {
+            MoveToPosition(target.position, 0.5f * 1.5f, moveSpeed * 1.5f);
+
+        }
+
+        if (currentAttackDone)
+        {
+            //startListAttack = 1;
+            Vector3 direc = (transform.position - PlayerManager.instance.player.transform.position).normalized;
+            direc.x += Random.Range(-0.7f, 0.7f);
+            direc.z += Random.Range(-0.7f, 0.7f);
+            directionShoulGo = direc.normalized;
+            
+            curTimeWait = timeToNextAction[currentListAttack + 1];
+
+            animator.SetBool("Block", true);
+
+
+        }
+
     }
 
     public override void HitBox(int numberHit)
@@ -182,43 +283,30 @@ public class ZombieController : EnemyController
         //Quaternion rot ;
         switch (numberHit)
         {
-            
+
             case 11:
                 // code
                 audioEnemy.PlaySoundOfEnemy("Attack1_1");
-
-                //Quaternion rot = Quaternion.Euler(startPositionRotationLightAttack.eulerAngles + effectsLightAttack[EffectNumber].effectAttack.transform.eulerAngles);
-
-                //Instantiate(hitBox[0], hitBox[0].transform.localPosition + centerPoint.transform.position, centerPoint.transform.rotation + hitBox[0].transform.localRotation);
-
-                //rot = Quaternion.Euler(centerPoint.rotation.eulerAngles+ hitBox[0].transform.eulerAngles);
-                //Debug.Log(centerPoint.rotation.eulerAngles + hitBox[0].transform.eulerAngles);
-
-                //Debug.Log(centerPoint.rotation.eulerAngles);
-
-                //Instantiate(hitBox[0], hitBox[0].transform.localPosition + centerPoint.position, hitBox[0].transform.rotation);
-
                 Instantiate(hitBox[0], parentVfxEnemy);
 
                 break;
             case 12:
                 // code
                 audioEnemy.PlaySoundOfEnemy("Attack1_2");
-                //Instantiate(hitBox[1], hitBox[1].transform.localPosition + centerPoint.transform.position, hitBox[1].transform.rotation);
-                //rot = Quaternion.Euler(centerPoint.rotation.eulerAngles + hitBox[1].transform.eulerAngles);
-                //Instantiate(hitBox[1], hitBox[1].transform.localPosition + centerPoint.transform.position, hitBox[1].transform.rotation);
                 Instantiate(hitBox[1], parentVfxEnemy);
 
                 break;
             case 2:
                 // code
                 Instantiate(hitBox[2], parentVfxEnemy);
-
                 audioEnemy.PlaySoundOfEnemy("Attack2");
 
                 break;
             case 3:
                 // code
+
+                Instantiate(hitBox[2], parentVfxEnemy);
+                audioEnemy.PlaySoundOfEnemy("Attack3");
                 break;
             case 4:
                 // code

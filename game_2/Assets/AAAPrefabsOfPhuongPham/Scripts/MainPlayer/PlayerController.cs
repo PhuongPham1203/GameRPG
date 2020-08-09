@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
 
         //characterController = GetComponent<CharacterController>();
         //animatorPlayer = GetComponent<Animator>();
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-        
+
 
 
 
@@ -213,12 +213,12 @@ public class PlayerController : MonoBehaviour
             float distan = Vector3.Distance(tftarget.position, transform.position);
             EnemyController enemyController = tftarget.root.GetComponent<EnemyController>();
 
-            if (distan < 2 && enemyController.canFinish && !PlayerManager.instance.buttonFinish.activeInHierarchy )
+            if (distan < 2 && enemyController.canFinish && !PlayerManager.instance.buttonFinish.activeInHierarchy)
             {
                 //buttonFinishBot.SetActive(true);
                 //PlayerManager.instance.buttonFinish.SetActive(true);
                 enemyController.SetFinishVFX(true);
-                Debug.Log("Set true in player controller");
+                //Debug.Log("Set true in player controller");
             }
         }
 
@@ -366,7 +366,7 @@ public class PlayerController : MonoBehaviour
             //UITarget.SetActive(true);
             selectManager.targetEnemy.GetComponent<CharacterStats>().SetUIActivate(false);
             selectManager.targetEnemy.GetComponent<EnemyController>().SetFinishVFX(false);
-            Debug.Log("Set false in player controller");
+            //Debug.Log("Set false in player controller");
 
         }
         else if (targetGroupCiner.m_Targets[1].target != null) // if have target in fond
@@ -380,6 +380,10 @@ public class PlayerController : MonoBehaviour
             //UITarget.SetActive(true);
             selectManager.targetEnemy.GetComponent<CharacterStats>().SetUIActivate(true);
 
+        }
+        else
+        {
+            LookCamera3.m_XAxis.Value = transform.eulerAngles.y;
         }
     }
 
@@ -628,9 +632,40 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    //z
     public void FinishBot()
     {
-        Debug.Log("Finish");
+        //Debug.Log("Finish");
+
+        if (canAction)
+        {
+            EnemyController enemyController = selectManager.targetEnemy.GetComponent<EnemyController>();
+
+            if (enemyController.canFinish)
+            {
+                canAction = false;
+                if (actionLeaveAction != null)
+                {
+                    StopCoroutine(actionLeaveAction);
+
+                }
+                actionLeaveAction = StartCoroutine(LeaveAttack(1.25f));
+                StartCoroutine(CanAcion(1.25f));
+                SetActivateWeapon(1);
+                animatorPlayer.SetInteger("InAction",10);
+                AudioManager.instance.PlaySoundOfPlayer("FinishBot");
+
+                enemyController.Finish1();
+
+
+            }
+        }
+
+    }
+
+    public void FinishBot2()
+    {
+        selectManager.targetEnemy.GetComponent<EnemyController>().Finish2();
     }
 
     public void Block(bool block)
