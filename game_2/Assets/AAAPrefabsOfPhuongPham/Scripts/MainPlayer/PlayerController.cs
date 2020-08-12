@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -151,20 +152,27 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (canAction && isPressMove)
+            if (canAction)
             {
+                if (isPressMove)
+                {
+                    XZ = new Vector2(joystickMovePlayer.Horizontal, joystickMovePlayer.Vertical);
+                }
+                else //if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
+                {
 
-                XZ = new Vector2(joystickMovePlayer.Horizontal, joystickMovePlayer.Vertical);
-                //if (animatorPlayer.GetInteger("InAction") == 0)
-                //{
+                    //Debug.Log(Input.GetAxis("Horizontal"));
+                    //Debug.Log(Input.GetAxis("Vertical"));
+                    XZ = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                }
+
                 animatorPlayer.SetFloat("x", XZ.x);
                 animatorPlayer.SetFloat("z", XZ.y);
 
-                //}
-
                 MovePlayer();
-
             }
+
+
 
 
             if (!characterController.isGrounded && animatorPlayer.GetInteger("InAction") == 0)
@@ -342,8 +350,12 @@ public class PlayerController : MonoBehaviour
 
     public void MoveCamera()
     {
+
         LookCamera3.m_XAxis.m_InputAxisValue = joystickMoveCamera.Horizontal;
         LookCamera3.m_YAxis.m_InputAxisValue = -joystickMoveCamera.Vertical;
+
+
+
     }
 
     public void ResetXYCamera()
@@ -652,7 +664,7 @@ public class PlayerController : MonoBehaviour
                 actionLeaveAction = StartCoroutine(LeaveAttack(1.25f));
                 StartCoroutine(CanAcion(1.25f));
                 SetActivateWeapon(1);
-                animatorPlayer.SetInteger("InAction",10);
+                animatorPlayer.SetInteger("InAction", 10);
                 AudioManager.instance.PlaySoundOfPlayer("FinishBot");
 
                 enemyController.Finish1();

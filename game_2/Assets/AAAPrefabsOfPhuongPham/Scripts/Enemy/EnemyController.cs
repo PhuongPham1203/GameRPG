@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     public float distanceCanAttack;
     public float distance = 0f;
 
-    public float timeTryMoveToPos=0;
+    public float timeTryMoveToPos = 0;
     public Vector3 posionTryMoveTo;
 
     [Range(2f, 15f)]
@@ -86,9 +86,9 @@ public class EnemyController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        if (flipWay && way!=null)
+        if (flipWay && way != null)
         {
-            pathWay = way.path.NumPoints-1;
+            pathWay = way.path.NumPoints - 1;
             //Debug.Log(pathWay);
         }
     }
@@ -149,7 +149,7 @@ public class EnemyController : MonoBehaviour
     public void SetAlentCombat(AlertEnemy setAlent)
     {
         alertEnemy = setAlent;
-        if(alertEnemy == AlertEnemy.Die)
+        if (alertEnemy == AlertEnemy.Die)
         {
             return;
         }
@@ -196,8 +196,8 @@ public class EnemyController : MonoBehaviour
                     StopCoroutine(actionLeaveAction);
                     actionLeaveAction = null;
                 }
-                
-                if(characterStats.currentPosture >= characterStats.maxPosture)
+
+                if (characterStats.currentPosture >= characterStats.maxPosture)
                 {
                     canFinish = true;
                     SetFinishVFX(true);
@@ -249,7 +249,7 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    
+
 
     protected virtual void MoveToTarget()
     {
@@ -274,7 +274,7 @@ public class EnemyController : MonoBehaviour
         animator.SetFloat("SpeedMove", 0.5f);
     }
 
-    public virtual void MoveLockTargetWalkAround( Vector3 way,float typeMove,float speed )
+    public virtual void MoveLockTargetWalkAround(Vector3 way, float typeMove, float speed)
     {
         way.y = 0;
         characterController.Move(way * speed * Time.deltaTime);
@@ -302,8 +302,8 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (float)speedTrackTarget);
 
         Vector3 a = transform.position;
-        
-        if(Math.Abs(a.x - positionTarget.x) < 1 && Math.Abs(a.z - positionTarget.z)<1)
+
+        if (Math.Abs(a.x - positionTarget.x) < 1 && Math.Abs(a.z - positionTarget.z) < 1)
         {
             return true;
         }
@@ -329,7 +329,11 @@ public class EnemyController : MonoBehaviour
             */
             if (target != null)
             {
-                transform.LookAt(target);
+
+                //Vector3 pos = target.po
+                Vector3 v = target.position;
+                v.y = transform.position.y;
+                transform.LookAt(v);
 
             }
 
@@ -342,7 +346,7 @@ public class EnemyController : MonoBehaviour
             actionLeaveAction = StartCoroutine(CanAttack(timeToNextAction[attackCombo])); // time can do something again
 
             animator.SetInteger("InAction", 2);
-            animator.SetInteger("AttackCombo", attackCombo+1);
+            animator.SetInteger("AttackCombo", attackCombo + 1);
             animator.SetInteger("ActionInCombat", 3);
 
             characterStats.Reduction(3f);
@@ -403,15 +407,15 @@ public class EnemyController : MonoBehaviour
         transform.LookAt(tranTarget);
     }
 
-    
-    public IEnumerator CanFinishInSecond( float waitTime)
+
+    public IEnumerator CanFinishInSecond(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         canFinish = false;
         SetFinishVFX(false);
     }
 
-    
+
 
 
     protected virtual void AttackFirstTime()
@@ -453,7 +457,7 @@ public class EnemyController : MonoBehaviour
         StopAllCoroutines();
         canAction = false;
         alertEnemy = AlertEnemy.Die;
-        animator.SetInteger("InAction",10);
+        animator.SetInteger("InAction", 10);
 
     }
     public virtual void Finish2()
@@ -479,7 +483,7 @@ public class EnemyController : MonoBehaviour
         }
         AudioManager.instance.PlaySoundOfPlayer("Damage");
         animator.SetTrigger("Damage");
-        animator.SetInteger("InAction",7);
+        animator.SetInteger("InAction", 7);
         actionLeaveAction = StartCoroutine(CanAttack(timeStun)); // time can do something again
     }
 

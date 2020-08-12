@@ -75,7 +75,7 @@ public class ZombieStats : CharacterStats
             {
                 if (animator.GetBool("Block"))
                 {
-                    animator.SetTrigger("InBlock");
+                    animator.SetTrigger("BlockDamage");
 
                     audioEnemy.PlaySoundOfEnemy("Block" + Random.Range(1, 3));
 

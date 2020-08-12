@@ -63,6 +63,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 #if USE_INTERPOLATION
 	List<Point> _smoothedPoints = new List<Point>();
 #endif
+	//public Transform pr;
 	GameObject _trailObject;
 	Mesh _trailMesh;
 	Vector3 _lastPosition;
