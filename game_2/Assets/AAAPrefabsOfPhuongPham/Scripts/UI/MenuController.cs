@@ -37,10 +37,13 @@ public class MenuController : MonoBehaviour
         isGamePlaused = true;
 
     }
-    public void SetQualityLevels(int level)
+    public void SetQualityLevels(int level,Toggle toggle)
     {
-        QualitySettings.SetQualityLevel(level, true);
+        if (toggle.isOn)
+        {
+            QualitySettings.SetQualityLevel(level, true);
+
+        }
 
     }
-    
 }
