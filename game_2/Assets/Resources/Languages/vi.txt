@@ -1,0 +1,21 @@
+﻿SCENE1=Scene1 Consolas
+SCENE2=Scene2
+HELLO=Hello
+TEXT1=This is an amazing tutorial, subscribe for more good tuts.
+BACK=Back to scene1
+GOTO=Go to scene2
+
+SETTINGS=Cài Đặt
+LANGUAGE=Ngôn ngữ
+
+SOUND=Âm thanh
+MUSIC=Nhạc
+SFX=Hiệu ứng
+
+GRAPHIC=Đồ họa
+FASTEST=Nhanh Nhất
+FAST=Nhanh
+SIMPLE=Đơn giản
+GOOD=Tốt
+BEAUTIFUL=Đẹp
+FANTASTIC=Đỉnh nhất

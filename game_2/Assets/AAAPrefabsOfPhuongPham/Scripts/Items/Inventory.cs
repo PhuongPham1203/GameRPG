@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     {
         if (!item.isDefaultItem)// if is Defaul Item
         {
-            if (item.typeUnit == 2)// Check if item is Weapon
+            if (item.typeUnit == TypeUnit.Weapon)// Check if item is Weapon
             {
                 if (weapons.Count >= spaceWeapon)
                 {
@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour
 
     public void Remove(SourceItemSlot item)
     {
-        if (item.typeUnit == 2)//Weapon
+        if (item.typeUnit == TypeUnit.Weapon)//Weapon
         {
             weapons.Remove(item);
             if (onItemChangedCallback != null)

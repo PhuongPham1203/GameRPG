@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     private float timeDisableWeapon = 5f;
 
     [SerializeField]
-    private bool isPressBlock = false;
+    public bool isPressBlock = false;
 
     private Coroutine actionCanAction;
     private Coroutine actionLeaveAction;
@@ -164,8 +164,9 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log(Input.GetAxis("Horizontal"));
                     //Debug.Log(Input.GetAxis("Vertical"));
                     XZ = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                    //XZ = new Vector2(Input.GetAxis("Horizontal") < 0.15 && Input.GetAxis("Horizontal") > -0.15 ? 0 : Input.GetAxis("Horizontal"), Input.GetAxis("Vertical") < 0.15 && Input.GetAxis("Vertical") > -0.15 ? 0 : Input.GetAxis("Vertical"));
                 }
-
+                //Debug.Log(XZ);
                 animatorPlayer.SetFloat("x", XZ.x);
                 animatorPlayer.SetFloat("z", XZ.y);
 
@@ -304,7 +305,7 @@ public class PlayerController : MonoBehaviour
 
         if (animatorPlayer.GetInteger("InAction") != 3)
         {
-            animatorPlayer.SetFloat("SpeedMove", typeMove * XZ.magnitude, speedSmoothTime, Time.deltaTime);
+            animatorPlayer.SetFloat("SpeedMove", typeMove * XZ.magnitude);//, speedSmoothTime, Time.deltaTime);
 
         }
 
@@ -326,7 +327,7 @@ public class PlayerController : MonoBehaviour
 
         if (animatorPlayer.GetInteger("InAction") != 3)
         {
-            animatorPlayer.SetFloat("SpeedMove", typeMove * XZ.magnitude, speedSmoothTime, Time.deltaTime);
+            animatorPlayer.SetFloat("SpeedMove", typeMove * XZ.magnitude);//, speedSmoothTime, Time.deltaTime);
 
         }
 
@@ -727,6 +728,12 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        else
+        {
+            isPressBlock = block;
+
+        }
+        /*
         else if (block)
         {
             isPressBlock = block;
@@ -736,7 +743,7 @@ public class PlayerController : MonoBehaviour
             isPressBlock = block;
         }
 
-
+        */
 
     }
 

@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         //Debug.Log("interactable" + transform.name);
+        this.PickUp();
     }
     public virtual void PickUp()
     {
@@ -29,7 +30,7 @@ public class Interactable : MonoBehaviour
             Button btn = inventory.ButtonActionWithObj.GetComponent<Button>();
             
             btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(PickUp);
+            btn.onClick.AddListener(Interact);
 
             //inventory.ButtonActionWithObj.
         }
@@ -39,6 +40,10 @@ public class Interactable : MonoBehaviour
     {
         if (other.gameObject.layer == 24)
         {
+            Button btn = inventory.ButtonActionWithObj.GetComponent<Button>();
+
+            btn.onClick.RemoveAllListeners();
+
             inventory.ButtonActionWithObj.SetActive(false);
         }
     }

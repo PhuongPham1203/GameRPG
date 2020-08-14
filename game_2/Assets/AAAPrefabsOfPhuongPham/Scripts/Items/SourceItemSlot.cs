@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class SourceItemSlot : ScriptableObject
 {
-    public int id = 0;
     public string nameItem = "New Item";
-    [Header("Type Item Slot: 0-ItemRead \t 1-ItemUse \t 2-Weapon")]
-    [Range(0, 2)]
-    public int typeUnit = 0;
+    [Header("Type Item Slot: 0-ItemReadOnly \t 1-ItemUse \t 2-Weapon")]
+    //[Range(0, 2)]
+    public TypeUnit typeUnit = TypeUnit.ItemReadOnly;
     [TextArea]
     public string information = "New Item information";
     public Sprite icon = null;
@@ -32,3 +31,4 @@ public class SourceItemSlot : ScriptableObject
 
 public enum EquipmentSlot { Hair, Clothes, LightWeapon, HeavyWeapon, Bow }
 public enum ItemSlot { Slot1, Slot2, Slot3, Slot4 }
+public enum TypeUnit { ItemReadOnly, ItemUse, Weapon }

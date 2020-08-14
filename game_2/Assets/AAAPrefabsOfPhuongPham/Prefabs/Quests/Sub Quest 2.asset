@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: Sub Quest 2
   m_EditorClassIdentifier: 
   id: 0
-  name: New Quest
-  type: 2
+  nameQuest: New Quest sb 2
+  typeQuest: 1
   statusQuest: 0
   information: New Item information
   listRequest: []
-  numberTarget: 0
-  numberCurrent: 0
   listReward: []
-  numberReward: 0

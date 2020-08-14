@@ -37,3 +37,18 @@ public static class SaveSystem
         }
     }
 }
+
+/*
+    Windows Store Apps: Application.persistentDataPath points to : 
+        %userprofile%\AppData\Local\Packages\<productname>\LocalState.
+
+    iOS: Application.persistentDataPath points to : 
+        /var/mobile/Containers/Data/Application/<guid>/Documents.
+
+    Android: Application.persistentDataPath points to :
+        /storage/emulated/0/Android/data/<packagename>/files 
+        
+        + on most devices (some older phones might point to location on SD card if present), 
+        the path is resolved using :
+            android.content.Context.getExternalFilesDir.
+ */
