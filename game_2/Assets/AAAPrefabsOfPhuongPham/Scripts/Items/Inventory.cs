@@ -23,10 +23,10 @@ public class Inventory : MonoBehaviour
     #endregion
     [Header("List Item")]
     public List<SourceItemSlot> items;
-    public int spaceItem = 100;
+    public int spaceItem = 300;
     [Header("List Weapon")]
     public List<SourceItemSlot> weapons;
-    public int spaceWeapon = 50;
+    public int spaceWeapon = 200;
     public GameObject ButtonActionWithObj;
     public bool Add(SourceItemSlot item)
     {

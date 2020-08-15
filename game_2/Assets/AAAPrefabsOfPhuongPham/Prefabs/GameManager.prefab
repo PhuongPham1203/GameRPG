@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1058378154020808327
+--- !u!1 &7879999778613463478
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1058378154020808321}
-  - component: {fileID: 1058378154020808320}
-  - component: {fileID: 1058378154020808322}
-  - component: {fileID: 1058378154020808323}
+  - component: {fileID: 7879999778613463473}
+  - component: {fileID: 7879999778613463472}
+  - component: {fileID: 8443958868542939356}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -19,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1058378154020808321
+--- !u!4 &7879999778613463473
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1058378154020808327}
+  m_GameObject: {fileID: 7879999778613463478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,59 +32,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1058378154020808320
+--- !u!114 &7879999778613463472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1058378154020808327}
+  m_GameObject: {fileID: 7879999778613463478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f86e216562fefb4a9ee5db2e7867c9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 20ad3418c0517404ab44cc870377a030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  spaceItem: 100
-  weapons: []
-  spaceWeapon: 50
-  ButtonActionWithObj: {fileID: 0}
---- !u!114 &1058378154020808322
+  loadingScene: {fileID: 0}
+  canvasMainMenu: {fileID: 0}
+  optionMenu: {fileID: 0}
+  cameraInScene: {fileID: 0}
+  sliderBar: {fileID: 0}
+  numberPercen: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 5661b1e1384275041ad13514fe4c383a, type: 2}
+  animatorIcon: {fileID: 0}
+  listSceneIndex:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 0983c4cb48a2722428b5e1f138cccd06, type: 2}
+  listSceneIndex2:
+  - {fileID: 11400000, guid: 0983c4cb48a2722428b5e1f138cccd06, type: 2}
+  - {fileID: 11400000, guid: 890ed2b671395a349af7b2a1b6746157, type: 2}
+--- !u!114 &8443958868542939356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1058378154020808327}
+  m_GameObject: {fileID: 7879999778613463478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a73caf1b36b2d14c8bfdd639c76877b, type: 3}
+  m_Script: {fileID: 11500000, guid: 964545a4831740548bf4d6b639fbcccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultItems:
-  - {fileID: 11400000, guid: db96548884007534a8e751d0a53d23bc, type: 2}
-  - {fileID: 11400000, guid: 35223a148d9991b44b8a464460af0e82, type: 2}
-  parentEquipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &1058378154020808323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1058378154020808327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 447d878be9faf1c4fbd2578542101a8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  UITarget: {fileID: 0}
-  hpTarget: {fileID: 0}
-  postureTarget: {fileID: 0}
-  nameTarget: {fileID: 0}
-  buttonFinish: {fileID: 0}
+  listAllQuest:
+  - {fileID: 11400000, guid: 3281b383b5be2fd479070300ffeb045a, type: 2}
+  - {fileID: 11400000, guid: 219f52591bd2fa4458190bcc2723e740, type: 2}
+  - {fileID: 11400000, guid: 8506d9adfaeb9c94c8542c16100fa408, type: 2}
+  - {fileID: 11400000, guid: 6c849dd7a7af00e478744a032c592636, type: 2}
+  - {fileID: 11400000, guid: 2c3d464eaa8be2841ab2441eb8a48c2b, type: 2}
+  - {fileID: 11400000, guid: 95379ac6e0316454b926d903be7d3eae, type: 2}
+  - {fileID: 11400000, guid: 869d39671424417429432dae67e5b1d3, type: 2}

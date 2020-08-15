@@ -21,12 +21,12 @@ public class Quest : ScriptableObject
 
     [Space]
     [Header("Request")]
-    public List<DetailItem> listRequest;
+    public List<DetailItemInQuest> listRequest;
 
 
     [Space]
     [Header("Rewards")]
-    public List<DetailItem> listReward;
+    public List<DetailItemInQuest> listReward;
 
 
 }

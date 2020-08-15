@@ -22,8 +22,17 @@ public class SceneManagerOfGame : MonoBehaviour
     public Animator animatorIcon;
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+            return;
+        }
 
+        //SaveSystem.LoadGame();
     }
 
     [Header("List Scene Index")]

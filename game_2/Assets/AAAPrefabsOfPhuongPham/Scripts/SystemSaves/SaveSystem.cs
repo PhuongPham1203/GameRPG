@@ -3,6 +3,17 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem 
 {
+
+    public static void SaveGame()
+    {
+
+    }
+
+    public static void LoadGame()
+    {
+
+    }
+
     public static void SavePlayer(PlayerStats playerStats)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -32,10 +43,37 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save File not found in " + path);
+            Debug.LogError("Save File playerdata not found in " + path);
             return null;
         }
     }
+
+    public static bool SaveQuest()
+    {
+        return false;
+    }
+
+    public static QuestData LoadQuest()
+    {
+
+        string path = Application.persistentDataPath + "/questdata.p2teamdata";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            QuestData data = formatter.Deserialize(stream) as QuestData;
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Save File questdata not found in " + path);
+            return null;
+        }
+       
+    }
+
 }
 
 /*

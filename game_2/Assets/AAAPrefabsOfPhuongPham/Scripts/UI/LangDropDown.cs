@@ -28,11 +28,17 @@ public class LangDropDown : MonoBehaviour
 
 	public void ChangeLanguage(int numberLanguage)
     {
+        if (index == numberLanguage)
+        {
+			return;
+        }
+
 		index = numberLanguage;
 		PlayerPrefs.SetInt("_language_index", index);
 		PlayerPrefs.SetString("_language", myLangs[index]);
 		Debug.Log("language changed to " + myLangs[index]);
 		//apply changes
+		GameMultiLang.Instance.LoadLanguage();
 		ApplyLanguageChanges();
 	}
 
@@ -45,6 +51,7 @@ public class LangDropDown : MonoBehaviour
 		foreach (TextTranslator textTranslator in all)
         {
 			textTranslator.GetComponent<Text>().text = GameMultiLang.GetTraduction(textTranslator.key);
+			//Debug.Log(textTranslator.GetComponent<Text>().text);
 		}
 	}
 

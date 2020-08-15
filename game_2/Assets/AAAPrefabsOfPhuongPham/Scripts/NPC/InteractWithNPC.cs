@@ -14,7 +14,7 @@ public class InteractWithNPC : Interactable
         //base.Interact();
         Debug.Log("Interac with npc");
 
-        List<Quest> all = QuestManager.instance.listAllMainQuest;
+        List<Quest> all = QuestManager.instance.listAllQuest;
 
         foreach(Quest q in all)
         {

@@ -13,7 +13,7 @@ MUSIC=Nhạc
 SFX=Hiệu ứng
 
 GRAPHIC=Đồ họa
-FASTEST=Nhanh Nhất
+FASTEST=Nhanh nhất
 FAST=Nhanh
 SIMPLE=Đơn giản
 GOOD=Tốt

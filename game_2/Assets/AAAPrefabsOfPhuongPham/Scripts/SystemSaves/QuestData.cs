@@ -6,6 +6,22 @@ using UnityEngine;
 
 public class QuestData
 {
+
+    public List<Quest> listAllQuest;
+    /*
+    public List<Quest> listAllMainQuest;
+    public List<Quest> listAllSubQuest;
+    public List<Quest> listAllHidenQuest;
+    public List<Quest> currentQuest;
+    */
+
+    public QuestData()
+    {
+
+    }
+
+
+    /*
     public static void SaveDataQuest()
     {
 
@@ -20,4 +36,5 @@ public class QuestData
     {
 
     }
+    */
 }

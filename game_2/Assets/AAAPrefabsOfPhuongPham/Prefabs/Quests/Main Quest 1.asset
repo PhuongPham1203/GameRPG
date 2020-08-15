@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f153ab32fb6f14680942e5496cc92d, type: 3}
   m_Name: Main Quest 1
   m_EditorClassIdentifier: 
-  id: 0
   nameQuest: Find And Kill Zombie
   typeQuest: 0
   statusQuest: 0
@@ -20,6 +19,8 @@ MonoBehaviour:
   listRequest:
   - item: {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
     numberTarget: 5
+    numberCurrent: 0
   listReward:
   - item: {fileID: 0}
     numberTarget: 0
+    numberCurrent: 0
