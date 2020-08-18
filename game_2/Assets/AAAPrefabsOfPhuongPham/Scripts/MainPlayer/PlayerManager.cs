@@ -21,15 +21,21 @@ public class PlayerManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        QualitySettings.vSyncCount = 1;
+        //QualitySettings.vSyncCount = 2;
 
         //Application.targetFrameRate = 30;
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 45;
+
         //plStats = player.GetComponent<PlayerStats>();
     }
 
     #endregion
 
+    void Start()
+    {
+        
+        //QualitySettings.SetQualityLevel(5, true);
+    }
     /*
     public void MoveToPoint(Vector3 p)
     {

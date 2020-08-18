@@ -76,8 +76,8 @@ public class EnemyController : MonoBehaviour
 
 
     [Header("Hit Box")]
-    public Transform parentVfxEnemy;
-    public List<GameObject> hitBox;
+    //public Transform parentVfxEnemy;
+    public List<Collider> hitBox;
 
 
 
@@ -450,6 +450,17 @@ public class EnemyController : MonoBehaviour
     public virtual void HitBox(int numberHit)
     {
         Debug.Log("hit");
+    }
+    public void SetHitBoxFalse()
+    {
+        
+        foreach (Collider c in hitBox)
+        {
+            c.enabled = false;
+            
+        }
+
+        //Debug.Log("set hitbox "+e);
     }
     public virtual void Finish1()
     {

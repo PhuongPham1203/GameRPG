@@ -36,9 +36,35 @@ public class SceneManagerOfGame : MonoBehaviour
     }
 
     [Header("List Scene Index")]
+    public List<SceneIndexes> listSceneIndexNewGame;
     public List<SceneIndexes> listSceneIndex;
     public List<SceneIndexes> listSceneIndex2;
     List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
+
+    public void LoadNewGame()
+    {
+        loadingScene.gameObject.SetActive(true);
+        canvasMainMenu.gameObject.SetActive(false);
+
+        foreach (SceneIndexes scene in listSceneIndexNewGame)
+        {
+            if (scene != null)
+            {
+                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneId, LoadSceneMode.Additive));
+
+            }
+        }
+
+        foreach (AsyncOperation async in sceneLoading)
+        {
+            async.allowSceneActivation = false;
+        }
+
+        StartCoroutine(GetSceneLoadProgress());
+        //Debug.Log("point");
+        animatorIcon.SetInteger("type", 2);
+    }
+    #region TestLoading
     public void LoadGame()
     {
 
@@ -103,6 +129,9 @@ public class SceneManagerOfGame : MonoBehaviour
         animatorIcon.SetInteger("type", 2);
     }
 
+
+    #endregion
+
     float totalSceneProgess;
     public IEnumerator GetSceneLoadProgress()
     {
@@ -137,14 +166,31 @@ public class SceneManagerOfGame : MonoBehaviour
 
                 if (totalSceneProgess >= 90)
                 {
+                    for (int x = sceneLoading.Count-1; x>=0;x-- )
+                    {
+                        AsyncOperation async = sceneLoading[x];
+                        if (!async.allowSceneActivation)
+                        {
+                            async.allowSceneActivation = true;
+                            Debug.Log(listSceneIndexNewGame[x].name + " Set "+async.allowSceneActivation);
+                        }
+                    }
+
+                   
+                    //SceneManager.SetActiveScene( sceneLoading[sceneLoading.Count-1] );
+
+
+                    /*
                     foreach (AsyncOperation async in sceneLoading)//Activate the Scene
                     {
+
                         if (!async.allowSceneActivation)
                         {
                             async.allowSceneActivation = true;
 
                         }
                     }
+                    */
                 }
 
 
@@ -157,11 +203,17 @@ public class SceneManagerOfGame : MonoBehaviour
 
         Debug.Log("Done");
 
+        Scene s = SceneManager.GetSceneByBuildIndex(listSceneIndexNewGame[listSceneIndexNewGame.Count - 1].sceneId);
+        if (s != null)
+        {
+            Debug.Log(s.name);
+            SceneManager.SetActiveScene(s);
 
+        }
 
         animatorIcon.SetInteger("type", 0);
         cameraInScene.gameObject.SetActive(false);
-        loadingScene.gameObject.SetActive(false);   
+        loadingScene.gameObject.SetActive(false);
 
     }
     public void SetVolumeTheme(Slider number)

@@ -8,7 +8,10 @@ public class MenuController : MonoBehaviour
     public static bool isGamePlaused = false;
     public GameObject pauseMenu;
     // Start is called before the first frame update
-
+    private void Start()
+    {
+        //SetQualityLevels(5);
+    }
     public void OpenMenu()
     {
         //Debug.Log("press");

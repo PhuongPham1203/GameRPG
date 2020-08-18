@@ -244,7 +244,7 @@ public class ZombieController : EnemyController
 
     protected override void AttackThirdTime()
     {
-        base.AttackThirdTime();
+        //base.AttackThirdTime();
 
         if (distance < distanceCanAttack)
         {
@@ -278,6 +278,7 @@ public class ZombieController : EnemyController
 
     public override void HitBox(int numberHit)
     {
+        
         //base.HitBox(numberHit);
 
         //Quaternion rot ;
@@ -287,35 +288,40 @@ public class ZombieController : EnemyController
             case 11:
                 // code
                 audioEnemy.PlaySoundOfEnemy("Attack1_1");
-                Instantiate(hitBox[0], parentVfxEnemy);
+                //Instantiate(hitBox[0], parentVfxEnemy);
 
+                hitBox[1].enabled = true;
+                //SetHitBox();
                 break;
             case 12:
                 // code
                 audioEnemy.PlaySoundOfEnemy("Attack1_2");
-                Instantiate(hitBox[1], parentVfxEnemy);
+                //Instantiate(hitBox[1], parentVfxEnemy);
+                hitBox[1].enabled = true;
 
                 break;
             case 2:
                 // code
-                Instantiate(hitBox[2], parentVfxEnemy);
+                //Instantiate(hitBox[2], parentVfxEnemy);
                 audioEnemy.PlaySoundOfEnemy("Attack2");
+                hitBox[0].enabled = true;
 
                 break;
             case 3:
                 // code
 
-                Instantiate(hitBox[2], parentVfxEnemy);
+                //Instantiate(hitBox[2], parentVfxEnemy);
                 audioEnemy.PlaySoundOfEnemy("Attack3");
+                hitBox[1].enabled = true;
+
                 break;
-            case 4:
-                // code
-                break;
+
 
         }
 
 
     }
 
+    
 
 }

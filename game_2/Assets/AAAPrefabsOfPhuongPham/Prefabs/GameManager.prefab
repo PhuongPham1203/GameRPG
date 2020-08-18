@@ -52,6 +52,9 @@ MonoBehaviour:
   numberPercen: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 5661b1e1384275041ad13514fe4c383a, type: 2}
   animatorIcon: {fileID: 0}
+  listSceneIndexNewGame:
+  - {fileID: 11400000, guid: 0983c4cb48a2722428b5e1f138cccd06, type: 2}
+  - {fileID: 11400000, guid: 890ed2b671395a349af7b2a1b6746157, type: 2}
   listSceneIndex:
   - {fileID: 0}
   - {fileID: 11400000, guid: 0983c4cb48a2722428b5e1f138cccd06, type: 2}

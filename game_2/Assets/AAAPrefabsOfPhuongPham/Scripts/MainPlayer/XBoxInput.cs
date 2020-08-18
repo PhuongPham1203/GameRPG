@@ -5,6 +5,7 @@ using Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using System.Net;
 
 public class XBoxInput : MonoBehaviour
 {
@@ -29,8 +30,12 @@ public class XBoxInput : MonoBehaviour
     {
         if (isNotPressScreen)
         {
+
+
             LookCamera3.m_XAxis.m_InputAxisValue = Input.GetAxis("Mouse X");// < 0.15 && Input.GetAxis("Mouse X") > -0.15 ? 0 : Input.GetAxis("Mouse X");
             LookCamera3.m_YAxis.m_InputAxisValue = Input.GetAxis("Mouse Y");// < 0.15 && Input.GetAxis("Mouse Y") > -0.15 ? 0 : Input.GetAxis("Mouse Y");
+
+
         }
 
 

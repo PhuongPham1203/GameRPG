@@ -117,7 +117,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        QualitySettings.vSyncCount = 1;
 
+        Application.targetFrameRate = 60;
 
         //characterController = GetComponent<CharacterController>();
         //animatorPlayer = GetComponent<Animator>();
@@ -160,10 +162,17 @@ public class PlayerController : MonoBehaviour
                 }
                 else //if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
                 {
+                    if(  Mathf.Abs(Input.GetAxis("Horizontal")) <0.15 && Mathf.Abs(Input.GetAxis("Vertical"))<0.15)
+                    {
+                        XZ = Vector2.zero;
+                    }
+                    else
+                    {
+                        XZ = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
+                    }
                     //Debug.Log(Input.GetAxis("Horizontal"));
                     //Debug.Log(Input.GetAxis("Vertical"));
-                    XZ = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                     //XZ = new Vector2(Input.GetAxis("Horizontal") < 0.15 && Input.GetAxis("Horizontal") > -0.15 ? 0 : Input.GetAxis("Horizontal"), Input.GetAxis("Vertical") < 0.15 && Input.GetAxis("Vertical") > -0.15 ? 0 : Input.GetAxis("Vertical"));
                 }
                 //Debug.Log(XZ);

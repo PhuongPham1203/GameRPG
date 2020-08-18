@@ -48,7 +48,7 @@ MonoBehaviour:
   _emit: 1
   _emitTime: 0
   _material: {fileID: 2100000, guid: 5439400a1d36c3d43a034dddc467c65a, type: 2}
-  _lifeTime: 1.5
+  _lifeTime: 1
   _colors: []
   _sizes: []
   _minVertexDistance: 0.1

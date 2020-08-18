@@ -9,7 +9,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 
 public class MeleeWeaponTrail : MonoBehaviour
 {
@@ -80,6 +80,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 	{
 		_lastPosition = transform.position;
 		_trailObject = new GameObject("Trail");
+		//SceneManager.MoveGameObjectToScene(_trailObject, SceneManager.GetActiveScene());
 		_trailObject.transform.parent = null;
 		_trailObject.transform.position = Vector3.zero;
 		_trailObject.transform.rotation = Quaternion.identity;
