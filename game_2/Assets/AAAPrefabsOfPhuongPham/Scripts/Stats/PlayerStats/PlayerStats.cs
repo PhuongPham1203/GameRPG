@@ -43,11 +43,11 @@ public class PlayerStats : CharacterStats
 
     private void Awake()
     {
-        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 
     }
     void Start()
     {
+        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 
         /*
         Vector3 a = transform.position;
@@ -63,40 +63,16 @@ public class PlayerStats : CharacterStats
         playerController = GetComponent<PlayerController>();
         //audioManager = AudioManager.instance;
 
+        //ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
+
+    }
+
+    public void ResetAllCurrentAndMaxValue()
+    {
         ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
-
+        Debug.Log("maxHP:"+maxHP+ " currentHP:"+ currentHP+ " currentAttackDame:"+ currentAttackDame+ " maxPosture:" + maxPosture);
+        Debug.Log("Light Attack Dame:"+attackLightDamage+" Heavy Attack Dame"+ attackHeavyDamage);
     }
-
-    /*
-    protected override void SetAllBaseValue()
-    {
-        
-        //hp.SetBaseValue(startHP);
-        //attackDame.SetBaseValue(startAttackDame);
-        //posture.SetBaseValue(startPosture);
-        //defend.SetBaseValue(startDefend);
-        
-        base.SetAllBaseValue();
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
-    }
-    */
-
-    /*
-    protected override void SetAllCurrentAndMaxValue(int maxHPValue, int currentAttackDameValue, int maxPostureValue, int currentDefendValue)
-    {
-
-        maxHP = maxHPValue;
-        currentHP = maxHP;
-
-        currentAttackDame = currentDefendValue;
-
-        maxPosture = maxPostureValue;
-        currentPosture = 0;//maxPosture;
-
-        currentDefend = currentDefendValue;
-    }
-    */
-
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
@@ -205,18 +181,21 @@ public class PlayerStats : CharacterStats
     {
         if (weapon == 1)
         {
+            Debug.Log("Light "+ attackLightDamage);
             return base.GetAttackDame(weapon) + attackLightDamage;
 
         }
         else
         {
+            Debug.Log("Heavy " + attackHeavyDamage);
+
             return base.GetAttackDame(weapon) + attackHeavyDamage;
         }
     }
 
     public override void TakeDamege(int damage)
     {
-        //Debug.Log(damage);
+        Debug.Log("Player take: "+damage);
 
         if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") !=10)
         {

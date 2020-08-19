@@ -20,10 +20,18 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     void Awake()
     {
+        if (instance != null)
+        {
+            //Destroy(this.gameObject);
+            Debug.LogWarning("More than one instance of PlayerManager found!!!");
+
+            return;
+        }
         instance = this;
+        //player = GameObject.FindGameObjectWithTag("Player");
         //QualitySettings.vSyncCount = 2;
 
-        //Application.targetFrameRate = 30;
+        //Application.targetFrameRate = 30; 
         //Application.targetFrameRate = 45;
 
         //plStats = player.GetComponent<PlayerStats>();

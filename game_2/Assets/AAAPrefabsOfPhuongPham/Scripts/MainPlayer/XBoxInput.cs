@@ -81,7 +81,7 @@ public class XBoxInput : MonoBehaviour
             {
                 playerController.SwingPlayer();
 
-            }
+            }   
         }
 
         if (isDpadNotPress)

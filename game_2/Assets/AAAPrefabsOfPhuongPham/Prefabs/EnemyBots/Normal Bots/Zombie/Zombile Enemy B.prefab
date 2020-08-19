@@ -233,28 +233,28 @@ MonoBehaviour:
     loop: 0
     volume: 0.8
     pitch: 1
-    is3dSound: 1
+    is3dSound: 0.2
     source: {fileID: 0}
   - name: Attack1_2
     clip: {fileID: 8300000, guid: e3d794b66ee4b1940baa35467c149228, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
-    is3dSound: 1
+    is3dSound: 0.2
     source: {fileID: 0}
   - name: Attack2
     clip: {fileID: 8300000, guid: 0d15f373cf404e3448e177a116baaba5, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
-    is3dSound: 1
+    is3dSound: 0.2
     source: {fileID: 0}
   - name: Attack3
     clip: {fileID: 8300000, guid: 9f09722598d502b41b4760d9b714d146, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
-    is3dSound: 1
+    is3dSound: 0.2
     source: {fileID: 0}
   - name: Block1
     clip: {fileID: 8300000, guid: 7ee46fcbb73d5304cbbd24e4a071393f, type: 3}

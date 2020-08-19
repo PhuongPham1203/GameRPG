@@ -20,15 +20,15 @@ public class CharacterStats : MonoBehaviour
 
     // !Max and current Stat
     //[Header("Max and Current Stat")]
-    public float maxHP { get; protected set; }
-    public float currentHP { get; protected set; }
-    public int currentAttackDame { get; protected set; }
+    public float maxHP { get;  set; }
+    public float currentHP { get;  set; }
+    public int currentAttackDame { get;  set; }
 
-    public float maxPosture { get; protected set; }
-    public float currentPosture { get; protected set; }
+    public float maxPosture { get;  set; }
+    public float currentPosture { get;  set; }
     //public int currentDefend { get; protected set; }
 
-    public Vector3 teleportNearest { get; protected set; }
+    public Vector3 teleportNearest { get;  set; }
 
 
     [Header("Reduction Posture")]
@@ -56,16 +56,11 @@ public class CharacterStats : MonoBehaviour
 
 
     protected Animator animator;
-    protected EnemyController enemyController;
     
 
     public int d = 100;
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-        enemyController = GetComponent<EnemyController>();
-    }
+
 
 
     // Update is called once per frame
@@ -98,6 +93,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual int GetAttackDame(int weapon)
     {
+        Debug.Log("attack dame "+currentAttackDame);
         return currentAttackDame;
     }
 
@@ -204,18 +200,7 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    /*
-    protected virtual void SetAllBaseValue()
-    {
-        hp.SetBaseValue(startHP);
-        attackDame.SetBaseValue(startAttackDame);
-        posture.SetBaseValue(startPosture);
-        defend.SetBaseValue(startDefend);
-
-        //sceneIndex = SceneManager.GetActiveScene().buildIndex;
-    }
-    */
-    protected virtual void ResetAllCurrentAndMaxValue(int maxHPValue, int currentAttackDameValue, int maxPostureValue/*, int currentDefendValue*/)
+    protected void ResetAllCurrentAndMaxValue(int maxHPValue, int currentAttackDameValue, int maxPostureValue/*, int currentDefendValue*/)
     {
 
         maxHP = maxHPValue;

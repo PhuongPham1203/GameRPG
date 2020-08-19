@@ -18,6 +18,7 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerdata.p2teamdata";
+        Debug.Log("Save Player in : "+path);
         FileStream stream = new FileStream(path , FileMode.Create);
 
         PlayerData data = new PlayerData(playerStats);
@@ -30,7 +31,7 @@ public static class SaveSystem
     public static PlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/playerdata.p2teamdata";
-        //Debug.Log(path);
+        Debug.Log("Load Player in : "+path);
 
         if (File.Exists(path))
         {
@@ -43,7 +44,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save File playerdata not found in " + path);
+            Debug.Log("Save File playerdata not found in " + path);
             return null;
         }
     }
@@ -57,6 +58,8 @@ public static class SaveSystem
     {
 
         string path = Application.persistentDataPath + "/questdata.p2teamdata";
+        Debug.Log("Load Quest in : " + path);
+
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

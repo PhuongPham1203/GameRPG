@@ -6,8 +6,16 @@ public class EquipmentManager : MonoBehaviour
 {
     #region Singleton
     public static EquipmentManager instance;
+    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
+    public OnEquipmentChanged onEquipmentChanged;
     private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of EquipmentManager found!!!");
+            return;
+
+        }
         instance = this;
     }
     #endregion
@@ -18,8 +26,7 @@ public class EquipmentManager : MonoBehaviour
     //SkinnedMeshRenderer[] currentMeshes;
     public GameObject[] parentEquipment = new GameObject[5];
     
-    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
-    public OnEquipmentChanged onEquipmentChanged;
+    
 
     Inventory inventory;
     private void Start()
@@ -28,7 +35,9 @@ public class EquipmentManager : MonoBehaviour
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
         //currentMeshes = new SkinnedMeshRenderer[numSlots];
-        EquipAllDefaultItems();
+        //EquipAllDefaultItems();
+
+        Invoke("EquipAllDefaultItems",1f);
 
     }
     
@@ -72,7 +81,7 @@ public class EquipmentManager : MonoBehaviour
         
 
         /*
-        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
+        SkinnedMeshRenderer newMesh = Inst  antiate<SkinnedMeshRenderer>(newItem.mesh);
         
         newMesh.transform.parent = targetMesh.transform;
         newMesh.bones = targetMesh.bones;
@@ -128,6 +137,13 @@ public class EquipmentManager : MonoBehaviour
         {
             Equip(item);
         }
+
+        PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();
+
+        playerStats.ResetAllCurrentAndMaxValue();
+
+        //ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
+
     }
 
     void EquipDefaultItems(int positon) // ! 0=Hair 1=Clothes 2=LightWeapon 3=HeavyWeapon 4=Bow

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ZombieStats : CharacterStats
 {
     AudioEnemy audioEnemy;
+    protected EnemyController enemyController;
 
     private void Start()
     {
@@ -47,6 +48,8 @@ public class ZombieStats : CharacterStats
     */
     public override void TakeDamege(int damage){
         //base.TakeDamege(damage);
+        Debug.Log("Zombie"+transform.name+" take: " + damage);
+
         if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
         {
             if(enemyController.alertEnemy == AlertEnemy.Idle)

@@ -38,7 +38,7 @@ public class ControllerWeapon : MonoBehaviour
                     if(i == c)
                     {
                         timeWaitPr = timeWait;
-                        other.gameObject.GetComponent<PlayerStats>().TakeDamege(characterStats.GetAttackDame(69));
+                        other.gameObject.GetComponent<CharacterStats>().TakeDamege(characterStats.GetAttackDame(69));
                         break;
                     }
                 }
