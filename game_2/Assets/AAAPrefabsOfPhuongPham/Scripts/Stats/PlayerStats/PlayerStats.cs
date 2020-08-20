@@ -28,10 +28,11 @@ public class PlayerStats : CharacterStats
     public int sceneIndex { get; protected set; }
 
     [Header("UI controll")]
+    public GameObject uiSaveLoadTeleport;
     public GameObject uiTeleport;
     public GameObject uiLoading;
     public Vector3 potisionCurrenNearestNow;
-    private Coroutine loadingMoveToPosition;
+    //private Coroutine loadingMoveToPosition;
 
 
     Vector3 pNow;
@@ -128,41 +129,7 @@ public class PlayerStats : CharacterStats
 
 
 
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this);
-    }
-
-    public void LoadPlayer()
-    {
-        PlayerData playerData = SaveSystem.LoadPlayer();
-
-        //SetAllBaseValue();
-        //SetAllCurrentAndMaxValue(hp.GetValue(), attackDame.GetValue(), posture.GetValue(), defend.GetValue());
-
-        // // SetAllCurrentAndMaxValue(playerData.baseMaxHP, playerData.baseCurrentAttackDame, playerData.baseMaxPoseture, playerData.baseCurrentDefend);
-
-        money = playerData.baseMoney;
-        realMoney = playerData.baseRealMoney;
-        soul = playerData.baseSoul;
-
-        level = playerData.baseLevel;
-        expNow = playerData.baseExpNow;
-        expToLevelUp = playerData.baseExpToLevelUp;
-
-
-        teleportNearest = new Vector3(playerData.positon[0], playerData.positon[1], playerData.positon[2]);
-
-        loadingMoveToPosition = StartCoroutine(Loading(1.5f, teleportNearest));//Loading After 1.5s
-
-        //Debug.Log(gameObject.transform.position);
-        pNow = transform.position;
-        needchange = true;
-        sceneIndex = playerData.sceneIndexCurrent;
-
-
-    }
-
+    /*
     private void FixedUpdate()
     {
 
@@ -176,7 +143,7 @@ public class PlayerStats : CharacterStats
         }
 
     }
-
+    */
     public override int GetAttackDame(int weapon)
     {
         if (weapon == 1)
@@ -312,14 +279,54 @@ public class PlayerStats : CharacterStats
 
     }
 
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData playerData = SaveSystem.LoadPlayer();
+
+        //SetAllBaseValue();
+        //SetAllCurrentAndMaxValue(hp.GetValue(), attackDame.GetValue(), posture.GetValue(), defend.GetValue());
+
+        // // SetAllCurrentAndMaxValue(playerData.baseMaxHP, playerData.baseCurrentAttackDame, playerData.baseMaxPoseture, playerData.baseCurrentDefend);
+
+        money = playerData.baseMoney;
+        realMoney = playerData.baseRealMoney;
+        soul = playerData.baseSoul;
+
+        level = playerData.baseLevel;
+        expNow = playerData.baseExpNow;
+        expToLevelUp = playerData.baseExpToLevelUp;
+
+
+        teleportNearest = new Vector3(playerData.positon[0], playerData.positon[1], playerData.positon[2]);
+
+        //loadingMoveToPosition = StartCoroutine(Loading(1.5f, teleportNearest));//Loading After 1.5s
+
+        //Debug.Log(gameObject.transform.position);
+        //pNow = transform.position;
+        //needchange = true;
+
+        sceneIndex = playerData.sceneIndexCurrent;
+
+
+    }
     public void OpenUI()
     {
 
-        uiTeleport.gameObject.SetActive(true);
+        uiSaveLoadTeleport.gameObject.SetActive(true);
     }
     public void Cance()
     {
-        uiTeleport.gameObject.SetActive(false);
+        uiSaveLoadTeleport.gameObject.SetActive(false);
+    }
+
+    public void OpenUITeleport()
+    {
+        uiTeleport.gameObject.SetActive(!uiTeleport.gameObject.activeSelf);
     }
 
     /*

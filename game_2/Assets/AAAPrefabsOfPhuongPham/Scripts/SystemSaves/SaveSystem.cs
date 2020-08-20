@@ -71,15 +71,28 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save File questdata not found in " + path);
+            Debug.LogError("Save File questdata not found in " + path
+                +"But dont mind because we will create one");
             return null;
         }
        
     }
 
+    public static OptionData LoadOptionData()
+    {
+
+        return null;
+    }
+    public static bool SaveOptionData()
+    {
+        return false;
+    }
+
 }
 
 /*
+        C:/Users/pham/AppData/LocalLow/P2TeamStudio/DarkUnity
+ *   
     Windows Store Apps: Application.persistentDataPath points to : 
         %userprofile%\AppData\Local\Packages\<productname>\LocalState.
 

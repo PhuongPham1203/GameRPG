@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class TeleportController : MonoBehaviour
 {
-    public Transform pos;
+    public TeleInformation teleInformation;
 
+    [Header("Position for Player Stay")]
+    public Transform pos;
 
     private void OnTriggerEnter(Collider other)
     {

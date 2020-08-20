@@ -9,7 +9,6 @@ using UnityEngine.Audio;
 public class SceneManagerOfGame : MonoBehaviour
 {
 
-    public static SceneManagerOfGame instance;
     public GameObject loadingScene;
     public GameObject canvasMainMenu;
     public GameObject optionMenu;
@@ -20,6 +19,9 @@ public class SceneManagerOfGame : MonoBehaviour
     public AudioMixer audioMixer;
 
     public Animator animatorIcon;
+    #region Singleton
+    public static SceneManagerOfGame instance;
+
     private void Awake()
     {
         if (instance == null)
@@ -34,6 +36,7 @@ public class SceneManagerOfGame : MonoBehaviour
 
         //SaveSystem.LoadGame();
     }
+    #endregion
 
     [Header("List Scene Index")]
     public List<SceneIndexes> listSceneIndexNewGame;

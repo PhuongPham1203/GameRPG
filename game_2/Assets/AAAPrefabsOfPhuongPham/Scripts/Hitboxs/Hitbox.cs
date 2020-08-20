@@ -10,7 +10,7 @@ public class Hitbox : MonoBehaviour
     public CharacterStats characterStats;
     private void Awake()
     {
-        characterStats = PlayerManager.instance.player.GetComponent<CharacterStats>();
+        //characterStats = PlayerManager.instance.player.GetComponent<CharacterStats>();
 
         Destroy(gameObject, timeDetroy);
     }

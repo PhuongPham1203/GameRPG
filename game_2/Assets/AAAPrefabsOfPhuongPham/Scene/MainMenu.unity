@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &72969867
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7102,7 +7102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1273628624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13058,6 +13058,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3148049649991948895, guid: 3c96a6c8ee8687348aa955bf5dbd1fa5,
+        type: 3}
+      propertyPath: listTeleportInScene.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148049649991948895, guid: 3c96a6c8ee8687348aa955bf5dbd1fa5,
+        type: 3}
+      propertyPath: listTeleportInScene.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7879999778613463472, guid: 3c96a6c8ee8687348aa955bf5dbd1fa5,
         type: 3}
       propertyPath: loadingScene

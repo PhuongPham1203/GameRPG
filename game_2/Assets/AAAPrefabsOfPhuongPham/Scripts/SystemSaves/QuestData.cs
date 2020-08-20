@@ -20,6 +20,10 @@ public class QuestData
 
     }
 
+    public QuestData(List<Quest> listQ)
+    {
+        this.listAllQuest = listQ;
+    }
 
     /*
     public static void SaveDataQuest()

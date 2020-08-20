@@ -7,7 +7,13 @@ public class HitBoxPlayer : Hitbox
     [Header("Weapon : 1-Light 2-Heavy")]
     [Range(1,2)]
     public int weapon = 1;
-    
+
+    private void Awake()
+    {
+        characterStats = PlayerManager.instance.player.GetComponent<CharacterStats>();
+
+        Destroy(gameObject, timeDetroy);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 23)

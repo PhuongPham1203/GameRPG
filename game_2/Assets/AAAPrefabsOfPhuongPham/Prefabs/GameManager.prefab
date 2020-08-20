@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7879999778613463473}
   - component: {fileID: 7879999778613463472}
   - component: {fileID: 8443958868542939356}
+  - component: {fileID: 7647108372745652825}
+  - component: {fileID: 3148049649991948895}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -81,3 +83,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c3d464eaa8be2841ab2441eb8a48c2b, type: 2}
   - {fileID: 11400000, guid: 95379ac6e0316454b926d903be7d3eae, type: 2}
   - {fileID: 11400000, guid: 869d39671424417429432dae67e5b1d3, type: 2}
+--- !u!114 &7647108372745652825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7879999778613463478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee6b5280088b5e4dbcd90e20b0fb5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3148049649991948895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7879999778613463478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c481e819c974c4eaeddf272d014a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listTeleportAllScene:
+  - {fileID: 11400000, guid: 41fa4d06f7b73cb48aae9d114367be5b, type: 2}
+  - {fileID: 11400000, guid: 6222c9e9035ce4d4e814c9142d40f6be, type: 2}

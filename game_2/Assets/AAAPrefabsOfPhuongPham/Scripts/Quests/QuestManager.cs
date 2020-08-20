@@ -22,6 +22,7 @@ public class QuestManager : MonoBehaviour
 
         if (allQuestData == null)
         {
+            Debug.Log("Load Defaul QuestData");
             LoadDefaulQuest();
         }
         else

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247fb5cbb9999cf4d89aa49b52c014ce, type: 3}
   m_Name: SCENE_CLOUDFOREST
   m_EditorClassIdentifier: 
-  sceneId: 0
+  sceneId: 6
   nameScene: SCENE_CLOUDFOREST
   information: New SCENE_CLOUDFOREST information
