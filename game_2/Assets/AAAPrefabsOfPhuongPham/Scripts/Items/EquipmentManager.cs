@@ -12,7 +12,10 @@ public class EquipmentManager : MonoBehaviour
     {
         if (instance != null)
         {
+
             Debug.LogWarning("More than one instance of EquipmentManager found!!!");
+            Destroy(this);
+
             return;
 
         }
@@ -37,7 +40,7 @@ public class EquipmentManager : MonoBehaviour
         //currentMeshes = new SkinnedMeshRenderer[numSlots];
         //EquipAllDefaultItems();
 
-        Invoke("EquipAllDefaultItems",1f);
+        //Invoke("EquipAllDefaultItems",1f);
 
     }
     
@@ -131,7 +134,7 @@ public class EquipmentManager : MonoBehaviour
         }
         */
     }
-    void EquipAllDefaultItems()
+    public void EquipAllDefaultItems()
     {
         foreach (Equipment item in defaultItems)
         {

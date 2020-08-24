@@ -7,10 +7,13 @@ public class MenuController : MonoBehaviour
 {
     public static bool isGamePlaused = false;
     public GameObject pauseMenu;
+    public GameObject teleportUI;
+
     // Start is called before the first frame update
     private void Start()
     {
         //SetQualityLevels(5);
+        TeleportManager.instance.teleportUI = teleportUI;
     }
     public void OpenMenu()
     {
@@ -50,6 +53,16 @@ public class MenuController : MonoBehaviour
         QualitySettings.SetQualityLevel(level, true);
 
         Debug.Log(level);
+
+    }
+
+    public void SavePointGame()
+    {
+        TeleportManager.instance.SavePointTeleport();
+    }
+
+    public void ResetPointGame()
+    {
 
     }
 }

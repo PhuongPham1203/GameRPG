@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
+
 public static class SaveSystem 
 {
 
@@ -49,6 +51,45 @@ public static class SaveSystem
         }
     }
 
+    public static void SaveGameData(List<TeleInformation> listTeleportAllScene)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/gamedata.p2teamdata";
+        Debug.Log("Save Gamedata in : " + path);
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        GameData data = new GameData(listTeleportAllScene);
+
+        formatter.Serialize(stream, data);
+
+        stream.Close();
+
+        
+    }
+
+    public static GameData LoadGameData()
+    {
+        string path = Application.persistentDataPath + "/gamedata.p2teamdata";
+        Debug.Log("Load GameData in : " + path);
+
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            GameData data = formatter.Deserialize(stream) as GameData;
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Save File gamedata.p2teamdata not found in " + path
+                + "But dont mind because we will create one");
+            return null;
+        }
+        return null;
+    }
+    /*
     public static bool SaveQuest()
     {
         return false;
@@ -77,6 +118,7 @@ public static class SaveSystem
         }
        
     }
+    */
 
     public static OptionData LoadOptionData()
     {
@@ -87,6 +129,8 @@ public static class SaveSystem
     {
         return false;
     }
+
+    
 
 }
 

@@ -44,6 +44,7 @@ public class SceneManagerOfGame : MonoBehaviour
     public List<SceneIndexes> listSceneIndex2;
     List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
 
+    
     public void LoadNewGame()
     {
         loadingScene.gameObject.SetActive(true);
@@ -53,7 +54,7 @@ public class SceneManagerOfGame : MonoBehaviour
         {
             if (scene != null)
             {
-                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneId, LoadSceneMode.Additive));
+                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneBuiltId, LoadSceneMode.Additive));
 
             }
         }
@@ -78,7 +79,7 @@ public class SceneManagerOfGame : MonoBehaviour
         {
             if (scene != null)
             {
-                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneId, LoadSceneMode.Additive));
+                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneBuiltId, LoadSceneMode.Additive));
 
             }
         }
@@ -110,7 +111,7 @@ public class SceneManagerOfGame : MonoBehaviour
         {
             if (scene != null)
             {
-                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneId, LoadSceneMode.Additive));
+                sceneLoading.Add(SceneManager.LoadSceneAsync(scene.sceneBuiltId, LoadSceneMode.Additive));
 
             }
         }
@@ -210,7 +211,7 @@ public class SceneManagerOfGame : MonoBehaviour
         }
         */
 
-        Scene s = SceneManager.GetSceneByBuildIndex(listSceneIndexNewGame[listSceneIndexNewGame.Count-1].sceneId);
+        Scene s = SceneManager.GetSceneByBuildIndex(listSceneIndexNewGame[listSceneIndexNewGame.Count-1].sceneBuiltId);
         if (s != null)
         {
             Debug.Log(s.name);
@@ -237,5 +238,8 @@ public class SceneManagerOfGame : MonoBehaviour
     {
         optionMenu.gameObject.SetActive(open);
     }
+
+    
+
 
 }

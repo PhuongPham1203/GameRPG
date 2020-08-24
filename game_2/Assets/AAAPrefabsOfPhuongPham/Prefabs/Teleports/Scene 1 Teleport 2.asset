@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf8d9f4d887c554f8b6ac6e5c7f632d, type: 3}
   m_Name: Scene 1 Teleport 2
   m_EditorClassIdentifier: 
+  positionID: 1
+  sceneID: 0
   nameTeleport: two tree
-  sceneIndexes: {fileID: 11400000, guid: 890ed2b671395a349af7b2a1b6746157, type: 2}
-  statusTeleport: 0
+  defaulTele: 0
+  sceneBuiltIndexes: {fileID: 11400000, guid: 890ed2b671395a349af7b2a1b6746157, type: 2}
+  statusTeleport: 1

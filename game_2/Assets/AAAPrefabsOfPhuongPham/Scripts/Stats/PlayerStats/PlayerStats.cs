@@ -65,7 +65,7 @@ public class PlayerStats : CharacterStats
         //audioManager = AudioManager.instance;
 
         //ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
-
+        EquipmentManager.instance.Invoke("EquipAllDefaultItems",1f);
     }
 
     public void ResetAllCurrentAndMaxValue()
@@ -220,7 +220,7 @@ public class PlayerStats : CharacterStats
                 //Debug.Log("c"+currentPosture);
 
                 currentHP -= damage;
-
+                currentHP = Mathf.Clamp(currentHP,0,maxHP);
                 playerController.Damage(0.5f);
                 AudioManager.instance.PlaySoundOfPlayer("Damage");
                 vfxBlood.Play();

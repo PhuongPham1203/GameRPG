@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class HitBoxEnemy : Hitbox
 {
-
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        if(other.gameObject.layer == 24)
+        
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.layer == 24 || other.gameObject.layer == 23)
         {
             //Debug.Log(characterStats.transform.name + " hitbox "+ characterStats.GetAttackDame(1));
             //other.gameObject.GetComponent<PlayerStats>().TakeDamege(characterStats.GetAttackDame(1));
-            other.gameObject.GetComponent<PlayerStats>().TakeDamege(  transform.root.GetComponent<CharacterStats>().GetAttackDame(69)  );
+            other.gameObject.GetComponent<CharacterStats>().TakeDamege(  99999 );
             
         }
     }

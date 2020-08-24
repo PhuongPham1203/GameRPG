@@ -23,6 +23,19 @@ public class TeleportController : MonoBehaviour
 
             btn.onClick.RemoveAllListeners();
             btn.onClick.AddListener(playerStats.OpenUI);
+
+            if (teleInformation.statusTeleport == StatusTeleport.Disable)
+            {
+                //GameObject g = GameObject.FindGameObjectWithTag("MasterTabsTeleport");
+                //Debug.Log(g.name);
+
+                if (TeleportManager.instance.teleportUI.TryGetComponent(out TeleportTabsUI teleportTabsUI))
+                {
+                    teleportTabsUI.needUpdate = true;
+                    teleInformation.statusTeleport = StatusTeleport.Activate;
+                }
+            }
+            
         }
     }
 

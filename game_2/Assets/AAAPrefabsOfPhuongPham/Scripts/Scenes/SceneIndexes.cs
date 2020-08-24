@@ -14,11 +14,14 @@ public class SceneIndexes : ScriptableObject
     SCENE_CLOUDFOREST = 4,
     SCENE_HELL = 5
     */
-    public int sceneId;
+    public int sceneBuiltId;
     //public Scene scene;
     public string nameScene;
     [TextArea]
     public string information = "New Item information";
 
-
+    public int GetSceneBuiltID()
+    {
+        return sceneBuiltId;
+    }
 }

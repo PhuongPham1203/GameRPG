@@ -171,9 +171,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8197156419108945494}
-  - component: {fileID: 8197156419108945493}
   - component: {fileID: 770647652}
   - component: {fileID: 770647651}
+  - component: {fileID: 8197156419108945493}
+  - component: {fileID: 6752168321500428199}
   m_Layer: 5
   m_Name: List Positon and Image (1)
   m_TagString: Untagged
@@ -202,25 +203,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0014648438, y: -0.20581055}
   m_SizeDelta: {x: -0.3540039, y: 0.41149902}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8197156419108945493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8197156419108945495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc26831cbb6b61f44b6830509824bfb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allTabs:
-  - {fileID: 2643589904043643354}
-  - {fileID: 2643589903894158203}
-  - {fileID: 2643589904041413998}
-  - {fileID: 2643589903177748771}
-  - {fileID: 2643589902314094913}
-  - {fileID: 2643589904024955479}
 --- !u!222 &770647652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -258,6 +240,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8197156419108945493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197156419108945495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc26831cbb6b61f44b6830509824bfb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allTabs:
+  - {fileID: 2643589904043643354}
+  - {fileID: 2643589903894158203}
+  - {fileID: 2643589904041413998}
+  - {fileID: 2643589903177748771}
+  - {fileID: 2643589902314094913}
+  - {fileID: 2643589904024955479}
+--- !u!114 &6752168321500428199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197156419108945495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc5f90986e42db4aa9897f5ced79bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allHeaderListMap: {fileID: 8197156419657798964}
+  allListMap: []
+  needUpdate: 1
+  isForScene: 0
 --- !u!1 &8197156419477149855
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,8 +356,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8197156419654848143}
   m_HandleRect: {fileID: 8197156419654848128}
   m_Direction: 2
-  m_Value: 0.99999964
-  m_Size: 0.79738694
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -471,7 +488,7 @@ GameObject:
   - component: {fileID: 8197156419657798961}
   - component: {fileID: 8197156419657798962}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Header Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 6155802041587414946, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Name
-      value: List Image target teleport (5)
+      value: 4 List Image target teleport (5)
       objectReference: {fileID: 0}
     - target: {fileID: 6155802041587414947, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -919,12 +936,12 @@ PrefabInstance:
     - target: {fileID: 6155802042637439353, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Size
-      value: 0.3736764
+      value: 0.55420256
       objectReference: {fileID: 0}
     - target: {fileID: 6155802042637439358, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28.000061
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6155802043135415468, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -1015,7 +1032,7 @@ PrefabInstance:
     - target: {fileID: 990799452421790184, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
       propertyPath: m_Name
-      value: Tele 3
+      value: 2 Tele
       objectReference: {fileID: 0}
     - target: {fileID: 1069797079158582244, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
@@ -1200,7 +1217,7 @@ PrefabInstance:
     - target: {fileID: 990799452421790184, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
       propertyPath: m_Name
-      value: Tele 6
+      value: 5 Tele
       objectReference: {fileID: 0}
     - target: {fileID: 1069797079158582244, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
@@ -1415,7 +1432,7 @@ PrefabInstance:
     - target: {fileID: 6155802041587414946, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Name
-      value: List Image target teleport (4)
+      value: 3 List Image target teleport (4)
       objectReference: {fileID: 0}
     - target: {fileID: 6155802041587414947, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -1565,12 +1582,12 @@ PrefabInstance:
     - target: {fileID: 6155802042637439353, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Size
-      value: 0.3736764
+      value: 0.55420256
       objectReference: {fileID: 0}
     - target: {fileID: 6155802042637439358, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28.000061
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6155802043135415468, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -1666,7 +1683,7 @@ PrefabInstance:
     - target: {fileID: 990799452421790184, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
       propertyPath: m_Name
-      value: Tele 2
+      value: 1 Tele
       objectReference: {fileID: 0}
     - target: {fileID: 1069797079158582244, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
@@ -1851,7 +1868,7 @@ PrefabInstance:
     - target: {fileID: 990799452421790184, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
       propertyPath: m_Name
-      value: Tele 5
+      value: 4 Tele
       objectReference: {fileID: 0}
     - target: {fileID: 1069797079158582244, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
@@ -2026,7 +2043,7 @@ PrefabInstance:
     - target: {fileID: 990799452421790184, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
       propertyPath: m_Name
-      value: Tele 1
+      value: 0 Tele
       objectReference: {fileID: 0}
     - target: {fileID: 1069797079158582244, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
@@ -2241,7 +2258,7 @@ PrefabInstance:
     - target: {fileID: 6155802041587414946, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Name
-      value: List Image target teleport (6)
+      value: 5 List Image target teleport (6)
       objectReference: {fileID: 0}
     - target: {fileID: 6155802041587414947, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -2391,12 +2408,12 @@ PrefabInstance:
     - target: {fileID: 6155802042637439353, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Size
-      value: 0.3736764
+      value: 0.55420256
       objectReference: {fileID: 0}
     - target: {fileID: 6155802042637439358, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28.000061
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6155802043135415468, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -2512,7 +2529,7 @@ PrefabInstance:
     - target: {fileID: 6155802041587414946, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Name
-      value: List Image target teleport (1)
+      value: 0 List Image target teleport (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6155802041587414947, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -2662,12 +2679,12 @@ PrefabInstance:
     - target: {fileID: 6155802042637439353, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Size
-      value: 0.3736764
+      value: 0.55420256
       objectReference: {fileID: 0}
     - target: {fileID: 6155802042637439358, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28.000061
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6155802043135415468, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -2788,7 +2805,7 @@ PrefabInstance:
     - target: {fileID: 6155802041587414946, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Name
-      value: List Image target teleport (3)
+      value: 2 List Image target teleport (3)
       objectReference: {fileID: 0}
     - target: {fileID: 6155802041587414947, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -2938,12 +2955,12 @@ PrefabInstance:
     - target: {fileID: 6155802042637439353, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Size
-      value: 0.3736764
+      value: 0.55420256
       objectReference: {fileID: 0}
     - target: {fileID: 6155802042637439358, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28.000061
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6155802043135415468, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -3034,7 +3051,7 @@ PrefabInstance:
     - target: {fileID: 990799452421790184, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
       propertyPath: m_Name
-      value: Tele 4
+      value: 3 Tele
       objectReference: {fileID: 0}
     - target: {fileID: 1069797079158582244, guid: 378e9c35b029fba43b5705b93cc7148b,
         type: 3}
@@ -3249,7 +3266,7 @@ PrefabInstance:
     - target: {fileID: 6155802041587414946, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Name
-      value: List Image target teleport (2)
+      value: 1 List Image target teleport (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6155802041587414947, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
@@ -3399,12 +3416,12 @@ PrefabInstance:
     - target: {fileID: 6155802042637439353, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_Size
-      value: 0.3736764
+      value: 0.55420256
       objectReference: {fileID: 0}
     - target: {fileID: 6155802042637439358, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28.000061
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6155802043135415468, guid: 02f084d52246e60468f0ca67399be5d5,
         type: 3}

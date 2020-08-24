@@ -29,7 +29,7 @@ public class LayerController{
 			}
 		}
 		catch (Exception e) {
-			Debug.Log("It seems that you imported this asset not in the root assets folder, please, consult the included GUIDE");
+			Debug.Log("It seems that you imported this asset not in the root assets folder, please, consult the included GUIDE"+e);
 		}  
 	}
 	//creates a new layer

@@ -18,6 +18,7 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
+        /*
         QuestData allQuestData = SaveSystem.LoadQuest();
 
         if (allQuestData == null)
@@ -32,7 +33,7 @@ public class QuestManager : MonoBehaviour
 
         }
 
-
+        */
     }
     #endregion
 
