@@ -38,26 +38,9 @@ public class QuestManager : MonoBehaviour
     #endregion
 
     public List<Quest> listAllQuest;
-    /*
-    public List<Quest> listAllMainQuest;
-    public List<Quest> listAllSubQuest;
-    public List<Quest> listAllHidenQuest;
-    public List<Quest> currentQuest;
-    */
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void LoadDefaulQuest()
+    public void LoadDefaulQuest()
     {
         foreach (Quest q in listAllQuest)
         {
@@ -73,4 +56,71 @@ public class QuestManager : MonoBehaviour
             }
         }
     }
+
+    public void TriggerQuestManager(List<SourceItemSlot> items, TypeQuest tq)
+    {/* Run all quest activate */
+        Debug.Log("Run Trigger Quest in : " + this.name);
+
+        switch (tq)
+        {
+            case TypeQuest.KillEnemy:
+
+                foreach (Quest q in listAllQuest)
+                {
+                    // Get only quest activate
+                    if (q.statusQuest == StatusQuest.OnWay || q.statusQuest == StatusQuest.Success)
+                    {
+                        foreach (SourceItemSlot sourceItemSlot in items)
+                        {
+                            foreach (DetailItemInQuest detailItemInQuest in q.listRequest)
+                            {
+                                if (sourceItemSlot == detailItemInQuest.item)
+                                {
+                                    Debug.Log(q.nameQuest+" add item : "+ detailItemInQuest.item.nameItem+" : "+ detailItemInQuest.AddItem(1));
+                                    
+                                }
+                            }
+
+                        }
+
+
+
+                    }
+
+                    // For Dev Debug Only
+                    if (q.statusQuest == StatusQuest.OnWay)
+                    {
+                        int requestNotDone = 0;
+                        foreach (DetailItemInQuest detailItemInQuest in q.listRequest)
+                        {
+                            if (!detailItemInQuest.IsDone())
+                            {
+
+                                requestNotDone++;
+                            }
+                        }
+                        if (requestNotDone == 0)
+                        {
+                            Debug.Log("Done Quest" + q.nameQuest);
+                        }
+
+                    }
+                }
+                break;
+            // end case TypeQuest.KillEnemy
+            case TypeQuest.Collect:
+
+                
+
+                // end case TypeQuest.Collect
+                break;
+
+
+        }
+
+
+
+    }
+
+
 }

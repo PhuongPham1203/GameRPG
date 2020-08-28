@@ -44,7 +44,44 @@ public class SceneManagerOfGame : MonoBehaviour
     public List<SceneIndexes> listSceneIndex2;
     List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
 
-    
+    private void Start()
+    {
+        LoadDataQuestAndTeleport();
+    }
+
+    void LoadDataQuestAndTeleport()
+    {
+        // Load data teleport
+        GameData gameData = SaveSystem.LoadGameData();
+
+        TeleportManager teleportManager = TeleportManager.instance;
+        if (gameData == null) // new player dont have gamedata
+        {
+
+
+            teleportManager.LoadDefaulTeleport();
+            
+            SaveSystem.SaveGameData(teleportManager.listTeleportAllScene);
+
+        }
+        else
+        {
+            Debug.Log("have file save gamedata.p2teamdata");
+
+            gameData.GetListDataTeleport(teleportManager.listTeleportAllScene);
+
+        }
+
+        // Load data Quest
+
+        if(gameData == null)
+        {
+            QuestManager.instance.LoadDefaulQuest();
+        }
+
+    }
+
+
     public void LoadNewGame()
     {
         loadingScene.gameObject.SetActive(true);

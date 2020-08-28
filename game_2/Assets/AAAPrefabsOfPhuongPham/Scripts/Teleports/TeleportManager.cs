@@ -22,6 +22,7 @@ public class TeleportManager : MonoBehaviour
         }
         instance = this;
 
+        /*
         GameData gameData = SaveSystem.LoadGameData();
 
         if (gameData == null)
@@ -49,26 +50,28 @@ public class TeleportManager : MonoBehaviour
 
             //Debug.Log(listTeleportAllScene);
         }
+        */
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void SavePointTeleport()
     {
         Debug.Log("Save Point Game");
         SaveSystem.SaveGameData(this.listTeleportAllScene);
+    }
+
+    public void LoadDefaulTeleport()
+    {
+        foreach (TeleInformation t in this.listTeleportAllScene)
+        {
+
+            t.statusTeleport = StatusTeleport.Disable;
+        }
+
+        this.listTeleportAllScene[0].statusTeleport = StatusTeleport.Activate;
+
     }
 
 }

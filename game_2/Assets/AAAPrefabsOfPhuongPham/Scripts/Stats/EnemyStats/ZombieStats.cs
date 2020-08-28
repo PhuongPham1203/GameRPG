@@ -48,7 +48,7 @@ public class ZombieStats : CharacterStats
     */
     public override void TakeDamege(int damage){
         //base.TakeDamege(damage);
-        Debug.Log("Zombie"+transform.name+" take: " + damage);
+        //Debug.Log("Zombie"+transform.name+" take: " + damage);
 
         if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
         {
@@ -85,13 +85,13 @@ public class ZombieStats : CharacterStats
                     vfxSteel.Play();
                     enemyController.BlockDamage(0.5f);
 
-                    this.Reduction(3f);
+                    this.Reduction(timeWaitToReduction);
                 }
             }
             else
             {
                 canBlockMore = false;
-                Debug.Log("can't block anymore");
+                //Debug.Log("can't block anymore");
 
 
             }
@@ -114,7 +114,7 @@ public class ZombieStats : CharacterStats
                 enemyController.Damage(0.5f);
                 //AudioManager.instance.PlaySoundOfPlayer("Damage");
                 vfxBlood.Play();
-                this.Reduction(3f);
+                this.Reduction(timeWaitToReduction);
 
                 if (canBlockMore)
                 {
@@ -183,7 +183,7 @@ public class ZombieStats : CharacterStats
         
 
 
-        StartCoroutine(DestroyAfter(3f));
+        StartCoroutine(DestroyAfter(2f));
 
         //Destroy(gameObject,3);
 

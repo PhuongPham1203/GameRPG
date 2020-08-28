@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f153ab32fb6f14680942e5496cc92d, type: 3}
   m_Name: Main Quest 2
   m_EditorClassIdentifier: 
-  name: New Quest
-  type: 1
-  information: New Item information
+  nameQuest: Colect stone
+  typeColectionQuest: 0
   statusQuest: 0
+  information: "thu thap 2 loai da ma thuat\nphan thuong\n khong cos phan thuong"
+  listRequest:
+  - item: {fileID: 11400000, guid: f7080da38718a2e48a77770735c33f03, type: 2}
+    numberTarget: 2
+    numberCurrent: 0
+  - item: {fileID: 11400000, guid: 28a846af28f4f164ebeba53b6ab1ba3b, type: 2}
+    numberTarget: 2
+    numberCurrent: 0
+  listReward: []

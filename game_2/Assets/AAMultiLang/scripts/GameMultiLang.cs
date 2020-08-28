@@ -15,7 +15,6 @@ public class GameMultiLang : MonoBehaviour
 
     [SerializeField] string defaultLang = "en";
 
-
     void Awake()
     {
         //Debug.Log(PlayerPrefs.GetInt("_language_index"));

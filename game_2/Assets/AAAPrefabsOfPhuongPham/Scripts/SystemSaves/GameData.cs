@@ -33,9 +33,7 @@ public class GameData
                 }
             }
         }
-
-
-        //return this.listTeleportAllScene;
+        
     }
 
     public void SetListTeleport(List<TeleInformation> listT)

@@ -33,8 +33,13 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Reduction Posture")]
     public bool reduction = true;
-    [Range(0.0001f, 0.5f)]
+    [Range(0f,5f)]
+    public float timeWaitToReduction = 3f;
+    [Range(0.00001f, 0.5f)]
     public float percenReduction ;
+    //[Header("xPlus small && low HP => slow Reduction")]
+    //[Range(0f, 1f)]
+    //public float xPlus=1f;
     private Coroutine actionReduction;
 
     //public Stat damage; // old damage
@@ -57,10 +62,11 @@ public class CharacterStats : MonoBehaviour
 
     protected Animator animator;
     
-
+    [Header("For Dev Only")]
     public int d = 100;
 
-
+    [Header("List Items this Character Keep")]
+    public List<SourceItemSlot> itemKeep = new List<SourceItemSlot>();
 
 
     // Update is called once per frame
@@ -79,9 +85,9 @@ public class CharacterStats : MonoBehaviour
     {
         if (reduction && currentPosture > 0)
         {
-            float x =  (currentHP / maxHP); // percent HP lost
+            float x =  (currentHP / maxHP) ; // percent HP lost
 
-            currentPosture -= (maxPosture * ( percenReduction + percenReduction * x ));
+            currentPosture -= (maxPosture * ( percenReduction * x ));
             currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
 
             UpdateHPAndPosture();
@@ -93,7 +99,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual int GetAttackDame(int weapon)
     {
-        Debug.Log("attack dame "+currentAttackDame);
+        //Debug.Log("attack dame "+currentAttackDame);
         return currentAttackDame;
     }
 

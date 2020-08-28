@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController characterController;
     public Animator animatorPlayer;
     public SelectManager selectManager;
-    public Text fps;
+    //public Text fps;
     public CharacterStats characterStats;
 
     // Start is called before the first frame update
@@ -135,10 +135,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        if (Time.deltaTime != 0)
-        {
-            fps.text = (1 / Time.deltaTime).ToString();
-        }
+        
 
         if (timeSwing > 0)
         {

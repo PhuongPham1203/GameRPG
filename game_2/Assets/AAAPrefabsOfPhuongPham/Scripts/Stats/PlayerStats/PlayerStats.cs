@@ -148,13 +148,13 @@ public class PlayerStats : CharacterStats
     {
         if (weapon == 1)
         {
-            Debug.Log("Light "+ attackLightDamage);
+            //Debug.Log("Light "+ attackLightDamage);
             return base.GetAttackDame(weapon) + attackLightDamage;
 
         }
         else
         {
-            Debug.Log("Heavy " + attackHeavyDamage);
+            //Debug.Log("Heavy " + attackHeavyDamage);
 
             return base.GetAttackDame(weapon) + attackHeavyDamage;
         }
@@ -192,7 +192,7 @@ public class PlayerStats : CharacterStats
                     }
                     vfxSteel.Play();
 
-                    this.Reduction(3f);
+                    this.Reduction(timeWaitToReduction);
 
                 }
             }
@@ -224,7 +224,7 @@ public class PlayerStats : CharacterStats
                 playerController.Damage(0.5f);
                 AudioManager.instance.PlaySoundOfPlayer("Damage");
                 vfxBlood.Play();
-                this.Reduction(3f);
+                this.Reduction(timeWaitToReduction);
                 //Debug.Log(transform.name + " HP Take " + damage + " damege.");
 
             }

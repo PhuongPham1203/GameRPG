@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionID: 2
   sceneID: 0
-  nameTeleport: hill
+  nameTeleport: Hotel
   defaulTele: 0
   sceneBuiltIndexes: {fileID: 11400000, guid: 890ed2b671395a349af7b2a1b6746157, type: 2}
-  statusTeleport: 1
+  statusTeleport: 0

@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in soundsOfPlayer)
         {
-
+             
             s.source = gameObject.AddComponent<AudioSource>();
 
             s.source.clip = s.clip;

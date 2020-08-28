@@ -182,6 +182,13 @@ MonoBehaviour:
     pitch: 1
     is3dSound: 0
     source: {fileID: 0}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 82f12019aa0a34e47b8697071b92e34e, type: 3}
+    loop: 0
+    volume: 0.3
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
   soundsOfTheme:
   - name: Theme Apocalypse
     clip: {fileID: 8300000, guid: f703d503a57357a4783ae0f0ea4cd604, type: 3}

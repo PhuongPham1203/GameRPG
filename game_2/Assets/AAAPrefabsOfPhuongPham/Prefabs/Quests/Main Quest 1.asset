@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Main Quest 1
   m_EditorClassIdentifier: 
   nameQuest: Find And Kill Zombie
-  typeQuest: 0
+  typeColectionQuest: 0
   statusQuest: 0
   information: Find and kill all zombie
+  dialogBefore: {fileID: 11400000, guid: 145783c9b2aac0941baca8090f822c6a, type: 2}
+  dialogAfter: {fileID: 11400000, guid: c6a9b4e847729334f891cb19bea5e4fe, type: 2}
   listRequest:
   - item: {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
-    numberTarget: 5
+    numberTarget: 2
     numberCurrent: 0
   listReward:
   - item: {fileID: 0}

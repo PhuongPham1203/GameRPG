@@ -116,7 +116,7 @@ MonoBehaviour:
   way: {fileID: 0}
   pathWay: 0
   flipWay: 1
-  speedTrackTarget: 5
+  speedTrackTarget: 2
   distanceCanAttack: 1
   distance: 0
   timeTryMoveToPos: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   startAttackDame: 20
   startPosture: 100
   reduction: 1
+  timeWaitToReduction: 3
   percenReduction: 0.005
   vfxBlood: {fileID: 5222587086192663625}
   vfxSteel: {fileID: 4303102424140043134}
@@ -173,6 +174,8 @@ MonoBehaviour:
   end90PostureUI: {r: 0.8784314, g: 0.3882353, b: 0.13725491, a: 0.87058824}
   endPostureUI: {r: 1, g: 0, b: 0, a: 1}
   d: 30
+  itemKeep:
+  - {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
 --- !u!114 &4584351916157946932
 MonoBehaviour:
   m_ObjectHideFlags: 0

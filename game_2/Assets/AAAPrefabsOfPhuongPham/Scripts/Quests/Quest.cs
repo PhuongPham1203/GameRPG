@@ -10,7 +10,7 @@ public class Quest : ScriptableObject
     
     [Header("Type Quest: 1-Main \t 2-Sub \t 3-Hiden")]
     //[Range(1, 3)]
-    public TypeQuest typeQuest = TypeQuest.Main;
+    public TypeQuestColection typeColectionQuest = TypeQuestColection.Main;
 
     [Header("Status Quest: 0-NotAble \t 1-OnWay \t 2-Success")]
     //[Range(0, 2)]
@@ -18,6 +18,12 @@ public class Quest : ScriptableObject
     
     [TextArea]
     public string information = "New Quest information";
+
+    [Header("Dialog before Accept")]
+    public Dialog dialogBefore;
+    [Header("Dialog after Done")]
+    public Dialog dialogAfter;
+
 
     [Space]
     [Header("Request")]
@@ -32,5 +38,6 @@ public class Quest : ScriptableObject
 }
 
 
-public enum TypeQuest { Main, Sub, Hiden }
-public enum StatusQuest { NotAble, OnWay, Success }
+public enum TypeQuestColection { Main, Sub, Hiden }
+public enum StatusQuest { NotAble, OnWay, Success, Fail }
+public enum TypeQuest { Collect, KillEnemy, Transformers , Escape, Defend }

@@ -148,22 +148,28 @@ public class EnemyController : MonoBehaviour
     }
     public void SetAlentCombat(AlertEnemy setAlent)
     {
-        alertEnemy = setAlent;
+        
         if (alertEnemy == AlertEnemy.Die)
         {
             return;
         }
+        alertEnemy = setAlent;
         SetTarget();
-        switch (alertEnemy)
+        switch (setAlent)
         {
             case AlertEnemy.Die:// ! Die
 
                 StopAllCoroutines();
                 canFinish = false;
+                Debug.Log("Set alert Die "+gameObject.name);
+                // if this Die send all item this character keep to QuestManager
+                QuestManager.instance.TriggerQuestManager(characterStats.itemKeep,TypeQuest.KillEnemy);
 
                 break;
 
             case AlertEnemy.Idle:// !Idle
+                //Debug.Log("Set alert Idle " + gameObject.name);
+
                 textAlert.text = "";
                 //playerController.OnCombat(false);
                 if (actionLeaveAction != null)
@@ -176,6 +182,8 @@ public class EnemyController : MonoBehaviour
                 break;
 
             case AlertEnemy.Warning:// !Warning
+                //Debug.Log("Set alert Warning " + gameObject.name);
+
                 textAlert.text = "?";
                 //playerController.OnCombat(false);
 
@@ -190,6 +198,8 @@ public class EnemyController : MonoBehaviour
                 break;
 
             case AlertEnemy.OnTarget:// !OnTarget
+                //Debug.Log("Set alert OnTarget " + gameObject.name);
+
                 textAlert.text = "!";
                 if (actionLeaveAction != null)
                 {
@@ -372,6 +382,9 @@ public class EnemyController : MonoBehaviour
     public void Stun(float t)
     {
         canAction = false;
+        animator.SetInteger("InAction",0);
+        animator.SetFloat("SpeedMove",0);
+
         if (actionLeaveAction != null)
         {
             StopCoroutine(actionLeaveAction);
@@ -464,22 +477,25 @@ public class EnemyController : MonoBehaviour
     }
     public virtual void Finish1()
     {
-        //Debug.Log("Finish1");
-        StopAllCoroutines();
+        Debug.Log("Finish1");
+        //StopAllCoroutines();
         canAction = false;
-        alertEnemy = AlertEnemy.Die;
+
+        //SetAlentCombat(AlertEnemy.Die);
         animator.SetInteger("InAction", 10);
 
     }
     public virtual void Finish2()
     {
-        //Debug.Log("Finish2");
+        Debug.Log("Finish2");
+        //gameObject.layer = 2; 
         characterStats.TakeTrueDamegeFinish(999999);
         characterStats.Die();
     }
     public virtual void EnemyDie()
     {
-        StopAllCoroutines();
+        Debug.Log("run EnemyDie");
+        //StopAllCoroutines();
         SetAlentCombat(AlertEnemy.Die);
         animator.SetInteger("InAction", 8);
 

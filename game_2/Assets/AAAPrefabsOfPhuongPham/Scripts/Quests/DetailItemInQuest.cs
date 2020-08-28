@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
 
+[System.Serializable]
 public class DetailItemInQuest
 {
 
@@ -34,7 +34,7 @@ public class DetailItemInQuest
         return false;
     }
 
-    public int GetItem()
+    public int GetNumberCurrentItem()
     {
         return numberCurrent;
     }

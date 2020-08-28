@@ -6,14 +6,46 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public static bool isGamePlaused = false;
+
+    [Header("For main menu")]
     public GameObject pauseMenu;
     public GameObject teleportUI;
+
+    [Header("For NPC")]
+    public GameObject uiInteracWithNPC;
+
+    public static MenuController instance;
+    #region Singleton
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+            return;
+        }
+    }
+
+    #endregion
 
     // Start is called before the first frame update
     private void Start()
     {
         //SetQualityLevels(5);
         TeleportManager.instance.teleportUI = teleportUI;
+
+        /*
+        Button[] allButton = this.GetComponentsInChildren<Button>();
+        
+        foreach(Button b in allButton)
+        {
+            b.onClick.AddListener(()=>AudioManager.instance.PlaySoundOfPlayer("ButtonClick"));
+        }
+        */
     }
     public void OpenMenu()
     {
@@ -65,4 +97,12 @@ public class MenuController : MonoBehaviour
     {
 
     }
+
+    public void OpenUIInteracWithNPC(bool open)
+    {
+        this.uiInteracWithNPC.SetActive(open);
+    }
+
+    
+
 }

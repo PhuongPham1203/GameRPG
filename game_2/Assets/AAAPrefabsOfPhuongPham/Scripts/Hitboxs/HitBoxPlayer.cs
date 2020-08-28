@@ -20,7 +20,7 @@ public class HitBoxPlayer : Hitbox
         {
             //Debug.Log(characterStats.transform.name + " hitbox "+ characterStats.GetAttackDame(1));
             //other.gameObject.GetComponent<PlayerStats>().TakeDamege(characterStats.GetAttackDame(1));
-            Debug.Log("Hitbox Player:"+ characterStats.GetAttackDame(weapon));
+            //Debug.Log("Hitbox Player:"+ characterStats.GetAttackDame(weapon));
             other.gameObject.GetComponent<CharacterStats>().TakeDamege(characterStats.GetAttackDame(weapon));
 
         }
