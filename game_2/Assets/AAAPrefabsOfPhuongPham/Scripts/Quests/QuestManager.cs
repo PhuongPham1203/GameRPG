@@ -46,7 +46,16 @@ public class QuestManager : MonoBehaviour
         {
             if (q == null) { continue; }
 
-            q.statusQuest = StatusQuest.NotAble;
+            if (q.typeColectionQuest == TypeQuestColection.Hiden)
+            {
+                q.statusQuest = StatusQuest.OnWay;
+
+            }
+            else
+            {
+                q.statusQuest = StatusQuest.NotAble;
+
+            }
 
             foreach (DetailItemInQuest detail in q.listRequest)
             {

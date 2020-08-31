@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561cefc081b57b1428035405b6950d59, type: 3}
   m_Name: Elia_Normal_Talk_3
   m_EditorClassIdentifier: 
-  nameDialogEN: Name Dialog
-  nameDialogVI: "T\xEAn Dialog"
+  nameDialogEN: 'Name Dialog 3 '
+  nameDialogVI: "T\xEAn Dialog 3"
   information: 
   sentences:
   - nameTalker: Elia

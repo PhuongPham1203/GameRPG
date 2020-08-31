@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractWithNPC : Interactable
 {
@@ -20,7 +21,7 @@ public class InteractWithNPC : Interactable
     [Header("List Quest")]
     public List<Quest> listQuestInThisNpc;
 
-    
+
     public override void Interact()
     {
         Vector3 lookAt = transform.root.position;
@@ -35,11 +36,11 @@ public class InteractWithNPC : Interactable
 
         UIInteracWithNPC uinteracWithNPC = MenuController.instance.uiInteracWithNPC.GetComponent<UIInteracWithNPC>();
 
-        bool talk=true, quest=false;
+        bool talk = true, quest = false;
 
         if (currentQuestActivate == null)// dont have quest activate in this NPC
         {
-            if(questNeedActivate != null)
+            if (questNeedActivate != null)
             {
 
                 quest = true;
@@ -49,31 +50,31 @@ public class InteractWithNPC : Interactable
 
             }
         }
-        else if(currentQuestActivate != null) // have Quest Activate in this NPC
+        else if (currentQuestActivate != null) // have Quest Activate in this NPC
         {
             quest = true;
             uinteracWithNPC.SetInformationQuest(currentQuestActivate);
 
         }
 
-        uinteracWithNPC.SetOpen(talk, quest,canBuyItem);
+        uinteracWithNPC.SetOpen(talk, quest, canBuyItem);
 
     }
-    
+
     public void SetUpAllQuestInThisNPC()
     {
         if (this.currentQuestActivate == null)// dont have any quest activate in this npc
         {
-            if(this.questNeedActivate == null) // dont have any quest need activate
+            if (this.questNeedActivate == null) // dont have any quest need activate
             {
-                foreach (Quest q in this.listQuestInThisNpc )
+                foreach (Quest q in this.listQuestInThisNpc)
                 {
-                    if(q.statusQuest == StatusQuest.OnWay)
+                    if (q.statusQuest == StatusQuest.OnWay)
                     {
                         this.currentQuestActivate = q;
                         break;
                     }
-                    else if(q.statusQuest == StatusQuest.NotAble)
+                    else if (q.statusQuest == StatusQuest.NotAble)
                     {
                         this.questNeedActivate = q;
                         break;
@@ -82,35 +83,74 @@ public class InteractWithNPC : Interactable
             }
             else // have quest need activate
             {
-                if (this.questNeedActivate.statusQuest == StatusQuest.OnWay )
+                if (this.questNeedActivate.statusQuest == StatusQuest.OnWay)
                 {
                     this.currentQuestActivate = this.questNeedActivate;
                     this.questNeedActivate = null;
-                }else if (this.questNeedActivate.statusQuest == StatusQuest.Fail)
+                }
+                else if (this.questNeedActivate.statusQuest == StatusQuest.Fail)
                 {
                     this.questNeedActivate = null;
                 }
             }
 
-        }else // have current quest activate
+        }
+        else // have current quest activate
         {
-            if(this.questNeedActivate != null) // because have current activate so delete questNeedActivate
+            if (this.questNeedActivate != null) // because have current activate so delete questNeedActivate
             {
                 this.questNeedActivate = null;
             }
 
             // Quest Fail or success so need delete it
-            if(this.currentQuestActivate.statusQuest == StatusQuest.Fail || this.currentQuestActivate.statusQuest == StatusQuest.Success)
+            if (this.currentQuestActivate.statusQuest == StatusQuest.Fail || this.currentQuestActivate.statusQuest == StatusQuest.Success)
             {
                 this.currentQuestActivate = null;
             }
         }
     }
 
+    public List<NormalTalk> GetListNormalTalkActivate()
+    {
+        List<NormalTalk> listActivate = new List<NormalTalk>();
+
+        foreach (NormalTalk nt in listNormalTalk)
+        {
+            //Debug.Log(nt.quest);
+            if (nt.quest == null || nt.quest.statusQuest == StatusQuest.Success)
+            {
+                //Debug.Log(nt);
+                listActivate.Add(nt);
+            }
+            
+        }
+
+        return listActivate;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 24)
+        {
+
+            UIInteracWithNPC uinteracWithNPC = MenuController.instance.uiInteracWithNPC.GetComponent<UIInteracWithNPC>();
+            uinteracWithNPC.npcInteractWith = this;
+
+            inventory.ButtonActionWithObj.SetActive(true);
+            Button btn = inventory.ButtonActionWithObj.GetComponent<Button>();
+
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(Interact);
+
+            //inventory.ButtonActionWithObj.
+        }
+    }
+
 }
 
 [System.Serializable]
-public class NormalTalk{
+public class NormalTalk
+{
 
     [Header("Quest request and Dialog")]
     public Quest quest;

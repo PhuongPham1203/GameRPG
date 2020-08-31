@@ -15,4 +15,14 @@ MonoBehaviour:
   nameDialogEN: Name Dialog
   nameDialogVI: "T\xEAn Dialog"
   information: 
-  sentences: []
+  sentences:
+  - nameTalker: oaisdj
+    sentenceEN: oaisjd
+    sentenceVI: oaisjd
+  - nameTalker: oaisdj
+    sentenceEN: 'oaisjda aushudiusd asudilhhhhhhhhhhhhhhhhhh
+
+      asudhaoshd
+
+      asd'
+    sentenceVI: oaisjd

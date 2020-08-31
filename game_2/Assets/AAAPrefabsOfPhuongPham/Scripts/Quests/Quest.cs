@@ -7,6 +7,8 @@ using UnityEditor;
 public class Quest : ScriptableObject
 {
     public string nameQuest = "New Quest";
+    //public string nameQuestEN = "New Quest";
+    //public string nameQuestVI = "New Quest";
     
     [Header("Type Quest: 1-Main \t 2-Sub \t 3-Hiden")]
     //[Range(1, 3)]
@@ -18,6 +20,9 @@ public class Quest : ScriptableObject
     
     [TextArea]
     public string information = "New Quest information";
+    //public string informationEN = "New Quest information";
+    //public string informationVI = "New Quest information";
+   
 
     [Header("Dialog before Accept")]
     public Dialog dialogBefore;

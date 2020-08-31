@@ -16,9 +16,9 @@ MonoBehaviour:
   nameDialogVI: "T\xEAn Dialog"
   information: 
   sentences:
-  - nameTalker: 
-    sentenceEN: 
-    sentenceVI: 
-  - nameTalker: 
-    sentenceEN: 
-    sentenceVI: 
+  - nameTalker: abc
+    sentenceEN: "sdabkhsdkasbd asoidasd\nasdlaksjd\nasd\t\t"
+    sentenceVI: skjdnkasnd
+  - nameTalker: player
+    sentenceEN: sdnk
+    sentenceVI: asdnsahhdoh

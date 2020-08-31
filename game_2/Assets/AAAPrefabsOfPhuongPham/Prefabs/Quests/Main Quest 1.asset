@@ -21,8 +21,5 @@ MonoBehaviour:
   listRequest:
   - item: {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
     numberTarget: 2
-    numberCurrent: 0
-  listReward:
-  - item: {fileID: 0}
-    numberTarget: 0
-    numberCurrent: 0
+    numberCurrent: 33499
+  listReward: []

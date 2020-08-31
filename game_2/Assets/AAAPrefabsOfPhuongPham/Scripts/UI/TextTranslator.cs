@@ -9,8 +9,18 @@ public class TextTranslator : MonoBehaviour
 	[Header ("Enter your word key here.")]
 	public string key;
 
+	public bool isDialog = false;
+
 	void Start ()
 	{
-		GetComponent <Text> ().text = GameMultiLang.GetTraduction (key);
+        if (isDialog)
+        {
+
+        }
+        else
+        {
+			GetComponent<Text>().text = GameMultiLang.GetTraduction(key);
+
+		}
 	}
 }

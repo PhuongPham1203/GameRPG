@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f153ab32fb6f14680942e5496cc92d, type: 3}
   m_Name: Hiden Quest 1
   m_EditorClassIdentifier: 
-  id: 0
   nameQuest: ' Quest Hiden 1'
-  typeQuest: 2
+  typeColectionQuest: 2
   statusQuest: 0
   information: New Item information
+  dialogBefore: {fileID: 0}
+  dialogAfter: {fileID: 0}
   listRequest: []
   listReward: []
