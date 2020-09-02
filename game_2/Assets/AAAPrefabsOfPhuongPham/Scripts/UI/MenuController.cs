@@ -7,9 +7,20 @@ public class MenuController : MonoBehaviour
 {
     public static bool isGamePlaused = false;
 
-    [Header("For main menu")]
+    [Header("For MainMenu")]
     public GameObject pauseMenu;
     public GameObject teleportUI;
+
+    [Header("For Quest in MainMenu")]
+    public Transform parentOfHeaderQuestMenu;
+    public GameObject headerQuestMenu;
+
+    public GameObject questInfor;
+    public Text nameQuestInMenu;
+    public Text inforQuestInMenu;
+    public Transform parentRequestList;
+    public Transform parentRewardList;
+    public GameObject detailItemInQuest;
 
     [Header("For NPC")]
     public GameObject uiInteracWithNPC;
@@ -19,7 +30,7 @@ public class MenuController : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -103,6 +114,77 @@ public class MenuController : MonoBehaviour
         this.uiInteracWithNPC.SetActive(open);
     }
 
-    
 
+    // For menu Quest
+
+    public void UpdateHeaderTabsQuest()
+    {
+        // Delete all old Quest
+        foreach (Transform child in this.parentOfHeaderQuestMenu)
+        {
+            Destroy(child.gameObject);
+            //Debug.Log(child.name);
+        }
+
+        // Get all quest OnWay
+
+        List<Quest> allQuest = QuestManager.instance.listAllQuest;
+        List<Quest> questsOnWay = new List<Quest>();
+        foreach(Quest q in allQuest)
+        {
+            if(q.statusQuest == StatusQuest.OnWay && q.typeColectionQuest != TypeQuestColection.Hiden)
+            {
+                questsOnWay.Add(q);
+            }
+        }
+
+        foreach (Quest q in questsOnWay)
+        {
+            GameObject g = Instantiate(this.headerQuestMenu,this.parentOfHeaderQuestMenu);
+            g.GetComponent<Toggle>().group = g.transform.parent.GetComponent<ToggleGroup>();
+            g.GetComponentInChildren<Text>().text = q.nameQuest;
+
+            g.GetComponent<QuestHeaderUI>().SetInforQuest(q);
+
+        }
+    }
+
+    public void ShowQuestInMenu(Quest q)
+    {
+
+        this.nameQuestInMenu.text = q.nameQuest;
+        this.inforQuestInMenu.text = q.information;
+
+        // request
+
+        // Delete all old item in request
+        foreach (Transform child in this.parentRequestList)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (DetailItemInQuest detailItem in q.listRequest)
+        {
+            GameObject detail = Instantiate(this.detailItemInQuest, this.parentRequestList);
+            detail.GetComponent<QuestDetailItem>().numberCurrentAndTarget.text = detailItem.GetNumberCurrentItem().ToString()+" / "+ detailItem.numberTarget.ToString();
+            detail.GetComponent<QuestDetailItem>().nameItem.text = detailItem.item.nameItem;
+        }
+
+
+        // reward
+        // Delete all old item in request
+        foreach (Transform child in this.parentRewardList)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (DetailItemInQuest detailItem in q.listReward)
+        {
+            GameObject detail = Instantiate(this.detailItemInQuest, this.parentRewardList);
+            detail.GetComponent<QuestDetailItem>().numberCurrentAndTarget.text = detailItem.GetNumberCurrentItem().ToString() + " / " + detailItem.numberTarget.ToString();
+            detail.GetComponent<QuestDetailItem>().nameItem.text = detailItem.item.nameItem;
+        }
+
+        this.questInfor.SetActive(true);
+
+    }
 }

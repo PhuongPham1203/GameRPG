@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Main Quest 3
   m_EditorClassIdentifier: 
   nameQuest: New Quest
-  typeQuest: 0
+  typeColectionQuest: 0
   statusQuest: 0
+  typeQuest: 0
   information: New Item information
+  dialogBefore: {fileID: 0}
+  dialogAfter: {fileID: 0}
   listRequest: []
   listReward: []

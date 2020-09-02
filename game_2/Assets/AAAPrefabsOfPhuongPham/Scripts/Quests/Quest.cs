@@ -17,6 +17,9 @@ public class Quest : ScriptableObject
     [Header("Status Quest: 0-NotAble \t 1-OnWay \t 2-Success")]
     //[Range(0, 2)]
     public StatusQuest statusQuest = StatusQuest.NotAble;
+
+    [Header("Type Quest : ")]
+    public TypeQuest typeQuest = TypeQuest.KillEnemy;
     
     [TextArea]
     public string information = "New Quest information";

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameQuest: Quest Hiden 2
   typeColectionQuest: 2
-  statusQuest: 0
+  statusQuest: 1
   information: New Item information
   dialogBefore: {fileID: 0}
   dialogAfter: {fileID: 0}

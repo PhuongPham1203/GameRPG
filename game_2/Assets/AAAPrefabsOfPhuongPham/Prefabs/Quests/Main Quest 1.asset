@@ -15,11 +15,12 @@ MonoBehaviour:
   nameQuest: Find And Kill Zombie
   typeColectionQuest: 0
   statusQuest: 0
+  typeQuest: 1
   information: Find and kill all zombie
   dialogBefore: {fileID: 11400000, guid: 145783c9b2aac0941baca8090f822c6a, type: 2}
   dialogAfter: {fileID: 11400000, guid: c6a9b4e847729334f891cb19bea5e4fe, type: 2}
   listRequest:
-  - item: {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
+  - item: {fileID: 11400000, guid: 3eac3acff7745ba4688543b7699058da, type: 2}
     numberTarget: 2
-    numberCurrent: 33499
+    numberCurrent: 0
   listReward: []

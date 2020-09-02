@@ -15,12 +15,15 @@ MonoBehaviour:
   nameQuest: Colect stone
   typeColectionQuest: 0
   statusQuest: 0
+  typeQuest: 0
   information: "thu thap 2 loai da ma thuat\nphan thuong\n khong cos phan thuong"
+  dialogBefore: {fileID: 0}
+  dialogAfter: {fileID: 0}
   listRequest:
   - item: {fileID: 11400000, guid: f7080da38718a2e48a77770735c33f03, type: 2}
     numberTarget: 2
-    numberCurrent: 0
+    numberCurrent: 13549
   - item: {fileID: 11400000, guid: 28a846af28f4f164ebeba53b6ab1ba3b, type: 2}
     numberTarget: 2
-    numberCurrent: 0
+    numberCurrent: 21308
   listReward: []
