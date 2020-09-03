@@ -67,7 +67,8 @@ public class CharacterStats : MonoBehaviour
 
     [Header("List Items this Character Keep")]
     public List<SourceItemSlot> itemKeep = new List<SourceItemSlot>();
-
+    [Header("List Item Drop Affter Die")]
+    public List<GameObject> itemDrop = new List<GameObject>();
 
     // Update is called once per frame
     void Update()

@@ -47,10 +47,12 @@ public class UIInteracWithNPC : MonoBehaviour
         {
             return;
         }
+        int index_lang = PlayerPrefs.GetInt("_language_index", 0);
+
         questCanAccept = quest;
 
-        this.questTitle.text = quest.nameQuest;
-        this.questDescription.text = quest.information;
+        this.questTitle.text = quest.nameQuest[index_lang];
+        this.questDescription.text = quest.information[index_lang];
 
         //bool activateAccept = false;
         int numberItemNotDone = 0;
@@ -66,7 +68,7 @@ public class UIInteracWithNPC : MonoBehaviour
             QuestDetailItem questDetailItem = detail.GetComponent<QuestDetailItem>();
 
             questDetailItem.numberCurrentAndTarget.text = detailItem.GetNumberCurrentItem() + " / " + detailItem.numberTarget;
-            questDetailItem.nameItem.text = detailItem.item.nameItem;
+            questDetailItem.nameItem.text = detailItem.item.nameItem[index_lang];
 
             if (!detailItem.IsDone())// not done
             {
@@ -106,7 +108,7 @@ public class UIInteracWithNPC : MonoBehaviour
             QuestDetailItem questDetailItem = detail.GetComponent<QuestDetailItem>();
 
             questDetailItem.numberCurrentAndTarget.text = detailItem.numberTarget.ToString();
-            questDetailItem.nameItem.text = detailItem.item.nameItem;
+            questDetailItem.nameItem.text = detailItem.item.nameItem[index_lang];
 
         }
 
@@ -174,6 +176,8 @@ public class UIInteracWithNPC : MonoBehaviour
     {
         if (npcInteractWith != null)
         {
+            int index_lang = PlayerPrefs.GetInt("_language_index", 0);
+
             List<NormalTalk> listActivate = npcInteractWith.GetListNormalTalkActivate();
 
             for (int i = 0; i < uiParentListTalk.transform.childCount; i++)
@@ -187,11 +191,11 @@ public class UIInteracWithNPC : MonoBehaviour
 
                 //childHeader.GetComponent<Toggle>().group = childHeader.GetComponentInParent<ToggleGroup>();
 
-                childHeader.GetComponentInChildren<Text>().text = nt.dialog.nameDialogEN;
+                childHeader.GetComponentInChildren<Text>().text = nt.dialog.nameDialog[index_lang];
                 TalkHeader th = childHeader.GetComponent<TalkHeader>();
                 th.dialog = nt.dialog;
 
-            }
+            }   
 
 
         }

@@ -164,6 +164,16 @@ public class EnemyController : MonoBehaviour
                 Debug.Log("Set alert Die "+gameObject.name);
                 // if this Die send all item this character keep to QuestManager
                 QuestManager.instance.TriggerQuestManager(characterStats.itemKeep,TypeQuest.KillEnemy);
+                
+                // Item Drop
+                foreach(GameObject g in this.characterStats.itemDrop)
+                {
+                    GameObject item = Instantiate(g);
+                    item.transform.position = this.transform.position;
+                    Vector3 pos = item.transform.position;
+                    pos.y += 0.5f;
+                    item.transform.position = pos;
+                }
 
                 break;
 
@@ -171,7 +181,6 @@ public class EnemyController : MonoBehaviour
                 //Debug.Log("Set alert Idle " + gameObject.name);
 
                 textAlert.text = "";
-                //playerController.OnCombat(false);
                 if (actionLeaveAction != null)
                 {
                     StopCoroutine(actionLeaveAction);
@@ -185,7 +194,6 @@ public class EnemyController : MonoBehaviour
                 //Debug.Log("Set alert Warning " + gameObject.name);
 
                 textAlert.text = "?";
-                //playerController.OnCombat(false);
 
                 if (actionLeaveAction != null)
                 {
@@ -224,16 +232,10 @@ public class EnemyController : MonoBehaviour
 
                 }
 
-                //playerController.OnCombat(true);
                 break;
         }
     }
-    /*
-    public void SetPlayerOnCombat(bool setOnCombat)
-    {
-        playerController.OnCombat(setOnCombat);
-    }
-    */
+   
     public void SetTarget()
     {
         switch (alertEnemy)
@@ -267,12 +269,6 @@ public class EnemyController : MonoBehaviour
         {
             MoveLockTarget();
         }
-        /*
-        else
-        {
-            MoveNotLockTarget();
-        }
-        */
     }
     private void MoveLockTarget()
     {
@@ -329,14 +325,7 @@ public class EnemyController : MonoBehaviour
         if (canAction)
         {
             canAction = false;
-            /*
-            if (actionLeaveAttack != null)
-            {
-                StopCoroutine(actionLeaveAttack);
-
-            }
-            actionLeaveAttack = StartCoroutine(CanAttack(timeToNextAction[attackCombo]));// time can Attack Again
-            */
+            
             if (target != null)
             {
 

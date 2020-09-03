@@ -119,6 +119,8 @@ public class MenuController : MonoBehaviour
 
     public void UpdateHeaderTabsQuest()
     {
+        int index_lang = PlayerPrefs.GetInt("_language_index", 0);
+
         // Delete all old Quest
         foreach (Transform child in this.parentOfHeaderQuestMenu)
         {
@@ -142,7 +144,7 @@ public class MenuController : MonoBehaviour
         {
             GameObject g = Instantiate(this.headerQuestMenu,this.parentOfHeaderQuestMenu);
             g.GetComponent<Toggle>().group = g.transform.parent.GetComponent<ToggleGroup>();
-            g.GetComponentInChildren<Text>().text = q.nameQuest;
+            g.GetComponentInChildren<Text>().text = q.nameQuest[index_lang];
 
             g.GetComponent<QuestHeaderUI>().SetInforQuest(q);
 
@@ -151,9 +153,10 @@ public class MenuController : MonoBehaviour
 
     public void ShowQuestInMenu(Quest q)
     {
+        int index_lang = PlayerPrefs.GetInt("_language_index", 0);
 
-        this.nameQuestInMenu.text = q.nameQuest;
-        this.inforQuestInMenu.text = q.information;
+        this.nameQuestInMenu.text = q.nameQuest[index_lang];
+        this.inforQuestInMenu.text = q.information[index_lang];
 
         // request
 
@@ -167,7 +170,7 @@ public class MenuController : MonoBehaviour
         {
             GameObject detail = Instantiate(this.detailItemInQuest, this.parentRequestList);
             detail.GetComponent<QuestDetailItem>().numberCurrentAndTarget.text = detailItem.GetNumberCurrentItem().ToString()+" / "+ detailItem.numberTarget.ToString();
-            detail.GetComponent<QuestDetailItem>().nameItem.text = detailItem.item.nameItem;
+            detail.GetComponent<QuestDetailItem>().nameItem.text = detailItem.item.nameItem[index_lang];
         }
 
 
@@ -181,7 +184,7 @@ public class MenuController : MonoBehaviour
         {
             GameObject detail = Instantiate(this.detailItemInQuest, this.parentRewardList);
             detail.GetComponent<QuestDetailItem>().numberCurrentAndTarget.text = detailItem.GetNumberCurrentItem().ToString() + " / " + detailItem.numberTarget.ToString();
-            detail.GetComponent<QuestDetailItem>().nameItem.text = detailItem.item.nameItem;
+            detail.GetComponent<QuestDetailItem>().nameItem.text = detailItem.item.nameItem[index_lang];
         }
 
         this.questInfor.SetActive(true);

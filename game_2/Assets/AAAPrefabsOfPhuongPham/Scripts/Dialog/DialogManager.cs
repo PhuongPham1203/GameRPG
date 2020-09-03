@@ -40,8 +40,10 @@ public class DialogManager : MonoBehaviour
 
         this.textDisplay.text = "";
 
-        int index_lang = PlayerPrefs.GetInt("_language_index",0);
-        
+        // index_lang : 0 - EN , 1 - VI
+        int index_lang = PlayerPrefs.GetInt("_language_index",0); 
+
+        /*
         if (index_lang == 0) // en
         {
             foreach (char letter in this.sentences[index].sentenceEN.ToCharArray())
@@ -59,8 +61,12 @@ public class DialogManager : MonoBehaviour
             }
         }
 
-        
-
+        */
+        foreach (char letter in this.sentences[index].sentencesArray[index_lang].ToCharArray())
+        {
+            textDisplay.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
         Debug.Log("Can press continue");
         continueButton.SetActive(true);
 

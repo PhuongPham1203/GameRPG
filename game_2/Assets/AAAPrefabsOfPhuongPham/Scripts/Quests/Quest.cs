@@ -6,7 +6,7 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Quest")]
 public class Quest : ScriptableObject
 {
-    public string nameQuest = "New Quest";
+    public string[] nameQuest = {"New Quest","Tên nhiệm vụ"};
     //public string nameQuestEN = "New Quest";
     //public string nameQuestVI = "New Quest";
     
@@ -22,7 +22,7 @@ public class Quest : ScriptableObject
     public TypeQuest typeQuest = TypeQuest.KillEnemy;
     
     [TextArea]
-    public string information = "New Quest information";
+    public string[] information = { "New Quest information" ,"Thông tin về yêu cầu Quest"};
     //public string informationEN = "New Quest information";
     //public string informationVI = "New Quest information";
    
