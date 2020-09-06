@@ -257,7 +257,7 @@ namespace AmplifyShaderEditor
 		public void ReadFromSingle( string singleLine )
 		{
 			string[] data = singleLine.Split( IOUtils.VECTOR_SEPARATOR );
-			m_value = Convert.ToSingle( data[ 0 ] );
+			m_value = Convert.ToSingle( data[ 0 ], System.Globalization.CultureInfo.InvariantCulture );
 			m_active = Convert.ToBoolean( data[ 1 ] );
 			m_nodeId = Convert.ToInt32( data[ 2 ] );
 		}
@@ -271,7 +271,7 @@ namespace AmplifyShaderEditor
 
 		public string WriteToSingle()
 		{
-			return m_value.ToString() + IOUtils.VECTOR_SEPARATOR + m_active + IOUtils.VECTOR_SEPARATOR + m_nodeId;
+			return m_value.ToString( System.Globalization.CultureInfo.InvariantCulture ) + IOUtils.VECTOR_SEPARATOR + m_active + IOUtils.VECTOR_SEPARATOR + m_nodeId;
 		}
 
 		public void SetInlineNodeValue()
