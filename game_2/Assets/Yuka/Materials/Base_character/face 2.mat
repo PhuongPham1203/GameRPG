@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d8bb8db56a6bf1543893f7c73260b99e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41a34d04d9e14b8429ac86abc6fb1567, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RimLightSampler:

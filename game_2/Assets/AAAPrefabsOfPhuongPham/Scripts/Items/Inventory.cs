@@ -23,16 +23,16 @@ public class Inventory : MonoBehaviour
     #endregion
     [Header("List Item")]
     public List<SourceItemSlot> items;
-    public int spaceItem = 100;
+    public int spaceItem = 300;
     [Header("List Weapon")]
     public List<SourceItemSlot> weapons;
-    public int spaceWeapon = 50;
+    public int spaceWeapon = 200;
     public GameObject ButtonActionWithObj;
     public bool Add(SourceItemSlot item)
     {
         if (!item.isDefaultItem)// if is Defaul Item
         {
-            if (item.typeUnit == 2)// Check if item is Weapon
+            if (item.typeUnit == TypeUnit.Weapon)// Check if item is Weapon
             {
                 if (weapons.Count >= spaceWeapon)
                 {
@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour
 
     public void Remove(SourceItemSlot item)
     {
-        if (item.typeUnit == 2)//Weapon
+        if (item.typeUnit == TypeUnit.Weapon)//Weapon
         {
             weapons.Remove(item);
             if (onItemChangedCallback != null)

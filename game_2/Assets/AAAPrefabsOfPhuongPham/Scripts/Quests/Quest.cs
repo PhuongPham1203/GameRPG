@@ -6,33 +6,46 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Quest")]
 public class Quest : ScriptableObject
 {
-    public int id = 0;
-    new public string name = "New Quest";
+    public string[] nameQuest = {"New Quest","Tên nhiệm vụ"};
+    //public string nameQuestEN = "New Quest";
+    //public string nameQuestVI = "New Quest";
     
     [Header("Type Quest: 1-Main \t 2-Sub \t 3-Hiden")]
-    [Range(1, 3)]
-    public int type = 1;
+    //[Range(1, 3)]
+    public TypeQuestColection typeColectionQuest = TypeQuestColection.Main;
 
-    [Header("Status Quest: 0-Hiden \t 1-OnWay \t 2-Success")]
-    [Range(0, 2)]
-    public int statusQuest = 0;
+    [Header("Status Quest: 0-NotAble \t 1-OnWay \t 2-Success")]
+    //[Range(0, 2)]
+    public StatusQuest statusQuest = StatusQuest.NotAble;
+
+    [Header("Type Quest : ")]
+    public TypeQuest typeQuest = TypeQuest.KillEnemy;
     
     [TextArea]
-    public string information = "New Quest information";
+    public string[] information = { "New Quest information" ,"Thông tin về yêu cầu Quest"};
+    //public string informationEN = "New Quest information";
+    //public string informationVI = "New Quest information";
+   
+
+    [Header("Dialog before Accept")]
+    public Dialog dialogBefore;
+    [Header("Dialog after Done")]
+    public Dialog dialogAfter;
+
 
     [Space]
     [Header("Request")]
-    public List<SourceItemSlot> listRequest;
-    [Range(0, 9999)]
-    public int numberTarget = 0;
-    [Range(0, 9999)]
-    public int numberCurrent = 0;
+    public List<DetailItemInQuest> listRequest;
+
 
     [Space]
     [Header("Rewards")]
-    public List<SourceItemSlot> listReward;
-    [Range(0, 9999)]
-    public int numberReward = 0;
+    public List<DetailItemInQuest> listReward;
 
 
 }
+
+
+public enum TypeQuestColection { Main, Sub, Hiden }
+public enum StatusQuest { NotAble, OnWay, Success, Fail }
+public enum TypeQuest { Collect, KillEnemy, Transformers , Escape, Defend }

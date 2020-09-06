@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247fb5cbb9999cf4d89aa49b52c014ce, type: 3}
   m_Name: SCENE_PLAYER
   m_EditorClassIdentifier: 
-  sceneId: 1
+  sceneBuiltId: 1
   nameScene: SCENE_PLAYER
   information: Scene have Player and every thing about it

@@ -11,7 +11,7 @@ public class Equipment : SourceItemSlot
     public int hpModifier;// HP
     public int attackDameModifier;// attack
     public int postureModifier;// posture
-    public int defendModifier;// defend
+    //public int defendModifier;// defend
 
 
     public override void Use()

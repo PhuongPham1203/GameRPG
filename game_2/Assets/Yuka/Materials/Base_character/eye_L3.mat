@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 6da80c44f735b844db705bd0d77a3ae1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 33e79a267d7861e4abfd0129deb9d45a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9f33a6cf5c603c44c880bf47b8d324af, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RimLightSampler:
