@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1dad99070689640b34ae77da79aa5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameSelf: Zombie 503
+  nameSelf: Zombie B 5
   startHP: 150
   startAttackDame: 20
   startPosture: 100
@@ -176,6 +176,7 @@ MonoBehaviour:
   d: 30
   itemKeep:
   - {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
+  itemDrop: []
 --- !u!114 &4584351916157946932
 MonoBehaviour:
   m_ObjectHideFlags: 0
