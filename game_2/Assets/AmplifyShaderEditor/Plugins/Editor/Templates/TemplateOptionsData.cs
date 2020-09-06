@@ -81,6 +81,9 @@ namespace AmplifyShaderEditor
 	{
 		CullMode,
 		ColorMask,
+		ColorMask1,
+		ColorMask2,
+		ColorMask3,
 		ZWrite,
 		ZTest,
 		ZOffsetFactor,
@@ -89,6 +92,18 @@ namespace AmplifyShaderEditor
 		BlendAlpha,
 		BlendOpRGB,
 		BlendOpAlpha,
+		BlendRGB1,
+		BlendAlpha1,
+		BlendOpRGB1,
+		BlendOpAlpha1,
+		BlendRGB2,
+		BlendAlpha2,
+		BlendOpRGB2,
+		BlendOpAlpha2,
+		BlendRGB3,
+		BlendAlpha3,
+		BlendOpRGB3,
+		BlendOpAlpha3,
 		StencilReference,
 		StencilReadMask,
 		StencilWriteMask,
@@ -108,6 +123,66 @@ namespace AmplifyShaderEditor
 	}
 
 	[Serializable]
+	public class ItemColorMask
+	{
+		public bool ValueR = true;
+		public bool ValueG = true;
+		public bool ValueB = true;
+		public bool ValueA = true;
+
+		public bool MaskR = false;
+		public bool MaskG = false;
+		public bool MaskB = false;
+		public bool MaskA = false;
+
+		public bool[] GetColorMask( bool[] input )
+		{
+			bool[] result = { ValueR, ValueG, ValueB, ValueA };
+			result[ 0 ] = MaskR ? ValueR : input[ 0 ];
+			result[ 1 ] = MaskG ? ValueG : input[ 1 ];
+			result[ 2 ] = MaskB ? ValueB : input[ 2 ];
+			result[ 3 ] = MaskA ? ValueA : input[ 3 ];
+			return result;
+		}
+
+		public void SetColorMask( int index, string value )
+		{
+			switch( index )
+			{
+				default:
+				case 0:
+				{
+					MaskR = !string.IsNullOrEmpty( value );
+					if(MaskR)
+						ValueR = Convert.ToBoolean( value );
+				}
+				break;
+				case 1:
+				{
+					MaskG = !string.IsNullOrEmpty( value );
+					if( MaskG )
+						ValueG = Convert.ToBoolean( value );
+				}
+				break;
+				case 2:
+				{
+					MaskB = !string.IsNullOrEmpty( value );
+					if( MaskB )
+						ValueB = Convert.ToBoolean( value );
+				}
+				break;
+				case 3:
+				{
+					MaskA = !string.IsNullOrEmpty( value );
+					if( MaskA )
+						ValueA = Convert.ToBoolean( value );
+				}
+				break;
+			}
+		}
+	}
+
+	[Serializable]
 	public class TemplateActionItem
 	{
 		public AseOptionsActionType ActionType;
@@ -121,7 +196,10 @@ namespace AmplifyShaderEditor
 		//CULL
 		public CullMode ActionCullMode;
 		//COLOR MASK
-		public bool[] ColorMask = { true, true, true, true };
+		public ItemColorMask ColorMask = new ItemColorMask();
+		public ItemColorMask ColorMask1 = new ItemColorMask();
+		public ItemColorMask ColorMask2 = new ItemColorMask();
+		public ItemColorMask ColorMask3 = new ItemColorMask();
 
 		//DEPTH
 		public ZWriteMode ActionZWrite;
@@ -132,12 +210,31 @@ namespace AmplifyShaderEditor
 		//BLEND OPS
 		public AvailableBlendFactor ActionBlendRGBSource;
 		public AvailableBlendFactor ActionBlendRGBDest;
-
 		public AvailableBlendFactor ActionBlendAlphaSource;
 		public AvailableBlendFactor ActionBlendAlphaDest;
-
 		public AvailableBlendOps ActionBlendOpRGB;
 		public AvailableBlendOps ActionBlendOpAlpha;
+
+		public AvailableBlendFactor ActionBlendRGBSource1;
+		public AvailableBlendFactor ActionBlendRGBDest1;
+		public AvailableBlendFactor ActionBlendAlphaSource1;
+		public AvailableBlendFactor ActionBlendAlphaDest1;
+		public AvailableBlendOps ActionBlendOpRGB1;
+		public AvailableBlendOps ActionBlendOpAlpha1;
+
+		public AvailableBlendFactor ActionBlendRGBSource2;
+		public AvailableBlendFactor ActionBlendRGBDest2;
+		public AvailableBlendFactor ActionBlendAlphaSource2;
+		public AvailableBlendFactor ActionBlendAlphaDest2;
+		public AvailableBlendOps ActionBlendOpRGB2;
+		public AvailableBlendOps ActionBlendOpAlpha2;
+
+		public AvailableBlendFactor ActionBlendRGBSource3;
+		public AvailableBlendFactor ActionBlendRGBDest3;
+		public AvailableBlendFactor ActionBlendAlphaSource3;
+		public AvailableBlendFactor ActionBlendAlphaDest3;
+		public AvailableBlendOps ActionBlendOpRGB3;
+		public AvailableBlendOps ActionBlendOpAlpha3;
 
 		//STENCIL 
 		public int ActionStencilReference;
@@ -808,10 +905,43 @@ namespace AmplifyShaderEditor
 								{
 									if( arr.Length > 4 )
 									{
-										actionItem.ColorMask[ 0 ] = Convert.ToBoolean( arr[ 1 ] );
-										actionItem.ColorMask[ 1 ] = Convert.ToBoolean( arr[ 2 ] );
-										actionItem.ColorMask[ 2 ] = Convert.ToBoolean( arr[ 3 ] );
-										actionItem.ColorMask[ 3 ] = Convert.ToBoolean( arr[ 4 ] );
+										actionItem.ColorMask.SetColorMask( 0, arr[ 1 ] );
+										actionItem.ColorMask.SetColorMask( 1, arr[ 2 ] );
+										actionItem.ColorMask.SetColorMask( 2, arr[ 3 ] );
+										actionItem.ColorMask.SetColorMask( 3, arr[ 4 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.ColorMask1:
+								{
+									if( arr.Length > 4 )
+									{
+										actionItem.ColorMask1.SetColorMask( 0, arr[ 1 ] );
+										actionItem.ColorMask1.SetColorMask( 1, arr[ 2 ] );
+										actionItem.ColorMask1.SetColorMask( 2, arr[ 3 ] );
+										actionItem.ColorMask1.SetColorMask( 3, arr[ 4 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.ColorMask2:
+								{
+									if( arr.Length > 4 )
+									{
+										actionItem.ColorMask2.SetColorMask( 0, arr[ 1 ] );
+										actionItem.ColorMask2.SetColorMask( 1, arr[ 2 ] );
+										actionItem.ColorMask2.SetColorMask( 2, arr[ 3 ] );
+										actionItem.ColorMask2.SetColorMask( 3, arr[ 4 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.ColorMask3:
+								{
+									if( arr.Length > 4 )
+									{
+										actionItem.ColorMask3.SetColorMask( 0, arr[ 1 ] );
+										actionItem.ColorMask3.SetColorMask( 1, arr[ 2 ] );
+										actionItem.ColorMask3.SetColorMask( 2, arr[ 3 ] );
+										actionItem.ColorMask3.SetColorMask( 3, arr[ 4 ] );
 									}
 								}
 								break;
@@ -848,12 +978,66 @@ namespace AmplifyShaderEditor
 									}
 								}
 								break;
+								case PropertyActionsEnum.BlendRGB1:
+								{
+									if( arr.Length > 2 )
+									{
+										actionItem.ActionBlendRGBSource1 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 1 ] );
+										actionItem.ActionBlendRGBDest1 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 2 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.BlendRGB2:
+								{
+									if( arr.Length > 2 )
+									{
+										actionItem.ActionBlendRGBSource2 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 1 ] );
+										actionItem.ActionBlendRGBDest2 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 2 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.BlendRGB3:
+								{
+									if( arr.Length > 2 )
+									{
+										actionItem.ActionBlendRGBSource3 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 1 ] );
+										actionItem.ActionBlendRGBDest3 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 2 ] );
+									}
+								}
+								break;
 								case PropertyActionsEnum.BlendAlpha:
 								{
 									if( arr.Length > 2 )
 									{
 										actionItem.ActionBlendAlphaSource = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 1 ] );
 										actionItem.ActionBlendAlphaDest = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 2 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.BlendAlpha1:
+								{
+									if( arr.Length > 2 )
+									{
+										actionItem.ActionBlendAlphaSource1 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 1 ] );
+										actionItem.ActionBlendAlphaDest1 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 2 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.BlendAlpha2:
+								{
+									if( arr.Length > 2 )
+									{
+										actionItem.ActionBlendAlphaSource2 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 1 ] );
+										actionItem.ActionBlendAlphaDest2 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 2 ] );
+									}
+								}
+								break;
+								case PropertyActionsEnum.BlendAlpha3:
+								{
+									if( arr.Length > 2 )
+									{
+										actionItem.ActionBlendAlphaSource3 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 1 ] );
+										actionItem.ActionBlendAlphaDest3 = (AvailableBlendFactor)Enum.Parse( typeof( AvailableBlendFactor ), arr[ 2 ] );
 									}
 								}
 								break;
