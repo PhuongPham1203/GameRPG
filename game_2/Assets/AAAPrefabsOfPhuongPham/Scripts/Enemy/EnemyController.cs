@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
     public PathCreator way;
     //[Range(0f,1f)]
-    public int pathWay = 0;
+    protected int pathWay = 0;
     public bool flipWay = false;
 
     [Header("Speed Tracking LookAt Target")]
@@ -262,7 +262,10 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    protected virtual void RunListAttack()
+    {
 
+    }
     protected virtual void MoveToTarget()
     {
         if (alertEnemy == AlertEnemy.OnTarget)

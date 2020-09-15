@@ -108,8 +108,9 @@ public class ZombieController : EnemyController
 
     }
 
-    void RunListAttack()
+    protected override void RunListAttack()
     {
+
         if (currentAttackDone)
         {
             currentAttackDone = false;

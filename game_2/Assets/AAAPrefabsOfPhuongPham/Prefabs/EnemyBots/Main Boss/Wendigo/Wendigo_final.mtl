@@ -1,0 +1,76 @@
+# Blender MTL File: 'Wendigo01.blend'
+# Material Count: 6
+
+newmtl Wendigo_Axe
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Substance\\export\\Wendigo_Axe_BaseColor.png
+map_Ns Substance\\export\\Wendigo_Axe_Roughness.png
+refl Substance\\export\\Wendigo_Axe_Metallic.png
+
+newmtl Wendigo_Bottom
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Substance\\export\\Wendigo_Bottom_BaseColor.png
+map_Ns Substance\\export\\Wendigo_Bottom_Roughness.png
+
+newmtl Wendigo_Head
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Substance\\export\\Wendigo_Head_BaseColor.png
+map_Ns Substance\\export\\Wendigo_Head_Roughness.png
+refl Substance\\export\\Wendigo_Head_Metallic.png
+
+newmtl Wendigo_ServedHeadHair
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd hairCard.png
+map_d hairCard.png
+
+newmtl Wendigo_SeveredHead
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Substance\\export\\Wendigo_SeveredHead_BaseColor.png
+map_Ns Substance\\export\\Wendigo_Head_Roughness.png
+
+newmtl Wendigo_Torso
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Substance\\export\\Wendigo_Torso_BaseColor.png
+map_Ns Substance\\export\\Wendigo_Torso_Roughness.png
