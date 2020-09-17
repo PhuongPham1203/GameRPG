@@ -1,0 +1,434 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FullBody v2
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: ami_clothes
+    m_Weight: 0
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/IK_Pole_Hand_L
+    m_Weight: 1
+  - m_Path: Armature/IK_Pole_Hand_L/IK_Pole_Hand_L_end
+    m_Weight: 1
+  - m_Path: Armature/IK_Pole_Hand_R
+    m_Weight: 1
+  - m_Path: Armature/IK_Pole_Hand_R/IK_Pole_Hand_R_end
+    m_Weight: 1
+  - m_Path: Armature/IK_Pole_Leg_L
+    m_Weight: 1
+  - m_Path: Armature/IK_Pole_Leg_L/IK_Pole_Leg_L_end
+    m_Weight: 1
+  - m_Path: Armature/IK_Pole_Leg_R
+    m_Weight: 1
+  - m_Path: Armature/IK_Pole_Leg_R/IK_Pole_Leg_R_end
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Hand_L
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Hand_L/IK_Target_Hand_L_end
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Hand_R
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Hand_R/IK_Target_Hand_R_end
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Leg_L
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Leg_L/IK_Target_Leg_L_end
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Leg_R
+    m_Weight: 1
+  - m_Path: Armature/IK_Target_Leg_R/IK_Target_Leg_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/_joint12
+    m_Weight: 0
+  - m_Path: Armature/Root_M/_joint12/_joint12_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/joint32
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/joint32/joint32_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/joint33
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/joint33/joint33_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/BLW_ANG
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/EB_L
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/EB_R
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/EL_ANG
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Eye
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/FaceA_Ami2
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/FaceB_ANG
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3/jo_joint4
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3/jo_joint4/jo_joint5
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3/jo_joint4/jo_joint5/jo_joint6
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3/jo_joint4/jo_joint5/jo_joint6/jo_joint7
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3/jo_joint4/jo_joint5/jo_joint6/jo_joint7/jo_joint8
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3/jo_joint4/jo_joint5/jo_joint6/jo_joint7/jo_joint8/jo_joint9
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint1/jo_joint2/jo_joint3/jo_joint4/jo_joint5/jo_joint6/jo_joint7/jo_joint8/jo_joint9/jo_joint9_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13/jo_joint14
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13/jo_joint14/jo_joint15
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13/jo_joint14/jo_joint15/jo_joint16
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13/jo_joint14/jo_joint15/jo_joint16/jo_joint17
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13/jo_joint14/jo_joint15/jo_joint16/jo_joint17/jo_joint18
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13/jo_joint14/jo_joint15/jo_joint16/jo_joint17/jo_joint18/jo_joint19
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Neck_M/NeckPart1_M_Center/NeckPart2_M/Head_M/Hair_M/joint26/jo_joint11/jo_joint12/jo_joint13/jo_joint14/jo_joint15/jo_joint16/jo_joint17/jo_joint18/jo_joint19/jo_joint19_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L/PinkyFinger2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L/PinkyFinger2_L/PinkyFinger3_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/PinkyFinger1_L/PinkyFinger2_L/PinkyFinger3_L/PinkyFinger3_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/RingFinger1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/RingFinger1_L/RingFinger2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/RingFinger1_L/RingFinger2_L/RingFinger3_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/Cup_L/RingFinger1_L/RingFinger2_L/RingFinger3_L/RingFinger3_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L/IndexFinger3_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L/IndexFinger3_L/IndexFinger3_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L/MiddleFinger3_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L/ThumbFinger3_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_L/Shoulder_L/Elbow_L/Wrist_L/ThumbFinger1_L/ThumbFinger2_L/ThumbFinger3_L/ThumbFinger3_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R/PinkyFinger2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R/PinkyFinger2_R/PinkyFinger3_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/PinkyFinger1_R/PinkyFinger2_R/PinkyFinger3_R/PinkyFinger3_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/RingFinger1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/RingFinger1_R/RingFinger2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/RingFinger1_R/RingFinger2_R/RingFinger3_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/Cup_R/RingFinger1_R/RingFinger2_R/RingFinger3_R/RingFinger3_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R/IndexFinger3_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R/IndexFinger3_R/IndexFinger3_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R/MiddleFinger3_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R/ThumbFinger3_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/BackB_M/Chest_M/Scapula_R/Shoulder_R/Elbow_R/Wrist_R/ThumbFinger1_R/ThumbFinger2_R/ThumbFinger3_R/ThumbFinger3_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/Root_Weapon
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/Root_Weapon/W1
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/Root_Weapon/W1/W1_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/Root_Weapon/W2
+    m_Weight: 1
+  - m_Path: Armature/Root_M/BackA_M/Root_Weapon/W2/W2_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/MiddleToe1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/MiddleToe1_L/BigToe_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/MiddleToe1_L/BigToe_L/BigToe_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/MiddleToe1_L/MiddleToe2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/MiddleToe1_L/MiddleToe2_L/MiddleToe2_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/MiddleToe1_L/PinkyToe_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/MiddleToe1_L/PinkyToe_L/PinkyToe_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/MiddleToe1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/MiddleToe1_R/BigToe_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/MiddleToe1_R/BigToe_R/BigToe_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/MiddleToe1_R/MiddleToe2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/MiddleToe1_R/MiddleToe2_R/MiddleToe2_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/MiddleToe1_R/PinkyToe_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/MiddleToe1_R/PinkyToe_R/PinkyToe_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/joint28
+    m_Weight: 0
+  - m_Path: Armature/Root_M/joint28/joint28_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/joint29
+    m_Weight: 0
+  - m_Path: Armature/Root_M/joint29/joint29_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/joint30
+    m_Weight: 0
+  - m_Path: Armature/Root_M/joint30/joint30_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/joint31
+    m_Weight: 0
+  - m_Path: Armature/Root_M/joint31/joint31_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_1
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_1/Skirt_B_2
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_1/Skirt_B_2/Skirt_B_2_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_L_1
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_L_1/Skirt_B_L_2
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_L_1/Skirt_B_L_2/Skirt_B_L_2_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_R_1
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_R_1/Skirt_B_R_2
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_B_R_1/Skirt_B_R_2/Skirt_B_R_2_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_F_L_1
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_F_L_1/Skirt_F_L_2
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_F_L_1/Skirt_F_L_2/Skirt_F_L_2_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_F_R_1
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_F_R_1/Skirt_F_R_2
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Root_skirt/Skirt_F_R_1/Skirt_F_R_2/Skirt_F_R_2_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint47
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint47/joint36
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint47/joint36/joint37
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint47/joint36/joint37/joint38
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint47/joint36/joint37/joint38/joint39
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint47/joint36/joint37/joint38/joint39/joint39_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint48
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint48/joint49
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint48/joint49/joint50
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint48/joint49/joint50/joint51
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint48/joint49/joint50/joint51/joint52
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint48/joint49/joint50/joint51/joint52/joint52_end
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint54
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint54/joint44
+    m_Weight: 0
+  - m_Path: Armature/Root_M/skirt_root/joint54/joint44/joint44_end
+    m_Weight: 0
+  - m_Path: blen_set1:blen1
+    m_Weight: 0
+  - m_Path: cheek
+    m_Weight: 0
+  - m_Path: eye_set2
+    m_Weight: 0
+  - m_Path: Group
+    m_Weight: 0
+  - m_Path: Group/Main
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKIKSystem
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKIKSystem/FKIKParentConstraintSpine_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKIKSystem/FKIKParentConstraintSpine_M/FKIKSpine_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M/Armature.001
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M/Armature.001/FKOffsetRoot_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M/Armature.001/FKOffsetRoot_M/FKExtraRoot_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M/Armature.001/FKOffsetRoot_M/FKExtraRoot_M/FKRoot_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M/Armature.001/FKOffsetRoot_M/FKExtraRoot_M/FKRoot_M/FKRoot_M
+      1
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M/Armature.001/FKOffsetRoot_M/FKExtraRoot_M/FKRoot_M/HipSwingerGroupRoot_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/FKSystem/RootCenterBtwLegsBlended_M/CenterOffset_M/CenterExtra_M/Center_M/Armature.001/FKOffsetRoot_M/FKExtraRoot_M/FKRoot_M/HipSwingerGroupRoot_M/HipSwingerGroupRoot_M_end
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKHandle
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKHandle/IKParentConstraintSpine0_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKHandle/IKParentConstraintSpine0_M/IKExtraSpine0_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKHandle/IKParentConstraintSpine0_M/IKExtraSpine0_M/IKSpine0_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKHandle/IKParentConstraintSpine0_M/IKExtraSpine0_M/IKSpine0_M/IKOrientToSpine_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKParentConstraint
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKParentConstraint/IKParentConstraintRoot_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKParentConstraint/IKParentConstraintRoot_M/IKOffsetRoot_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKParentConstraint/IKParentConstraintRoot_M/IKOffsetRoot_M/IKXRoot_M
+    m_Weight: 0
+  - m_Path: Group/Main/MotionSystem/IKSystem/IKParentConstraint/IKParentConstraintRoot_M/IKOffsetRoot_M/IKXRoot_M/IKXRoot_M_end
+    m_Weight: 0
+  - m_Path: hair
+    m_Weight: 0
+  - m_Path: Mesh
+    m_Weight: 0

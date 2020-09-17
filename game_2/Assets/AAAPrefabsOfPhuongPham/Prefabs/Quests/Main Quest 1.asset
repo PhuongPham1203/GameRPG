@@ -12,19 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f153ab32fb6f14680942e5496cc92d, type: 3}
   m_Name: Main Quest 1
   m_EditorClassIdentifier: 
-  id: 0
-  name: New Quest
-  type: 1
+  nameQuest: Find And Kill Zombie
+  typeColectionQuest: 0
   statusQuest: 0
-  information: New Item information
+  typeQuest: 1
+  information: Find and kill all zombie
+  dialogBefore: {fileID: 11400000, guid: 145783c9b2aac0941baca8090f822c6a, type: 2}
+  dialogAfter: {fileID: 11400000, guid: c6a9b4e847729334f891cb19bea5e4fe, type: 2}
   listRequest:
-  - {fileID: 11400000, guid: 7885284db8525c547a05b55ae5a109a5, type: 2}
-  - {fileID: 11400000, guid: db96548884007534a8e751d0a53d23bc, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  numberTarget: 0
-  numberCurrent: 0
-  listReward:
-  - {fileID: 11400000, guid: 219b1773b0386a548b17c1560b780d2b, type: 2}
-  - {fileID: 11400000, guid: 7885284db8525c547a05b55ae5a109a5, type: 2}
-  numberReward: 0
+  - item: {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
+    numberTarget: 2
+    numberCurrent: 0
+  listReward: []

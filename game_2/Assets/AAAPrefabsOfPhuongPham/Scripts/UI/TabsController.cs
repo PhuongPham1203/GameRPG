@@ -7,13 +7,7 @@ using UnityEngine.UI;
 public class TabsController : MonoBehaviour
 {
     public GameObject[] allTabs ;
-    public GameObject[] allHeaderTabs ;
-    private void Start()
-    {
-        
-
-
-    }
+    
     public void OnTabsSelect(int numberTab)//select tab
     {
         

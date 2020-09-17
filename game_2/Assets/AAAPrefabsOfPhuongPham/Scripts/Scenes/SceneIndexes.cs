@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "New Scene Index", menuName = "Inventory/Scene Index")]
 
@@ -13,9 +14,14 @@ public class SceneIndexes : ScriptableObject
     SCENE_CLOUDFOREST = 4,
     SCENE_HELL = 5
     */
-    new public int sceneId;
+    public int sceneBuiltId;
+    //public Scene scene;
     public string nameScene;
     [TextArea]
     public string information = "New Item information";
 
+    public int GetSceneBuiltID()
+    {
+        return sceneBuiltId;
+    }
 }

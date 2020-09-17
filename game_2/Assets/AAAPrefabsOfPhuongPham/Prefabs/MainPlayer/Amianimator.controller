@@ -944,7 +944,7 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: SpeedMove
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 0.1
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -1543,8 +1543,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8285839004245438155, guid: edcea493881a06f46ae37957374c7fe6,
-    type: 3}
+  m_Motion: {fileID: 538058177955625820, guid: 79531442ded88bc44adc011b98e0540e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
