@@ -204,4 +204,11 @@ MonoBehaviour:
     pitch: 1
     is3dSound: 0
     source: {fileID: 0}
+  - name: OnCombat_Weindigo
+    clip: {fileID: 8300000, guid: dec4a6fe7035eac49a427b60b9513aac, type: 3}
+    loop: 1
+    volume: 0.2
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
   timeToLeaveCombatSound: 7

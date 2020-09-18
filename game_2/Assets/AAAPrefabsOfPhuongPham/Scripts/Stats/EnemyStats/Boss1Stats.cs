@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Boss1Stats : CharacterStats
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [Header("Phase Boss Stats")]
+    public PhaseBossStats[] phaseBossStats;
+
+    private void Start()
     {
-        
+        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[0].HP,0, this.phaseBossStats[0].Posture);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+}
+
+[System.Serializable]
+
+public class PhaseBossStats
+{
+    public string name = "Phase";
+    public int HP = 100;
+    public int Posture = 100;
 }

@@ -116,6 +116,7 @@ MonoBehaviour:
   way: {fileID: 0}
   flipWay: 1
   speedTrackTarget: 2
+  lookAt: 1
   distanceCanAttack: 1
   distance: 0
   timeTryMoveToPos: 0
@@ -212,9 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b7562776a4d61419e9db446396aa99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trail:
-  - {fileID: 3046708887310047686}
+  trailL:
   - {fileID: 5327932086864629379}
+  trailR:
+  - {fileID: 3046708887310047686}
   trail: 0
 --- !u!114 &8246543909538425172
 MonoBehaviour:

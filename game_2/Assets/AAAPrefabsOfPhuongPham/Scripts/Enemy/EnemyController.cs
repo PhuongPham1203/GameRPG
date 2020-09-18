@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
     [Header("Speed Tracking LookAt Target")]
     [Range(0.1f, 10f)]
     public double speedTrackTarget = 3f;
+    public bool lookAt = true;
     public float distanceCanAttack;
     public float distance = 0f;
 
@@ -78,6 +79,7 @@ public class EnemyController : MonoBehaviour
     [Header("Hit Box")]
     //public Transform parentVfxEnemy;
     public List<Collider> hitBox;
+    public InforAttack inforAttackCurrent;
 
 
 
@@ -94,7 +96,7 @@ public class EnemyController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
 
         //SetTarget(0);

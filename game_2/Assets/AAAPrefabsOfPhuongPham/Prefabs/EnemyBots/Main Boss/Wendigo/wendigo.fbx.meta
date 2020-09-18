@@ -297,7 +297,7 @@ ModelImporter:
     - name: forearm.R
       parentName: upper_arm.R
       position: {x: -7.9721213e-10, y: 0.0074851736, z: -0.0000000011101366}
-      rotation: {x: 0.035458185, y: 0.33769873, z: -0.03890432, w: 0.9397812}
+      rotation: {x: 0.03545819, y: 0.33769876, z: -0.038904324, w: 0.93978125}
       scale: {x: 0.9999998, y: 1, z: 1}
     - name: hand.R
       parentName: forearm.R
@@ -312,7 +312,7 @@ ModelImporter:
     - name: spine.005
       parentName: spine.004
       position: {x: -0.000000034947885, y: 0.003130981, z: 0.000000084191576}
-      rotation: {x: -0.07306511, y: -0.02651018, z: 0.014246476, w: 0.996873}
+      rotation: {x: 0.3829039, y: -0.017275186, z: 0.024643844, w: 0.9232978}
       scale: {x: 1, y: 1.0000001, z: 1}
     - name: spine.006
       parentName: spine.005

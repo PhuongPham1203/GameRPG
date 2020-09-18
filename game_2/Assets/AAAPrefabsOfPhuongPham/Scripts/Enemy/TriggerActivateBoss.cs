@@ -6,16 +6,7 @@ public class TriggerActivateBoss : MonoBehaviour
 {
     public EnemyController enemyController;
     // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnTriggerExit(Collider other)
     {
@@ -27,15 +18,18 @@ public class TriggerActivateBoss : MonoBehaviour
                 {
                     enemyController.SetAlentCombat(AlertEnemy.OnTarget);
 
-                    if (AudioManager.instance.IsPlayTheme("OnCombat"))
+                    if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
                     {
 
                     }
                     else
                     {
-                        AudioManager.instance.PlaySoundOfTheme("OnCombat");
-                        
+                        AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
 
+                        if (AudioManager.instance.IsPlayTheme("OnCombat"))
+                        {
+                            AudioManager.instance.StopSoundOfTheme("OnCombat");
+                        }
                     }
                 }
             }
