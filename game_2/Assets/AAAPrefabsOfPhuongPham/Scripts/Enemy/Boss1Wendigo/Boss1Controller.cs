@@ -39,7 +39,6 @@ public class Boss1Controller : EnemyController
 
                 this.RunListAttack();
 
-                 
 
 
             }
