@@ -22,4 +22,5 @@ public class PhaseBossStats
     public string name = "Phase";
     public int HP = 100;
     public int Posture = 100;
+
 }

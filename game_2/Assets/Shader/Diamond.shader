@@ -139,7 +139,7 @@ Shader "Diamond"
 }
 /*ASEBEGIN
 Version=18400
-476;144;825;521;474.93;314.6917;1.261232;False;True
+697;113;825;599;1099.245;308.3978;2.408069;False;True
 Node;AmplifyShaderEditor.ViewDirInputsCoordNode;13;-1019.832,2.905956;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.NegateNode;12;-724.3903,87.93646;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.WorldNormalVector;14;-842.085,217.521;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
@@ -166,4 +166,4 @@ WireConnection;0;1;9;0
 WireConnection;0;3;18;0
 WireConnection;0;4;19;0
 ASEEND*/
-//CHKSM=A99AACB04C0481DBD35366462C1CF2F846BCB7B3
+//CHKSM=5D6F63DAE8085D594C8B08F353E26B63973DEB13
