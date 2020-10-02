@@ -40,6 +40,8 @@ public class CharacterStats : MonoBehaviour
     //[Header("xPlus small && low HP => slow Reduction")]
     //[Range(0f, 1f)]
     //public float xPlus=1f;
+    public bool isHit = false;
+
     private Coroutine actionReduction;
 
     //public Stat damage; // old damage
@@ -76,7 +78,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            TakeDamege(d);
+            TakeDamege(d, 0, 100,this);
         }
 
 
@@ -105,7 +107,7 @@ public class CharacterStats : MonoBehaviour
         return currentAttackDame;
     }
 
-    public virtual void TakeDamege(int damage)
+    public virtual void TakeDamege(int damage,float timeStun,float wayStun,CharacterStats ememyStats)
     {
 
     }

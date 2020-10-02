@@ -1594,7 +1594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362019553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.78, y: -3.11, z: -4.38}
+  m_LocalPosition: {x: -4.69, y: -3.11, z: 3.3}
   m_LocalScale: {x: 3.8633, y: 3.8633, z: 3.8633}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8197,7 +8197,7 @@ GameObject:
   - component: {fileID: 1871621244}
   - component: {fileID: 1871621245}
   m_Layer: 23
-  m_Name: Boss 1
+  m_Name: Boss 1 Wendigo
   m_TagString: SelectAbleTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8321,6 +8321,8 @@ MonoBehaviour:
     phaseBoss: 1
     combo: 1
     damageAttack: 0
+    timeStun: 0
+    wayStun: 0
     distanceAttack: 2
     timeToNextAction: 0
     hitBox: {fileID: 0}
@@ -8331,31 +8333,41 @@ MonoBehaviour:
   distanceAttack:
   - phaseBoss: 1
     combo: 1
-    damageAttack: 10
+    damageAttack: 30
+    timeStun: 0.25
+    wayStun: 0
     distanceAttack: 4
     timeToNextAction: 4
     hitBox: {fileID: 1032598415}
   - phaseBoss: 1
     combo: 2
     damageAttack: 30
+    timeStun: 0
+    wayStun: 0
     distanceAttack: 10
     timeToNextAction: 4
     hitBox: {fileID: 1032598415}
   - phaseBoss: 1
     combo: 3
     damageAttack: 15
+    timeStun: 0
+    wayStun: 0
     distanceAttack: 10
     timeToNextAction: 1.5
     hitBox: {fileID: 1032598415}
   - phaseBoss: 1
     combo: 4
     damageAttack: 15
+    timeStun: 0
+    wayStun: 0
     distanceAttack: 5
     timeToNextAction: 1.5
     hitBox: {fileID: 1032598415}
   - phaseBoss: 1
     combo: 5
     damageAttack: 40
+    timeStun: 0
+    wayStun: 0
     distanceAttack: 7
     timeToNextAction: 5
     hitBox: {fileID: 1032598415}
@@ -8378,6 +8390,7 @@ MonoBehaviour:
   reduction: 1
   timeWaitToReduction: 3
   percenReduction: 0
+  isHit: 0
   vfxBlood: {fileID: 913800371}
   vfxSteel: {fileID: 651641337}
   vfxFinish: {fileID: 1734552885}
@@ -8575,7 +8588,7 @@ MonoBehaviour:
   - CenterPoint2
   - CenterPoint2/Heart Point Light
   showBones: 000000000700000008000000090000000a0000000b0000000c0000000d0000001500000016000000170000001800000024000000250000002700000028000000290000002a0000002b0000002c000000
-  foldoutBones: 0b0000000600000017000000250000002f0000002b0000000e0000002300000027000000180000000d00000028000000190000000700000016000000240000002a0000000800000036000000150000000a000000090000000400000030000000050000000c000000000000002e000000
+  foldoutBones: 300000002f000000280000002b00000018000000270000002a000000170000000600000025000000240000000700000016000000150000000800000023000000090000000a0000000b0000000c0000000d00000005000000040000000e0000001900000036000000000000002e000000
   mirrorBones: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1500000016000000170000001800000019000000ffffffffffffffffffffffffffffffffffffffffffffffff0a0000000b0000000c0000000d0000000e000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2a0000002b0000002c000000270000002800000029000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   mirrorBlendShape: []
   animatorIkData:
@@ -8646,7 +8659,7 @@ MonoBehaviour:
     swivelPosition: {x: 0, y: 0, z: 0}
   originalIkData: []
   selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: a529fb371a528484b836f92f6da3c4cf,
+  lastSelectAnimationClip: {fileID: 7400000, guid: 07b24630db3703441b495ee0d8184393,
     type: 2}
   blendShapeList: []
 --- !u!114 &1871621245

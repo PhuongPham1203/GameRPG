@@ -14,7 +14,7 @@ public class HitBoxEnemy : Hitbox
         {
             //Debug.Log(characterStats.transform.name + " hitbox "+ characterStats.GetAttackDame(1));
             //other.gameObject.GetComponent<PlayerStats>().TakeDamege(characterStats.GetAttackDame(1));
-            other.gameObject.GetComponent<CharacterStats>().TakeDamege(  99999 );
+            //other.gameObject.GetComponent<CharacterStats>().TakeDamege(  99999,0,Vector3.zero );
             
         }
     }

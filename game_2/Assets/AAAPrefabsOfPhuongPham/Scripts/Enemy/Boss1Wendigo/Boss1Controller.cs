@@ -296,9 +296,7 @@ public class Boss1Controller : EnemyController
             if (this.actionLeaveAction != null)
             {
                 StopCoroutine(this.actionLeaveAction);
-
             }
-
             this.actionLeaveAction = StartCoroutine(this.CanAttackAgain(this.inforAttackCurrent.timeToNextAction)); // time can do something again
 
             this.animator.SetInteger("combo", this.inforAttackCurrent.combo);
@@ -456,6 +454,8 @@ public class InforAttack
     public PhaseBoss phaseBoss = PhaseBoss.Phase_1;
     public int combo = 1;
     public int damageAttack = 0;
+    public float timeStun = 0;
+    public float wayStun = 0;
     public float distanceAttack = 2f;
     public float timeToNextAction = 0f;
 

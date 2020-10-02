@@ -160,7 +160,7 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    public override void TakeDamege(int damage)
+    public override void TakeDamege(int damage,float timeStun,float wayStun,CharacterStats enemyStat)
     {
         Debug.Log("Player take: "+damage);
 
@@ -221,7 +221,8 @@ public class PlayerStats : CharacterStats
 
                 currentHP -= damage;
                 currentHP = Mathf.Clamp(currentHP,0,maxHP);
-                playerController.Damage(0.5f);
+                playerController.Damage(timeStun,wayStun);
+
                 AudioManager.instance.PlaySoundOfPlayer("Damage");
                 vfxBlood.Play();
                 this.Reduction(timeWaitToReduction);
@@ -241,7 +242,7 @@ public class PlayerStats : CharacterStats
             else if (currentPosture >= maxPosture)
             {
 
-                playerController.PlayerStun();
+                playerController.PlayerStun(2);
             }
         }
 

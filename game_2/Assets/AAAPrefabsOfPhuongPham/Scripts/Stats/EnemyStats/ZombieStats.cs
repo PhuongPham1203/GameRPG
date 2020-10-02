@@ -46,7 +46,8 @@ public class ZombieStats : CharacterStats
         }
     }
     */
-    public override void TakeDamege(int damage){
+    public override void TakeDamege(int damage, float timeStun, float wayStun,CharacterStats enemyStats)
+    {
         //base.TakeDamege(damage);
         //Debug.Log("Zombie"+transform.name+" take: " + damage);
 

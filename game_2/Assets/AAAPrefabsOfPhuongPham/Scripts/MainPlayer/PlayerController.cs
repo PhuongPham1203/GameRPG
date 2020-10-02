@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
         StopAllCoroutines();
         canAction = false;
     }
-    public void PlayerStun()
+    public void PlayerStun(float timeStun) // stun by Full Pos
     {
         StopAllCoroutines();
         canAction = false;
@@ -255,6 +255,9 @@ public class PlayerController : MonoBehaviour
         animatorPlayer.SetInteger("InAction", 9);
         StartCoroutine(CanAcion(2f));
     }
+
+
+
     public void PressToMovePlayer(bool move)
     {
         isPressMove = move;
@@ -753,9 +756,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Damage(float timeStun)
+    public void Damage(float timeStun,float wayStun)
     {
         animatorPlayer.SetTrigger("TriggerDamage");
+
+        //Rigidbody rigidbody = GetComponent<Rigidbody>();
+
+        //rigidbody.AddForce(-this.transform.forward * wayStun)  ;
 
         if (actionCanAction != null)
         {
