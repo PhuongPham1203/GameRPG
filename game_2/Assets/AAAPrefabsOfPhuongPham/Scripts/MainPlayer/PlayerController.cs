@@ -1,9 +1,9 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,10 +28,12 @@ public class PlayerController : MonoBehaviour
 
     public float timeSwing = 0f;
     public float timeSwingValue = 1f;
-    private bool canSwing = true;
+    //private bool canSwing = true;
     public Transform targetSwing;
     public Transform targetSwingDetect;
     public GameObject buttonSwing;
+
+    public Transform checkGround;
 
     [Space]
     [Header("Times")]
@@ -49,15 +51,43 @@ public class PlayerController : MonoBehaviour
     [Header("Equips")]
     [SerializeField]
     private int weaponPlayer = 1;
+
     [Space]
     [Header("Attack Light")]
     [SerializeField]
     private int comboAttack = 1;
     private int maxComboValue = 4;
     public bool canAction = true;
+
+    public ParticleSystem weaponIn;
+    public ParticleSystem weaponOut;
+
+    [SerializeField]
+    private GameObject weapon1;
+    [SerializeField]
+    private GameObject weapon2;
+
+    [SerializeField]
+    private float timeLeaveLightAttack = 2f;
+    [SerializeField]
+    private float timeCanLightAttackAction = 0.6f;
+
+    [SerializeField]
+    private float timeLeaveHeavyAttack = 4f;
+    [SerializeField]
+    private float timeCanHeavyAttackAction = 1.6f;
+    [SerializeField]
+    private float timeDisableWeapon = 5f;
+
+    [SerializeField]
+    public bool isPressBlock = false;
+
     private Coroutine actionCanAction;
     private Coroutine actionLeaveAction;
     private Coroutine actionLeaveAttackCombo;
+
+    private Coroutine actionDisableWeapon;
+
 
     [Header("Input")]
     public bool isPressMove = false;
@@ -65,32 +95,38 @@ public class PlayerController : MonoBehaviour
     public FloatingJoystick joystickMoveCamera;
     public Vector2 XZ = Vector2.zero;
 
+    //public GameObject buttonFinishBot;
+
     [Space]
     [Header("Camera")]
     public CinemachineVirtualCamera LookCamera1;
     public CinemachineFreeLook LookCamera3;
     public GameObject targetGroup;
     public CinemachineTargetGroup targetGroupCiner;
-
-
     private Transform maincameraTranform;
 
 
-    private CharacterController characterController;
-    private Animator animatorPlayer;
 
-    public Text fps;
+
+    public CharacterController characterController;
+    public Animator animatorPlayer;
+    public SelectManager selectManager;
+    //public Text fps;
+    public CharacterStats characterStats;
 
     // Start is called before the first frame update
     void Start()
     {
-        QualitySettings.vSyncCount = 1;
+        //QualitySettings.vSyncCount = 1;
+
         Application.targetFrameRate = 60;
-        characterController = GetComponent<CharacterController>();
-        animatorPlayer = GetComponent<Animator>();
-        targetGroupCiner = targetGroup.GetComponent<CinemachineTargetGroup>();
+
+        //characterController = GetComponent<CharacterController>();
+        //animatorPlayer = GetComponent<Animator>();
+        //targetGroupCiner = targetGroup.GetComponent<CinemachineTargetGroup>();
         maincameraTranform = Camera.main.transform;
         moveSpeed = moveSpeedValue;
+        characterStats = GetComponent<CharacterStats>();
 
     }
 
@@ -98,10 +134,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (Time.deltaTime != 0)
-        {
-            fps.text = (1 / Time.deltaTime).ToString();
-        }
+
+        
 
         if (timeSwing > 0)
         {
@@ -117,20 +151,35 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (canAction && isPressMove)
+            if (canAction)
             {
+                if (isPressMove)
+                {
+                    XZ = new Vector2(joystickMovePlayer.Horizontal, joystickMovePlayer.Vertical);
+                }
+                else //if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
+                {
+                    if(  Mathf.Abs(Input.GetAxis("Horizontal")) <0.15 && Mathf.Abs(Input.GetAxis("Vertical"))<0.15)
+                    {
+                        XZ = Vector2.zero;
+                    }
+                    else
+                    {
+                        XZ = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-                XZ = new Vector2(joystickMovePlayer.Horizontal, joystickMovePlayer.Vertical);
-                //if (animatorPlayer.GetInteger("InAction") == 0)
-                //{
+                    }
+                    //Debug.Log(Input.GetAxis("Horizontal"));
+                    //Debug.Log(Input.GetAxis("Vertical"));
+                    //XZ = new Vector2(Input.GetAxis("Horizontal") < 0.15 && Input.GetAxis("Horizontal") > -0.15 ? 0 : Input.GetAxis("Horizontal"), Input.GetAxis("Vertical") < 0.15 && Input.GetAxis("Vertical") > -0.15 ? 0 : Input.GetAxis("Vertical"));
+                }
+                //Debug.Log(XZ);
                 animatorPlayer.SetFloat("x", XZ.x);
                 animatorPlayer.SetFloat("z", XZ.y);
 
-                //}
-
                 MovePlayer();
-
             }
+
+
 
 
             if (!characterController.isGrounded && animatorPlayer.GetInteger("InAction") == 0)
@@ -142,6 +191,7 @@ public class PlayerController : MonoBehaviour
             {
                 characterController.Move(new Vector3(0, jumpValue * Time.deltaTime, 0));
             }
+
         }
 
 
@@ -166,16 +216,45 @@ public class PlayerController : MonoBehaviour
             Vector3 tg = new Vector3(tftarget.x, transform.position.y, tftarget.z);
             transform.LookAt(tg);
             */
-            Transform tftarget = targetGroup.transform;
+            Transform tftarget = selectManager.targetEnemy.transform;//targetGroupCiner.m_Targets[1].target; //targetGroup.transform;
             Vector3 direction = (tftarget.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            if (animatorPlayer.GetInteger("InAction") != 4)
+            {
 
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            }
 
+            float distan = Vector3.Distance(tftarget.position, transform.position);
+            EnemyController enemyController = tftarget.root.GetComponent<EnemyController>();
 
+            if (distan < 2 && enemyController.canFinish && !PlayerManager.instance.buttonFinish.activeInHierarchy)
+            {
+                //buttonFinishBot.SetActive(true);
+                //PlayerManager.instance.buttonFinish.SetActive(true);
+                enemyController.SetFinishVFX(true);
+                //Debug.Log("Set true in player controller");
+            }
+        }
+
+        if (isPressBlock)
+        {
+            Block(isPressBlock);
         }
     }
+    public void PlayerDie()
+    {
+        StopAllCoroutines();
+        canAction = false;
+    }
+    public void PlayerStun()
+    {
+        StopAllCoroutines();
+        canAction = false;
 
+        animatorPlayer.SetInteger("InAction", 9);
+        StartCoroutine(CanAcion(2f));
+    }
     public void PressToMovePlayer(bool move)
     {
         isPressMove = move;
@@ -232,7 +311,7 @@ public class PlayerController : MonoBehaviour
 
         if (animatorPlayer.GetInteger("InAction") != 3)
         {
-            animatorPlayer.SetFloat("SpeedMove", typeMove * XZ.magnitude, speedSmoothTime, Time.deltaTime);
+            animatorPlayer.SetFloat("SpeedMove", typeMove * XZ.magnitude);//, speedSmoothTime, Time.deltaTime);
 
         }
 
@@ -252,6 +331,11 @@ public class PlayerController : MonoBehaviour
 
         Vector3 desiredMoveDirection = (forward * XZ.y + right * XZ.x).normalized;
 
+        if (animatorPlayer.GetInteger("InAction") != 3)
+        {
+            animatorPlayer.SetFloat("SpeedMove", typeMove * XZ.magnitude);//, speedSmoothTime, Time.deltaTime);
+
+        }
 
         //transform.Translate(new Vector3(XZ.x*moveSpeed, gravityVector,XZ.y*moveSpeed));
         characterController.Move(desiredMoveDirection * moveSpeed * Time.deltaTime);
@@ -273,8 +357,12 @@ public class PlayerController : MonoBehaviour
 
     public void MoveCamera()
     {
+
         LookCamera3.m_XAxis.m_InputAxisValue = joystickMoveCamera.Horizontal;
         LookCamera3.m_YAxis.m_InputAxisValue = -joystickMoveCamera.Vertical;
+
+
+
     }
 
     public void ResetXYCamera()
@@ -285,17 +373,22 @@ public class PlayerController : MonoBehaviour
     public void LockTarget()
     {
         //if(targetGroup.)
-        if (animatorPlayer.GetBool("LockTarget"))
+        if (animatorPlayer.GetBool("LockTarget")) // if On Lock Target Enemy
         {
             animatorPlayer.SetBool("LockTarget", false);
-            LookCamera3.m_XAxis.Value = LookCamera1.transform.eulerAngles.y;//GetComponent<Transform>().rotation.y;
-            LookCamera3.m_YAxis.Value = 0.5f;
+            LookCamera3.m_XAxis.Value = LookCamera1.transform.eulerAngles.y;
+            LookCamera3.m_YAxis.Value = 0.4f;
 
             LookCamera1.enabled = false;
             LookCamera3.enabled = true;
 
+            //UITarget.SetActive(true);
+            selectManager.targetEnemy.GetComponent<CharacterStats>().SetUIActivate(false);
+            selectManager.targetEnemy.GetComponent<EnemyController>().SetFinishVFX(false);
+            //Debug.Log("Set false in player controller");
+
         }
-        else if (targetGroupCiner.m_Targets[1].target != null)
+        else if (targetGroupCiner.m_Targets[1].target != null) // if have target in fond
         {
             //Debug.Log(targetGroupCiner.m_Targets[1].target);
             //Debug.Log(targetGroupCiner.m_Targets.Length);
@@ -303,22 +396,54 @@ public class PlayerController : MonoBehaviour
             LookCamera3.enabled = false;
             animatorPlayer.SetBool("LockTarget", true);
 
+            //UITarget.SetActive(true);
+            selectManager.targetEnemy.GetComponent<CharacterStats>().SetUIActivate(true);
+
+        }
+        else
+        {
+            LookCamera3.m_XAxis.Value = transform.eulerAngles.y;
         }
     }
 
     public void CrouchPlayer()
     {
-        if (animatorPlayer.GetBool("Crouch"))
+        if (animatorPlayer.GetInteger("InAction") != 8)
         {
-            animatorPlayer.SetBool("Crouch", false);
-            OnCombat(false);
-            //moveSpeed = moveSpeedValue ;
-        }
-        else
-        {
-            animatorPlayer.SetBool("Crouch", true);
-            OnCombat(true);
-            //moveSpeed = moveSpeedValue/2;
+
+            if (animatorPlayer.GetBool("Crouch"))
+            {
+                checkGround.localPosition = new Vector3(0, -0.85f, 0);
+
+                //characterController.center = new Vector3(0, 0, 0);
+                characterController.height = 1.6f;
+
+                animatorPlayer.SetBool("Crouch", false);
+
+                if (!onCombat)
+                {
+                    typeMove = 1;
+                    moveSpeed = moveSpeedValue;
+                }
+
+
+                //OnCombat(false);
+                //moveSpeed = moveSpeedValue ;
+            }
+            else
+            {
+                checkGround.localPosition = new Vector3(0, -0.45f, 0);
+                //characterController.center = new Vector3( 0, -0.4f, 0);
+                characterController.height = 0.8f;
+
+                animatorPlayer.SetBool("Crouch", true);
+
+                typeMove = 0.5f;
+                moveSpeed = moveSpeedValueOnCombat;
+
+                //OnCombat(true);
+                //moveSpeed = moveSpeedValue/2;
+            }
         }
     }
 
@@ -326,20 +451,36 @@ public class PlayerController : MonoBehaviour
     {
         if (canAction && animatorPlayer.GetBool("OnGround"))
         {
+            if (animatorPlayer.GetBool("Crouch"))
+            {
+                CrouchPlayer();
+            }
+
             animatorPlayer.SetInteger("InAction", 3);
             //timeJump = timeJumpValue;
             if (actionLeaveAction != null)
             {
                 StopCoroutine(actionLeaveAction);
             }
-            actionCanAction = StartCoroutine(LeaveJump(timeJumpValue));
+            //actionCanAction = StartCoroutine(LeaveJump(timeJumpValue));
+            actionLeaveAction = StartCoroutine(LeaveJump(timeJumpValue));
 
             //animatorPlayer.SetTrigger("Jump");
+            /*
             animatorPlayer.SetBool("Crouch", false);
+            if (!onCombat)
+            {
+                typeMove = 1;
+                moveSpeed = moveSpeedValue;
+            }
+            */
+            /*
             if (!animatorPlayer.GetBool("InCombat"))
             {
                 OnCombat(false);
             }
+            */
+
             //moveSpeed = moveSpeedValue;
         }
     }
@@ -348,80 +489,47 @@ public class PlayerController : MonoBehaviour
     {
         if (canAction && animatorPlayer.GetBool("OnGround"))
         {
+
+
             canAction = false;
             if (actionLeaveAction != null)
             {
                 StopCoroutine(actionLeaveAction);
             }
-            actionCanAction = StartCoroutine(LeaveDash(timeDashValue));
+            if (actionCanAction != null)
+            {
+                StopCoroutine(actionCanAction);
+
+            }
+
+            if (animatorPlayer.GetBool("Crouch"))
+            {
+                CrouchPlayer();
+            }
+
+            actionCanAction = StartCoroutine(CanAcion(timeDashValue));
+            actionLeaveAction = StartCoroutine(LeaveDash(timeDashValue));
+
             animatorPlayer.SetTrigger("Dash");
             animatorPlayer.SetInteger("InAction", 4);
 
+            /*
             animatorPlayer.SetBool("Crouch", false);
-            if (!animatorPlayer.GetBool("InCombat"))
+            if (!onCombat)
+            {
+                typeMove = 1;
+                moveSpeed = moveSpeedValue;
+            }
+            */
+            /*
+            if (!onCombat)
             {
                 OnCombat(false);
             }
-        }
-    }
-
-    public void Block(bool block)
-    {
-        /*
-            if (actionLeaveAction != null)
-            {
-                StopCoroutine(actionLeaveAction);
-            }
             */
-
-        if (( /*animatorPlayer.GetInteger("InAction") == 2 || */ canAction) && animatorPlayer.GetInteger("InAction") != 3)
-        {
-            if (actionLeaveAction != null)
-            {
-                StopCoroutine(actionLeaveAction);
-            }
-            //OnCombat(block);
-
-            //animatorPlayer.SetBool("Block", block);
-            if (block)// Block
-            {
-                //OnCombat(block);
-                moveSpeed = moveSpeedValueOnCombat;
-                typeMove = 0.5f;
-                animatorPlayer.SetInteger("InAction", 6);
-            }
-            else // Not Block
-            {
-                if (!onCombat) // Not in Combat
-                {
-                    moveSpeed = moveSpeedValue;
-                    typeMove = 1f;
-                }
-                animatorPlayer.SetInteger("InAction", 0);
-            }
-
-
-
         }
-
-
-
     }
 
-    public void ChangeWeapon()
-    {
-        if (weaponPlayer == 2)
-        {
-            weaponPlayer = 1;
-            animatorPlayer.SetInteger("Weapon", weaponPlayer);
-        }
-        else
-        {
-            weaponPlayer = 2;
-            animatorPlayer.SetInteger("Weapon", weaponPlayer);
-        }
-
-    }
 
     public void SwingPlayer()
     {
@@ -441,7 +549,20 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    public void ChangeWeapon()
+    {
+        if (weaponPlayer == 2)
+        {
+            weaponPlayer = 1;
+            animatorPlayer.SetInteger("Weapon", weaponPlayer);
+        }
+        else
+        {
+            weaponPlayer = 2;
+            animatorPlayer.SetInteger("Weapon", weaponPlayer);
+        }
 
+    }
     public void Attack()
     {
         if (canAction)
@@ -453,23 +574,64 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                characterStats.Reduction(3f);
+
                 canAction = false;
 
                 if (actionLeaveAction != null)
                 {
                     StopCoroutine(actionLeaveAction);
+                }
+                if (actionLeaveAttackCombo != null)
+                {
                     StopCoroutine(actionLeaveAttackCombo);
                 }
-                actionLeaveAction = StartCoroutine(LeaveAttack(2f));
-                actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(2f));
 
-                StartCoroutine(CanAcion(0.6f));
+                if (animatorPlayer.GetBool("Crouch"))
+                {
+                    CrouchPlayer();
+                }
 
+                SetActivateWeapon(weaponPlayer);
+
+
+                if (weaponPlayer == 1)
+                {//Light Weapon
+
+
+
+
+                    actionLeaveAction = StartCoroutine(LeaveAttack(timeLeaveLightAttack));
+                    actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(timeLeaveLightAttack));
+
+                    StartCoroutine(CanAcion(timeCanLightAttackAction));
+                }
+                else// Heavy Weapon
+                {
+
+
+                    actionLeaveAction = StartCoroutine(LeaveAttack(timeLeaveHeavyAttack));
+                    actionLeaveAttackCombo = StartCoroutine(LeaveAttackCombo(timeLeaveHeavyAttack));
+
+                    StartCoroutine(CanAcion(timeCanHeavyAttackAction));
+                }
+
+                animatorPlayer.SetTrigger("TriggerAttack");
+
+                /*
                 animatorPlayer.SetBool("Crouch", false);
+                if (!onCombat)
+                {
+                    typeMove = 1;
+                    moveSpeed = moveSpeedValue;
+                }
+                */
+                /*
                 if (!animatorPlayer.GetBool("InCombat"))
                 {
                     OnCombat(false);
                 }
+                */
                 animatorPlayer.SetInteger("InAction", 2);
                 animatorPlayer.SetInteger("AttackCombo", comboAttack);
 
@@ -487,13 +649,185 @@ public class PlayerController : MonoBehaviour
 
         }
 
+
     }
+    //z
+    public void FinishBot()
+    {
+        //Debug.Log("Finish");
+
+        if (canAction)
+        {
+            EnemyController enemyController = selectManager.targetEnemy.GetComponent<EnemyController>();
+
+            if (enemyController.canFinish)
+            {
+                canAction = false;
+                if (actionLeaveAction != null)
+                {
+                    StopCoroutine(actionLeaveAction);
+
+                }
+                actionLeaveAction = StartCoroutine(LeaveAttack(1.25f));
+                StartCoroutine(CanAcion(1.25f));
+                SetActivateWeapon(1);
+                animatorPlayer.SetInteger("InAction", 10);
+                AudioManager.instance.PlaySoundOfPlayer("FinishBot");
+
+                enemyController.Finish1();
+
+
+            }
+        }
+
+    }
+
+    public void FinishBot2()
+    {
+        selectManager.targetEnemy.GetComponent<EnemyController>().Finish2();
+    }
+
+    public void Block(bool block)
+    {
+        /*
+            if (actionLeaveAction != null)
+            {
+                StopCoroutine(actionLeaveAction);
+            }
+            */
+
+
+        if (( /*animatorPlayer.GetInteger("InAction") == 2 || */ canAction) && animatorPlayer.GetInteger("InAction") != 3)
+        {
+            if (actionLeaveAction != null)
+            {
+                StopCoroutine(actionLeaveAction);
+            }
+            //OnCombat(block);
+
+            //animatorPlayer.SetBool("Block", block);
+            if (block)// Block
+            {
+                SetActivateWeapon(weaponPlayer);
+                StopCoroutine(actionDisableWeapon);
+
+                //OnCombat(block);
+                moveSpeed = moveSpeedValueOnCombat;
+                typeMove = 0.5f;
+                animatorPlayer.SetInteger("InAction", 6);
+            }
+            else // Not Block
+            {
+                if (actionDisableWeapon != null)
+                {
+                    StopCoroutine(actionDisableWeapon);
+                }
+                actionDisableWeapon = StartCoroutine(OutWeapon(weaponPlayer, timeDisableWeapon));
+
+                if (!onCombat) // Not in Combat
+                {
+                    moveSpeed = moveSpeedValue;
+                    typeMove = 1f;
+                }
+                animatorPlayer.SetInteger("InAction", 0);
+                isPressBlock = block;
+            }
+
+        }
+        else
+        {
+            isPressBlock = block;
+
+        }
+        /*
+        else if (block)
+        {
+            isPressBlock = block;
+        }
+        else if (!block)
+        {
+            isPressBlock = block;
+        }
+
+        */
+
+    }
+
+    public void Damage(float timeStun)
+    {
+        animatorPlayer.SetTrigger("TriggerDamage");
+
+        if (actionCanAction != null)
+        {
+            StopCoroutine(actionCanAction);
+
+        }
+
+
+        canAction = false;
+        actionCanAction = StartCoroutine(CanAcion(timeStun));
+
+
+    }
+
+    void SetActivateWeapon(int weapon)
+    {
+
+
+        if (actionDisableWeapon != null)
+        {
+            StopCoroutine(actionDisableWeapon);
+        }
+        actionDisableWeapon = StartCoroutine(OutWeapon(weapon, timeDisableWeapon));
+
+
+        if (weapon == 1)
+        {
+            if (!weapon1.activeSelf)
+            {
+                weaponIn.Play();
+            }
+
+            weapon1.SetActive(true);
+            weapon2.SetActive(false);
+
+        }
+        else
+        {
+            if (!weapon2.activeSelf)
+            {
+                weaponIn.Play();
+            }
+
+            weapon1.SetActive(false);
+            weapon2.SetActive(true);
+
+        }
+
+
+    }
+
+    private IEnumerator OutWeapon(int type, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (type == 1)
+        {
+            weapon1.SetActive(false);
+            weaponOut.Play();
+        }
+        else
+        {
+            weapon2.SetActive(false);
+            weaponOut.Play();
+        }
+    }
+
     private IEnumerator LeaveDash(float waitTime)
     {
 
         yield return new WaitForSeconds(waitTime);
         animatorPlayer.SetInteger("InAction", 0);
-        canAction = true;
+        //canAction = true;
 
     }
     private IEnumerator LeaveJump(float waitTime)
@@ -524,6 +858,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+
     private void MoveToTargetSwing()
     {
         if (targetSwing != null)
@@ -541,20 +877,22 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void OnCombat(bool combat)
+    public void OnCombat(bool cb)
     {
-        
-        onCombat = combat;
-        if (combat)
+
+        this.onCombat = cb;
+        if (cb)
         {
-            moveSpeed = moveSpeedValueOnCombat;
-            typeMove = 0.5f;
+            this.moveSpeed = moveSpeedValueOnCombat;
+            this.typeMove = 0.5f;
             //animatorPlayer.SetBool("InCombat",true);
         }
         else
         {
-            moveSpeed = moveSpeedValue;
-            typeMove = 1f;
+            this.moveSpeed = moveSpeedValue;
+            this.typeMove = 1;
+
+
             //animatorPlayer.SetBool("InCombat", false);
 
 
@@ -575,8 +913,5 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Intarget");
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
 
-    }
 }

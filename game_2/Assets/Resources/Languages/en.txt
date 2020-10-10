@@ -1,0 +1,61 @@
+﻿# Some character special 
+#   # = Comments     
+#   \n = NewLine 
+#   \t = Tab 
+#   \\ = \ 
+#   \" = "
+#   \' = '
+
+SCENE1=Scene1 Consolas
+SCENE2=Scene2
+HELLO=Hello
+TEXT1=This is an amazing tutorial, subscribe for more good tuts.
+BACK=Back to scene1
+GOTO=Go to scene2
+
+
+# for menu Settings
+SETTINGS=Settings
+LANGUAGE=Language
+
+SOUND=Sound
+MUSIC=Music
+SFX=Sfx
+
+GRAPHIC=Graphic
+FASTEST=Fastest
+FAST=Fast
+SIMPLE=Simple
+GOOD=Good
+BEAUTIFUL=Beautiful
+FANTASTIC=Fantastic
+
+# for Talk normal
+ELIA_TALK_NORMAL_1_NPC_1=Greeting ! I'm Elia - The one who will guider you in this world. \n\tYou must be the chosen one from the slayers ! \n\t Ask me if you have any question.
+ELIA_TALK_NORMAL_1_PLAYER_1
+
+# For Quest
+
+QUEST_MAIN_1=Some information \t about this quest 1 \n \tYou need kill zombie
+QUEST_MAIN_1_ELIA_TALK_NPC_1=Hello
+QUEST_MAIN_1_ELIA_TALK_PLAYER_1=Hello
+QUEST_MAIN_1_ELIA_TALK_NPC_2=I have some thing for you
+
+QUEST_MAIN_2=Some information \t about this quest 2 \n 
+
+
+    người dẫn đường cho cô làm nhiệm vụ trong thế giới này
+    Cô hẳn là người được chọn trong nhóm săn quỷ được hội đồng cử đến đây.Nếu có thắc mắc gì hãy nói với tôi
+
+    Greeting ! I'm Elia - The one who will guider you in this world.
+    You must be the chosen one from the slayers ! Ask me if you have any question.
+
+    Player 
+
+    câu hỏi số 1 
+    question 1
+
+    Elia
+
+    trả lời câu hỏi 1
+    en sdajksdnj 1

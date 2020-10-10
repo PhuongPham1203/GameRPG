@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8097772344915730034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8097772344915730033}
+  - component: {fileID: 8097772344915730032}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8097772344915730033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8097772344915730034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8097772344915730032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8097772344915730034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0c38af48c498c44a449132fb8c6e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixerMaster: {fileID: 24100000, guid: 5661b1e1384275041ad13514fe4c383a, type: 2}
+  sfxGroups: {fileID: 5337331771877265780, guid: 5661b1e1384275041ad13514fe4c383a,
+    type: 2}
+  themeGroups: {fileID: -8202505388349612432, guid: 5661b1e1384275041ad13514fe4c383a,
+    type: 2}
+  soundsOfPlayer:
+  - name: Light Attack 1
+    clip: {fileID: 8300000, guid: 4f4d50561ba2bf94b948322b7027d584, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Light Attack 2
+    clip: {fileID: 8300000, guid: 33d390caaf74ca54bbe27620167e51e0, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Light Attack 3
+    clip: {fileID: 8300000, guid: 1721f14fc421b4a4caae44f06997b183, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Light Attack 4
+    clip: {fileID: 8300000, guid: 33d390caaf74ca54bbe27620167e51e0, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Heavy Attack 1
+    clip: {fileID: 8300000, guid: 55137ac20b00643448d8b56ec0b0fe36, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Heavy Attack 2
+    clip: {fileID: 8300000, guid: 73ea880b86dcdd749b49e3a96d861cdc, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Heavy Attack 3
+    clip: {fileID: 8300000, guid: 5cf0969939aabcc448738b05a990e92a, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Heavy Attack 4
+    clip: {fileID: 8300000, guid: a44bf98a0100cbc45a5fca75333f9efa, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 1
+    clip: {fileID: 8300000, guid: 074834dbf4fa977499be18554234a348, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 2
+    clip: {fileID: 8300000, guid: 50f8a4125e4eb834bbb29c4d3c1b3b2e, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 3
+    clip: {fileID: 8300000, guid: 6f78695624cfa1347bb5318d6e308b65, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Light 4
+    clip: {fileID: 8300000, guid: 50f8a4125e4eb834bbb29c4d3c1b3b2e, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 1
+    clip: {fileID: 8300000, guid: 3866c592e7f2088419cab4b3e5c31040, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 2
+    clip: {fileID: 8300000, guid: f119ac3219c07c34789a7d36b1622eee, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 3
+    clip: {fileID: 8300000, guid: 308f2c524e1844a4bbb9f098316f738b, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Block Heavy 4
+    clip: {fileID: 8300000, guid: 41268590bdb5f184dad86d43b1282cc2, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Damage
+    clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: FinishBot
+    clip: {fileID: 8300000, guid: 9c0aa6851a460c541993686ca6c847f1, type: 3}
+    loop: 0
+    volume: 0.15
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: AlertDetecterTarget
+    clip: {fileID: 8300000, guid: ad1fc76a50d065c49a6c0462b346e01d, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: Damage
+    clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  soundsOfTheme:
+  - name: Theme Apocalypse
+    clip: {fileID: 8300000, guid: f703d503a57357a4783ae0f0ea4cd604, type: 3}
+    loop: 0
+    volume: 0.237
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: OnCombat
+    clip: {fileID: 8300000, guid: d3b51d041605b5b498f93acd036689dc, type: 3}
+    loop: 1
+    volume: 0.2
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: OnCombat_Weindigo
+    clip: {fileID: 8300000, guid: dec4a6fe7035eac49a427b60b9513aac, type: 3}
+    loop: 1
+    volume: 0.2
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  timeToLeaveCombatSound: 7

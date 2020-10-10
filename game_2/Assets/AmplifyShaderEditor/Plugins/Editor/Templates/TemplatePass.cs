@@ -400,7 +400,8 @@ namespace AmplifyShaderEditor
 					int vertexDataTagEnd = body.IndexOf( TemplatesManager.TemplateEndOfLine, vertexDataTagBegin );
 					m_vertexDataContainer.VertexDataId = body.Substring( vertexDataTagBegin, vertexDataTagEnd + TemplatesManager.TemplateEndOfLine.Length - vertexDataTagBegin );
 					int dataBeginIdx = body.LastIndexOf( '{', vertexDataTagBegin, vertexDataTagBegin );
-					string vertexData = body.Substring( dataBeginIdx + 1, vertexDataTagBegin - dataBeginIdx );
+					int dataEndIdx = body.IndexOf( '}', vertexDataTagEnd );
+					string vertexData = body.Substring( dataBeginIdx + 1, dataEndIdx - dataBeginIdx );
 
 					int parametersBegin = vertexDataTagBegin + TemplatesManager.TemplateVertexDataTag.Length;
 					string parameters = body.Substring( parametersBegin, vertexDataTagEnd - parametersBegin );
@@ -423,7 +424,8 @@ namespace AmplifyShaderEditor
 					string interpDataId = body.Substring( interpDataBegin, interpDataEnd + TemplatesManager.TemplateEndOfLine.Length - interpDataBegin );
 
 					int dataBeginIdx = body.LastIndexOf( '{', interpDataBegin, interpDataBegin );
-					string interpData = body.Substring( dataBeginIdx + 1, interpDataBegin - dataBeginIdx );
+					int dataEndIdx = body.IndexOf( '}', interpDataEnd );
+					string interpData = body.Substring( dataBeginIdx + 1, dataEndIdx - dataBeginIdx );
 
 					int interpolatorAmount = TemplateHelperFunctions.AvailableInterpolators[ "2.5" ];
 

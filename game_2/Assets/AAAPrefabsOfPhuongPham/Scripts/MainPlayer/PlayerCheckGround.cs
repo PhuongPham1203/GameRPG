@@ -25,16 +25,21 @@ public class PlayerCheckGround : MonoBehaviour
             
         }
     }
+
     private void OnTriggerStay(Collider other)
     {
-        /*
-         
-        if (other.gameObject.layer == 8)
+
+        if (other.gameObject.layer == 20 || other.gameObject.layer == 21)
         {
+            //Debug.Log("OnGround");
+            //animatorObj.SetBool("isSwing", false);
+            
             animatorObj.SetBool("OnGround", true);
+
         }
-        * */
     }
+
+
     private void OnTriggerExit(Collider other)
     {
         
@@ -44,12 +49,4 @@ public class PlayerCheckGround : MonoBehaviour
         }
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-    }
 }
