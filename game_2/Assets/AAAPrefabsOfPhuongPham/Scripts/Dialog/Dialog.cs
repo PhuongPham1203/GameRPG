@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Contexts;
-using UnityEditor.SceneManagement;
 using UnityEngine;
+//using UnityEditor.SceneManagement;
 [CreateAssetMenu(fileName = "New Dialog", menuName = "Inventory/Dialog")]
 
 public class Dialog : ScriptableObject

@@ -144,7 +144,7 @@ public class SceneManagerOfGame : MonoBehaviour
         loadingScene.gameObject.SetActive(true);
         canvasMainMenu.gameObject.SetActive(false);
 
-        foreach (SceneIndexes scene in listSceneIndex2)
+        foreach (SceneIndexes scene in listSceneIndexNewGame)
         {
             if (scene != null)
             {
@@ -152,21 +152,14 @@ public class SceneManagerOfGame : MonoBehaviour
 
             }
         }
-
+        
         foreach (AsyncOperation async in sceneLoading)
         {
             async.allowSceneActivation = false;
         }
-
-        /*
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_PLAYER, LoadSceneMode.Additive));
-        //sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_APOCALYPSE, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CITY, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CLOUDFOREST, LoadSceneMode.Additive));
-        //SceneManager.UnloadSceneAsync((int)SceneIndexes.SCENE_MANAGER,LoadSceneMode.Additive);
-        */
+        
         StartCoroutine(GetSceneLoadProgress());
-        Debug.Log("point");
+        //Debug.Log("point");
         animatorIcon.SetInteger("type", 2);
     }
 
