@@ -20,23 +20,23 @@ public class CharacterStats : MonoBehaviour
 
     // !Max and current Stat
     //[Header("Max and Current Stat")]
-    public float maxHP { get;  set; }
-    public float currentHP { get;  set; }
-    public int currentAttackDame { get;  set; }
+    public float maxHP { get; set; }
+    public float currentHP { get; set; }
+    public int currentAttackDame { get; set; }
 
-    public float maxPosture { get;  set; }
-    public float currentPosture { get;  set; }
+    public float maxPosture { get; set; }
+    public float currentPosture { get; set; }
     //public int currentDefend { get; protected set; }
 
-    public Vector3 teleportNearest { get;  set; }
+    public Vector3 teleportNearest { get; set; }
 
 
     [Header("Reduction Posture")]
     public bool reduction = true;
-    [Range(0f,5f)]
+    [Range(0f, 5f)]
     public float timeWaitToReduction = 3f;
     [Range(0.00001f, 0.5f)]
-    public float percenReduction ;
+    public float percenReduction;
     //[Header("xPlus small && low HP => slow Reduction")]
     //[Range(0f, 1f)]
     //public float xPlus=1f;
@@ -54,14 +54,15 @@ public class CharacterStats : MonoBehaviour
     [Header("UI Profile")]
     public Image hpUI;
     public Image postureUI;
-    public Color startPostureUI;
-    public Color end90PostureUI;
-    public Color endPostureUI;
+    public Color startPostureUI = new Color(255f / 255f, 255f / 255f, 255f / 255f, 222f / 255f);
+
+    public Color end90PostureUI = new Color(224f / 255f, 99f / 255f, 35f / 255f, 222f / 255f);
+    public Color endPostureUI = new Color(255f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 
 
 
     protected Animator animator;
-    
+
     [Header("For Dev Only")]
     public int d = 100;
 
@@ -78,7 +79,7 @@ public class CharacterStats : MonoBehaviour
             TakeDamege(d);
         }
 
-        
+
 
     }
 
@@ -86,9 +87,9 @@ public class CharacterStats : MonoBehaviour
     {
         if (reduction && currentPosture > 0)
         {
-            float x =  (currentHP / maxHP) ; // percent HP lost
+            float x = (currentHP / maxHP); // percent HP lost
 
-            currentPosture -= (maxPosture * ( percenReduction * x ));
+            currentPosture -= (maxPosture * (percenReduction * x));
             currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
 
             UpdateHPAndPosture();
@@ -106,13 +107,13 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void TakeDamege(int damage)
     {
-       
+
     }
 
     public virtual void TakeTrueDamegeFinish(int damage)
     {
         //float x = 1f - ((float)currentHP / (float)maxHP); // percent HP lost
-                                                          //Debug.Log(x);
+        //Debug.Log(x);
         //currentPosture += (int)(damage + damage * x);
         //currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
 
@@ -245,7 +246,7 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    
+
 
 
 }

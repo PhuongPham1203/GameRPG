@@ -23,10 +23,12 @@ public class SwooshVFXTrailWeapon : MonoBehaviour
 	float _prevAnimTime = 0.0f;
 	*/
     [SerializeField]
-    MeleeWeaponTrail[] _trail;
+    MeleeWeaponTrail[] trailL;
+	[SerializeField]
+	MeleeWeaponTrail[] trailR;
 
-    //bool _firstFrame = true;
-    public bool trail;
+	//bool _firstFrame = true;
+	public bool trail;
 
     void Start()
     {
@@ -39,12 +41,16 @@ public class SwooshVFXTrailWeapon : MonoBehaviour
 		*/
         //_trail.Emit = trail;
 
-		foreach(MeleeWeaponTrail m in _trail)
+		foreach(MeleeWeaponTrail m in trailL)
         {
 			m.Emit = trail;
         }
+		foreach (MeleeWeaponTrail m in trailR)
+		{
+			m.Emit = trail;
+		}
 
-    }
+	}
 	
 	public void SetTrailR(int type)
     {
@@ -60,25 +66,30 @@ public class SwooshVFXTrailWeapon : MonoBehaviour
 			status = true;
 		}
 
-		for (int i = 1; i < _trail.Length; i++)
+		for (int i = 0; i < this.trailR.Length; i++)
 		{
-			_trail[i].Emit = status;
+			this.trailR[i].Emit = status;
 		}
 	}
 
 	public void SetTrailL(int type)
     {
 
-		
+
+		bool status;
+
 		if (type == 0)
 		{
-			_trail[0].Emit = false;
-
+			status = false;
 		}
 		else
 		{
-			_trail[0].Emit = true;
+			status = true;
+		}
 
+		for (int i = 0; i < this.trailL.Length; i++)
+		{
+			this.trailL[i].Emit = status;
 		}
 	}
 
@@ -95,9 +106,13 @@ public class SwooshVFXTrailWeapon : MonoBehaviour
 			status = true;
 		}
 
-		for (int i = 0; i < _trail.Length; i++)
+		for (int i = 0; i < trailL.Length; i++)
 		{
-			_trail[i].Emit = status;
+			trailL[i].Emit = status;
+		}
+		for (int i = 0; i < trailR.Length; i++)
+		{
+			trailR[i].Emit = status;
 		}
 	}
 
