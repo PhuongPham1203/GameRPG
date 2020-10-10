@@ -1,56 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ZombieStats : CharacterStats
+public class Boss1Stats : CharacterStats
 {
-    AudioEnemy audioEnemy;
-    protected EnemyController enemyController;
+
+    [Header("Phase Boss Stats")]
+    public PhaseBossStats[] phaseBossStats;
 
     private void Start()
     {
-        //SetAllBaseValue();
-        enemyController = GetComponent<EnemyController>();
-        animator = GetComponent<Animator>();
-        ResetAllCurrentAndMaxValue( startHP ,startAttackDame,startPosture );
-        audioEnemy = GetComponent<AudioEnemy>();
-
-
+        this.enemyController = GetComponent<EnemyController>();
+        this.animator = GetComponent<Animator>();
+        this.audioEnemy = GetComponent<AudioEnemy>();
+        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[0].HP,0, this.phaseBossStats[0].Posture);
     }
 
-    //public Image nameUI;
-    /*
-    // Start is called before the first frame update
-    void Start()
+    public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, CharacterStats enemyStats)
     {
-        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
-    }
-
-
-    void OnEquipmentChanged(Equipment newItem,Equipment oldItem)
-    {
-        if (newItem != null)
-        {
-            armor.AddModifier(newItem.defendModifier);
-            damage.AddModifier(newItem.attackDameModifier);
-            
-
-        }
-
-        if (oldItem != null)
-        {
-            armor.RemoveModifier(oldItem.defendModifier);
-            damage.RemoveModifier(oldItem.attackDameModifier);
-
-        }
-    }
-    */
-    public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect,CharacterStats enemyStats)
-    {
-        //base.TakeDamage(damage);
-        //Debug.Log("Zombie"+transform.name+" take: " + damage);
-
+        
         if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
         {
             if(enemyController.alertEnemy == AlertEnemy.Idle)
@@ -145,26 +113,7 @@ public class ZombieStats : CharacterStats
             }
         }
     }
-    /*
-    public override void Finish1()
-    {
-        base.Finish1();
-        enemyController.StopAllCoroutines();
-        enemyController.canAction = false;
-
-        //AudioManager.instance.PlaySoundOfPlayer("Damage");
-
-
-    }
-
-    public override void Finish2()
-    {
-        base.Finish2();
-        currentHP = 0;
-
-        Die();
-    }
-    */
+        
     public override void Die()
     {
         base.Die();
@@ -184,65 +133,21 @@ public class ZombieStats : CharacterStats
         
 
 
-        StartCoroutine(DestroyAfter(2f));
+        StartCoroutine(DisableAfter(2f));
 
         //Destroy(gameObject,3);
 
         //PlayerManager.instance.KillPlayer();
     }
-    public override void SetUIActivate(bool activate)
-    {
-        base.SetUIActivate(activate);
-    }
 
-    public override void UpdateHPAndPosture()
-    {
-        if (currentPosture>= maxPosture)
-        {
-            enemyController.canFinish = true;
-        }else if (enemyController.alertEnemy == AlertEnemy.OnTarget ){
-            enemyController.canFinish = false;
-
-        }
-
-        if (hpUI!=null)
-        {
-            base.UpdateHPAndPosture();
-
-        }
-    }
-
-    public override int GetAttackDame(int weapon)
-    {
-        return base.GetAttackDame(weapon);
-        //return currentAttackDame ;
-    }
-
-    private void OnDestroy()
-    {
-        //vfxDie.Play();
-        //Debug.Log("Détroy");
-    }
-
-    protected IEnumerator DestroyAfter(float waitTime)
-    {
-
-        yield return new WaitForSeconds(waitTime);
-        Instantiate(vfxDie, transform.position, transform.rotation);
-        Destroy(gameObject);
+}
 
 
-    }
 
-
-    void MyDelayedCode()
-    {
-        if (!PlayerManager.instance.player.GetComponent<PlayerController>().onCombat && AudioManager.instance.IsPlayTheme("OnCombat"))
-        {
-            //Debug.Log("STop");
-            AudioManager.instance.StopSoundOfTheme("OnCombat");
-        }
-        //Debug.Log("Hello!");
-    }
-
+[System.Serializable]
+public class PhaseBossStats
+{
+    public string name = "Phase";
+    public int HP = 100;
+    public int Posture = 100;
 }

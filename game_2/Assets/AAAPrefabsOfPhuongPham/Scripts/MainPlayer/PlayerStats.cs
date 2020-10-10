@@ -160,7 +160,7 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    public override void TakeDamege(int damage,float timeStun,float wayStun,CharacterStats enemyStat)
+    public override void TakeDamage(int damage,float timeStun,AttackTypeEffect attackTypeEffect,CharacterStats enemyStat)
     {
         Debug.Log("Player take: "+damage);
 
@@ -221,7 +221,7 @@ public class PlayerStats : CharacterStats
 
                 currentHP -= damage;
                 currentHP = Mathf.Clamp(currentHP,0,maxHP);
-                playerController.Damage(timeStun,wayStun);
+                playerController.Damage(timeStun);
 
                 AudioManager.instance.PlaySoundOfPlayer("Damage");
                 vfxBlood.Play();

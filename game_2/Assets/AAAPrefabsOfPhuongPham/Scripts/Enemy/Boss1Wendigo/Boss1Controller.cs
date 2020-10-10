@@ -68,7 +68,7 @@ public class Boss1Controller : EnemyController
             this.distanceCanAttack = this.distanceAttack[this.currentListAttack].distanceAttack;
             this.currentAttackDone = false;
 
-            if(this.distance < 2f)
+            if (this.distance < 2f)
             {
                 //kick
 
@@ -116,13 +116,13 @@ public class Boss1Controller : EnemyController
 
                 break;
             #endregion
-            case 0:
+            case 0: // phase 1 combo1 
                 // code
 
                 this.AttackBase();
 
                 break;
-            case 1:
+            case 1: // phase 1 combo2
                 // code
                 // Go around in 4s
                 if (this.timeTryMoveToPos == 0)
@@ -139,8 +139,8 @@ public class Boss1Controller : EnemyController
                     this.vectorWayWalk = (vectorTwoPoint + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f))).normalized;
                     this.vectorWayWalk.y = 0;
                     //Debug.Log(this.vectorWayWalk);
-                    this.timeTryMoveToPos = 5f;
-                    StartCoroutine(this.WalkAround(5f));
+                    this.timeTryMoveToPos = 3f;
+                    StartCoroutine(this.WalkAround(3f));
                 }
                 else if (this.timeTryMoveToPos > 0)
                 {
@@ -152,17 +152,17 @@ public class Boss1Controller : EnemyController
                     this.AttackPhase1Combo2();
                 }
                 break;
-            case 2:
+            case 2:// phase 1 combo3
                 // code 
                 this.AttackBase();
                 break;
-            case 3:
+            case 3:// phase 1 combo4
 
                 // code 
                 this.AttackBase();
 
                 break;
-            case 4:
+            case 4: // phase 1 combo5
                 // code 
                 this.AttackPhase1Combo5();
                 break;
@@ -172,7 +172,7 @@ public class Boss1Controller : EnemyController
 
     }
 
-    public void AttackBase()
+    protected void AttackBase()
     {
         if (this.distance < this.distanceCanAttack) // Attack
         {
@@ -188,7 +188,7 @@ public class Boss1Controller : EnemyController
         }
         else // Move to Player
         {
-            this.MoveToPosition(this.target.position, 1f, this.runSpeed);
+            this.MoveToPosition(this.target.position, 0.5f, this.moveSpeed);
         }
 
         if (this.currentAttackDone)
@@ -206,15 +206,15 @@ public class Boss1Controller : EnemyController
         }
     }
 
-    // Phase 1
+    // ! Phase 1
 
-    public void AttackPhase1Combo2()
+    protected void AttackPhase1Combo2()
     {
         if (this.distance < this.distanceCanAttack) // Attack
         {
 
             // Attack
-            this.animator.SetTrigger("rollF");
+            //this.animator.SetTrigger("rollF");
             this.StopLookAndMove();
 
             // look At
@@ -243,13 +243,13 @@ public class Boss1Controller : EnemyController
 
         }
     }
-    public void AttackPhase1Combo5()
+    protected void AttackPhase1Combo5()
     {
         if (this.distance < this.distanceCanAttack) // Attack
         {
 
             // Attack
-            this.animator.SetTrigger("rollF");
+            //this.animator.SetTrigger("rollF");
             this.StopLookAndMove();
 
             // look At
@@ -277,11 +277,11 @@ public class Boss1Controller : EnemyController
             }
         }
     }
-    // Phase 2
+    // ! Phase 2
 
-    // Phase 3
+    // ! Phase 3
 
-    // End Phase
+    // * End Phase
 
     public override bool Attack(int attackCombo)
     {
@@ -446,19 +446,23 @@ public class Boss1Controller : EnemyController
 }
 
 public enum PhaseBoss { Phase_1 = 1, Phase_2 = 2, Phase_3 = 3, Phase_4 = 4 }
+public enum AttackTypeEffect { Normal, Dead, Stun };
 
 [System.Serializable]
 public class InforAttack
 {
-
+    public string name ;
     public PhaseBoss phaseBoss = PhaseBoss.Phase_1;
     public int combo = 1;
     public int damageAttack = 0;
+    public AttackTypeEffect attackTypeEffect = AttackTypeEffect.Normal;
     public float timeStun = 0;
-    public float wayStun = 0;
+    //public float wayStun = 0;
     public float distanceAttack = 2f;
     public float timeToNextAction = 0f;
 
     public Collider hitBox;
+
+
 }
 

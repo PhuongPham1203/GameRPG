@@ -62,8 +62,9 @@ public class CharacterStats : MonoBehaviour
     public Color endPostureUI = new Color(255f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 
 
-
+    protected EnemyController enemyController;
     protected Animator animator;
+    protected AudioEnemy audioEnemy;
 
     [Header("For Dev Only")]
     public int d = 100;
@@ -78,7 +79,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            TakeDamege(d, 0, 100,this);
+            TakeDamage(d, 0, AttackTypeEffect.Normal, this);
         }
 
 
@@ -107,8 +108,9 @@ public class CharacterStats : MonoBehaviour
         return currentAttackDame;
     }
 
-    public virtual void TakeDamege(int damage,float timeStun,float wayStun,CharacterStats ememyStats)
+    public virtual void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, CharacterStats enemyStats)
     {
+        Debug.Log(this.name + " Take" + damage + " Dame" + " time stun: " + timeStun + " ATE : " + attackTypeEffect + " from: " + enemyStats.name);
 
     }
 
@@ -180,6 +182,27 @@ public class CharacterStats : MonoBehaviour
         //Die in some way
         // this method is meant to be overwritter;
         Debug.Log(transform.name + " Die.");
+    }
+    protected IEnumerator DestroyAfter(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+        Instantiate(vfxDie, transform.position, transform.rotation);
+        Destroy(gameObject);
+
+        
+
+    }
+
+    protected IEnumerator DisableAfter(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+        Instantiate(vfxDie, transform.position, transform.rotation);
+        //Destroy(gameObject);
+
+        this.gameObject.SetActive(false);
+
     }
 
     public float[] GetTransformCurrent()

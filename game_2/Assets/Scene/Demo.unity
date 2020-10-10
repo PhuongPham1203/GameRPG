@@ -1595,7 +1595,7 @@ Transform:
   m_GameObject: {fileID: 362019553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.69, y: -3.11, z: 3.3}
-  m_LocalScale: {x: 3.8633, y: 3.8633, z: 3.8633}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -8004,7 +8004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1801632739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8288,7 +8288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cfce18a6352ae4fba6eb0227693b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1.5
   runSpeed: 4
   lookRadius: 10
   lookAngle: 45
@@ -8318,11 +8318,12 @@ MonoBehaviour:
   centerPoint: {fileID: 0}
   hitBox: []
   inforAttackCurrent:
+    name: 
     phaseBoss: 1
     combo: 1
     damageAttack: 0
+    attackTypeEffect: 0
     timeStun: 0
-    wayStun: 0
     distanceAttack: 2
     timeToNextAction: 0
     hitBox: {fileID: 0}
@@ -8331,45 +8332,50 @@ MonoBehaviour:
   phaseBossCurrent: 1
   phaseEnd: 3
   distanceAttack:
-  - phaseBoss: 1
+  - name: Phase1 Combo1
+    phaseBoss: 1
     combo: 1
     damageAttack: 30
+    attackTypeEffect: 0
     timeStun: 0.25
-    wayStun: 0
     distanceAttack: 4
     timeToNextAction: 4
     hitBox: {fileID: 1032598415}
-  - phaseBoss: 1
+  - name: Phase1 Combo2
+    phaseBoss: 1
     combo: 2
     damageAttack: 30
-    timeStun: 0
-    wayStun: 0
-    distanceAttack: 10
-    timeToNextAction: 4
+    attackTypeEffect: 0
+    timeStun: 0.25
+    distanceAttack: 5
+    timeToNextAction: 3
     hitBox: {fileID: 1032598415}
-  - phaseBoss: 1
+  - name: Phase1 Combo3
+    phaseBoss: 1
     combo: 3
     damageAttack: 15
+    attackTypeEffect: 0
     timeStun: 0
-    wayStun: 0
     distanceAttack: 10
     timeToNextAction: 1.5
     hitBox: {fileID: 1032598415}
-  - phaseBoss: 1
+  - name: Phase1 Combo4
+    phaseBoss: 1
     combo: 4
     damageAttack: 15
+    attackTypeEffect: 0
     timeStun: 0
-    wayStun: 0
     distanceAttack: 5
     timeToNextAction: 1.5
     hitBox: {fileID: 1032598415}
-  - phaseBoss: 1
+  - name: Phase1 Combo5
+    phaseBoss: 1
     combo: 5
-    damageAttack: 40
-    timeStun: 0
-    wayStun: 0
-    distanceAttack: 7
-    timeToNextAction: 5
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
     hitBox: {fileID: 1032598415}
 --- !u!114 &1871621241
 MonoBehaviour:
@@ -8405,14 +8411,14 @@ MonoBehaviour:
   itemDrop: []
   phaseBossStats:
   - name: Phase 1
-    HP: 100
-    Posture: 100
+    HP: 400
+    Posture: 400
   - name: Phase 2
-    HP: 200
-    Posture: 300
+    HP: 350
+    Posture: 400
   - name: Phase 3
-    HP: 300
-    Posture: 300
+    HP: 400
+    Posture: 500
 --- !u!114 &1871621242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8659,7 +8665,7 @@ MonoBehaviour:
     swivelPosition: {x: 0, y: 0, z: 0}
   originalIkData: []
   selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: 07b24630db3703441b495ee0d8184393,
+  lastSelectAnimationClip: {fileID: 7400000, guid: e6c1df6517580774a8d9ed502cfaa92b,
     type: 2}
   blendShapeList: []
 --- !u!114 &1871621245

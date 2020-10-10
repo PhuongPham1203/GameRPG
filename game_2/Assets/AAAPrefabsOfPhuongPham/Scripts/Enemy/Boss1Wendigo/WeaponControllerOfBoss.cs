@@ -15,7 +15,7 @@ public class WeaponControllerOfBoss : MonoBehaviour
         {
             this.inforAttack = transform.root.GetComponent<EnemyController>().inforAttackCurrent;
             //Debug.Log("Player take Damage");
-            other.GetComponent<CharacterStats>().TakeDamege(this.inforAttack.damageAttack,this.inforAttack.timeStun,this.inforAttack.wayStun, transform.root.GetComponent<CharacterStats>());
+            other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack,this.inforAttack.timeStun,this.inforAttack.attackTypeEffect, transform.root.GetComponent<CharacterStats>());
         }
 
     }

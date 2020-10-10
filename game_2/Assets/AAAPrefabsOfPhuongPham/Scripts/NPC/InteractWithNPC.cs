@@ -21,6 +21,7 @@ public class InteractWithNPC : Interactable
     [Header("List Quest")]
     public List<Quest> listQuestInThisNpc;
 
+    
 
     public override void Interact()
     {

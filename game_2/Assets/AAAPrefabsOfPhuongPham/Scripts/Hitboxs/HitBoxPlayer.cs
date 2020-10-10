@@ -19,9 +19,9 @@ public class HitBoxPlayer : Hitbox
         if (other.gameObject.layer == 23)
         {
             //Debug.Log(characterStats.transform.name + " hitbox "+ characterStats.GetAttackDame(1));
-            //other.gameObject.GetComponent<PlayerStats>().TakeDamege(characterStats.GetAttackDame(1));
+            //other.gameObject.GetComponent<PlayerStats>().TakeDamage(characterStats.GetAttackDame(1));
             //Debug.Log("Hitbox Player:"+ characterStats.GetAttackDame(weapon));
-            other.gameObject.GetComponent<CharacterStats>().TakeDamege(characterStats.GetAttackDame(weapon), 0, 0, characterStats);
+            other.gameObject.GetComponent<CharacterStats>().TakeDamage(characterStats.GetAttackDame(weapon), 0, AttackTypeEffect.Normal, characterStats);
 
         }
     }

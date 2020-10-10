@@ -756,13 +756,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Damage(float timeStun,float wayStun)
+    public void Damage(float timeStun)
     {
         animatorPlayer.SetTrigger("TriggerDamage");
-
-        //Rigidbody rigidbody = GetComponent<Rigidbody>();
-
-        //rigidbody.AddForce(-this.transform.forward * wayStun)  ;
 
         if (actionCanAction != null)
         {
