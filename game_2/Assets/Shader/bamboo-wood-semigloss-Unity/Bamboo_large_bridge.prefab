@@ -1,0 +1,1628 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3956197065965677616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3956197065965677617}
+  m_Layer: 0
+  m_Name: Bamboo_large_bridge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3956197065965677617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956197065965677616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.854145, y: 10.204704, z: 219.14455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2597034236762591785}
+  - {fileID: 3851895329990412444}
+  - {fileID: 3851895328139807667}
+  - {fileID: 3851895329219031854}
+  - {fileID: 3851895328808464681}
+  - {fileID: 3851895329725737571}
+  - {fileID: 3851895328316395442}
+  - {fileID: 3851895328503605436}
+  - {fileID: 3851895328992275268}
+  - {fileID: 3851895328489871137}
+  - {fileID: 3851895328415895332}
+  - {fileID: 3851895328598154639}
+  - {fileID: 3851895328906303367}
+  - {fileID: 3851895329351054000}
+  - {fileID: 3851895328992351142}
+  - {fileID: 3851895329839036869}
+  - {fileID: 3851895329919800402}
+  - {fileID: 3851895328010661242}
+  - {fileID: 3851895329803185057}
+  - {fileID: 3851895328687613851}
+  - {fileID: 3851895328834747007}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2853336858142679279
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 44.644146
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -45.58455
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.37701
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &2597034236762591785 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2853336858142679279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197064721301622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.174088
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.614746
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.758
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895329351054000 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197064721301622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065184936424
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.014278
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30.810593
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895329219031854 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065184936424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065289606804
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.845406
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -36.72249
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (17)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895329919800402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065289606804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065419930202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.209557
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.87703
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895329990412444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065419930202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065684768933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.484831
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.003464
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895329725737571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065684768933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065745963367
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.80592
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.311905
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.758
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (18)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895329803185057 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065745963367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065772894979
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5537567
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.041519
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.75801
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (10)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895329839036869 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065772894979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065886121332
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.289553
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.937027
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328316395442 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065886121332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197065992437218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.37060738
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.1671906
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.758
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (14)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328415895332 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197065992437218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066038647418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 37.724144
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -39.644547
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.37701
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328503605436 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066038647418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066052249063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.214691
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2790833
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.758
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328489871137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066052249063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066125041596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.2339888
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.2324677
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.75801
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (16)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328010661242 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066125041596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066197055861
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.44887
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -51.518112
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.37701
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328139807667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066197055861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066333602799
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.91942
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.710983
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94373345
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.33070707
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.37701
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328808464681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066333602799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066378758329
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.078075
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.6556396
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.75801
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (20)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328834747007 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066378758329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066441418049
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.397843
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.929626
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.75801
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (15)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328906303367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066441418049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066552547714
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.35724
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.823456
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.75801
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328992275268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066552547714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066552631648
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.01817
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.502838
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.758
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (11)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328992351142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066552631648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066678005577
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.201326
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -27.711548
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.75801
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (9)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328598154639 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066678005577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956197066794194269
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3956197065965677617}
+    m_Modifications:
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -34.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.622124
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32756314
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94482934
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -321.758
+      objectReference: {fileID: 0}
+    - target: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002770797720615025, guid: 913db70c00900474a9036de5aca7b7d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bamboo_bridge (19)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 913db70c00900474a9036de5aca7b7d0, type: 3}
+--- !u!4 &3851895328687613851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257710277642728134, guid: 913db70c00900474a9036de5aca7b7d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3956197066794194269}
+  m_PrefabAsset: {fileID: 0}
