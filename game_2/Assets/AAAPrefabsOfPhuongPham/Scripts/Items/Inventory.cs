@@ -11,9 +11,12 @@ public class Inventory : MonoBehaviour
     public OnItemChanged onItemChangedCallback;
     private void Awake()
     {
+        
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of Inventory found!!!");
+            Destroy(this);
+            
             return;
 
         }

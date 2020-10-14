@@ -8411,13 +8411,13 @@ MonoBehaviour:
   itemDrop: []
   phaseBossStats:
   - name: Phase 1
-    HP: 400
+    HP: 300
     Posture: 400
   - name: Phase 2
-    HP: 350
-    Posture: 400
-  - name: Phase 3
     HP: 400
+    Posture: 450
+  - name: Phase 3
+    HP: 500
     Posture: 500
 --- !u!114 &1871621242
 MonoBehaviour:
@@ -8434,29 +8434,36 @@ MonoBehaviour:
   sfxGroups: {fileID: 5337331771877265780, guid: 5661b1e1384275041ad13514fe4c383a,
     type: 2}
   soundOfEnemy:
-  - name: Attack1_1
-    clip: {fileID: 8300000, guid: f752ad2176e92ed46807d584727e9165, type: 3}
+  - name: P1Attack1
+    clip: {fileID: 8300000, guid: 0cfb143b17d215c4f98e161d83315b38, type: 3}
     loop: 0
-    volume: 0.8
+    volume: 1
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
+  - name: P1Attack2
+    clip: {fileID: 8300000, guid: 2cbd5a0d7ba7b8a4389ccf4923a3c67d, type: 3}
+    loop: 0
+    volume: 1
     pitch: 1
     is3dSound: 0.2
     source: {fileID: 0}
-  - name: Attack1_2
-    clip: {fileID: 8300000, guid: e3d794b66ee4b1940baa35467c149228, type: 3}
+  - name: P1Attack3
+    clip: {fileID: 8300000, guid: c66ead3f97162274e8ac70bf8016c72c, type: 3}
     loop: 0
-    volume: 0.8
+    volume: 1
     pitch: 1
     is3dSound: 0.2
     source: {fileID: 0}
-  - name: Attack2
-    clip: {fileID: 8300000, guid: 0d15f373cf404e3448e177a116baaba5, type: 3}
+  - name: P1Attack4
+    clip: {fileID: 8300000, guid: c66ead3f97162274e8ac70bf8016c72c, type: 3}
     loop: 0
-    volume: 0.8
+    volume: 1
     pitch: 1
     is3dSound: 0.2
     source: {fileID: 0}
-  - name: Attack3
-    clip: {fileID: 8300000, guid: 9f09722598d502b41b4760d9b714d146, type: 3}
+  - name: P1Attack5
+    clip: {fileID: 8300000, guid: fc25eb38bb6a3c341be64802a67738c0, type: 3}
     loop: 0
     volume: 0.8
     pitch: 1
@@ -8482,6 +8489,13 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     is3dSound: 1
+    source: {fileID: 0}
+  - name: AlertHiemAttack
+    clip: {fileID: 8300000, guid: 3f26837235dbf6f4ca338c779774c0b5, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    is3dSound: 0
     source: {fileID: 0}
 --- !u!114 &1871621243
 MonoBehaviour:

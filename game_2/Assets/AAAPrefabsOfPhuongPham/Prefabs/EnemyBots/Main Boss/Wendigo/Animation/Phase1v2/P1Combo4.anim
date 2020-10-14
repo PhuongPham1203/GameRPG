@@ -42023,6 +42023,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 1.2083334
+    functionName: PlaySoundOfEnemy
+    data: P1Attack4
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.5
     functionName: ActivavteWeapon
     data: 

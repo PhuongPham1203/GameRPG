@@ -45587,6 +45587,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 1.3333334
+    functionName: PlaySoundOfEnemy
+    data: P1Attack3
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.7916666
     functionName: SetTrailR
     data: 

@@ -155,14 +155,15 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void SetVolumeSFX(Slider number)
+    public void SetVolumeSFX(float number)
     {
-        audioMixerMaster.SetFloat("Volume SFX", number.value);
+        audioMixerMaster.SetFloat("Volume SFX", number);
     }
+    
 
-    public void SetVolumeTheme(Slider number)
+    public void SetVolumeTheme(float number)
     {
-        audioMixerMaster.SetFloat("Volume Theme", number.value);
+        audioMixerMaster.SetFloat("Volume Theme", number);
     }
 
     public bool IsPlayTheme(string name)

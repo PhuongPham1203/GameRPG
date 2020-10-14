@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
         {
             //Destroy(this.gameObject);
             Debug.LogWarning("More than one instance of PlayerManager found!!!");
-
+            Destroy(this);
             return;
         }
         instance = this;

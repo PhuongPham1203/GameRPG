@@ -15,7 +15,7 @@ public class EquipmentManager : MonoBehaviour
 
             Debug.LogWarning("More than one instance of EquipmentManager found!!!");
             Destroy(this);
-
+            
             return;
 
         }

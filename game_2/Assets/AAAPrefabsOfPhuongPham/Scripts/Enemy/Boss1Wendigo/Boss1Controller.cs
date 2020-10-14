@@ -258,7 +258,15 @@ public class Boss1Controller : EnemyController
             this.transform.LookAt(t);
 
             this.currentAttackDone = this.Attack(this.currentListAttack);
+            try
+            {
 
+                NomManager.instance.PlayNomAnimation("HiemAnimation");
+                this.audioEnemy.PlaySoundOfEnemy("AlertHiemAttack");
+            }finally{
+
+            }
+            
         }
         else // Move to Player
         {
@@ -445,24 +453,4 @@ public class Boss1Controller : EnemyController
 
 }
 
-public enum PhaseBoss { Phase_1 = 1, Phase_2 = 2, Phase_3 = 3, Phase_4 = 4 }
-public enum AttackTypeEffect { Normal, Dead, Stun };
-
-[System.Serializable]
-public class InforAttack
-{
-    public string name ;
-    public PhaseBoss phaseBoss = PhaseBoss.Phase_1;
-    public int combo = 1;
-    public int damageAttack = 0;
-    public AttackTypeEffect attackTypeEffect = AttackTypeEffect.Normal;
-    public float timeStun = 0;
-    //public float wayStun = 0;
-    public float distanceAttack = 2f;
-    public float timeToNextAction = 0f;
-
-    public Collider hitBox;
-
-
-}
 
