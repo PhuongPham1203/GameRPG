@@ -79,7 +79,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            TakeDamage(d, 0, AttackTypeEffect.Normal, this);
+            TakeDamage(d, 0, AttackTypeEffect.Normal, null);
         }
 
 
@@ -108,9 +108,9 @@ public class CharacterStats : MonoBehaviour
         return currentAttackDame;
     }
 
-    public virtual void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, CharacterStats enemyStats)
+    public virtual void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyController)
     {
-        Debug.Log(this.name + " Take" + damage + " Dame" + " time stun: " + timeStun + " ATE : " + attackTypeEffect + " from: " + enemyStats.name);
+        Debug.Log(this.name + " Take" + damage + " Dame" + " time stun: " + timeStun + " ATE : " + attackTypeEffect + " from: " + enemyController.name);
 
     }
 
@@ -263,10 +263,7 @@ public class CharacterStats : MonoBehaviour
     public void Reduction(float t)
     {
 
-        if (actionReduction != null)
-        {
-            StopCoroutine(actionReduction);
-        }
+        if (actionReduction != null)StopCoroutine(actionReduction);
         actionReduction = StartCoroutine(CanReduction(t));
 
     }

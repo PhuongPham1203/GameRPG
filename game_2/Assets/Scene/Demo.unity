@@ -7854,7 +7854,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1942083579}
+    m_TransformParent: {fileID: 1823329235}
     m_Modifications:
     - target: {fileID: 168944, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_Name
@@ -7862,35 +7862,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.00080411916
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.00128637
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0005910312
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.7174397
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.4018385
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.5071482
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.2580829
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7906,24 +7906,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 0.030000014
       objectReference: {fileID: 0}
     - target: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 0.030000014
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e7d85fe58322a44ae850576e188a6e, type: 3}
---- !u!4 &1734552884 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 497596, guid: e5e7d85fe58322a44ae850576e188a6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1734552883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &1734552885 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19837616, guid: e5e7d85fe58322a44ae850576e188a6e,
@@ -8289,7 +8283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  runSpeed: 4
+  runSpeed: 6
   lookRadius: 10
   lookAngle: 45
   way: {fileID: 0}
@@ -8327,6 +8321,7 @@ MonoBehaviour:
     distanceAttack: 2
     timeToNextAction: 0
     hitBox: {fileID: 0}
+  isHitPlayer: 0
   timeReduction: 5
   bossRangeCenter: {fileID: 1801632739}
   phaseBossCurrent: 1
@@ -8372,7 +8367,7 @@ MonoBehaviour:
     phaseBoss: 1
     combo: 5
     damageAttack: 70
-    attackTypeEffect: 0
+    attackTypeEffect: 1
     timeStun: 1.5
     distanceAttack: 3
     timeToNextAction: 3.5
@@ -8394,8 +8389,8 @@ MonoBehaviour:
   startAttackDame: 30
   startPosture: 300
   reduction: 1
-  timeWaitToReduction: 3
-  percenReduction: 0
+  timeWaitToReduction: 2.5
+  percenReduction: 0.005
   isHit: 0
   vfxBlood: {fileID: 913800371}
   vfxSteel: {fileID: 651641337}
@@ -8415,10 +8410,10 @@ MonoBehaviour:
     Posture: 400
   - name: Phase 2
     HP: 400
-    Posture: 450
+    Posture: 500
   - name: Phase 3
     HP: 500
-    Posture: 500
+    Posture: 600
 --- !u!114 &1871621242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8470,18 +8465,25 @@ MonoBehaviour:
     is3dSound: 0.2
     source: {fileID: 0}
   - name: Block1
-    clip: {fileID: 8300000, guid: 7ee46fcbb73d5304cbbd24e4a071393f, type: 3}
+    clip: {fileID: 8300000, guid: 25b553307cf995640b260594b706253c, type: 3}
     loop: 0
     volume: 0.704
     pitch: 1
     is3dSound: 0.1
     source: {fileID: 0}
   - name: Block2
-    clip: {fileID: 8300000, guid: b46b22a002a8ad049934f3780e89a0e8, type: 3}
+    clip: {fileID: 8300000, guid: 97ecffc827c48a54a81094fa19822fa1, type: 3}
     loop: 0
-    volume: 0.684
+    volume: 0.742
     pitch: 1
     is3dSound: 0.1
+    source: {fileID: 0}
+  - name: Blood
+    clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
+    loop: 0
+    volume: 0.7
+    pitch: 1
+    is3dSound: 1
     source: {fileID: 0}
   - name: StreamBlood
     clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
@@ -8921,7 +8923,6 @@ Transform:
   m_Children:
   - {fileID: 913800370}
   - {fileID: 651641336}
-  - {fileID: 1734552884}
   m_Father: {fileID: 1871621237}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
