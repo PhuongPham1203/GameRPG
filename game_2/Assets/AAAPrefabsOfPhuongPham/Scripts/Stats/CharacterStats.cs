@@ -82,6 +82,8 @@ public class CharacterStats : MonoBehaviour
             TakeDamage(d, 0, AttackTypeEffect.Normal, null);
         }
 
+        
+
 
 
     }

@@ -135,7 +135,6 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        
 
         if (timeSwing > 0)
         {
@@ -159,7 +158,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else //if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
                 {
-                    if(  Mathf.Abs(Input.GetAxis("Horizontal")) <0.15 && Mathf.Abs(Input.GetAxis("Vertical"))<0.15)
+                    if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.15 && Mathf.Abs(Input.GetAxis("Vertical")) < 0.15)
                     {
                         XZ = Vector2.zero;
                     }
@@ -197,14 +196,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-
-
-
-
-
-    }
     private void LateUpdate()
     {
 
