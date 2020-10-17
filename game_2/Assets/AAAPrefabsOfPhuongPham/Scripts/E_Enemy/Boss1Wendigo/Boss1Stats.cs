@@ -13,19 +13,20 @@ public class Boss1Stats : CharacterStats
         this.enemyController = GetComponent<EnemyController>();
         this.animator = GetComponent<Animator>();
         this.audioEnemy = GetComponent<AudioEnemy>();
-        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[0].HP,0, this.phaseBossStats[0].Posture);
+        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[0].HP, 0, this.phaseBossStats[0].Posture);
     }
 
     public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
     {
-        
+
         if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
         {
-            if(this.enemyController.alertEnemy != AlertEnemy.OnTarget){
+            if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
+            {
                 Debug.Log("Activate by player  hit");
                 this.ActivateBot();
             }
-            
+
 
 
             bool canBlockMore = true;
@@ -59,7 +60,7 @@ public class Boss1Stats : CharacterStats
 
             if (canBlockMore && animator.GetBool("Block")) // ! In Block
             {
-                
+
             }
             else
             { // ! Not Block
@@ -97,58 +98,100 @@ public class Boss1Stats : CharacterStats
                 this.enemyController.CanFinishBot(2f);
                 //enemyController.Stun(2f);
                 //playerController.PlayerStun();
-                
+
             }
         }
     }
-        
+
     public override void Die()
     {
         base.Die();
+
+        
+
 
         // Kill the this Enemy
         //PlayerManager.instance.player.GetComponent<PlayerController>().LockTarget();
         //SetUIActivate(false);
         enemyController.EnemyDie();
         //animator.SetInteger("InAction", 8);
+
         PlayerManager.instance.player.GetComponent<PlayerController>().LockTarget();
         this.gameObject.layer = 2;
+        //Debug.Log(PlayerManager.instance.player.GetComponent<PlayerController>().targetGroupCiner.m_Targets[1].target);
+        PlayerManager.instance.player.GetComponent<SelectPlayer>().targetEnemy = null;
 
-        //new WaitForSeconds(0.2f);
 
         //Invoke("MyDelayedCode", 0.5f);
 
-        
 
+        StartCoroutine(MyDelayedCode(0.5f));
 
-        StartCoroutine(DisableAfter(3.5f));
+        StartCoroutine(DisableAfter(4f));
 
         //Destroy(gameObject,3);
 
         //PlayerManager.instance.KillPlayer();
     }
-    private void ActivateBot(){
-        if (this.enemyController != null )
+
+
+    public override void UpdateHPAndPosture()
+    {
+        if (currentPosture >= maxPosture)
+        {
+            this.enemyController.canFinish = true;
+        }
+        else if (enemyController.alertEnemy == AlertEnemy.OnTarget)
+        {
+            this.enemyController.canFinish = false;
+
+        }
+
+        if (hpUI != null)
+        {
+            base.UpdateHPAndPosture();
+
+        }
+    }
+    private void ActivateBot()
+    {
+        if (this.enemyController != null)
+        {
+            if (this.enemyController.alertEnemy == AlertEnemy.Idle)
             {
-                if(this.enemyController.alertEnemy == AlertEnemy.Idle)
+                this.enemyController.SetAlentCombat(AlertEnemy.OnTarget);
+
+                if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
                 {
-                    this.enemyController.SetAlentCombat(AlertEnemy.OnTarget);
 
-                    if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
+                }
+                else
+                {
+                    AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
+
+                    if (AudioManager.instance.IsPlayTheme("OnCombat"))
                     {
-
-                    }
-                    else
-                    {
-                        AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
-
-                        if (AudioManager.instance.IsPlayTheme("OnCombat"))
-                        {
-                            AudioManager.instance.StopSoundOfTheme("OnCombat");
-                        }
+                        AudioManager.instance.StopSoundOfTheme("OnCombat");
                     }
                 }
             }
+        }
+    }
+
+    IEnumerator MyDelayedCode(float t)
+    {
+        yield return new WaitForSeconds(t);
+
+        if (!PlayerManager.instance.player.GetComponent<PlayerController>().onCombat && AudioManager.instance.IsPlayTheme("OnCombat"))
+        {
+            //Debug.Log("STop");
+            if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
+            {
+                AudioManager.instance.StopSoundOfTheme("OnCombat_Weindigo");
+
+            }
+        }
+        //Debug.Log("Hello!");
     }
 
 }

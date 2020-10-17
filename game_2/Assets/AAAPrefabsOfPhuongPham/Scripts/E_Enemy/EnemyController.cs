@@ -378,15 +378,17 @@ public class EnemyController : MonoBehaviour
 
     public void Stun(float t)
     {
-        canAction = false;
-        animator.SetInteger("InAction",0);
-        animator.SetFloat("SpeedMove",0);
-
+        this.canAction = false;
+        this.animator.SetInteger("InAction",10);
+        this.animator.SetFloat("SpeedMove",0);
+        this.animator.SetFloat("x",0);
+        this.animator.SetFloat("z",0);
+        
         if (actionLeaveAction != null)
         {
             StopCoroutine(actionLeaveAction);
         }
-        actionLeaveAction = StartCoroutine(CanAction(t));
+        actionLeaveAction = StartCoroutine(CanAction(t+0.5f));
     }
 
     protected IEnumerator CanAction(float waitTime)
@@ -424,6 +426,12 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         canFinish = false;
         SetFinishVFX(false);
+        this.animator.SetInteger("InAction",0);
+
+        // Sub Posture 30 %
+
+        float s = 0.3f* this.characterStats.maxPosture;
+        this.characterStats.AddHPandPosture(0,-s);
     }
 
 
@@ -475,7 +483,7 @@ public class EnemyController : MonoBehaviour
     }
     public virtual void Finish1()
     {
-        Debug.Log("Finish1");
+        //Debug.Log("Finish1");
         //StopAllCoroutines();
         canAction = false;
         if(TryGetComponent<SelectEnemy>(out SelectEnemy se)){
@@ -487,7 +495,7 @@ public class EnemyController : MonoBehaviour
     }
     public virtual void Finish2()
     {
-        Debug.Log("Finish2");
+        //Debug.Log("Finish2");
         //run VFX
         
         //StartCoroutine(BotDie(0.5f));
@@ -513,6 +521,8 @@ public class EnemyController : MonoBehaviour
         //StopAllCoroutines();
         SetAlentCombat(AlertEnemy.Die);
         animator.SetInteger("InAction", 8);
+
+        //targetGroupCiner.m_Targets[1].targets
 
     }
 

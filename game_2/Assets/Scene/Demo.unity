@@ -3242,7 +3242,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -6496,7 +6496,7 @@ MonoBehaviour:
   target: {fileID: 0}
   textAlert: {fileID: 1474656569}
   alertEnemy: 1
-  canFinish: 0
+  canFinish: 1
   vfxFinishBot: {fileID: 685415226}
   canAction: 1
   timeCanAction: 0.5
@@ -6605,7 +6605,7 @@ MonoBehaviour:
   phaseBossStats:
   - name: Phase 1
     HP: 300
-    Posture: 400
+    Posture: 50
   - name: Phase 2
     HP: 400
     Posture: 500
@@ -6683,12 +6683,19 @@ MonoBehaviour:
     pitch: 1
     is3dSound: 1
     source: {fileID: 0}
-  - name: StreamBlood
+  - name: HitDamage
     clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
     loop: 0
-    volume: 0.5
+    volume: 0.82
     pitch: 1
     is3dSound: 1
+    source: {fileID: 0}
+  - name: StreamBlood
+    clip: {fileID: 8300000, guid: 38e1041bf183b5a4daac970bae62f328, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0.35
     source: {fileID: 0}
   - name: AlertHiemAttack
     clip: {fileID: 8300000, guid: 3f26837235dbf6f4ca338c779774c0b5, type: 3}

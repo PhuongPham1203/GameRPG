@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     public CinemachineVirtualCamera LookCamera1;
     public CinemachineFreeLook LookCamera3;
-    public GameObject targetGroup;
+    //public GameObject targetGroup;
     public CinemachineTargetGroup targetGroupCiner;
     private Transform maincameraTranform;
 

@@ -173,17 +173,19 @@ public class ZombieStats : CharacterStats
         enemyController.EnemyDie();
         //animator.SetInteger("InAction", 8);
         
+
         PlayerManager.instance.player.GetComponent<PlayerController>().LockTarget();
         this.gameObject.layer = 2;
+        PlayerManager.instance.player.GetComponent<SelectPlayer>().targetEnemy = null;
+        
 
         //new WaitForSeconds(0.2f);
 
-        Invoke("MyDelayedCode", 0.5f);
+        //Invoke("MyDelayedCode", 0.5f);
 
+        StartCoroutine(MyDelayedCode(2f));
         
-
-
-        StartCoroutine(DestroyAfter(2f));
+        StartCoroutine(DisableAfter(3f));
 
         //Destroy(gameObject,3);
 
@@ -234,8 +236,9 @@ public class ZombieStats : CharacterStats
     }
 
 
-    void MyDelayedCode()
+    IEnumerator MyDelayedCode(float t)
     {
+        yield return new WaitForSeconds(t);
         if (!PlayerManager.instance.player.GetComponent<PlayerController>().onCombat && AudioManager.instance.IsPlayTheme("OnCombat"))
         {
             //Debug.Log("STop");

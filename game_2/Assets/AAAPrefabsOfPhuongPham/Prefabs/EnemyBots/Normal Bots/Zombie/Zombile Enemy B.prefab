@@ -290,7 +290,7 @@ MonoBehaviour:
   - name: HitDamage
     clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
     loop: 0
-    volume: 0.5
+    volume: 0.82
     pitch: 1
     is3dSound: 1
     source: {fileID: 0}
@@ -506,7 +506,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

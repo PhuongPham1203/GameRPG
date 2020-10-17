@@ -174,6 +174,15 @@ public class CharacterStats : MonoBehaviour
 
     }
 
+    public void AddHPandPosture(float h,float p){
+        this.currentHP += h;
+        this.currentHP = Mathf.Clamp(this.currentHP,0,this.maxHP);
+
+        this.currentPosture += p;
+        this.currentPosture = Mathf.Clamp(this.currentPosture,0,this.maxPosture);
+        this.UpdateHPAndPosture();
+    }
+
     public virtual void Die()
     {
         //Die in some way

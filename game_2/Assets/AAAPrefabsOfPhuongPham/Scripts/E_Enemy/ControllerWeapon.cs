@@ -15,7 +15,7 @@ public class ControllerWeapon : MonoBehaviour
     {
         enemyController = transform.root.GetComponent<EnemyController>();
         animator = transform.root.GetComponent<Animator>();
-        //characterStats = transform.root.GetComponent<CharacterStats>();
+        characterStats = transform.root.GetComponent<CharacterStats>();
     }
 
     private void Update()
