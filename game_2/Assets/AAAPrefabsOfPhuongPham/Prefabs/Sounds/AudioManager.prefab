@@ -171,7 +171,7 @@ MonoBehaviour:
   - name: FinishBot
     clip: {fileID: 8300000, guid: 9c0aa6851a460c541993686ca6c847f1, type: 3}
     loop: 0
-    volume: 0.15
+    volume: 0.1
     pitch: 1
     is3dSound: 0
     source: {fileID: 0}

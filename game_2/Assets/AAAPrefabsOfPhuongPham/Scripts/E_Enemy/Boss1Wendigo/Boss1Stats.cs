@@ -22,6 +22,7 @@ public class Boss1Stats : CharacterStats
         if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
         {
             if(this.enemyController.alertEnemy != AlertEnemy.OnTarget){
+                Debug.Log("Activate by player  hit");
                 this.ActivateBot();
             }
             
@@ -115,12 +116,12 @@ public class Boss1Stats : CharacterStats
 
         //new WaitForSeconds(0.2f);
 
-        Invoke("MyDelayedCode", 0.5f);
+        //Invoke("MyDelayedCode", 0.5f);
 
         
 
 
-        StartCoroutine(DisableAfter(2f));
+        StartCoroutine(DisableAfter(3.5f));
 
         //Destroy(gameObject,3);
 

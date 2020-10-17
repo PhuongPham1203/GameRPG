@@ -478,7 +478,9 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Finish1");
         //StopAllCoroutines();
         canAction = false;
-
+        if(TryGetComponent<SelectEnemy>(out SelectEnemy se)){
+            se.enabled = false;
+        }
         //SetAlentCombat(AlertEnemy.Die);
         animator.SetInteger("InAction", 10);
 
@@ -486,10 +488,25 @@ public class EnemyController : MonoBehaviour
     public virtual void Finish2()
     {
         Debug.Log("Finish2");
-        //gameObject.layer = 2; 
+        //run VFX
+        
+        //StartCoroutine(BotDie(0.5f));
+       
+        this.animator.SetInteger("InAction",8);
+        characterStats.TakeTrueDamageFinish(999999);
+        characterStats.Die();
+        
+    }
+    /*
+    IEnumerator BotDie(float t)  
+    {
+        yield return new WaitForSeconds(t);
+        this.animator.SetInteger("InAction",8);
         characterStats.TakeTrueDamegeFinish(999999);
         characterStats.Die();
+        
     }
+    */
     public virtual void EnemyDie()
     {
         Debug.Log("run EnemyDie");
@@ -524,28 +541,6 @@ public class EnemyController : MonoBehaviour
         actionLeaveAction = StartCoroutine(CanAttack(time)); // time can do something again
     }
 
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(" to1"+collision.gameObject.name);
-        if (collision.gameObject.layer == 24)
-        {
-            
-            // touch Player
-            if (alertEnemy == AlertEnemy.Idle)
-            {
-                alertEnemy = AlertEnemy.Warning;
-                LookAtAfter(0.2f);
-
-            }
-            else if (alertEnemy == AlertEnemy.Warning)
-            {
-                LookAtAfter(0.2f);
-
-            }
-        }
-    }
-    */
 
     public bool SetFinishVFX(bool isFinish)
     {

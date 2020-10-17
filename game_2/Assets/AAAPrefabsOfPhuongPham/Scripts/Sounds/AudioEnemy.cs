@@ -34,7 +34,7 @@ public class AudioEnemy : MonoBehaviour
         Sound s = Array.Find(soundOfEnemy, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Sound " + name + " not found!");
+            Debug.Log("Sound " + name + " not found!");
             return;
         }
 
@@ -45,7 +45,7 @@ public class AudioEnemy : MonoBehaviour
         Sound s = Array.Find(soundOfEnemy, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Sound in IsPlay " + name + " not found!");
+            Debug.Log("Sound in IsPlay " + name + " not found!");
             return false;
         }
 

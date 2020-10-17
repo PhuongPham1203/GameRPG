@@ -172,6 +172,7 @@ public class ZombieStats : CharacterStats
         //SetUIActivate(false);
         enemyController.EnemyDie();
         //animator.SetInteger("InAction", 8);
+        
         PlayerManager.instance.player.GetComponent<PlayerController>().LockTarget();
         this.gameObject.layer = 2;
 

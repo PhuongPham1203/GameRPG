@@ -662,24 +662,41 @@ public class PlayerController : MonoBehaviour
                     StopCoroutine(actionLeaveAction);
 
                 }
-                actionLeaveAction = StartCoroutine(LeaveAttack(1.25f));
-                StartCoroutine(CanAcion(1.25f));
+                actionLeaveAction = StartCoroutine(LeaveAttack(3f));
+                StartCoroutine(CanAcion(3f));
                 SetActivateWeapon(1);
                 animatorPlayer.SetInteger("InAction", 10);
+                animatorPlayer.SetInteger("TypeFinishBot", 4);
                 AudioManager.instance.PlaySoundOfPlayer("FinishBot");
 
                 enemyController.Finish1();
+                Vector3 lookAtPlayer = transform.position;
+                lookAtPlayer.y = enemyController.transform.position.y;
+                enemyController.transform.LookAt(lookAtPlayer);
+
+                if(this.LookCamera1.TryGetComponent<Animation>(out Animation a)){
+                    a.Play();
+                }
+                StartCoroutine(WaitFinishBots(1.2f,enemyController));
 
 
             }
         }
 
     }
-
+    
+    IEnumerator WaitFinishBots(float t,EnemyController e)  
+    {
+        yield return new WaitForSeconds(t);
+        e.Finish2();
+        
+    }
+    /*
     public void FinishBot2()
     {
         selectManager.targetEnemy.GetComponent<EnemyController>().Finish2();
     }
+    */
 
     public void Block(bool block)
     {

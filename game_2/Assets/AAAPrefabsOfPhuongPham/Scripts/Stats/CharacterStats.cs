@@ -116,7 +116,7 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    public virtual void TakeTrueDamegeFinish(int damage)
+    public virtual void TakeTrueDamageFinish(int damage)
     {
         //float x = 1f - ((float)currentHP / (float)maxHP); // percent HP lost
         //Debug.Log(x);
@@ -128,7 +128,11 @@ public class CharacterStats : MonoBehaviour
         UpdateHPAndPosture();
         vfxFinish.Play();
 
-        AudioManager.instance.PlaySoundOfPlayer("Damage");
+        this.audioEnemy.PlaySoundOfEnemy("HitDamage");
+        this.audioEnemy.PlaySoundOfEnemy("StreamBlood");
+
+        //AudioManager.instance.PlaySoundOfPlayer("HitDamage");
+        //AudioManager.instance.PlaySoundOfPlayer("HitDamage");
 
     }
 
@@ -169,16 +173,7 @@ public class CharacterStats : MonoBehaviour
         //Debug.Log(posture01);
 
     }
-    /* 
-    public virtual void Finish1()
-    {
-        Debug.Log("Finish1");
-    }
-    public virtual void Finish2()
-    {
-        Debug.Log("Finish2");
-    }
-    */
+
     public virtual void Die()
     {
         //Die in some way
