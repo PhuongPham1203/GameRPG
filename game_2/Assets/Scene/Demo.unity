@@ -6746,9 +6746,9 @@ MonoBehaviour:
   - name: P1Attack5
     clip: {fileID: 8300000, guid: fc25eb38bb6a3c341be64802a67738c0, type: 3}
     loop: 0
-    volume: 0.8
+    volume: 1
     pitch: 1
-    is3dSound: 0.2
+    is3dSound: 0
     source: {fileID: 0}
   - name: Block1
     clip: {fileID: 8300000, guid: 25b553307cf995640b260594b706253c, type: 3}

@@ -65,14 +65,14 @@ public class PlayerStats : CharacterStats
         //audioManager = AudioManager.instance;
 
         //ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
-        EquipmentManager.instance.Invoke("EquipAllDefaultItems",1f);
+        EquipmentManager.instance.Invoke("EquipAllDefaultItems", 1f);
     }
 
     public void ResetAllCurrentAndMaxValue()
     {
         ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
-        Debug.Log("maxHP:"+maxHP+ " currentHP:"+ currentHP+ " currentAttackDame:"+ currentAttackDame+ " maxPosture:" + maxPosture);
-        Debug.Log("Light Attack Dame:"+attackLightDamage+" Heavy Attack Dame"+ attackHeavyDamage);
+        Debug.Log("maxHP:" + maxHP + " currentHP:" + currentHP + " currentAttackDame:" + currentAttackDame + " maxPosture:" + maxPosture);
+        Debug.Log("Light Attack Dame:" + attackLightDamage + " Heavy Attack Dame" + attackHeavyDamage);
     }
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
@@ -86,7 +86,8 @@ public class PlayerStats : CharacterStats
             if (newItem.equipSlot == EquipmentSlot.LightWeapon)
             {
                 attackLightDamage = newItem.attackDameModifier;
-            }else if (newItem.equipSlot == EquipmentSlot.HeavyWeapon)
+            }
+            else if (newItem.equipSlot == EquipmentSlot.HeavyWeapon)
             {
                 attackHeavyDamage = newItem.attackDameModifier;
             }
@@ -113,7 +114,7 @@ public class PlayerStats : CharacterStats
             hp.RemoveModifier(oldItem.hpModifier);
 
             if (oldItem.equipSlot != EquipmentSlot.LightWeapon && oldItem.equipSlot != EquipmentSlot.HeavyWeapon)
-            { 
+            {
                 attackDame.RemoveModifier(oldItem.attackDameModifier);
             }
             posture.RemoveModifier(oldItem.postureModifier);
@@ -160,12 +161,12 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    public override void TakeDamage(int damage,float timeStun,AttackTypeEffect attackTypeEffect,EnemyController enemyController)
+    public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
     {
-        enemyController.isHitPlayer = true;
-        Debug.Log("Player take: "+damage);
+        enemyC.isHitPlayer = true;
+        Debug.Log("Player take: " + damage);
 
-        if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") !=10)
+        if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
         {
             if (animator.GetBool("Crouch"))
             {
@@ -175,6 +176,13 @@ public class PlayerStats : CharacterStats
             //Debug.Log("a" + currentPosture);
 
             bool canBlockMore = true;
+            if (attackTypeEffect == AttackTypeEffect.Dead)
+            {
+
+                canBlockMore = false;
+                this.animator.SetInteger("InAction", 0);
+
+            }
             if (currentPosture < maxPosture)
             {
                 if (animator.GetInteger("InAction") == 6)
@@ -183,6 +191,9 @@ public class PlayerStats : CharacterStats
 
                     int n = Random.Range(1, 5);
                     //Debug.Log(n);
+                    AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
+
+                    /*
                     if (animator.GetInteger("Weapon") == 1)
                     {
                         AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
@@ -191,6 +202,7 @@ public class PlayerStats : CharacterStats
                     {
                         AudioManager.instance.PlaySoundOfPlayer("Block Heavy " + n);
                     }
+                    */
                     vfxSteel.Play();
 
                     this.Reduction(timeWaitToReduction);
@@ -210,7 +222,7 @@ public class PlayerStats : CharacterStats
             currentPosture += (int)(damage + damage * x);
             currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
             //Debug.Log(transform.name + " Posture plus " + (int)(damage + damage * x ) + " damege.");
-            
+
 
             if (canBlockMore && animator.GetInteger("InAction") == 6) // ! In Block
             {
@@ -221,7 +233,7 @@ public class PlayerStats : CharacterStats
                 //Debug.Log("c"+currentPosture);
 
                 currentHP -= damage;
-                currentHP = Mathf.Clamp(currentHP,0,maxHP);
+                currentHP = Mathf.Clamp(currentHP, 0, maxHP);
                 playerController.Damage(timeStun);
 
                 AudioManager.instance.PlaySoundOfPlayer("Damage");

@@ -138,7 +138,7 @@ public class Boss1Stats : CharacterStats
         //Invoke("MyDelayedCode", 0.5f);
 
 
-        StartCoroutine(MyDelayedCode(0.5f)); // Stop Theme
+        StartCoroutine(MyDelayedCode(4f)); // Stop Theme
 
         StartCoroutine(DisableAfter(4f)); //  Disable Boss
 
