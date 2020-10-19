@@ -501,6 +501,41 @@ public class Boss1Controller : EnemyController
 
     }
 
+    public override bool ReLive()
+    {
+        base.ReLive();
+
+        if(this.phaseBossCurrent == this.phaseEnd){
+            return false; // Boss end;
+        }else{
+            
+            
+
+            StartCoroutine(CanTakeDamageIn(5f));
+            this.inforAttackCurrent = new InforAttack();
+            this.phaseBossCurrent = this.phaseBossCurrent+1;
+
+            this.SetComboOfPhase(this.phaseBossCurrent);
+
+
+            return true;
+        }
+
+    }
+
+    IEnumerator CanTakeDamageIn(float t){
+        this.gameObject.layer = 2;
+        yield return new WaitForSeconds(t);
+        this.gameObject.layer = 23;
+
+        this.animator.SetLayerWeight((int)this.phaseBossCurrent-1,0);
+        this.animator.SetLayerWeight((int)this.phaseBossCurrent,1);
+
+
+
+
+    }
+
     /*
     private void OnDrawGizmos()
     {

@@ -559,6 +559,11 @@ public class EnemyController : MonoBehaviour
         PlayerManager.instance.buttonFinish.SetActive(isFinish);
         return isFinish;
     }
+
+    public virtual bool ReLive(){
+        Debug.Log(this.gameObject.name+" Relive.");
+        return false;
+    }
 }
 
 public enum AlertEnemy { Die, Idle, Warning, OnTarget }

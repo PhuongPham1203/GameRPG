@@ -6570,6 +6570,87 @@ MonoBehaviour:
     distanceAttack: 3
     timeToNextAction: 3.5
     hitBox: {fileID: 1032598415}
+  - name: Phase2 Combo1
+    phaseBoss: 2
+    combo: 1
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase2 Combo2
+    phaseBoss: 2
+    combo: 2
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase2 Combo3
+    phaseBoss: 2
+    combo: 3
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase2 Combo4
+    phaseBoss: 2
+    combo: 4
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase2 Combo5
+    phaseBoss: 2
+    combo: 5
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase2 Combo6
+    phaseBoss: 2
+    combo: 6
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase2 Combo7
+    phaseBoss: 2
+    combo: 7
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase3 Combo1
+    phaseBoss: 3
+    combo: 1
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
+  - name: Phase3 Combo2
+    phaseBoss: 3
+    combo: 2
+    damageAttack: 70
+    attackTypeEffect: 0
+    timeStun: 1.5
+    distanceAttack: 3
+    timeToNextAction: 3.5
+    hitBox: {fileID: 1032598415}
 --- !u!114 &1871621241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6603,15 +6684,22 @@ MonoBehaviour:
   itemKeep: []
   itemDrop: []
   phaseBossStats:
-  - name: Phase 1
+  - phaseBoss: 1
     HP: 300
     Posture: 50
-  - name: Phase 2
+    listWeapon:
+    - {fileID: 1032598412}
+  - phaseBoss: 2
     HP: 400
     Posture: 500
-  - name: Phase 3
+    listWeapon:
+    - {fileID: 6798243157013497828}
+    - {fileID: 8611567483267405807}
+  - phaseBoss: 3
     HP: 500
     Posture: 600
+    listWeapon:
+    - {fileID: 8449685367180705000}
 --- !u!114 &1871621242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12439,6 +12527,7 @@ GameObject:
   - component: {fileID: 6798243157016763364}
   - component: {fileID: 6798243157015763236}
   - component: {fileID: 6798243157013497829}
+  - component: {fileID: 6798243157013497830}
   m_Layer: 2
   m_Name: TH_Sword01_a
   m_TagString: Untagged
@@ -12471,6 +12560,19 @@ MonoBehaviour:
   subdivisions: 10
   _base: {fileID: 199378609}
   _tip: {fileID: 2097205078}
+--- !u!65 &6798243157013497830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798243157013497828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2503464, y: 1.4794767, z: 0.16}
+  m_Center: {x: -0.036015477, y: 0.4324736, z: -0.00000036884325}
 --- !u!23 &6798243157015763236
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12634,7 +12736,7 @@ Transform:
   m_GameObject: {fileID: 8449685367180705000}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.0001, y: -0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 178832539}
   - {fileID: 1802030082}
@@ -12653,6 +12755,7 @@ GameObject:
   - component: {fileID: 8449685367181598952}
   - component: {fileID: 8449685367182697000}
   - component: {fileID: 8449685367180705001}
+  - component: {fileID: 8449685367180705002}
   m_Layer: 2
   m_Name: Sword18_a
   m_TagString: Untagged
@@ -12685,6 +12788,19 @@ MonoBehaviour:
   subdivisions: 10
   _base: {fileID: 178832539}
   _tip: {fileID: 1802030082}
+--- !u!65 &8449685367180705002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449685367180705000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 1.0415196, z: 0.03}
+  m_Center: {x: 0.000015819363, y: 0.37719032, z: 0.00000079149333}
 --- !u!33 &8449685367181598952
 MeshFilter:
   m_ObjectHideFlags: 0

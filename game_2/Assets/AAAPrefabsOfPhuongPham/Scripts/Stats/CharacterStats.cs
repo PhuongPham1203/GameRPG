@@ -82,7 +82,7 @@ public class CharacterStats : MonoBehaviour
             TakeDamage(d, 0, AttackTypeEffect.Normal, null);
         }
 
-        
+
 
 
 
@@ -174,12 +174,13 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    public void AddHPandPosture(float h,float p){
+    public void AddHPandPosture(float h, float p)
+    {
         this.currentHP += h;
-        this.currentHP = Mathf.Clamp(this.currentHP,0,this.maxHP);
+        this.currentHP = Mathf.Clamp(this.currentHP, 0, this.maxHP);
 
         this.currentPosture += p;
-        this.currentPosture = Mathf.Clamp(this.currentPosture,0,this.maxPosture);
+        this.currentPosture = Mathf.Clamp(this.currentPosture, 0, this.maxPosture);
         this.UpdateHPAndPosture();
     }
 
@@ -196,7 +197,7 @@ public class CharacterStats : MonoBehaviour
         Instantiate(vfxDie, transform.position, transform.rotation);
         Destroy(gameObject);
 
-        
+
 
     }
 
@@ -250,6 +251,7 @@ public class CharacterStats : MonoBehaviour
         maxPosture = maxPostureValue;
         currentPosture = 0;//maxPosture;
 
+        this.UpdateHPAndPosture();
         //currentDefend = currentDefendValue;
     }
 
@@ -269,12 +271,20 @@ public class CharacterStats : MonoBehaviour
     public void Reduction(float t)
     {
 
-        if (actionReduction != null)StopCoroutine(actionReduction);
+        if (actionReduction != null) StopCoroutine(actionReduction);
         actionReduction = StartCoroutine(CanReduction(t));
 
     }
 
 
 
+}
 
+[System.Serializable]
+public class PhaseBossStats
+{
+    public PhaseBoss phaseBoss = PhaseBoss.Phase_1;
+    public int HP = 100;
+    public int Posture = 100;
+    public GameObject[] listWeapon;
 }

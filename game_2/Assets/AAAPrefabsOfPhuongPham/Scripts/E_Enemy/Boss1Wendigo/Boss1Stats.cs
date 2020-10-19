@@ -7,13 +7,17 @@ public class Boss1Stats : CharacterStats
 
     [Header("Phase Boss Stats")]
     public PhaseBossStats[] phaseBossStats;
+    protected int indexPhaseBossStat = 0;
 
     private void Start()
     {
         this.enemyController = GetComponent<EnemyController>();
         this.animator = GetComponent<Animator>();
         this.audioEnemy = GetComponent<AudioEnemy>();
-        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[0].HP, 0, this.phaseBossStats[0].Posture);
+        this.indexPhaseBossStat = 0;
+        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[indexPhaseBossStat].HP, 0, this.phaseBossStats[indexPhaseBossStat].Posture);
+        
+        
     }
 
     public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
@@ -89,7 +93,9 @@ public class Boss1Stats : CharacterStats
             {
 
                 //Debug.Log("Can Finish");
-                Die();
+                this.Die();
+
+
 
             }
             else if (this.currentPosture >= this.maxPosture)
@@ -107,7 +113,14 @@ public class Boss1Stats : CharacterStats
     {
         base.Die();
 
-        
+        if (this.enemyController.ReLive())
+        {
+
+            StartCoroutine(SetStatRelive(2.5f));
+
+
+            return;
+        }
 
 
         // Kill the this Enemy
@@ -125,9 +138,9 @@ public class Boss1Stats : CharacterStats
         //Invoke("MyDelayedCode", 0.5f);
 
 
-        StartCoroutine(MyDelayedCode(0.5f));
+        StartCoroutine(MyDelayedCode(0.5f)); // Stop Theme
 
-        StartCoroutine(DisableAfter(4f));
+        StartCoroutine(DisableAfter(4f)); //  Disable Boss
 
         //Destroy(gameObject,3);
 
@@ -178,30 +191,51 @@ public class Boss1Stats : CharacterStats
         }
     }
 
-    IEnumerator MyDelayedCode(float t)
+    IEnumerator MyDelayedCode(float t)// turn off sound
     {
         yield return new WaitForSeconds(t);
 
-        if (!PlayerManager.instance.player.GetComponent<PlayerController>().onCombat && AudioManager.instance.IsPlayTheme("OnCombat"))
-        {
-            //Debug.Log("STop");
-            if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
-            {
-                AudioManager.instance.StopSoundOfTheme("OnCombat_Weindigo");
 
-            }
+        //Debug.Log("STop");
+        if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
+        {
+            AudioManager.instance.StopSoundOfTheme("OnCombat_Weindigo");
+
         }
+
         //Debug.Log("Hello!");
     }
 
+    IEnumerator SetStatRelive(float t)
+    {
+
+        yield return new WaitForSeconds(t);
+
+        
+
+        this.indexPhaseBossStat += 1;
+
+        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[this.indexPhaseBossStat].HP, 0, this.phaseBossStats[this.indexPhaseBossStat].Posture);
+
+        this.animator.SetInteger("InAction", 0);
+
+        if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
+        {
+            //Debug.Log("Activate by player  hit");
+            this.ActivateBot();
+        }
+        // disable Current Weapon
+        foreach(GameObject g in this.phaseBossStats[this.indexPhaseBossStat-1].listWeapon){
+            g.SetActive(false);
+        }
+
+        // enable new weapon
+        foreach(GameObject g in this.phaseBossStats[this.indexPhaseBossStat].listWeapon){
+            g.SetActive(true);
+        }
+
+    }
 }
 
 
 
-[System.Serializable]
-public class PhaseBossStats
-{
-    public string name = "Phase";
-    public int HP = 100;
-    public int Posture = 100;
-}
