@@ -122,17 +122,17 @@ public class Boss1Controller : EnemyController
 
                 break;
             #endregion
-            case 0: // phase 1 combo1 
+            case 0: // ! phase 1 combo1 
                     // code
-                
-                if (MustRunRandomWalkAround(3f))break;
+
+                if (MustRunRandomWalkAround(3f)) break;
 
                 this.AttackBase();
 
                 break;
             case 1: // phase 1 combo2
-                // code
-                
+                    // code
+
                 if (MustRunRandomWalkAround(3f)) break;
 
                 this.AttackPhase1Combo2();
@@ -158,6 +158,43 @@ public class Boss1Controller : EnemyController
 
                 this.AttackPhase1Combo5();
                 break;
+
+            case 5: // ! phase 2 combo1
+                if (MustRunRandomWalkAround(4f)) break;
+
+                this.AttackBase();
+                break;
+            case 6: // phase 2 combo2
+                if (MustRunRandomWalkAround(1f)) break;
+
+                this.AttackBase();
+                break;
+            case 7: // phase 2 combo3
+                if (MustRunRandomWalkAround(2f)) break;
+
+                this.AttackPhase2Combo3();
+                break;
+            case 8: // phase 2 combo4
+
+                this.AttackBase();
+
+                break;
+            case 9: // phase 2 combo5
+
+                break;
+            case 10: // phase 2 combo6
+
+                break;
+            case 11: // phase 2 combo7
+
+                break;
+            case 12: // ! phase 3 combo1
+
+                break;
+
+
+
+
 
 
         }
@@ -208,9 +245,7 @@ public class Boss1Controller : EnemyController
         {
 
             // Attack
-            //this.animator.SetTrigger("rollF");
             this.StopLookAndMove();
-
             // look At
             Vector3 t = this.target.position;
             t.y = this.transform.position.y;
@@ -243,9 +278,6 @@ public class Boss1Controller : EnemyController
         {
 
             // Attack
-            //this.animator.SetTrigger("rollF");
-            //this.StopLookAndMove();
-
             // look At
             Vector3 t = this.target.position;
             t.y = this.transform.position.y;
@@ -283,6 +315,39 @@ public class Boss1Controller : EnemyController
         }
     }
     // ! Phase 2
+    protected void AttackPhase2Combo3()
+    {
+        if (this.distance < this.distanceCanAttack) // Attack
+        {
+
+            // Attack
+            this.StopLookAndMove();
+            // look At
+            Vector3 t = this.target.position;
+            t.y = this.transform.position.y;
+            this.transform.LookAt(t);
+
+            this.currentAttackDone = this.Attack(this.currentListAttack);
+
+        }
+        else // Move to Player
+        {
+            this.MoveToPosition(this.target.position, 1f, this.runSpeed);
+        }
+
+        if (this.currentAttackDone)
+        {
+            //this.lookAt = true;
+
+            this.currentListAttack++;
+            if (this.startListAttack + this.numberListAttack <= this.startListAttack + this.currentListAttack) //
+            {
+                this.currentListAttack = this.startListAttack;
+            }
+
+
+        }
+    }
 
     // ! Phase 3
 
@@ -505,15 +570,18 @@ public class Boss1Controller : EnemyController
     {
         base.ReLive();
 
-        if(this.phaseBossCurrent == this.phaseEnd){
+        if (this.phaseBossCurrent == this.phaseEnd)
+        {
             return false; // Boss end;
-        }else{
-            
-            
+        }
+        else
+        {
+
+
 
             StartCoroutine(CanTakeDamageIn(5f));
             this.inforAttackCurrent = new InforAttack();
-            this.phaseBossCurrent = this.phaseBossCurrent+1;
+            this.phaseBossCurrent = this.phaseBossCurrent + 1;
 
             this.SetComboOfPhase(this.phaseBossCurrent);
 
@@ -523,14 +591,16 @@ public class Boss1Controller : EnemyController
 
     }
 
-    IEnumerator CanTakeDamageIn(float t){
+    IEnumerator CanTakeDamageIn(float t)
+    {
         this.gameObject.layer = 2;
         yield return new WaitForSeconds(t);
         this.gameObject.layer = 23;
 
-        this.animator.SetLayerWeight((int)this.phaseBossCurrent-1,0);
-        this.animator.SetLayerWeight((int)this.phaseBossCurrent,1);
+        this.animator.SetLayerWeight((int)this.phaseBossCurrent - 1, 0);
+        this.animator.SetLayerWeight((int)this.phaseBossCurrent, 1);
 
+        this.lookAt = true;
 
 
 

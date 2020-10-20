@@ -388,7 +388,7 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine(actionLeaveAction);
         }
-        actionLeaveAction = StartCoroutine(CanAction(t+0.5f));
+        actionLeaveAction = StartCoroutine(CanAction(t));
     }
 
     protected IEnumerator CanAction(float waitTime)
@@ -503,6 +503,7 @@ public class EnemyController : MonoBehaviour
         this.animator.SetInteger("InAction",8);
         characterStats.TakeTrueDamageFinish(999999);
         characterStats.Die();
+        this.lookAt = false;
         
     }
     /*

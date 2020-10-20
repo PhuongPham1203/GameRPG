@@ -7,17 +7,17 @@ public class Boss1Stats : CharacterStats
 
     [Header("Phase Boss Stats")]
     public PhaseBossStats[] phaseBossStats;
-    protected int indexPhaseBossStat = 0;
+    public int indexPhaseBossStat = 0;
 
     private void Start()
     {
         this.enemyController = GetComponent<EnemyController>();
         this.animator = GetComponent<Animator>();
         this.audioEnemy = GetComponent<AudioEnemy>();
-        this.indexPhaseBossStat = 0;
+        //this.indexPhaseBossStat = 0;
         this.ResetAllCurrentAndMaxValue(this.phaseBossStats[indexPhaseBossStat].HP, 0, this.phaseBossStats[indexPhaseBossStat].Posture);
-        
-        
+
+
     }
 
     public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
@@ -101,7 +101,7 @@ public class Boss1Stats : CharacterStats
             else if (this.currentPosture >= this.maxPosture)
             {
 
-                this.enemyController.CanFinishBot(2f);
+                this.enemyController.CanFinishBot(4f);
                 //enemyController.Stun(2f);
                 //playerController.PlayerStun();
 
@@ -116,7 +116,8 @@ public class Boss1Stats : CharacterStats
         if (this.enemyController.ReLive())
         {
 
-            StartCoroutine(SetStatRelive(2.5f));
+            StartCoroutine(SetStatRelive(1f));
+            //this.animator.SetInteger("InAction", 0);
 
 
             return;
@@ -211,7 +212,7 @@ public class Boss1Stats : CharacterStats
 
         yield return new WaitForSeconds(t);
 
-        
+
 
         this.indexPhaseBossStat += 1;
 
@@ -225,12 +226,14 @@ public class Boss1Stats : CharacterStats
             this.ActivateBot();
         }
         // disable Current Weapon
-        foreach(GameObject g in this.phaseBossStats[this.indexPhaseBossStat-1].listWeapon){
+        foreach (GameObject g in this.phaseBossStats[this.indexPhaseBossStat - 1].listWeapon)
+        {
             g.SetActive(false);
         }
 
         // enable new weapon
-        foreach(GameObject g in this.phaseBossStats[this.indexPhaseBossStat].listWeapon){
+        foreach (GameObject g in this.phaseBossStats[this.indexPhaseBossStat].listWeapon)
+        {
             g.SetActive(true);
         }
 
