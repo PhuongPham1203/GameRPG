@@ -75,7 +75,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 		public Vector3 basePosition;
 		public Vector3 tipPosition;
 	}
-
+	
 	void Start()
 	{
 		_lastPosition = transform.position;
