@@ -12,24 +12,41 @@ public class WeaponControllerOfBoss1 : WeaponControllerOfBoss
     public GameObject flyWeapon;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 24)
+        if (other.gameObject.layer == 24)
         {
             this.inforAttack = transform.root.GetComponent<EnemyController>().inforAttackCurrent;
             //Debug.Log("Player take Damage");
-            other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack,this.inforAttack.timeStun,this.inforAttack.attackTypeEffect, transform.root.GetComponent<EnemyController>());
+            other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack, this.inforAttack.timeStun, this.inforAttack.attackTypeEffect, transform.root.GetComponent<EnemyController>());
         }
 
     }
 
-    public void CreateFlyWeapon(){
-        if(this.flyWeapon!=null){
+    public void CreateFlyWeapon(EnemyController e)
+    {
+        if (this.flyWeapon != null)
+        {
+            
             GameObject g = Instantiate(flyWeapon);
-            if(g.TryGetComponent<FlyWeaponController>(out FlyWeaponController f)){
-                f.inforAttack = this.inforAttack;
-                f.enemyController = this.transform.root.GetComponent<EnemyController>();
-                f.wayFly = (PlayerManager.instance.player.transform.position - this.transform.root.position).normalized;
-                g.transform.LookAt(PlayerManager.instance.player.transform.position);
-            }
+            g.transform.position = this.transform.position;
+            
+            FlyWeaponController f = g.GetComponent<FlyWeaponController>();
+            //float sf = f.speedFly;
+            //f.speedFly = 0;
+
+            f.enemyController = e;
+            f.inforAttack = e.inforAttackCurrent;
+
+            //f.SetInfoAttackFlyWeapon(this.inforAttack);
+            Vector3 posP = PlayerManager.instance.player.transform.position;
+            //posP.y+=0.5f;
+            g.transform.LookAt(posP);
+            
+            
+
+            f.wayFly = (posP - g.transform.position).normalized;
+            //f.speedFly = sf;
+            
+
         }
 
     }

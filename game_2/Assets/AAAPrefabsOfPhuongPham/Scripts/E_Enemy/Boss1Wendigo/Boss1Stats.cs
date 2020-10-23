@@ -72,7 +72,7 @@ public class Boss1Stats : CharacterStats
                 this.currentHP -= damage;
 
                 //enemyController.Damage(0.5f);
-                this.audioEnemy.PlaySoundOfEnemy("Blood");
+                this.audioEnemy.PlaySoundOfEnemy("Blood"+ Random.Range(1, 5));
                 this.vfxBlood.Play();
                 this.Reduction(timeWaitToReduction);
 
@@ -174,7 +174,7 @@ public class Boss1Stats : CharacterStats
             if (this.enemyController.alertEnemy == AlertEnemy.Idle)
             {
                 this.enemyController.SetAlentCombat(AlertEnemy.OnTarget);
-
+                this.enemyController.canAction = true;
                 if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
                 {
 
@@ -219,6 +219,8 @@ public class Boss1Stats : CharacterStats
         this.ResetAllCurrentAndMaxValue(this.phaseBossStats[this.indexPhaseBossStat].HP, 0, this.phaseBossStats[this.indexPhaseBossStat].Posture);
 
         this.animator.SetInteger("InAction", 0);
+        this.enemyController.canAction = true;
+        
 
         if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
         {

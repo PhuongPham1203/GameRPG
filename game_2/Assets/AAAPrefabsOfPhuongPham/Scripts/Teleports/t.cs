@@ -4,30 +4,11 @@ using UnityEngine;
 
 public class t : MonoBehaviour
 {
-    public GameObject obja;
-    public GameObject objb;
-    public Transform trana;
-    public Transform tranb;
+    
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-
-        Debug.Log("obj a "+ obja.GetInstanceID());
-        Debug.Log("obj b " + objb.GetInstanceID());
-
-        Debug.Log("tran a " + trana.GetInstanceID());
-
-        objb = obja;
-
-        Debug.Log("obj b " + objb.GetInstanceID());
-
-        Debug.Log("tran b " + tranb.GetInstanceID());
-
-        Debug.Log("tran b " + tranb.GetInstanceID());
-
+        this.transform.LookAt(PlayerManager.instance.player.transform.position);
     }
-
-
 
 }

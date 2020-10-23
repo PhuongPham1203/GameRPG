@@ -102341,6 +102341,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 0.6666667
+    functionName: PlaySoundOfEnemy
+    data: AlertHiemAttack
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.75
     functionName: ActivavteWeapon
     data: 
@@ -102368,6 +102375,13 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
+    messageOptions: 0
+  - time: 1.9166666
+    functionName: PlaySoundOfEnemy
+    data: AlertHiemAttack
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0
   - time: 2
     functionName: ActivavteWeapon

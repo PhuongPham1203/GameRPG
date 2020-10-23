@@ -160,12 +160,13 @@ public class Boss1Controller : EnemyController
                 this.AttackPhase1Combo5();
                 break;
             #endregion
+            #region Phase 2
             case 5: // ! phase 2 combo1
-                //if (MustRunRandomWalkAround(4f)) break;
+                if (MustRunRandomWalkAround(4f)) break;
                 this.AttackPhase2Combo1();
                 break;
             case 6: // phase 2 combo2
-                //if (MustRunRandomWalkAround(1f)) break;
+                if (MustRunRandomWalkAround(1f)) break;
                 this.AttackBase();
                 break;
             case 7: // phase 2 combo3
@@ -184,31 +185,51 @@ public class Boss1Controller : EnemyController
             case 8: // phase 2 combo4
 
                 this.AttackBase();
-
                 break;
             case 9: // phase 2 combo5
-
+                if (MustRunRandomWalkAround(2f)) break;
+                this.AttackPhase2Combo5();
                 break;
             case 10: // phase 2 combo6
-
+                if (MustRunRandomWalkAround(4f)) break;
+                this.AttackPhase2Combo1();
                 break;
             case 11: // phase 2 combo7
+                this.AttackPhase2Combo1();
+                break;
+            case 12: // phase 2 combo8
+                if (MustRunRandomWalkAround(2f)) break;
+                this.AttackPhase2Combo1();
+                break;
+            #endregion
+            #region Phase 3
+            case 13: // ! phase 3 combo1
 
                 break;
-            case 12: // ! phase 3 combo1
+            case 14: // phase 3 combo2
 
                 break;
+            case 15: // phase 3 combo3
 
+                break;
+            case 16: // phase 3 combo4
 
+                break;
+            case 17: // phase 3 combo5
 
+                break;
+            case 18: // phase 3 combo6
 
+                break;
+            case 19: // phase 3 combo7
 
-
+                break;
+                #endregion
         }
 
     }
 
-    protected void AttackBase()
+    private void AttackBase()
     {
         if (this.distance < this.distanceCanAttack) // Attack
         {
@@ -246,7 +267,7 @@ public class Boss1Controller : EnemyController
 
     // ! Phase 1
 
-    protected void AttackPhase1Combo2()
+    private void AttackPhase1Combo2()
     {
         if (this.distance < this.distanceCanAttack) // Attack
         {
@@ -271,7 +292,7 @@ public class Boss1Controller : EnemyController
             //this.lookAt = true;
 
             this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.startListAttack + this.currentListAttack) //
+            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
             {
                 this.currentListAttack = this.startListAttack;
             }
@@ -279,7 +300,7 @@ public class Boss1Controller : EnemyController
 
         }
     }
-    protected void AttackPhase1Combo5()
+    private void AttackPhase1Combo5()
     {
         if (this.distance < this.distanceCanAttack) // Attack
         {
@@ -314,7 +335,7 @@ public class Boss1Controller : EnemyController
             //this.lookAt = true;
 
             this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.startListAttack + this.currentListAttack) //
+            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
             {
                 this.currentListAttack = this.startListAttack;
 
@@ -322,7 +343,7 @@ public class Boss1Controller : EnemyController
         }
     }
     // ! Phase 2
-    protected void AttackPhase2Combo1()
+    private void AttackPhase2Combo1()
     {
         if (this.distance < this.distanceCanAttack) // Attack
         {
@@ -356,7 +377,7 @@ public class Boss1Controller : EnemyController
         }
     }
 
-    protected void AttackPhase2Combo3()
+    private void AttackPhase2Combo3()
     {
         if (this.timeTryMoveToPos > 0)
         {
@@ -387,11 +408,92 @@ public class Boss1Controller : EnemyController
 
         }
     }
-    public void AttackCreateFlyWeapon(){
-        if(this.inforAttackCurrent.hitBox.TryGetComponent<WeaponControllerOfBoss1>(out WeaponControllerOfBoss1 w)){
-            w.CreateFlyWeapon();
+    private void AttackPhase2Combo5()
+    {
+        if (this.distance < this.distanceCanAttack) // Attack
+        {
+
+            // Attack
+            // look At
+            this.StopLookAndMove();
+            Vector3 t = this.target.position;
+            t.y = this.transform.position.y;
+            this.transform.LookAt(t);
+
+
+            this.currentAttackDone = this.Attack(this.currentListAttack);
+            try
+            {
+
+                NomManager.instance.PlayNomAnimation("HiemAnimation");
+                this.audioEnemy.PlaySoundOfEnemy("AlertHiemAttack");
+            }
+            finally
+            {
+
+            }
+
+        }
+        else // Move to Player
+        {
+            this.MoveToPosition(this.target.position, 1f, this.runSpeed);
+        }
+
+        if (this.currentAttackDone)
+        {
+            //this.lookAt = true;
+
+            this.currentListAttack++;
+            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
+            {
+                this.currentListAttack = this.startListAttack;
+
+            }
         }
     }
+    /*
+    private void AttackPhase2Combo6()
+    {
+        if (this.distance < this.distanceCanAttack) // Attack
+        {
+
+            // Attack
+            //this.StopLookAndMove();
+            // look At
+            Vector3 t = this.target.position;
+            t.y = this.transform.position.y;
+            this.transform.LookAt(t);
+
+            this.currentAttackDone = this.Attack(this.currentListAttack);
+
+        }
+        else // Move to Player
+        {
+            this.MoveToPosition(this.target.position, 1f, this.runSpeed);
+        }
+
+        if (this.currentAttackDone)
+        {
+            //this.lookAt = true;
+
+            this.currentListAttack++;
+            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
+            {
+                this.currentListAttack = this.startListAttack;
+            }
+
+
+        }
+    }
+    */
+    public void AttackCreateFlyWeapon()
+    {
+        if (this.inforAttackCurrent.hitBox.TryGetComponent<WeaponControllerOfBoss1>(out WeaponControllerOfBoss1 w))
+        {
+            w.CreateFlyWeapon(this.GetComponent<EnemyController>());
+        }
+    }
+
 
     // ! Phase 3
 

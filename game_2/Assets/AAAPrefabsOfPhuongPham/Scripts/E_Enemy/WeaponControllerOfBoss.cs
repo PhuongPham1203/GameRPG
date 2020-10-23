@@ -9,13 +9,15 @@ public class WeaponControllerOfBoss : MonoBehaviour
     //public float timeStun = 0;
     //public Vector3 vectorStun = Vector3.zero;
     protected InforAttack inforAttack;
+    protected EnemyController enemyController;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 24)
+        if (other.gameObject.layer == 24)
         {
-            this.inforAttack = transform.root.GetComponent<EnemyController>().inforAttackCurrent;
+            this.enemyController = transform.root.GetComponent<EnemyController>();
+            this.inforAttack = this.enemyController.inforAttackCurrent;
             //Debug.Log("Player take Damage");
-            other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack,this.inforAttack.timeStun,this.inforAttack.attackTypeEffect, transform.root.GetComponent<EnemyController>());
+            other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack, this.inforAttack.timeStun, this.inforAttack.attackTypeEffect, this.enemyController);
         }
 
     }

@@ -867,6 +867,64 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 444356614}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &174761869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174761871}
+  - component: {fileID: 174761870}
+  - component: {fileID: 174761872}
+  m_Layer: 2
+  m_Name: Foot Kick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!135 &174761870
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174761869}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.006
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &174761871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174761869}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 548695415}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &174761872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174761869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b835ce213d85a4f961ca73f5af0149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedStun: 15
 --- !u!1 &178832538
 GameObject:
   m_ObjectHideFlags: 0
@@ -13524,7 +13582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1032598413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15868,7 +15926,7 @@ MonoBehaviour:
   isHitPlayer: 0
   timeReduction: 5
   bossRangeCenter: {fileID: 1801632739}
-  phaseBossCurrent: 2
+  phaseBossCurrent: 1
   phaseEnd: 3
   distanceAttack:
   - name: Phase1 Combo1
@@ -15946,39 +16004,48 @@ MonoBehaviour:
   - name: Phase2 Combo4
     phaseBoss: 2
     combo: 4
-    damageAttack: 10
+    damageAttack: 40
     attackTypeEffect: 0
-    timeStun: 1.5
-    distanceAttack: 3
-    timeToNextAction: 3.5
-    hitBox: {fileID: 1032598415}
+    timeStun: 0.5
+    distanceAttack: 10
+    timeToNextAction: 2.5
+    hitBox: {fileID: 6798243157013497830}
   - name: Phase2 Combo5
     phaseBoss: 2
     combo: 5
-    damageAttack: 70
-    attackTypeEffect: 0
-    timeStun: 1.5
-    distanceAttack: 3
-    timeToNextAction: 3.5
-    hitBox: {fileID: 1032598415}
+    damageAttack: 50
+    attackTypeEffect: 1
+    timeStun: 1
+    distanceAttack: 5
+    timeToNextAction: 3
+    hitBox: {fileID: 6798243157013497830}
   - name: Phase2 Combo6
     phaseBoss: 2
     combo: 6
-    damageAttack: 70
+    damageAttack: 35
     attackTypeEffect: 0
-    timeStun: 1.5
-    distanceAttack: 3
+    timeStun: 1
+    distanceAttack: 4
     timeToNextAction: 3.5
-    hitBox: {fileID: 1032598415}
+    hitBox: {fileID: 8611567483267405810}
   - name: Phase2 Combo7
     phaseBoss: 2
     combo: 7
-    damageAttack: 70
+    damageAttack: 35
     attackTypeEffect: 0
+    timeStun: 0.5
+    distanceAttack: 4
+    timeToNextAction: 3
+    hitBox: {fileID: 6798243157013497830}
+  - name: Phase2 Combo8
+    phaseBoss: 2
+    combo: 8
+    damageAttack: 20
+    attackTypeEffect: 2
     timeStun: 1.5
     distanceAttack: 3
-    timeToNextAction: 3.5
-    hitBox: {fileID: 1032598415}
+    timeToNextAction: 1.5
+    hitBox: {fileID: 174761870}
   - name: Phase3 Combo1
     phaseBoss: 3
     combo: 1
@@ -16030,22 +16097,24 @@ MonoBehaviour:
   itemKeep: []
   itemDrop: []
   phaseBossStats:
-  - phaseBoss: 0
-    HP: 0
-    Posture: 0
-    listWeapon: []
+  - phaseBoss: 1
+    HP: 300
+    Posture: 350
+    listWeapon:
+    - {fileID: 1032598412}
   - phaseBoss: 2
     HP: 400
     Posture: 100
     listWeapon:
     - {fileID: 6798243157013497828}
     - {fileID: 8611567483267405807}
+    - {fileID: 174761869}
   - phaseBoss: 3
     HP: 500
     Posture: 100
     listWeapon:
     - {fileID: 8449685367180705000}
-  indexPhaseBossStat: 1
+  indexPhaseBossStat: 0
 --- !u!114 &1871621242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16096,6 +16165,20 @@ MonoBehaviour:
     pitch: 1
     is3dSound: 0
     source: {fileID: 0}
+  - name: P2Attack2
+    clip: {fileID: 8300000, guid: da21a45012aa74b4d9ca5fd3c1981e93, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    is3dSound: 0.2
+    source: {fileID: 0}
+  - name: P2Attack3
+    clip: {fileID: 8300000, guid: 70695dc4f283fbe479782a162f48064a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    is3dSound: 0.2
+    source: {fileID: 0}
   - name: Block1
     clip: {fileID: 8300000, guid: 25b553307cf995640b260594b706253c, type: 3}
     loop: 0
@@ -16110,19 +16193,40 @@ MonoBehaviour:
     pitch: 1
     is3dSound: 0.1
     source: {fileID: 0}
-  - name: Blood
+  - name: Blood1
     clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
     loop: 0
-    volume: 0.7
+    volume: 0.8
     pitch: 1
-    is3dSound: 1
+    is3dSound: 0.75
+    source: {fileID: 0}
+  - name: Blood2
+    clip: {fileID: 8300000, guid: d21c96b20db2b4f8bbe3e10a367f525e, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0.75
+    source: {fileID: 0}
+  - name: Blood3
+    clip: {fileID: 8300000, guid: 8b3a1a7baf89e4aa7ab0c775f81dc00b, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0.75
+    source: {fileID: 0}
+  - name: Blood4
+    clip: {fileID: 8300000, guid: d12c5b1e430164aca9203e4240596585, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1
+    is3dSound: 0.75
     source: {fileID: 0}
   - name: HitDamage
-    clip: {fileID: 8300000, guid: cc676a5cf70f2f34d8d7505e733bcb93, type: 3}
+    clip: {fileID: 8300000, guid: 77ff3fe7d45e64691bbc575db7858522, type: 3}
     loop: 0
-    volume: 0.82
+    volume: 1
     pitch: 1
-    is3dSound: 1
+    is3dSound: 0.1
     source: {fileID: 0}
   - name: StreamBlood
     clip: {fileID: 8300000, guid: 38e1041bf183b5a4daac970bae62f328, type: 3}
@@ -16324,7 +16428,7 @@ MonoBehaviour:
     swivelPosition: {x: 0, y: 0, z: 0}
   originalIkData: []
   selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: b9015d1f45baeed4b8e69ea23f350b2d,
+  lastSelectAnimationClip: {fileID: 7400000, guid: 3ed4a8a34ff41d34ba839bcc71b58e19,
     type: 2}
   blendShapeList: []
 --- !u!114 &1871621245
@@ -21849,75 +21953,6 @@ Transform:
   m_Father: {fileID: 1917725754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 26.874, y: 0, z: 0}
---- !u!1001 &5588835381938966929
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744542439543989231, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239733744207281053, guid: 89acd5a225e0f5b4f8beb5fe19b3c947,
-        type: 3}
-      propertyPath: m_Name
-      value: FlyWeapon Phase 2 Combo3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 89acd5a225e0f5b4f8beb5fe19b3c947, type: 3}
 --- !u!4 &6798243157013339076
 Transform:
   m_ObjectHideFlags: 0
@@ -21948,7 +21983,6 @@ GameObject:
   - component: {fileID: 6798243157015763236}
   - component: {fileID: 6798243157013497829}
   - component: {fileID: 6798243157013497830}
-  - component: {fileID: 6798243157013497832}
   - component: {fileID: 6798243157013497831}
   m_Layer: 2
   m_Name: TH_Sword01_a
@@ -21956,7 +21990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &6798243157013497829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21971,7 +22005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _emit: 1
   _emitTime: 0
-  _material: {fileID: 2100000, guid: 7afcf922ea4fa3c4d9150e66be202483, type: 2}
+  _material: {fileID: 2100000, guid: 7716878d6c8aa7441804c381294a5086, type: 2}
   _lifeTime: 1
   _colors: []
   _sizes: []
@@ -21993,7 +22027,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.38, y: 1.1752292, z: 0.25}
+  m_Size: {x: 0.4, y: 1.1752292, z: 0.3}
   m_Center: {x: -0.036014944, y: 0.58459765, z: 0.0000006269002}
 --- !u!114 &6798243157013497831
 MonoBehaviour:
@@ -22008,19 +22042,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyWeapon: {fileID: 0}
---- !u!65 &6798243157013497832
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6798243157013497828}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.6083653, z: 0.31}
-  m_Center: {x: -0.036016833, y: 0.8680225, z: -0.00000055443496}
 --- !u!23 &6798243157015763236
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22408,7 +22429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8611567483267405808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22423,7 +22444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _emit: 1
   _emitTime: 0
-  _material: {fileID: 2100000, guid: 7afcf922ea4fa3c4d9150e66be202483, type: 2}
+  _material: {fileID: 2100000, guid: b901003d37ab4464c81549befadb3b9e, type: 2}
   _lifeTime: 1
   _colors: []
   _sizes: []
