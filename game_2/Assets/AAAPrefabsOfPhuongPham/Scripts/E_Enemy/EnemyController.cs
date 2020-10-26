@@ -80,7 +80,7 @@ public class EnemyController : MonoBehaviour
     //public Transform parentVfxEnemy;
     public List<Collider> hitBox;
     public InforAttack inforAttackCurrent;
-    public bool isHitPlayer = true;
+    public IsHit isHitPlayer = IsHit.Miss;
 
 
 
@@ -364,14 +364,24 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
+    protected bool CheckCurrentAttackDone(){
+        if (this.currentAttackDone)
+        {
+            this.currentListAttack++;
+            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
+            {
+                this.currentListAttack = this.startListAttack;
+
+            }
+        }
+        return this.currentAttackDone;
+    }
     public void CanFinishBot(float t)
     {
         Stun(t);
 
-        if (actionFinishBot != null)
-        {
-            StopCoroutine(actionFinishBot);
-        }
+        if (actionFinishBot != null)StopCoroutine(actionFinishBot);
+        
         actionFinishBot = StartCoroutine(CanFinishInSecond(t));
 
     }
@@ -383,7 +393,7 @@ public class EnemyController : MonoBehaviour
         this.animator.SetFloat("SpeedMove",0);
         this.animator.SetFloat("x",0);
         this.animator.SetFloat("z",0);
-        
+        this.lookAt = false;
         if (actionLeaveAction != null)
         {
             StopCoroutine(actionLeaveAction);
@@ -424,7 +434,8 @@ public class EnemyController : MonoBehaviour
     public IEnumerator CanFinishInSecond(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        canFinish = false;
+        this.canFinish = false;
+        this.lookAt = true;
         SetFinishVFX(false);
         this.animator.SetInteger("InAction",0);
 

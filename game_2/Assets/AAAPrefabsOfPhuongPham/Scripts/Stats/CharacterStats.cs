@@ -40,7 +40,7 @@ public class CharacterStats : MonoBehaviour
     //[Header("xPlus small && low HP => slow Reduction")]
     //[Range(0f, 1f)]
     //public float xPlus=1f;
-    public bool isHit = false;
+    //public bool isHit = false;
 
     private Coroutine actionReduction;
 
@@ -110,10 +110,10 @@ public class CharacterStats : MonoBehaviour
         return currentAttackDame;
     }
 
-    public virtual void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyController)
+    public virtual IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyController)
     {
         Debug.Log(this.name + " Take" + damage + " Dame" + " time stun: " + timeStun + " ATE : " + attackTypeEffect + " from: " + enemyController.name);
-
+        return IsHit.Miss;
     }
 
     public virtual void TakeTrueDamageFinish(int damage)
@@ -174,7 +174,7 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    public void AddHPandPosture(float h, float p)
+    public virtual void AddHPandPosture(float h, float p)
     {
         this.currentHP += h;
         this.currentHP = Mathf.Clamp(this.currentHP, 0, this.maxHP);
@@ -288,3 +288,5 @@ public class PhaseBossStats
     public int Posture = 100;
     public GameObject[] listWeapon;
 }
+
+public enum IsHit { Miss,Block,Hit};

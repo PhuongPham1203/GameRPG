@@ -20,10 +20,10 @@ public class Boss1Stats : CharacterStats
 
     }
 
-    public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
+    public override IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
     {
 
-        if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
+        if (animator.GetInteger("InAction") != 8 )
         {
             if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
             {
@@ -72,7 +72,7 @@ public class Boss1Stats : CharacterStats
                 this.currentHP -= damage;
 
                 //enemyController.Damage(0.5f);
-                this.audioEnemy.PlaySoundOfEnemy("Blood"+ Random.Range(1, 5));
+                this.audioEnemy.PlaySoundOfEnemy("Blood" + Random.Range(1, 5));
                 this.vfxBlood.Play();
                 this.Reduction(timeWaitToReduction);
 
@@ -107,6 +107,8 @@ public class Boss1Stats : CharacterStats
 
             }
         }
+
+        return IsHit.Hit;
     }
 
     public override void Die()
@@ -212,15 +214,13 @@ public class Boss1Stats : CharacterStats
 
         yield return new WaitForSeconds(t);
 
-
-
         this.indexPhaseBossStat += 1;
 
         this.ResetAllCurrentAndMaxValue(this.phaseBossStats[this.indexPhaseBossStat].HP, 0, this.phaseBossStats[this.indexPhaseBossStat].Posture);
 
         this.animator.SetInteger("InAction", 0);
         this.enemyController.canAction = true;
-        
+
 
         if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
         {

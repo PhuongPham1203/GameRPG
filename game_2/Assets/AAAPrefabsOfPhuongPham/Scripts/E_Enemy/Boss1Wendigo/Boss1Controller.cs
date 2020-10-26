@@ -70,19 +70,7 @@ public class Boss1Controller : EnemyController
             this.distanceCanAttack = this.distanceAttack[this.currentListAttack].distanceAttack;
             this.currentAttackDone = false;
 
-            /*
-            if (this.distance < 2f)
-            {
-                //kick
 
-                // look At
-                Vector3 t = this.target.position;
-                t.y = this.transform.position.y;
-                this.transform.LookAt(t);
-
-                //return;
-            }
-            */
         }
 
 
@@ -204,19 +192,45 @@ public class Boss1Controller : EnemyController
             #endregion
             #region Phase 3
             case 13: // ! phase 3 combo1
+                if (this.timeTryMoveToPos <= 0)
+                {
+                    this.animator.SetTrigger("rollR");
+                    this.timeTryMoveToPos = 1f;
+                }
 
+                this.AttackPhase3Combo1();
                 break;
             case 14: // phase 3 combo2
 
+                if (MustRunRandomWalkAround(4f)) break;
+
+                this.AttackBase();
                 break;
             case 15: // phase 3 combo3
 
+                if (this.timeTryMoveToPos <= 0)
+                {
+                    this.animator.SetTrigger("rollR");
+                    this.timeTryMoveToPos = 1f;
+                }
+
+                this.AttackPhase3Combo1();
                 break;
             case 16: // phase 3 combo4
-
+                if (MustRunRandomWalkAround(3f)) break;
+                if (this.timeTryMoveToPos <= 0)
+                {
+                    this.animator.SetTrigger("rollF");
+                    this.timeTryMoveToPos = 1f;
+                    //Debug.Log("Roll B");
+                }
+                this.AttackPhase3Combo4();
                 break;
             case 17: // phase 3 combo5
 
+                if (MustRunRandomWalkAround(4f)) break;
+
+                this.AttackBase();
                 break;
             case 18: // phase 3 combo6
 
@@ -248,20 +262,18 @@ public class Boss1Controller : EnemyController
             this.MoveToPosition(this.target.position, 0.5f, this.moveSpeed);
         }
 
+        this.CheckCurrentAttackDone();
+        /*
         if (this.currentAttackDone)
         {
-            //this.lookAt = true;
-
-
             this.currentListAttack++;
             if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
             {
                 this.currentListAttack = this.startListAttack;
 
             }
-
-            //Debug.Log("currentListAttack " + this.currentListAttack);
         }
+        */
     }
 
 
@@ -287,18 +299,8 @@ public class Boss1Controller : EnemyController
             this.MoveToPosition(this.target.position, 1f, this.runSpeed);
         }
 
-        if (this.currentAttackDone)
-        {
-            //this.lookAt = true;
+        this.CheckCurrentAttackDone();
 
-            this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
-            {
-                this.currentListAttack = this.startListAttack;
-            }
-
-
-        }
     }
     private void AttackPhase1Combo5()
     {
@@ -329,18 +331,9 @@ public class Boss1Controller : EnemyController
         {
             this.MoveToPosition(this.target.position, 1f, this.runSpeed);
         }
+        this.CheckCurrentAttackDone();
 
-        if (this.currentAttackDone)
-        {
-            //this.lookAt = true;
 
-            this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
-            {
-                this.currentListAttack = this.startListAttack;
-
-            }
-        }
     }
     // ! Phase 2
     private void AttackPhase2Combo1()
@@ -362,19 +355,8 @@ public class Boss1Controller : EnemyController
         {
             this.MoveToPosition(this.target.position, 1f, this.runSpeed);
         }
+        this.CheckCurrentAttackDone();
 
-        if (this.currentAttackDone)
-        {
-            //this.lookAt = true;
-
-            this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
-            {
-                this.currentListAttack = this.startListAttack;
-            }
-
-
-        }
     }
 
     private void AttackPhase2Combo3()
@@ -393,20 +375,9 @@ public class Boss1Controller : EnemyController
             this.currentAttackDone = this.Attack(this.currentListAttack);
         }
 
+        this.CheckCurrentAttackDone();
 
 
-        if (this.currentAttackDone)
-        {
-            //this.lookAt = true;
-
-            this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
-            {
-                this.currentListAttack = this.startListAttack;
-            }
-
-
-        }
     }
     private void AttackPhase2Combo5()
     {
@@ -438,54 +409,67 @@ public class Boss1Controller : EnemyController
         {
             this.MoveToPosition(this.target.position, 1f, this.runSpeed);
         }
+        this.CheckCurrentAttackDone();
 
-        if (this.currentAttackDone)
-        {
-            //this.lookAt = true;
 
-            this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
-            {
-                this.currentListAttack = this.startListAttack;
-
-            }
-        }
     }
-    /*
-    private void AttackPhase2Combo6()
-    {
-        if (this.distance < this.distanceCanAttack) // Attack
-        {
 
-            // Attack
-            //this.StopLookAndMove();
-            // look At
+    // ! Phase 3
+    private void AttackPhase3Combo1()
+    {
+        if (this.timeTryMoveToPos > 0) this.timeTryMoveToPos -= Time.deltaTime;
+
+        if (this.timeTryMoveToPos <= 0)
+        {
+            this.inforAttackCurrent = this.distanceAttack[this.currentListAttack];
+            StartCoroutine(TurnOnWeaponAbout(6f));
+            this.currentAttackDone = this.Attack(this.currentListAttack);
+        }
+
+        this.CheckCurrentAttackDone();
+
+    }
+
+    private void AttackPhase3Combo4()
+    {
+
+        if (this.timeTryMoveToPos > 0) this.timeTryMoveToPos -= Time.deltaTime;
+
+        if (this.timeTryMoveToPos <= 0)
+        {
+            this.StopLookAndMove();
             Vector3 t = this.target.position;
             t.y = this.transform.position.y;
             this.transform.LookAt(t);
 
+            Debug.Log("Roll B");
+
             this.currentAttackDone = this.Attack(this.currentListAttack);
-
-        }
-        else // Move to Player
-        {
-            this.MoveToPosition(this.target.position, 1f, this.runSpeed);
-        }
-
-        if (this.currentAttackDone)
-        {
-            //this.lookAt = true;
-
-            this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
+            try
             {
-                this.currentListAttack = this.startListAttack;
+                NomManager.instance.PlayNomAnimation("HiemAnimation");
+                this.audioEnemy.PlaySoundOfEnemy("AlertHiemAttack");
             }
+            finally
+            {
 
-
+            }
         }
+        this.CheckCurrentAttackDone();
+
+
     }
-    */
+    IEnumerator TurnOnWeaponAbout(float t)
+    {
+        GameObject g = this.inforAttackCurrent.hitBox.gameObject;
+        g.SetActive(true);
+        //this.inforAttackCurrent.hitBox.enabled = true;
+        yield return new WaitForSeconds(t);
+        //this.inforAttackCurrent.hitBox.enabled = false;
+        g.SetActive(false);
+
+    }
+    // * End Phase
     public void AttackCreateFlyWeapon()
     {
         if (this.inforAttackCurrent.hitBox.TryGetComponent<WeaponControllerOfBoss1>(out WeaponControllerOfBoss1 w))
@@ -493,11 +477,6 @@ public class Boss1Controller : EnemyController
             w.CreateFlyWeapon(this.GetComponent<EnemyController>());
         }
     }
-
-
-    // ! Phase 3
-
-    // * End Phase
     private void SetRandomWalkAround(float timeWalkAround)
     {
         // Start Walk Around
@@ -519,10 +498,10 @@ public class Boss1Controller : EnemyController
 
     private bool MustRunRandomWalkAround(float timeWalkAround)
     {
-        if (this.isHitPlayer)
+        if (this.isHitPlayer != IsHit.Miss)
         {
             return false;
-            //this.isHitPlayer = false;
+            //this.isHitPlayer = IsHit.Miss;
         }
         else if (this.timeTryMoveToPos == 0)
         {
@@ -545,7 +524,7 @@ public class Boss1Controller : EnemyController
         if (canAction)
         {
             this.animator.SetBool("Block", false);
-            this.isHitPlayer = false;
+            this.isHitPlayer = IsHit.Miss;
             this.canAction = false;
 
             this.inforAttackCurrent = this.distanceAttack[this.currentListAttack];
@@ -706,9 +685,6 @@ public class Boss1Controller : EnemyController
                 this.animator.SetLayerWeight(i, 0);
             }
         }
-        //Debug.Log(this.startListAttack);
-        //Debug.Log(this.currentListAttack);
-        //Debug.Log(this.numberListAttack);
 
     }
 
@@ -725,7 +701,7 @@ public class Boss1Controller : EnemyController
 
 
 
-            StartCoroutine(CanTakeDamageIn(5f));
+            StartCoroutine(CanTakeDamageIn(4f));
             this.inforAttackCurrent = new InforAttack();
             this.phaseBossCurrent = this.phaseBossCurrent + 1;
 

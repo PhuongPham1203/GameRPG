@@ -14,9 +14,10 @@ public class WeaponControllerOfBoss1 : WeaponControllerOfBoss
     {
         if (other.gameObject.layer == 24)
         {
-            this.inforAttack = transform.root.GetComponent<EnemyController>().inforAttackCurrent;
+            this.enemyController = transform.root.GetComponent<EnemyController>();
+            this.inforAttack = this.enemyController.inforAttackCurrent;
             //Debug.Log("Player take Damage");
-            other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack, this.inforAttack.timeStun, this.inforAttack.attackTypeEffect, transform.root.GetComponent<EnemyController>());
+            other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack, this.inforAttack.timeStun, this.inforAttack.attackTypeEffect, this.enemyController);
         }
 
     }

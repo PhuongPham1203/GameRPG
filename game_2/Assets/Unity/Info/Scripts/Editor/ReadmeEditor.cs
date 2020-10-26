@@ -23,6 +23,7 @@ public class ReadmeEditor : Editor {
 	{
 		if (!SessionState.GetBool(kShowedReadmeSessionStateName, false ))
 		{
+			/*
 			var readme = SelectReadme();
 			SessionState.SetBool(kShowedReadmeSessionStateName, true);
 			
@@ -31,6 +32,7 @@ public class ReadmeEditor : Editor {
 				LoadLayout();
 				readme.loadedLayout = true;
 			}
+			*/
 		} 
 	}
 	

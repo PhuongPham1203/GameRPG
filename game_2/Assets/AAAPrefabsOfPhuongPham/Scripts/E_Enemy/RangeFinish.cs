@@ -45,7 +45,7 @@ public class RangeFinish : MonoBehaviour
         }
     }
     */
-    
+
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log(" to2" + other.gameObject.name);
@@ -58,12 +58,13 @@ public class RangeFinish : MonoBehaviour
             if (enemyController.canFinish)
             {
                 //enemyController.canFinish = false;
-               enemyController.SetFinishVFX(false);
+                enemyController.SetFinishVFX(false);
+                //Debug.Log("Set vfx");
             }
         }
     }
-    
 
-    
+
+
 
 }

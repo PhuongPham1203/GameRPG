@@ -210,7 +210,8 @@ public class PlayerController : MonoBehaviour
             Transform tftarget = selectManager.targetEnemy.transform;//targetGroupCiner.m_Targets[1].target; //targetGroup.transform;
             Vector3 direction = (tftarget.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            if (animatorPlayer.GetInteger("InAction") != 4)
+            int inAction = animatorPlayer.GetInteger("InAction");
+            if (inAction != 4 && inAction != 9 && inAction != 8)
             {
 
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);

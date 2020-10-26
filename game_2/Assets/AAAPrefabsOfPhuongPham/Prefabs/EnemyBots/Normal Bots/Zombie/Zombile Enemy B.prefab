@@ -175,7 +175,6 @@ MonoBehaviour:
   reduction: 1
   timeWaitToReduction: 3
   percenReduction: 0.005
-  isHit: 0
   vfxBlood: {fileID: 5222587086192663625}
   vfxSteel: {fileID: 4303102424140043134}
   vfxFinish: {fileID: 6971448175471030752}
@@ -766,7 +765,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7558097496537810536
 MonoBehaviour:

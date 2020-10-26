@@ -31,7 +31,9 @@ public class PlayerStats : CharacterStats
     public GameObject uiSaveLoadTeleport;
     public GameObject uiTeleport;
     public GameObject uiLoading;
+    public GameObject uiDie;
     public Vector3 potisionCurrenNearestNow;
+    public Animator animatorRedAlert;
     //private Coroutine loadingMoveToPosition;
 
 
@@ -161,12 +163,12 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
+    public override IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
     {
-        enemyC.isHitPlayer = true;
-        Debug.Log("Player take: " + damage);
 
-        if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
+        //Debug.Log("Player take: " + damage);
+        int inAction = this.animator.GetInteger("InAction");
+        if (inAction != 8 && inAction != 10 && inAction != 1)
         {
             if (animator.GetBool("Crouch"))
             {
@@ -190,22 +192,12 @@ public class PlayerStats : CharacterStats
                     animator.SetTrigger("InBlock");
 
                     int n = Random.Range(1, 5);
-                    //Debug.Log(n);
                     AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
-
-                    /*
-                    if (animator.GetInteger("Weapon") == 1)
-                    {
-                        AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
-                    }
-                    else
-                    {
-                        AudioManager.instance.PlaySoundOfPlayer("Block Heavy " + n);
-                    }
-                    */
                     vfxSteel.Play();
 
                     this.Reduction(timeWaitToReduction);
+
+                    enemyC.isHitPlayer = IsHit.Block;// Alert to enemy is Player block Damage
 
                 }
             }
@@ -232,6 +224,8 @@ public class PlayerStats : CharacterStats
             { // ! Not Block
                 //Debug.Log("c"+currentPosture);
 
+                
+
                 currentHP -= damage;
                 currentHP = Mathf.Clamp(currentHP, 0, maxHP);
                 playerController.Damage(timeStun);
@@ -241,9 +235,11 @@ public class PlayerStats : CharacterStats
                 this.Reduction(timeWaitToReduction);
                 //Debug.Log(transform.name + " HP Take " + damage + " damege.");
 
+                enemyC.isHitPlayer = IsHit.Hit;// Alert to enemy is hit Player
+
             }
 
-            UpdateHPAndPosture();
+            this.UpdateHPAndPosture();
 
             if (currentHP <= 0)
             {
@@ -259,6 +255,15 @@ public class PlayerStats : CharacterStats
             }
         }
 
+
+        return enemyC.isHitPlayer;
+    }
+
+    public override void UpdateHPAndPosture()
+    {
+        base.UpdateHPAndPosture();
+        float posture01 = Mathf.Clamp01(this.currentPosture / this.maxPosture);
+        this.animatorRedAlert.SetFloat("posture", posture01);
     }
     public override void Die()
     {
@@ -266,8 +271,27 @@ public class PlayerStats : CharacterStats
         playerController.PlayerDie();
         animator.SetInteger("InAction", 8);
         gameObject.layer = 2;
+
+        // Open UI Die
+        this.uiDie.SetActive(true);
+
+        // Set All AlertEnemy = Idle
+        this.SetAllAlertEnemyToIdle();
         // Kill the Player
         //PlayerManager.instance.KillPlayer();
+    }
+
+    private void SetAllAlertEnemyToIdle()
+    {
+        EnemyController[] allEnemy = FindObjectsOfType<EnemyController>();
+        foreach (EnemyController enemy in allEnemy)
+        {
+            enemy.SetAlentCombat(AlertEnemy.Idle);
+            if (TryGetComponent<SelectEnemy>(out SelectEnemy s))
+            {
+                s.enabled = true;
+            }
+        }
     }
 
     public void Standing()

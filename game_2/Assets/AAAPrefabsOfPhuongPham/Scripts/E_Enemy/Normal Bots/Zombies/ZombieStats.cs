@@ -44,12 +44,12 @@ public class ZombieStats : CharacterStats
         }
     }
     */
-    public override void TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect,EnemyController enemyC)
+    public override IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect,EnemyController enemyC)
     {
         //base.TakeDamage(damage);
         //Debug.Log("Zombie"+transform.name+" take: " + damage);
 
-        if (animator.GetInteger("InAction") != 8 && animator.GetInteger("InAction") != 10)
+        if (animator.GetInteger("InAction") != 8 /*&& animator.GetInteger("InAction") != 10*/)
         {
             if(this.enemyController.alertEnemy == AlertEnemy.Idle)
             {
@@ -142,6 +142,7 @@ public class ZombieStats : CharacterStats
                 
             }
         }
+        return IsHit.Hit;
     }
     /*
     public override void Finish1()
