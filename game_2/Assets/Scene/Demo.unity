@@ -950,7 +950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178832538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.095, z: -0}
+  m_LocalPosition: {x: 0, y: -0.0197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8449685367180271816}
@@ -20687,7 +20687,7 @@ MonoBehaviour:
   isHitPlayer: 0
   timeReduction: 5
   bossRangeCenter: {fileID: 1801632739}
-  phaseBossCurrent: 3
+  phaseBossCurrent: 2
   phaseEnd: 3
   distanceAttack:
   - name: Phase1 Combo1
@@ -20849,8 +20849,35 @@ MonoBehaviour:
     damageAttack: 35
     attackTypeEffect: 0
     timeStun: 0
-    distanceAttack: 3
-    timeToNextAction: 3
+    distanceAttack: 5
+    timeToNextAction: 4
+    hitBox: {fileID: 8449685367180705002}
+  - name: Phase3 Combo6
+    phaseBoss: 3
+    combo: 6
+    damageAttack: 30
+    attackTypeEffect: 2
+    timeStun: 1.5
+    distanceAttack: 4
+    timeToNextAction: 1.5
+    hitBox: {fileID: 174761870}
+  - name: Phase3 Combo7
+    phaseBoss: 3
+    combo: 7
+    damageAttack: 25
+    attackTypeEffect: 0
+    timeStun: 0.25
+    distanceAttack: 6
+    timeToNextAction: 1.6
+    hitBox: {fileID: 8449685367180705002}
+  - name: Phase3 Combo8
+    phaseBoss: 3
+    combo: 8
+    damageAttack: 30
+    attackTypeEffect: 0
+    timeStun: 0.5
+    distanceAttack: 5
+    timeToNextAction: 3.5
     hitBox: {fileID: 8449685367180705002}
 --- !u!114 &1871621241
 MonoBehaviour:
@@ -20901,7 +20928,8 @@ MonoBehaviour:
     Posture: 100
     listWeapon:
     - {fileID: 8449685367180705000}
-  indexPhaseBossStat: 2
+    - {fileID: 174761869}
+  indexPhaseBossStat: 1
 --- !u!114 &1871621242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21217,7 +21245,7 @@ MonoBehaviour:
     swivelPosition: {x: 0, y: 0, z: 0}
   originalIkData: []
   selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: 9da8ba34acd88904195175d9195f8a1b,
+  lastSelectAnimationClip: {fileID: 7400000, guid: 73a5020fcad2bf148b1323f2f4cd7c0a,
     type: 2}
   blendShapeList: []
 --- !u!114 &1871621245
@@ -27112,8 +27140,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.8143126, z: 0.06}
-  m_Center: {x: 0.000015626982, y: 0.49079394, z: 0.0000007238124}
+  m_Size: {x: 0.2, y: 1.047994, z: 0.2}
+  m_Center: {x: 0.000015590915, y: 0.37395352, z: 0.0000005490238}
 --- !u!114 &8449685367180705003
 MonoBehaviour:
   m_ObjectHideFlags: 0

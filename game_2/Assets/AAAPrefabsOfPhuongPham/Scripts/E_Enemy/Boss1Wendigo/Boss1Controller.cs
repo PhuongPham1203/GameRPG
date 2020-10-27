@@ -216,7 +216,7 @@ public class Boss1Controller : EnemyController
 
                 this.AttackPhase3Combo1();
                 break;
-            case 16: // phase 3 combo4
+            case 16: // phase 3 combo4 ( Dead Attack )
                 if (MustRunRandomWalkAround(3f)) break;
                 if (this.timeTryMoveToPos <= 0)
                 {
@@ -228,15 +228,32 @@ public class Boss1Controller : EnemyController
                 break;
             case 17: // phase 3 combo5
 
-                if (MustRunRandomWalkAround(4f)) break;
+                if (MustRunRandomWalkAround(2f)) break;
 
                 this.AttackBase();
                 break;
-            case 18: // phase 3 combo6
+            case 18: // phase 3 combo6 ( Stun Attack )
+                if (MustRunRandomWalkAround(2f)) break;
 
+                this.AttackBase();
                 break;
-            case 19: // phase 3 combo7
+            case 19: // phase 3 combo7 ( Loop Attack ) 
+                this.AttackBase();
+                
+                break;
 
+            case 20: // phase 3 combo8 ( Dead Attack )
+                
+                if (this.isHitPlayer != IsHit.Miss) // go back Phase 3 Combo 7
+                {
+                    this.currentListAttack--;
+                    break;
+                }
+                
+
+                if (MustRunRandomWalkAround(3f)) break;
+                this.AttackPhase3Combo8();
+                //Debug.Log("phase 3 combo8 ( Dead Attack )");
                 break;
                 #endregion
         }
@@ -263,17 +280,6 @@ public class Boss1Controller : EnemyController
         }
 
         this.CheckCurrentAttackDone();
-        /*
-        if (this.currentAttackDone)
-        {
-            this.currentListAttack++;
-            if (this.startListAttack + this.numberListAttack <= this.currentListAttack) //
-            {
-                this.currentListAttack = this.startListAttack;
-
-            }
-        }
-        */
     }
 
 
@@ -442,7 +448,7 @@ public class Boss1Controller : EnemyController
             t.y = this.transform.position.y;
             this.transform.LookAt(t);
 
-            Debug.Log("Roll B");
+            //Debug.Log("Roll B");
 
             this.currentAttackDone = this.Attack(this.currentListAttack);
             try
@@ -459,6 +465,42 @@ public class Boss1Controller : EnemyController
 
 
     }
+
+    private void AttackPhase3Combo8()
+    {
+        if (this.distance < this.distanceCanAttack) // Attack
+        {
+
+            // Attack
+            // look At
+            //this.StopLookAndMove();
+            Vector3 t = this.target.position;
+            t.y = this.transform.position.y;
+            this.transform.LookAt(t);
+
+
+            this.currentAttackDone = this.Attack(this.currentListAttack);
+            try
+            {
+
+                NomManager.instance.PlayNomAnimation("HiemAnimation");
+                this.audioEnemy.PlaySoundOfEnemy("AlertHiemAttack");
+            }
+            finally
+            {
+
+            }
+
+        }
+        else // Move to Player
+        {
+            this.MoveToPosition(this.target.position, 1f, this.runSpeed);
+        }
+        this.CheckCurrentAttackDone();
+
+
+    }
+
     IEnumerator TurnOnWeaponAbout(float t)
     {
         GameObject g = this.inforAttackCurrent.hitBox.gameObject;
