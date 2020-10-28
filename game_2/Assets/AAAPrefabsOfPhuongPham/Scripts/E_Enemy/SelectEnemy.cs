@@ -10,7 +10,7 @@ public class SelectEnemy : SelectManager
 
     private string ablePlayer = "Player";
 
-    
+
     private void Start()
     {
         enemyController = GetComponent<EnemyController>();
@@ -36,9 +36,9 @@ public class SelectEnemy : SelectManager
         int count = Physics.OverlapSphereNonAlloc(checkingObj.position, maxRadiusView, overlaps, layerEnemyTarget);
         //Debug.Log(transform.name + " Find : " + count);
 
-        if (count==0 && enemyController.alertEnemy == AlertEnemy.OnTarget)
+        if (count == 0 && enemyController.alertEnemy == AlertEnemy.OnTarget)
         {
-            
+
 
             enemyController.SetAlentCombat(AlertEnemy.Warning);
             targetEnemy = null;
@@ -155,8 +155,12 @@ public class SelectEnemy : SelectManager
                             }
                             else
                             {
-                                AudioManager.instance.PlaySoundOfTheme("OnCombat");
-                                AudioManager.instance.StopCoroutineSoundTheme();
+                                if (!AudioManager.instance.IsPlayAnyTheme())
+                                {
+                                    AudioManager.instance.PlaySoundOfTheme("OnCombat");
+                                    AudioManager.instance.StopCoroutineSoundTheme();
+                                }
+
 
                             }
 
@@ -205,7 +209,7 @@ public class SelectEnemy : SelectManager
 
     }
 
-    
+
 
     public void WarningAllEnemy()
     {

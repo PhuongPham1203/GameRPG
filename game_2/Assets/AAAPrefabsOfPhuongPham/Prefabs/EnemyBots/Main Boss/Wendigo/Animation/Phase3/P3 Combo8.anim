@@ -105102,14 +105102,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.1333333
+  - time: 1.2333333
     functionName: ActivavteWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.15
+  - time: 1.25
     functionName: SetTrailR
     data: 
     objectReferenceParameter: {fileID: 0}

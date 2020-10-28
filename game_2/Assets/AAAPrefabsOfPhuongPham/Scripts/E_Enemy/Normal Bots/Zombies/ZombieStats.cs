@@ -17,33 +17,7 @@ public class ZombieStats : CharacterStats
 
     }
 
-    //public Image nameUI;
-    /*
-    // Start is called before the first frame update
-    void Start()
-    {
-        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
-    }
-
-
-    void OnEquipmentChanged(Equipment newItem,Equipment oldItem)
-    {
-        if (newItem != null)
-        {
-            armor.AddModifier(newItem.defendModifier);
-            damage.AddModifier(newItem.attackDameModifier);
-            
-
-        }
-
-        if (oldItem != null)
-        {
-            armor.RemoveModifier(oldItem.defendModifier);
-            damage.RemoveModifier(oldItem.attackDameModifier);
-
-        }
-    }
-    */
+    
     public override IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect,EnemyController enemyC)
     {
         //base.TakeDamage(damage);

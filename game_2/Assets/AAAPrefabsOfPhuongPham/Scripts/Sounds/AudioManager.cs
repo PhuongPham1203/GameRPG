@@ -137,14 +137,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopSoundOfTheme(string name)
     {
-        /*
-        Sound s = Array.Find(soundsOfTheme, sound => sound.name == name);
-        if (s == null)
-        {
-            Debug.LogWarning("Sound " + name + " not found!");
-            return;
-        }
-        */
+        
         if (IsPlayTheme(name))
         {
             Sound s = Array.Find(soundsOfTheme, sound => sound.name == name);
@@ -181,6 +174,23 @@ public class AudioManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool IsPlayAnyTheme(){
+        foreach(Sound s in this.soundsOfTheme){
+            if(s.source.isPlaying){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void StopAllTheme(){
+        foreach(Sound s in this.soundsOfTheme){
+            if(s.source.isPlaying){
+                this.StopSoundOfTheme(s.name);
+            }
+        }
     }
 
     public bool IsPlaySFX(string name)

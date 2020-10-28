@@ -13,8 +13,8 @@ public class HitBoxEnemy : Hitbox
         if(other.gameObject.layer == 24 || other.gameObject.layer == 23)
         {
             //Debug.Log(characterStats.transform.name + " hitbox "+ characterStats.GetAttackDame(1));
-            //other.gameObject.GetComponent<PlayerStats>().TakeDamege(characterStats.GetAttackDame(1));
-            //other.gameObject.GetComponent<CharacterStats>().TakeDamege(  99999,0,Vector3.zero );
+            //other.gameObject.GetComponent<PlayerStats>().TakeDamage(characterStats.GetAttackDame(1));
+            other.gameObject.GetComponent<CharacterStats>().TakeDamage(  999999,10,AttackTypeEffect.Dead,new EnemyController() );
             
         }
     }

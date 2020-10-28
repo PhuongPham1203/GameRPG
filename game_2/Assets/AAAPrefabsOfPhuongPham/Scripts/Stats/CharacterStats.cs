@@ -79,7 +79,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            TakeDamage(d, 0, AttackTypeEffect.Normal, null);
+            TakeDamage(d, 0, AttackTypeEffect.Normal, new EnemyController());
         }
 
 

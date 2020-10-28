@@ -20873,10 +20873,10 @@ MonoBehaviour:
   - name: Phase3 Combo8
     phaseBoss: 3
     combo: 8
-    damageAttack: 30
-    attackTypeEffect: 0
-    timeStun: 0.5
-    distanceAttack: 5
+    damageAttack: 70
+    attackTypeEffect: 1
+    timeStun: 1
+    distanceAttack: 6
     timeToNextAction: 3.5
     hitBox: {fileID: 8449685367180705002}
 --- !u!114 &1871621241

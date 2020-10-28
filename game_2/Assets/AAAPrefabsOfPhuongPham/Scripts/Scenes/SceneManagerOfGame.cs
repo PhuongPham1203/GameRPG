@@ -105,6 +105,9 @@ public class SceneManagerOfGame : MonoBehaviour
         //Debug.Log("point");
         animatorIcon.SetInteger("type", 2);
     }
+    public void RestartGameFromCheckPoint(){
+
+    }
     #region TestLoading
     public void LoadGame()
     {
@@ -180,12 +183,7 @@ public class SceneManagerOfGame : MonoBehaviour
                 totalSceneProgess = 0;
                 foreach (AsyncOperation operation in sceneLoading)
                 {
-                    /*
-                    if(operation.allowSceneActivation == false && operation.progress >= 0.9f)
-                    {
-                        operation.allowSceneActivation = true;
-                    }
-                    */
+                    
                     totalSceneProgess += (operation.progress / sceneLoading.Count);
                 }
                 //Debug.Log(totalSceneProgess);
@@ -228,18 +226,6 @@ public class SceneManagerOfGame : MonoBehaviour
         }
 
         Debug.Log("Done");
-        /*
-        foreach(SceneIndexes i in listSceneIndexNewGame)
-        {
-            Scene s = SceneManager.GetSceneByBuildIndex(i.sceneId);
-            if (s != null)
-            {
-                Debug.Log(s.name);
-                SceneManager.SetActiveScene(s);
-
-            }
-        }
-        */
 
         Scene s = SceneManager.GetSceneByBuildIndex(listSceneIndexNewGame[listSceneIndexNewGame.Count-1].sceneBuiltId);
         if (s != null)

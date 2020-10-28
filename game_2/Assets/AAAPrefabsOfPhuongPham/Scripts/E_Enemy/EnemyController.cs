@@ -192,7 +192,7 @@ public class EnemyController : MonoBehaviour
                     actionLeaveAction = null;
                 }
                 canFinish = true;
-
+                this.canAction = true;
                 break;
 
             case AlertEnemy.Warning:// !Warning
@@ -207,7 +207,7 @@ public class EnemyController : MonoBehaviour
                 actionLeaveAction = StartCoroutine(LeaveWaring(timeLeaveWaring));
 
                 canFinish = true;
-
+                this.canAction = true;
                 break;
 
             case AlertEnemy.OnTarget:// !OnTarget
@@ -227,6 +227,8 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
+                    this.canAction = true;
+
                     canFinish = false;
                     SetFinishVFX(false);
 

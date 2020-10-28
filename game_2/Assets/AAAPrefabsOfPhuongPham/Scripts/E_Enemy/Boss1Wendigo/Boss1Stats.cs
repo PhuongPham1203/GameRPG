@@ -177,19 +177,13 @@ public class Boss1Stats : CharacterStats
             {
                 this.enemyController.SetAlentCombat(AlertEnemy.OnTarget);
                 this.enemyController.canAction = true;
-                if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
-                {
 
+                if(AudioManager.instance.IsPlayAnyTheme()){
+                    AudioManager.instance.StopAllTheme();
                 }
-                else
-                {
-                    AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
 
-                    if (AudioManager.instance.IsPlayTheme("OnCombat"))
-                    {
-                        AudioManager.instance.StopSoundOfTheme("OnCombat");
-                    }
-                }
+                AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
+                
             }
         }
     }

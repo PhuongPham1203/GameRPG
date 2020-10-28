@@ -12,7 +12,7 @@ public class Boss1Controller : EnemyController
     public PhaseBoss phaseEnd = PhaseBoss.Phase_3;
     Vector3 vectorWayWalk = Vector3.zero;
     public InforAttack[] distanceAttack;
-
+    private int loopAttack = 0;
     //public InforAttack inforAttackCurrent;
 
 
@@ -239,17 +239,22 @@ public class Boss1Controller : EnemyController
                 break;
             case 19: // phase 3 combo7 ( Loop Attack ) 
                 this.AttackBase();
-                
+
                 break;
 
             case 20: // phase 3 combo8 ( Dead Attack )
-                
-                if (this.isHitPlayer != IsHit.Miss) // go back Phase 3 Combo 7
+                if (this.loopAttack > 3)
                 {
+                    this.loopAttack = 0;
+                    this.isHitPlayer = IsHit.Miss;
+                }
+                else if (this.isHitPlayer != IsHit.Miss) // go back Phase 3 Combo 7
+                {
+                    this.loopAttack++;
                     this.currentListAttack--;
                     break;
                 }
-                
+
 
                 if (MustRunRandomWalkAround(3f)) break;
                 this.AttackPhase3Combo8();

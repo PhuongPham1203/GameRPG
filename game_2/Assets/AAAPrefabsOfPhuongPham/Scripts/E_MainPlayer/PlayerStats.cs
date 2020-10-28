@@ -14,7 +14,10 @@ public class PlayerStats : CharacterStats
     public Stat attackDame; // AttacK Dame
     public Stat posture; // Posture
     //public Stat defend; // Defend
-
+    [Range(1,4)]
+    public int maxLife = 1;
+    [Range(1,4)]
+    public int currentLife = 1;
     public int attackLightDamage { get; protected set; }
     public int attackHeavyDamage { get; protected set; }
 
@@ -32,6 +35,7 @@ public class PlayerStats : CharacterStats
     public GameObject uiTeleport;
     public GameObject uiLoading;
     public GameObject uiDie;
+    public GameObject uiContinue;
     public Vector3 potisionCurrenNearestNow;
     public Animator animatorRedAlert;
     //private Coroutine loadingMoveToPosition;
@@ -273,6 +277,13 @@ public class PlayerStats : CharacterStats
         gameObject.layer = 2;
 
         // Open UI Die
+
+        if(this.currentLife-1>0){
+            this.currentLife--;
+            this.uiContinue.SetActive(true);
+        }else{
+            this.uiContinue.SetActive(false);
+        }
         this.uiDie.SetActive(true);
 
         // Set All AlertEnemy = Idle
@@ -287,13 +298,30 @@ public class PlayerStats : CharacterStats
         foreach (EnemyController enemy in allEnemy)
         {
             enemy.SetAlentCombat(AlertEnemy.Idle);
-            if (TryGetComponent<SelectEnemy>(out SelectEnemy s))
+            if (enemy.TryGetComponent<SelectEnemy>(out SelectEnemy s))
             {
                 s.enabled = true;
             }
         }
     }
 
+    public void ContinueAndReLife(){
+        this.uiDie.SetActive(false);
+
+        this.ResetAllCurrentAndMaxValue();
+        this.animator.SetInteger("InAction", 0);
+        this.vfxFinish.Play();
+        StartCoroutine(LoadingReLife(1.5f));
+    }
+    IEnumerator LoadingReLife(float t){
+        yield return new WaitForSeconds(t);
+        this.gameObject.layer = 24;
+        this.playerController.canAction = true;
+    }
+
+    public void RestartGame(){
+        SceneManagerOfGame.instance.RestartGameFromCheckPoint();
+    }
     public void Standing()
     {
         playerController.canAction = true;
