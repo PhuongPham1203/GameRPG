@@ -184,6 +184,12 @@ public class CharacterStats : MonoBehaviour
         this.UpdateHPAndPosture();
     }
 
+    public virtual void AddPostureDeflect(float p){
+        this.currentPosture += p;
+        this.currentPosture = Mathf.Clamp(this.currentPosture, 0, this.maxPosture-5);
+        this.UpdateHPAndPosture();
+    }
+
     public virtual void Die()
     {
         //Die in some way
@@ -260,20 +266,16 @@ public class CharacterStats : MonoBehaviour
     private IEnumerator CanReduction(float waitTime)
     {
 
-        reduction = false;
-        //Debug.Log("start Re");
 
         yield return new WaitForSeconds(waitTime);
         reduction = true;
-        //Debug.Log("end Re");
     }
 
     public void Reduction(float t)
     {
-
         if (actionReduction != null) StopCoroutine(actionReduction);
+        reduction = false;
         actionReduction = StartCoroutine(CanReduction(t));
-
     }
 
 
@@ -288,5 +290,5 @@ public class PhaseBossStats
     public int Posture = 100;
     public GameObject[] listWeapon;
 }
-
+[System.Serializable]
 public enum IsHit { Miss,Block,Hit};

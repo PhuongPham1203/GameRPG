@@ -197,7 +197,7 @@ public class PlayerStats : CharacterStats
 
                     int n = Random.Range(1, 5);
                     AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
-                    vfxSteel.Play();
+                    this.vfxSteel.Play();
 
                     this.Reduction(timeWaitToReduction);
 

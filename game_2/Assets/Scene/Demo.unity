@@ -1571,7 +1571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &362019554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13431,7 +13431,7 @@ PrefabInstance:
     - target: {fileID: 542509189013296260, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 29.55
       objectReference: {fileID: 0}
     - target: {fileID: 542509189013296260, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba,
         type: 3}
@@ -13678,7 +13678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1032598413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14783,7 +14783,7 @@ PrefabInstance:
     - target: {fileID: 542509189013296260, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 29.55
       objectReference: {fileID: 0}
     - target: {fileID: 542509189013296260, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba,
         type: 3}
@@ -20465,7 +20465,7 @@ PrefabInstance:
     - target: {fileID: 542509189013296260, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 29.55
       objectReference: {fileID: 0}
     - target: {fileID: 542509189013296260, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba,
         type: 3}
@@ -20667,6 +20667,7 @@ MonoBehaviour:
   timeCanAction: 0.5
   curTimeWait: 1
   timeToNextAction: []
+  timeReduction: 5
   numberListAttack: 1
   startListAttack: 0
   currentListAttack: 0
@@ -20685,9 +20686,8 @@ MonoBehaviour:
     timeToNextAction: 0
     hitBox: {fileID: 0}
   isHitPlayer: 0
-  timeReduction: 5
   bossRangeCenter: {fileID: 1801632739}
-  phaseBossCurrent: 2
+  phaseBossCurrent: 1
   phaseEnd: 3
   distanceAttack:
   - name: Phase1 Combo1
@@ -20849,7 +20849,7 @@ MonoBehaviour:
     damageAttack: 35
     attackTypeEffect: 0
     timeStun: 0
-    distanceAttack: 5
+    distanceAttack: 7
     timeToNextAction: 4
     hitBox: {fileID: 8449685367180705002}
   - name: Phase3 Combo6
@@ -20867,8 +20867,8 @@ MonoBehaviour:
     damageAttack: 25
     attackTypeEffect: 0
     timeStun: 0.25
-    distanceAttack: 6
-    timeToNextAction: 1.6
+    distanceAttack: 8
+    timeToNextAction: 1.5
     hitBox: {fileID: 8449685367180705002}
   - name: Phase3 Combo8
     phaseBoss: 3
@@ -20877,7 +20877,7 @@ MonoBehaviour:
     attackTypeEffect: 1
     timeStun: 1
     distanceAttack: 6
-    timeToNextAction: 3.5
+    timeToNextAction: 3
     hitBox: {fileID: 8449685367180705002}
 --- !u!114 &1871621241
 MonoBehaviour:
@@ -20924,12 +20924,12 @@ MonoBehaviour:
     - {fileID: 8611567483267405807}
     - {fileID: 174761869}
   - phaseBoss: 3
-    HP: 500
-    Posture: 100
+    HP: 400
+    Posture: 450
     listWeapon:
     - {fileID: 8449685367180705000}
     - {fileID: 174761869}
-  indexPhaseBossStat: 1
+  indexPhaseBossStat: 0
 --- !u!114 &1871621242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21245,7 +21245,7 @@ MonoBehaviour:
     swivelPosition: {x: 0, y: 0, z: 0}
   originalIkData: []
   selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: 73a5020fcad2bf148b1323f2f4cd7c0a,
+  lastSelectAnimationClip: {fileID: 7400000, guid: bc977198130bbb444988b0b00d4aca88,
     type: 2}
   blendShapeList: []
 --- !u!114 &1871621245
@@ -27103,7 +27103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8449685367180705001
 MonoBehaviour:
   m_ObjectHideFlags: 0

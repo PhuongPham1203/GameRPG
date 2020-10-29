@@ -189,10 +189,17 @@ MonoBehaviour:
     pitch: 1
     is3dSound: 0
     source: {fileID: 0}
+  - name: Deflect
+    clip: {fileID: 8300000, guid: 7fca9d33cda1b4f4286882e369dbcef0, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    is3dSound: 0
+    source: {fileID: 0}
   soundsOfTheme:
   - name: Theme Apocalypse
     clip: {fileID: 8300000, guid: f703d503a57357a4783ae0f0ea4cd604, type: 3}
-    loop: 0
+    loop: 1
     volume: 0.237
     pitch: 1
     is3dSound: 0

@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     public bool isPressBlock = false;
+    public DeflectController deflectController;
 
     private Coroutine actionCanAction;
     private Coroutine actionLeaveAction;
@@ -675,22 +676,23 @@ public class PlayerController : MonoBehaviour
                 lookAtPlayer.y = enemyController.transform.position.y;
                 enemyController.transform.LookAt(lookAtPlayer);
 
-                if(this.LookCamera1.TryGetComponent<Animation>(out Animation a)){
+                if (this.LookCamera1.TryGetComponent<Animation>(out Animation a))
+                {
                     a.Play();
                 }
-                StartCoroutine(WaitFinishBots(1.2f,enemyController));
+                StartCoroutine(WaitFinishBots(1.2f, enemyController));
 
 
             }
         }
 
     }
-    
-    IEnumerator WaitFinishBots(float t,EnemyController e)  
+
+    IEnumerator WaitFinishBots(float t, EnemyController e)
     {
         yield return new WaitForSeconds(t);
         e.Finish2();
-        
+
     }
     /*
     public void FinishBot2()
@@ -701,7 +703,7 @@ public class PlayerController : MonoBehaviour
 
     public void Block(bool block)
     {
-        /*
+            /*
             if (actionLeaveAction != null)
             {
                 StopCoroutine(actionLeaveAction);
@@ -717,7 +719,6 @@ public class PlayerController : MonoBehaviour
             }
             //OnCombat(block);
 
-            //animatorPlayer.SetBool("Block", block);
             if (block)// Block
             {
                 SetActivateWeapon(weaponPlayer);
@@ -727,6 +728,9 @@ public class PlayerController : MonoBehaviour
                 moveSpeed = moveSpeedValueOnCombat;
                 typeMove = 0.5f;
                 animatorPlayer.SetInteger("InAction", 6);
+
+                this.deflectController.Deflect(0.25f,0.15f);
+                //Debug.Log("Deflect");
             }
             else // Not Block
             {
@@ -743,6 +747,9 @@ public class PlayerController : MonoBehaviour
                 }
                 animatorPlayer.SetInteger("InAction", 0);
                 isPressBlock = block;
+
+                //Debug.Log("OutBlock");
+
             }
 
         }
@@ -751,17 +758,7 @@ public class PlayerController : MonoBehaviour
             isPressBlock = block;
 
         }
-        /*
-        else if (block)
-        {
-            isPressBlock = block;
-        }
-        else if (!block)
-        {
-            isPressBlock = block;
-        }
 
-        */
 
     }
 

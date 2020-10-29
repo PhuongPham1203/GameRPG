@@ -223,7 +223,7 @@ public class SelectEnemy : SelectManager
             {
                 e.alertEnemy = AlertEnemy.Warning;
                 e.TryMoveToPlayerPosition(targetEnemy.position);
-                Debug.Log(e.alertEnemy);
+                //Debug.Log(e.alertEnemy);
             }
         }
     }

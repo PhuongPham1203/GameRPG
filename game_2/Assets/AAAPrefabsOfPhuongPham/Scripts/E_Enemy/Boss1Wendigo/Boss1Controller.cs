@@ -6,7 +6,6 @@ using UnityEngine;
 public class Boss1Controller : EnemyController
 {
     [Header("Boss Controller")]
-    public float timeReduction = 5f;
     public BossRangeCenter bossRangeCenter;
     public PhaseBoss phaseBossCurrent = PhaseBoss.Phase_1;
     public PhaseBoss phaseEnd = PhaseBoss.Phase_3;
@@ -202,7 +201,7 @@ public class Boss1Controller : EnemyController
                 break;
             case 14: // phase 3 combo2
 
-                if (MustRunRandomWalkAround(4f)) break;
+                if (MustRunRandomWalkAround(2f)) break;
 
                 this.AttackBase();
                 break;
@@ -217,7 +216,7 @@ public class Boss1Controller : EnemyController
                 this.AttackPhase3Combo1();
                 break;
             case 16: // phase 3 combo4 ( Dead Attack )
-                if (MustRunRandomWalkAround(3f)) break;
+                //if (MustRunRandomWalkAround(3f)) break;
                 if (this.timeTryMoveToPos <= 0)
                 {
                     this.animator.SetTrigger("rollF");
@@ -243,24 +242,26 @@ public class Boss1Controller : EnemyController
                 break;
 
             case 20: // phase 3 combo8 ( Dead Attack )
-                if (this.loopAttack > 3)
-                {
-                    this.loopAttack = 0;
-                    this.isHitPlayer = IsHit.Miss;
-                }
-                else if (this.isHitPlayer != IsHit.Miss) // go back Phase 3 Combo 7
+                /*
+                if (this.loopAttack < 3 && this.isHitPlayer != IsHit.Miss) // go back Phase 3 Combo 7
                 {
                     this.loopAttack++;
                     this.currentListAttack--;
                     break;
                 }
+                else
+                {
+                    this.loopAttack = 0;
+                    //this.isHitPlayer = IsHit.Miss;
+                }
+                */
 
 
                 if (MustRunRandomWalkAround(3f)) break;
                 this.AttackPhase3Combo8();
                 //Debug.Log("phase 3 combo8 ( Dead Attack )");
                 break;
-                #endregion
+            #endregion
         }
 
     }
@@ -487,7 +488,6 @@ public class Boss1Controller : EnemyController
             this.currentAttackDone = this.Attack(this.currentListAttack);
             try
             {
-
                 NomManager.instance.PlayNomAnimation("HiemAnimation");
                 this.audioEnemy.PlaySoundOfEnemy("AlertHiemAttack");
             }
@@ -521,6 +521,7 @@ public class Boss1Controller : EnemyController
     {
         if (this.inforAttackCurrent.hitBox.TryGetComponent<WeaponControllerOfBoss1>(out WeaponControllerOfBoss1 w))
         {
+            this.characterStats.Reduction(this.timeReduction);
             w.CreateFlyWeapon(this.GetComponent<EnemyController>());
         }
     }
@@ -616,6 +617,7 @@ public class Boss1Controller : EnemyController
 
     public void ActivavteWeapon(int i)
     {
+        
         if (i == 1)
         {
             this.inforAttackCurrent.hitBox.enabled = true;
@@ -624,6 +626,7 @@ public class Boss1Controller : EnemyController
         {
             this.inforAttackCurrent.hitBox.enabled = false;
         }
+        
     }
 
     public override bool MoveToPosition(Vector3 positionTarget, float typeMove, float speed)
@@ -695,6 +698,8 @@ public class Boss1Controller : EnemyController
         this.animator.SetBool("Block", true);
 
     }
+
+
 
     void SetComboOfPhase(PhaseBoss phaseBoss)
     {

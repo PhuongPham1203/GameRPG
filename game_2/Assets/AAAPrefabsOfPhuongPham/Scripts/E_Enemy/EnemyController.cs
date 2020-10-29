@@ -61,17 +61,18 @@ public class EnemyController : MonoBehaviour
     //public float timeWait = 1f;
     public float curTimeWait = 1f;
     public List<float> timeToNextAction;
+    public float timeReduction = 5f;
 
     public int numberListAttack = 1;
     public int startListAttack = 0;
     public int currentListAttack = 0;
     public bool currentAttackDone = false;
 
-    public Vector3 directionShoulGo = Vector3.zero;
+    public Vector3 directionShoulGo;// = Vector3.zero;
 
     public Transform centerPoint;
 
-    protected Coroutine actionLeaveAction;
+    public Coroutine actionLeaveAction;
     protected Coroutine actionLeaveAttack;
     protected Coroutine actionFinishBot;
 
@@ -80,7 +81,7 @@ public class EnemyController : MonoBehaviour
     //public Transform parentVfxEnemy;
     public List<Collider> hitBox;
     public InforAttack inforAttackCurrent;
-    public IsHit isHitPlayer = IsHit.Miss;
+    public IsHit isHitPlayer ;//= new IsHit.Miss;
 
 
 
@@ -153,7 +154,7 @@ public class EnemyController : MonoBehaviour
     }
     public void SetAlentCombat(AlertEnemy setAlent)
     {
-        
+
         if (alertEnemy == AlertEnemy.Die)
         {
             return;
@@ -166,12 +167,12 @@ public class EnemyController : MonoBehaviour
 
                 StopAllCoroutines();
                 canFinish = false;
-                Debug.Log("Set alert Die "+gameObject.name);
+                Debug.Log("Set alert Die " + gameObject.name);
                 // if this Die send all item this character keep to QuestManager
-                QuestManager.instance.TriggerQuestManager(characterStats.itemKeep,TypeQuest.KillEnemy);
-                
+                QuestManager.instance.TriggerQuestManager(characterStats.itemKeep, TypeQuest.KillEnemy);
+
                 // Item Drop
-                foreach(GameObject g in this.characterStats.itemDrop)
+                foreach (GameObject g in this.characterStats.itemDrop)
                 {
                     GameObject item = Instantiate(g);
                     item.transform.position = this.transform.position;
@@ -242,7 +243,7 @@ public class EnemyController : MonoBehaviour
                 break;
         }
     }
-   
+
     public void SetTarget()
     {
         switch (alertEnemy)
@@ -335,7 +336,7 @@ public class EnemyController : MonoBehaviour
         if (canAction)
         {
             canAction = false;
-            
+
             if (target != null)
             {
 
@@ -366,7 +367,8 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
-    protected bool CheckCurrentAttackDone(){
+    protected bool CheckCurrentAttackDone()
+    {
         if (this.currentAttackDone)
         {
             this.currentListAttack++;
@@ -382,8 +384,8 @@ public class EnemyController : MonoBehaviour
     {
         Stun(t);
 
-        if (actionFinishBot != null)StopCoroutine(actionFinishBot);
-        
+        if (actionFinishBot != null) StopCoroutine(actionFinishBot);
+
         actionFinishBot = StartCoroutine(CanFinishInSecond(t));
 
     }
@@ -391,10 +393,10 @@ public class EnemyController : MonoBehaviour
     public void Stun(float t)
     {
         this.canAction = false;
-        this.animator.SetInteger("InAction",10);
-        this.animator.SetFloat("SpeedMove",0);
-        this.animator.SetFloat("x",0);
-        this.animator.SetFloat("z",0);
+        this.animator.SetInteger("InAction", 10);
+        this.animator.SetFloat("SpeedMove", 0);
+        this.animator.SetFloat("x", 0);
+        this.animator.SetFloat("z", 0);
         this.lookAt = false;
         if (actionLeaveAction != null)
         {
@@ -407,7 +409,7 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         canAction = true;
-        
+
 
     }
     protected IEnumerator CanAttack(float waitTime)
@@ -439,12 +441,12 @@ public class EnemyController : MonoBehaviour
         this.canFinish = false;
         this.lookAt = true;
         SetFinishVFX(false);
-        this.animator.SetInteger("InAction",0);
+        this.animator.SetInteger("InAction", 0);
 
         // Sub Posture 30 %
 
-        float s = 0.3f* this.characterStats.maxPosture;
-        this.characterStats.AddHPandPosture(0,-s);
+        float s = 0.3f * this.characterStats.maxPosture;
+        this.characterStats.AddHPandPosture(0, -s);
     }
 
 
@@ -485,11 +487,11 @@ public class EnemyController : MonoBehaviour
     }
     public void SetHitBoxFalse()
     {
-        
+
         foreach (Collider c in hitBox)
         {
             c.enabled = false;
-            
+
         }
 
         //Debug.Log("set hitbox "+e);
@@ -499,7 +501,8 @@ public class EnemyController : MonoBehaviour
         //Debug.Log("Finish1");
         //StopAllCoroutines();
         canAction = false;
-        if(TryGetComponent<SelectEnemy>(out SelectEnemy se)){
+        if (TryGetComponent<SelectEnemy>(out SelectEnemy se))
+        {
             se.enabled = false;
         }
         //SetAlentCombat(AlertEnemy.Die);
@@ -510,14 +513,14 @@ public class EnemyController : MonoBehaviour
     {
         //Debug.Log("Finish2");
         //run VFX
-        
+
         //StartCoroutine(BotDie(0.5f));
-       
-        this.animator.SetInteger("InAction",8);
+
+        this.animator.SetInteger("InAction", 8);
         characterStats.TakeTrueDamageFinish(999999);
         characterStats.Die();
         this.lookAt = false;
-        
+
     }
     /*
     IEnumerator BotDie(float t)  
@@ -565,6 +568,36 @@ public class EnemyController : MonoBehaviour
         actionLeaveAction = StartCoroutine(CanAttack(time)); // time can do something again
     }
 
+    public void PlayerDeflectEnemy(InforAttack inforA)
+    {
+
+        // Add Posture
+        this.characterStats.AddHPandPosture(0, inforA.damageAttack / 2);
+        this.isHitPlayer = IsHit.Block;
+        this.characterStats.Reduction(this.timeReduction);
+
+        this.animator.SetInteger("AttackCombo", 0);
+        StartCoroutine(this.CanBlockAffter(1.5f));
+        //this.animator.SetBool("Block", true);
+    }
+
+    /*
+    public void PlayerDeflectEnemy()
+    {
+        this.animator.SetInteger("AttackCombo", 0);
+        StartCoroutine(this.CanBlockAffter(1.5f));
+        //this.animator.SetBool("Block", true);
+    }
+    */
+
+    IEnumerator CanBlockAffter(float t)
+    {
+        yield return new WaitForSeconds(t);
+        this.animator.SetBool("Block", true);
+        this.canAction = true;
+        this.lookAt = true;
+    }
+
 
     public bool SetFinishVFX(bool isFinish)
     {
@@ -574,8 +607,9 @@ public class EnemyController : MonoBehaviour
         return isFinish;
     }
 
-    public virtual bool ReLive(){
-        Debug.Log(this.gameObject.name+" Relive.");
+    public virtual bool ReLive()
+    {
+        Debug.Log(this.gameObject.name + " Relive.");
         return false;
     }
 }
@@ -588,7 +622,7 @@ public enum AttackTypeEffect { Normal, Dead, Stun };
 [System.Serializable]
 public class InforAttack
 {
-    public string name ;
+    public string name;
     public PhaseBoss phaseBoss = PhaseBoss.Phase_1;
     public int combo = 1;
     public int damageAttack = 0;

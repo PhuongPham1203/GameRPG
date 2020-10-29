@@ -31,7 +31,17 @@ public class FlyWeaponController : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 24)
+        if (other.gameObject.layer == 2 && other.gameObject.CompareTag("Deflect"))
+        { // layer ignore Raycast
+            if(this.inforAttack != null && this.inforAttack.attackTypeEffect == AttackTypeEffect.Dead){
+                return;
+            }
+            this.GetComponent<Collider>().enabled = false;
+            AudioManager.instance.PlaySoundOfPlayer("Deflect");
+            other.GetComponentInParent<CharacterStats>().vfxSteel.Play();
+
+        }
+        else if (other.gameObject.layer == 24)
         {
             //this.inforAttack = transform.root.GetComponent<EnemyController>().inforAttackCurrent;
             //Debug.Log(enemyController.name);
@@ -56,5 +66,5 @@ public class FlyWeaponController : MonoBehaviour
         }
     }
 
-    
+
 }

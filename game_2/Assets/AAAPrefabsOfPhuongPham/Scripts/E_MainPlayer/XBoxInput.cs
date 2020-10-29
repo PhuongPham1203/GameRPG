@@ -61,13 +61,13 @@ public class XBoxInput : MonoBehaviour
             playerController.CrouchPlayer();
         }
 
-        if (isButtonBlockNotPress && Input.GetButtonDown("Left Bumper"))
+        if (isButtonBlockNotPress && (Input.GetButtonDown("Left Bumper") || Input.GetMouseButtonDown(1)))
         {
             playerController.isPressBlock = true;
             isButtonBlockNotPress = false;
             //playerController.Block(true);
         }
-        else if (Input.GetButtonUp("Left Bumper"))
+        else if (Input.GetButtonUp("Left Bumper") || Input.GetMouseButtonUp(1))
         {
             //playerController.isPressBlock = false;
 
@@ -81,7 +81,7 @@ public class XBoxInput : MonoBehaviour
             {
                 playerController.SwingPlayer();
 
-            }   
+            }
         }
 
         if (isDpadNotPress)
