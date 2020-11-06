@@ -73,5 +73,8 @@ public class PlayerManager : MonoBehaviour
     }
     */
 
+    public void ActivatePlayer(bool active){
+        this.player.SetActive(active);
+    }
 
 }

@@ -21,7 +21,7 @@ public class HitBoxPlayer : Hitbox
             //Debug.Log(characterStats.transform.name + " hitbox "+ characterStats.GetAttackDame(1));
             //other.gameObject.GetComponent<PlayerStats>().TakeDamage(characterStats.GetAttackDame(1));
             //Debug.Log("Hitbox Player:"+ characterStats.GetAttackDame(weapon));
-            other.gameObject.GetComponent<CharacterStats>().TakeDamage(characterStats.GetAttackDame(weapon), 0, AttackTypeEffect.Normal, new EnemyController());
+            other.gameObject.GetComponent<CharacterStats>().TakeDamage(characterStats.GetAttackDame(weapon), 0, AttackTypeEffect.Normal, null);
 
         }
     }

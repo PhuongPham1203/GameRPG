@@ -74626,35 +74626,28 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.21666667
-    functionName: SetTrailR
+    functionName: ActivateVFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
   - time: 0.6666667
-    functionName: ActivavteWeapon
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.81666666
+  - time: 0.78333336
     functionName: PlaySoundOfEnemy
     data: P2Attack2
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
-    functionName: ActivavteWeapon
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.1666666
-    functionName: SetTrailR
+  - time: 0.9
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

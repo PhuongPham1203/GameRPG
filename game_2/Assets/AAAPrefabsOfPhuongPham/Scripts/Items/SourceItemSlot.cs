@@ -8,7 +8,7 @@ public class SourceItemSlot : ScriptableObject
     //public string nameItem = "New Item";
     public string[] nameItem = { "New Item","Item mới" };
 
-    [Header("Type Item Slot: 0-ItemReadOnly \t 1-ItemUse \t 2-Weapon")]
+    [Header("Type Item Slot:")]
     //[Range(0, 2)]
     public TypeUnit typeUnit = TypeUnit.ItemReadOnly;
     [TextArea]
@@ -21,7 +21,7 @@ public class SourceItemSlot : ScriptableObject
     {
         // use item
         // something happen;
-        // Debug.Log("Using " + name);
+        Debug.Log("Using :" + name);
 
     }
 

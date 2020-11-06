@@ -78190,14 +78190,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.41666666
-    functionName: SetTrailR
+    functionName: ActivateVFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
   - time: 0.5
-    functionName: ActivavteWeapon
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -78210,6 +78210,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.3333334
+    functionName: ActivateVFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.3833333
     functionName: PlaySoundOfEnemy
     data: P1Attack1
@@ -78217,9 +78224,23 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 2.4166667
+    functionName: ActivateVFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2.5166667
     functionName: PlaySoundOfEnemy
     data: P1Attack1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3.0833333
+    functionName: ActivateVFX
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
@@ -78232,14 +78253,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.4
-    functionName: ActivavteWeapon
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.4666667
-    functionName: SetTrailR
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

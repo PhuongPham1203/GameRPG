@@ -86,7 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!114 &-9079891858090163746
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -99,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &-8946291260628661147
 AnimatorState:
   serializedVersion: 5
@@ -122,7 +120,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: bc977198130bbb444988b0b00d4aca88, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7ae971b30e415214994ea102ba557ab2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -212,7 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &-8193766415779169558
 AnimatorState:
   serializedVersion: 5
@@ -324,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1101 &-7834430929271988673
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -445,7 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &-7607020314453642359
 AnimatorState:
   serializedVersion: 5
@@ -619,7 +614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1101 &-7073038544998688493
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -1105,7 +1099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &-5429117821205662366
 AnimatorState:
   serializedVersion: 5
@@ -1555,7 +1548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &-3211207043527349959
 AnimatorState:
   serializedVersion: 5
@@ -1596,7 +1588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1107 &-3162636048157003920
 AnimatorStateMachine:
   serializedVersion: 5
@@ -1674,6 +1665,28 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 570, y: -480, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -6182868840070800797}
+--- !u!1101 &-3157654365887531118
+AnimatorStateTransition:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.1
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9
+  m_HasExitTime: 1
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &-3091958931621598231
 AnimatorState:
   serializedVersion: 5
@@ -1763,7 +1776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1102 &-2367288855674050977
 AnimatorState:
   serializedVersion: 5
@@ -1833,7 +1845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &-2194110132840117143
 AnimatorState:
   serializedVersion: 5
@@ -1874,7 +1885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1101 &-1895989155762360812
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -1912,7 +1922,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!114 &-1613851941893544645
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1925,7 +1934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1101 &-1603871537122677771
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1985,7 +1993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1102 &-1303765839187468088
 AnimatorState:
   serializedVersion: 5
@@ -2271,7 +2278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &-218100789607466837
 AnimatorState:
   serializedVersion: 5
@@ -2518,7 +2524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!114 &208594854740061881
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2726,7 +2731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1101 &1131938443462149467
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3066,7 +3070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1101 &2318479530982529078
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -3115,6 +3118,28 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &2383649180402238481
+AnimatorStateTransition:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.1
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9
+  m_HasExitTime: 1
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &2467555783808647180
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -3127,7 +3152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1101 &2509008041260824052
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -3638,7 +3662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1107 &4757698123660461956
 AnimatorStateMachine:
   serializedVersion: 5
@@ -3931,7 +3954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1101 &5701404991392608334
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4013,7 +4035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 0
 --- !u!1101 &6139146140034184868
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4131,7 +4152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1101 &6367391240216189656
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -4241,7 +4261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &6986965741426329786
 AnimatorState:
   serializedVersion: 5
@@ -4362,7 +4381,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.1
   m_TransitionOffset: 0
-  m_ExitTime: 0.9
+  m_ExitTime: 0.8
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -4576,7 +4595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1101 &8083591547535461527
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -4617,7 +4635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &8531665754074784283
 AnimatorState:
   serializedVersion: 5
@@ -4708,7 +4725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1101 &8820115742018234599
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -4768,7 +4784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f06a0c3239c53478c73a9cfc53030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightWeapon: 1
 --- !u!1102 &9125279853845705794
 AnimatorState:
   serializedVersion: 5

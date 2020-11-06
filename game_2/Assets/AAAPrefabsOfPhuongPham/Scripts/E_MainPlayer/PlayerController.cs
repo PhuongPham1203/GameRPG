@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public bool isPressBlock = false;
     public DeflectController deflectController;
+    public DeflectStatus deflectStatus;
 
     private Coroutine actionCanAction;
     private Coroutine actionLeaveAction;
@@ -264,8 +265,9 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        else
+        else if(animatorPlayer.GetInteger("InAction")!=0)
         {
+            //Debug.Log("in ac = 0");
             animatorPlayer.SetInteger("InAction", 0);
         }
         if (animatorPlayer.GetBool("LockTarget"))
@@ -282,8 +284,6 @@ public class PlayerController : MonoBehaviour
 
     private void MoveNotLockTarget()
     {
-        //Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        //Vector2 moveInput = XZ;
         Vector3 forward = maincameraTranform.forward;
         Vector3 right = maincameraTranform.right;
 
@@ -729,7 +729,8 @@ public class PlayerController : MonoBehaviour
                 typeMove = 0.5f;
                 animatorPlayer.SetInteger("InAction", 6);
 
-                this.deflectController.Deflect(0.25f,0.15f);
+                this.deflectController.Deflect(0.17f,0.25f);
+                
                 //Debug.Log("Deflect");
             }
             else // Not Block

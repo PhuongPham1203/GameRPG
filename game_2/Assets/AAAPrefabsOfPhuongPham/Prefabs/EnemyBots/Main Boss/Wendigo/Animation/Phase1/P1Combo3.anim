@@ -45574,14 +45574,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.9166667
-    functionName: ActivavteWeapon
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.9583333
-    functionName: SetTrailR
+  - time: 1
+    functionName: ActivateVFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -45594,15 +45594,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.7916666
-    functionName: SetTrailR
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.8333334
-    functionName: ActivavteWeapon
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

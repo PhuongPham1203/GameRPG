@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class DeflectController : MonoBehaviour
 {
-    public Collider deflectCollider;
-    public bool canDeflectAgain = true;
+    public PlayerController playerController;
+    float timeFromDeflectToBlock;
+    float timeDeflectCountDown;
+    //public Collider deflectCollider;
+    //public bool canDeflectAgain = true;
+    /*
     private void Awake()
     {
         if (this.deflectCollider != null)
@@ -14,7 +18,52 @@ public class DeflectController : MonoBehaviour
         }
         this.deflectCollider.enabled = false;
     }
+    */
+    void Start()
+    {
+        if (this.playerController == null)
+        {
+            this.playerController = GetComponent<PlayerController>();
 
+        }
+    }
+
+    void Update()
+    {
+        if (this.playerController.deflectStatus == DeflectStatus.Deflect)
+        {
+            if (timeFromDeflectToBlock > 0)
+            {
+                this.timeFromDeflectToBlock -= Time.deltaTime;
+            }
+            else
+            {
+                this.playerController.deflectStatus = DeflectStatus.Block;
+
+            }
+        }
+        if (this.timeDeflectCountDown > 0)
+        {
+            this.timeDeflectCountDown -= Time.deltaTime;
+        }
+
+    }
+
+    public void Deflect(float timeDeflect, float timeCountDown)
+    {
+        if (this.timeDeflectCountDown > 0) // in countdown cant deflect
+        {
+
+        }
+        else
+        {
+            this.playerController.deflectStatus = DeflectStatus.Deflect;
+            this.timeFromDeflectToBlock = timeDeflect;
+            this.timeDeflectCountDown = timeCountDown;
+        }
+    }
+
+    /*
     public void Deflect(float timeCanDeflectAgain, float timeToDisableDeflect)
     {
         if (this.canDeflectAgain && !this.deflectCollider.enabled)
@@ -38,5 +87,7 @@ public class DeflectController : MonoBehaviour
         //Debug.Log("OutDeFlect");
         this.deflectCollider.enabled = false;
     }
+
+    */
 
 }

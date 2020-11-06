@@ -60982,7 +60982,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.25
-    functionName: ActivavteWeapon
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -60996,7 +60996,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.45
-    functionName: ActivavteWeapon
+    functionName: ActivateWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

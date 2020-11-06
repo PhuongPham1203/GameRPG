@@ -8,6 +8,7 @@ public class InventoryIU : MonoBehaviour
     public Transform itemsParent;
     public Transform weaponsParent;
     //public GameObject inventoryUI;
+    
 
     Inventory inventory;
     InventorySlot[] slotsItem;

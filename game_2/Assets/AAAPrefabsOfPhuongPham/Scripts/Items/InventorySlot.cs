@@ -9,23 +9,24 @@ public class InventorySlot : MonoBehaviour
     public Button inforButton;// Check infor button
     public Button addButton;// Add button
     public Button removeButton;// Delete button
-
-    SourceItemSlot slot;
+    private SlotInformation slot;
+    //SourceItemSlot slot;
     public void AddItem(SourceItemSlot newItem)
     {
-        slot = newItem;
-        icon.sprite = slot.icon;
-        icon.enabled = true;
-        nameItem.text = slot.name;
+        this.slot.item = newItem;
+        this.icon.sprite = this.slot.item.icon;
+        this.icon.enabled = true;
+        this.nameItem.text = slot.item.name;
 
-        inforButton.gameObject.SetActive(true);
-        addButton.gameObject.SetActive(true);
-        removeButton.gameObject.SetActive(true);
+        this.inforButton.gameObject.SetActive(true);
+        this.addButton.gameObject.SetActive(true);
+        this.removeButton.gameObject.SetActive(true);
         //removeButton.interactable = true;
     }
     public void ClearSlot()
     {
         slot = null;
+
         icon.sprite = null;
         icon.enabled = false;
         nameItem.text = "";
@@ -36,21 +37,43 @@ public class InventorySlot : MonoBehaviour
 
     }
 
-    public void CheckInforButtonSlot(){
-        Debug.Log("Open Information"+nameItem.text);
+    public void CheckInforButtonSlot()
+    {
+        Debug.Log("Open Information" + nameItem.text);
     }
 
     public void UseItemButtonSlot()
     {
         if (slot != null)
         {
-            slot.Use();
+            slot.item.Use();
         }
     }
 
     public void RemoveButtonSlot()
     {
 
-        Inventory.instance.Remove(slot);
+        Inventory.instance.Remove(slot.item);
     }
+
+    /*
+    public void UseItemSlot()
+    {
+        
+        if(this.itemSlot!=null && this.numberCountItem>0){
+            this.itemSlot.Use();
+        }
+        
+    }
+    */
+
+}
+
+[System.Serializable]
+public class SlotInformation
+{
+    public SourceItemSlot item;
+    public int maxNumberItem;
+    public int currentNumberItem;
+
 }

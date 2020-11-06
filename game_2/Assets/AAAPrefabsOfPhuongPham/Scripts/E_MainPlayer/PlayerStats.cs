@@ -14,9 +14,9 @@ public class PlayerStats : CharacterStats
     public Stat attackDame; // AttacK Dame
     public Stat posture; // Posture
     //public Stat defend; // Defend
-    [Range(1,4)]
+    [Range(1, 4)]
     public int maxLife = 1;
-    [Range(1,4)]
+    [Range(1, 4)]
     public int currentLife = 1;
     public int attackLightDamage { get; protected set; }
     public int attackHeavyDamage { get; protected set; }
@@ -40,7 +40,8 @@ public class PlayerStats : CharacterStats
     public Animator animatorRedAlert;
     //private Coroutine loadingMoveToPosition;
 
-
+    [Header("VFX")]
+    public ParticleSystem vfxHP;
     Vector3 pNow;
     bool needchange = false;
 
@@ -72,6 +73,24 @@ public class PlayerStats : CharacterStats
 
         //ResetAllCurrentAndMaxValue(startHP + hp.GetValue(), startAttackDame + attackDame.GetValue(), startPosture + posture.GetValue());
         EquipmentManager.instance.Invoke("EquipAllDefaultItems", 1f);
+    }
+    private void LateUpdate()
+    {
+        if (reduction && currentPosture > 0)
+        {
+            float x = (currentHP / maxHP); // percent HP lost
+            float y = 1;
+            if (this.animator.GetInteger("InAction") == 6)
+            {
+                y = 2;
+            }
+
+            currentPosture -= (maxPosture * (percenReduction * x) * y) ;
+            currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
+
+            UpdateHPAndPosture();
+
+        }
     }
 
     public void ResetAllCurrentAndMaxValue()
@@ -172,7 +191,7 @@ public class PlayerStats : CharacterStats
 
         //Debug.Log("Player take: " + damage);
         int inAction = this.animator.GetInteger("InAction");
-        if (inAction != 8 && inAction != 10 && inAction != 1)
+        if (inAction != 8 && inAction != 10 && inAction != 1) // 8 : Die , 10 : inFinish, 1 : Swing
         {
             if (animator.GetBool("Crouch"))
             {
@@ -193,15 +212,34 @@ public class PlayerStats : CharacterStats
             {
                 if (animator.GetInteger("InAction") == 6)
                 {
-                    animator.SetTrigger("InBlock");
-
-                    int n = Random.Range(1, 5);
-                    AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
                     this.vfxSteel.Play();
-
                     this.Reduction(timeWaitToReduction);
 
-                    enemyC.isHitPlayer = IsHit.Block;// Alert to enemy is Player block Damage
+                    if (this.playerController.deflectStatus == DeflectStatus.Deflect) // Deflect ( Parry )
+                    {
+                        AudioManager.instance.PlaySoundOfPlayer("Deflect");
+                        this.animator.SetTrigger("TriggerDeflect");
+
+                        float y = 1f - (currentHP / maxHP); // percent HP lost
+                        damage = damage / 2;
+                        currentPosture += (int)(damage + damage * y);
+                        currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture - 5);
+                        this.UpdateHPAndPosture();
+
+                        enemyC.isHitPlayer = IsHit.Deflect;// Alert to enemy is Player block Damage
+
+                        return enemyC.isHitPlayer;
+                    }
+                    else // Normal Block
+                    {
+                        enemyC.isHitPlayer = IsHit.Block;// Alert to enemy is Player block Damage
+
+                        this.animator.SetTrigger("InBlock");
+
+                        int n = Random.Range(1, 5);
+                        AudioManager.instance.PlaySoundOfPlayer("Block Light " + n);
+                    }
+
 
                 }
             }
@@ -214,10 +252,8 @@ public class PlayerStats : CharacterStats
             }
 
             float x = 1f - (currentHP / maxHP); // percent HP lost
-            //Debug.Log(x);
             currentPosture += (int)(damage + damage * x);
             currentPosture = Mathf.Clamp(currentPosture, 0, maxPosture);
-            //Debug.Log(transform.name + " Posture plus " + (int)(damage + damage * x ) + " damege.");
 
 
             if (canBlockMore && animator.GetInteger("InAction") == 6) // ! In Block
@@ -226,9 +262,8 @@ public class PlayerStats : CharacterStats
             }
             else
             { // ! Not Block
-                //Debug.Log("c"+currentPosture);
 
-                
+
 
                 currentHP -= damage;
                 currentHP = Mathf.Clamp(currentHP, 0, maxHP);
@@ -278,10 +313,13 @@ public class PlayerStats : CharacterStats
 
         // Open UI Die
 
-        if(this.currentLife-1>0){
+        if (this.currentLife - 1 > 0)
+        {
             this.currentLife--;
             this.uiContinue.SetActive(true);
-        }else{
+        }
+        else
+        {
             this.uiContinue.SetActive(false);
         }
         this.uiDie.SetActive(true);
@@ -305,7 +343,8 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    public void ContinueAndReLife(){
+    public void ContinueAndReLife()
+    {
         this.uiDie.SetActive(false);
 
         this.ResetAllCurrentAndMaxValue();
@@ -313,13 +352,15 @@ public class PlayerStats : CharacterStats
         this.vfxFinish.Play();
         StartCoroutine(LoadingReLife(1.5f));
     }
-    IEnumerator LoadingReLife(float t){
+    IEnumerator LoadingReLife(float t)
+    {
         yield return new WaitForSeconds(t);
         this.gameObject.layer = 24;
         this.playerController.canAction = true;
     }
 
-    public void RestartGame(){
+    public void RestartGame()
+    {
         SceneManagerOfGame.instance.RestartGameFromCheckPoint();
     }
     public void Standing()
@@ -395,95 +436,9 @@ public class PlayerStats : CharacterStats
         uiTeleport.gameObject.SetActive(!uiTeleport.gameObject.activeSelf);
     }
 
-    /*
-    #region Money
-    public void AddMoney(int number) // add more money
-    {
-        money += number;
-    }
-    public void ChangeMoney(int number) // change money
-    {
-        money = number;
-    }
-    public void SubMoney(int number) // Sub money
-    {
-        money -= number;
-    }
-    #endregion
 
-    #region Real_Money
-    public void AddRealMoney(int number) // add more money
-    {
-        realMoney += number;
-    }
-    public void ChangeRealMoney(int number) // change real money
-    {
-        realMoney = number;
-    }
-    public void SubRealMoney(int number) // Sub real money
-    {
-        realMoney -= number;
-    }
-    #endregion
-
-    #region Soul
-    public void AddSoul(int number) // add more soul
-    {
-        soul += number;
-    }
-    public void ChangeSoul(int number) // change soul
-    {
-        soul = number;
-    }
-    public void SubSoul(int number) // Sub soul
-    {
-        soul -= number;
-    }
-    #endregion
-
-    #region Level
-    public void AddLevel(int number) // add more level
-    {
-        level += number;
-    }
-    public void ChangeLevel(int number) // change level
-    {
-        level = number;
-    }
-    public void SubLevel(int number) // Sub level
-    {
-        level -= number;
-    }
-    #endregion
-
-    #region Exp_Now
-    public void AddExpNow(int number) // add more expNow
-    {
-        expNow += number;
-    }
-    public void ChangeExpNow(int number) // change expNow
-    {
-        expNow = number;
-    }
-    public void SubExpNow(int number) // Sub ExpNow
-    {
-        expNow -= number;
-    }
-    #endregion
-
-    #region Exp_To_Level_Up
-    public void AddExpToLevelUp(int number) // add more expToLevelUp
-    {
-        expToLevelUp += number;
-    }
-    public void ChangeAddExpToLevelUp(int number) // change expToLevelUp
-    {
-        expToLevelUp = number;
-    }
-    public void SubAddExpToLevelUp(int number) // Sub expToLevelUp
-    {
-        expToLevelUp -= number;
-    }
-    #endregion
-    */
 }
+
+
+[System.Serializable]
+public enum DeflectStatus { NotBlock, Block, Deflect };

@@ -65,8 +65,8 @@ public class EnemyController : MonoBehaviour
 
     public int numberListAttack = 1;
     public int startListAttack = 0;
-    public int currentListAttack = 0;
-    public bool currentAttackDone = false;
+    public int currentListAttack;
+    public bool currentAttackDone;
 
     public Vector3 directionShoulGo;// = Vector3.zero;
 
@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour
     //public Transform parentVfxEnemy;
     public List<Collider> hitBox;
     public InforAttack inforAttackCurrent;
-    public IsHit isHitPlayer ;//= new IsHit.Miss;
+    public IsHit isHitPlayer;//= new IsHit.Miss;
 
 
 
@@ -366,7 +366,33 @@ public class EnemyController : MonoBehaviour
 
         return false;
     }
+    public void ActivateWeapon(int i)
+    {
 
+        if (i == 1)
+        {
+            this.inforAttackCurrent.hitBox.enabled = true;
+        }
+        else
+        {
+            this.inforAttackCurrent.hitBox.enabled = false;
+        }
+
+        /*
+        if (this.inforAttackCurrent.combo == 8)
+        {
+            Debug.Log(this.inforAttackCurrent.hitBox.name + " " + this.inforAttackCurrent.hitBox.enabled);
+        }
+        */
+        
+
+    }
+
+    public void ActivateVFX(){
+        if(this.inforAttackCurrent.particleSystemVFX != null){
+            this.inforAttackCurrent.particleSystemVFX.Play();
+        }
+    }
     protected bool CheckCurrentAttackDone()
     {
         if (this.currentAttackDone)
@@ -633,6 +659,7 @@ public class InforAttack
     public float timeToNextAction = 0f;
 
     public Collider hitBox;
+    public ParticleSystem particleSystemVFX;
 
 
 }

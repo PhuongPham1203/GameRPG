@@ -15,15 +15,16 @@ public class Boss1Stats : CharacterStats
         this.animator = GetComponent<Animator>();
         this.audioEnemy = GetComponent<AudioEnemy>();
         //this.indexPhaseBossStat = 0;
-        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[indexPhaseBossStat].HP, 0, this.phaseBossStats[indexPhaseBossStat].Posture);
+        //this.ResetAllCurrentAndMaxValue(this.phaseBossStats[indexPhaseBossStat].HP, 0, this.phaseBossStats[indexPhaseBossStat].Posture);
 
+        this.StartLife();
 
     }
 
     public override IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
     {
 
-        if (animator.GetInteger("InAction") != 8 )
+        if (animator.GetInteger("InAction") != 8)
         {
             if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
             {
@@ -173,18 +174,18 @@ public class Boss1Stats : CharacterStats
     {
         if (this.enemyController != null)
         {
-            if (this.enemyController.alertEnemy == AlertEnemy.Idle)
+            //if (this.enemyController.alertEnemy == AlertEnemy.Idle)
+            //{
+            this.enemyController.SetAlentCombat(AlertEnemy.OnTarget);
+            this.enemyController.canAction = true;
+            if (AudioManager.instance.IsPlayAnyTheme())
             {
-                this.enemyController.SetAlentCombat(AlertEnemy.OnTarget);
-                this.enemyController.canAction = true;
-
-                if(AudioManager.instance.IsPlayAnyTheme()){
-                    AudioManager.instance.StopAllTheme();
-                }
-
-                AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
-                
+                AudioManager.instance.StopAllTheme();
             }
+            
+            AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
+
+            //}
         }
     }
 
@@ -233,6 +234,19 @@ public class Boss1Stats : CharacterStats
             g.SetActive(true);
         }
 
+    }
+
+    void StartLife()
+    {
+        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[this.indexPhaseBossStat].HP, 0, this.phaseBossStats[this.indexPhaseBossStat].Posture);
+
+        this.animator.SetInteger("InAction", 0);
+        this.enemyController.canAction = true;
+        // enable new weapon
+        foreach (GameObject g in this.phaseBossStats[this.indexPhaseBossStat].listWeapon)
+        {
+            g.SetActive(true);
+        }
     }
 }
 

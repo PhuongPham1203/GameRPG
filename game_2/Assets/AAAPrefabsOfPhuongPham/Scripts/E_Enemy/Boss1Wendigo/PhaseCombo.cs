@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PhaseCombo : StateMachineBehaviour
 {
-    SwooshVFXTrailWeapon swooshVFXTrailWeapon;
+    //SwooshVFXTrailWeapon swooshVFXTrailWeapon;
     Collider hitBox;
-    public bool isRightWeapon = true;
+    //public bool isRightWeapon = true;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -52,12 +52,13 @@ public class PhaseCombo : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        this.swooshVFXTrailWeapon = animator.GetComponent<SwooshVFXTrailWeapon>();
+        //this.swooshVFXTrailWeapon = animator.GetComponent<SwooshVFXTrailWeapon>();
         if (animator.TryGetComponent<Boss1Controller>(out Boss1Controller boss1Controller))
         {
             this.hitBox = boss1Controller.inforAttackCurrent.hitBox;
         }
         //Debug.Log("Out Light Attack 1");
+        /*
         if (this.isRightWeapon)
         {
             this.swooshVFXTrailWeapon.SetTrailR(0);
@@ -67,6 +68,7 @@ public class PhaseCombo : StateMachineBehaviour
         {
             this.swooshVFXTrailWeapon.SetTrailL(0);
         }
+        */
 
         if (this.hitBox != null)
         {

@@ -291,4 +291,4 @@ public class PhaseBossStats
     public GameObject[] listWeapon;
 }
 [System.Serializable]
-public enum IsHit { Miss,Block,Hit};
+public enum IsHit { Miss,Block,Deflect,Hit};
