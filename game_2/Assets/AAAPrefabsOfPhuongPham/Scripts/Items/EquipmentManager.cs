@@ -66,7 +66,7 @@ public class EquipmentManager : MonoBehaviour
             //inventory.Add(oldItem);
             if (!oldItem.isDefaultItem)// if Equipment is not default Equipment
             {
-                inventory.Add(oldItem); // Add back Inventory
+                inventory.Add(oldItem,1); // Add back Inventory
 
             }
         }
@@ -110,7 +110,7 @@ public class EquipmentManager : MonoBehaviour
 
             if (!oldItem.isDefaultItem)// if Equipment is not default Equipment
             {
-                inventory.Add(oldItem); // Add back Inventory
+                inventory.Add(oldItem,1); // Add back Inventory
 
             }
             //remove item from equipment

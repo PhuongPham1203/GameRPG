@@ -4,57 +4,107 @@ using UnityEngine;
 using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
+    [Header("Item")]
+    public SourceItemSlot itemSlot;
     public Image icon;
+    public Text numberCurrentItem;
+    public Button openInformationButton;// Check information button
+    public Button useItemButton; // button use item
+    public Button setSlotButton;// set slot item button
+    public Button cancelButton;// on off UI button
+
+
+    [Header("UI Information Item")]
     public Text nameItem;
-    public Button inforButton;// Check infor button
-    public Button addButton;// Add button
-    public Button removeButton;// Delete button
-    private SlotInformation slot;
+    public Text informationItem;
+    public Text numberItem;
+
+
+    //private SlotInformation slot;
     //SourceItemSlot slot;
     public void AddItem(SourceItemSlot newItem)
     {
-        this.slot.item = newItem;
-        this.icon.sprite = this.slot.item.icon;
-        this.icon.enabled = true;
-        this.nameItem.text = slot.item.name;
+        
+            this.itemSlot = newItem;
+            this.icon.sprite = this.itemSlot.icon;
+            this.icon.enabled = true;
 
+            this.numberCurrentItem.text = this.itemSlot.currentNumberItem.ToString();
+
+        
+
+
+        /*
         this.inforButton.gameObject.SetActive(true);
         this.addButton.gameObject.SetActive(true);
         this.removeButton.gameObject.SetActive(true);
+        */
         //removeButton.interactable = true;
     }
     public void ClearSlot()
     {
-        slot = null;
+        this.itemSlot = null;
 
-        icon.sprite = null;
-        icon.enabled = false;
-        nameItem.text = "";
+        this.icon.sprite = null;
+        this.icon.enabled = false;
+        this.numberCurrentItem.text = "";
         //removeButton.interactable = false;
-        inforButton.gameObject.SetActive(false);
-        addButton.gameObject.SetActive(false);
-        removeButton.gameObject.SetActive(false);
+        /*
+        this.inforButton.gameObject.SetActive(false);
+        this.addButton.gameObject.SetActive(false);
+        this.removeButton.gameObject.SetActive(false);
+        */
 
     }
 
-    public void CheckInforButtonSlot()
+    public void CheckInforButtonSlot(SourceItemSlot itemNew)
     {
-        Debug.Log("Open Information" + nameItem.text);
-    }
+        int languageIndex = PlayerPrefs.GetInt("_language_index", 0);
+        //Debug.Log("Open Information" + this.numberCurrentItem.text);
+        InventorySlot inventoryS = MenuController.instance.uiInformationItem.GetComponent<InventorySlot>();
 
+        inventoryS.itemSlot = itemNew;
+        inventoryS.nameItem.text = inventoryS.itemSlot.nameItem[languageIndex];
+        inventoryS.informationItem.text = inventoryS.itemSlot.information[languageIndex];
+        inventoryS.numberItem.text = "Total : " + inventoryS.itemSlot.currentNumberItem + " / " + inventoryS.itemSlot.maxNumberItem;
+
+        MenuController.instance.uiInformationItem.SetActive(true);
+
+    }
+    /*
     public void UseItemButtonSlot()
     {
-        if (slot != null)
+        if (this.itemSlot != null)
         {
-            slot.item.Use();
+            this.itemSlot.Use();
         }
     }
+    */
 
     public void RemoveButtonSlot()
     {
 
-        Inventory.instance.Remove(slot.item);
+        Inventory.instance.Remove(this.itemSlot);
     }
+
+    public void UseItem()
+    {
+        if (this.itemSlot != null)
+        {
+            this.itemSlot.Use();
+        }
+    }
+
+    public void OpenInformationUI()
+    {
+        if (this.itemSlot != null)
+        {
+            this.CheckInforButtonSlot(this.itemSlot);
+
+        }
+    }
+
+
 
     /*
     public void UseItemSlot()
@@ -68,7 +118,7 @@ public class InventorySlot : MonoBehaviour
     */
 
 }
-
+/*
 [System.Serializable]
 public class SlotInformation
 {
@@ -77,3 +127,4 @@ public class SlotInformation
     public int currentNumberItem;
 
 }
+*/

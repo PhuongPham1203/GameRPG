@@ -729,7 +729,7 @@ public class PlayerController : MonoBehaviour
                 typeMove = 0.5f;
                 animatorPlayer.SetInteger("InAction", 6);
 
-                this.deflectController.Deflect(0.17f,0.25f);
+                this.deflectController.Deflect(0.17f,0.15f);
                 
                 //Debug.Log("Deflect");
             }

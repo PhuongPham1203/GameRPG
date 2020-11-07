@@ -7,6 +7,8 @@ public class SourceItemSlot : ScriptableObject
 {
     //public string nameItem = "New Item";
     public string[] nameItem = { "New Item","Item mới" };
+    public int maxNumberItem ;
+    public int currentNumberItem ;
 
     [Header("Type Item Slot:")]
     //[Range(0, 2)]

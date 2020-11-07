@@ -25,6 +25,9 @@ public class MenuController : MonoBehaviour
     [Header("For NPC")]
     public GameObject uiInteracWithNPC;
 
+    [Header("For Items")]
+    public GameObject uiInformationItem;
+
     public static MenuController instance;
     #region Singleton
 

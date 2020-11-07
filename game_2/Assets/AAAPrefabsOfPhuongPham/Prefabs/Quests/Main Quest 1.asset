@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f153ab32fb6f14680942e5496cc92d, type: 3}
   m_Name: Main Quest 1
   m_EditorClassIdentifier: 
-  nameQuest: Find And Kill Zombie
+  nameQuest:
+  - Name Quest
+  - "T\xEAn Nhi\xEAm vu"
   typeColectionQuest: 0
   statusQuest: 0
   typeQuest: 1
-  information: Find and kill all zombie
+  information:
+  - Information Quest
+  - "Th\xF4ng tin chi ti\xEAt"
   dialogBefore: {fileID: 11400000, guid: 145783c9b2aac0941baca8090f822c6a, type: 2}
   dialogAfter: {fileID: 11400000, guid: c6a9b4e847729334f891cb19bea5e4fe, type: 2}
   listRequest:

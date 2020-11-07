@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  spaceItem: 100
+  spaceItem: 150
   weapons: []
   spaceWeapon: 100
   ButtonActionWithObj: {fileID: 0}

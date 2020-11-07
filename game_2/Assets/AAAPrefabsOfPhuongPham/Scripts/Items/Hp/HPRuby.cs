@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HP Ruby Item", menuName = "Inventory/Items/HP Ruby")]
 public class HPRuby : SourceItemSlot
 {
-    [Range(0,1000)]
+    [Range(0,10000)]
     public int hp = 0;
 
     public override void Use()

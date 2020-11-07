@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
+    public int totalNumber = 1;
     protected Inventory inventory;
     private void Start()
     {

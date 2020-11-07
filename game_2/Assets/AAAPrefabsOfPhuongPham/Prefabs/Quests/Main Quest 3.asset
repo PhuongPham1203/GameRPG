@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f153ab32fb6f14680942e5496cc92d, type: 3}
   m_Name: Main Quest 3
   m_EditorClassIdentifier: 
-  nameQuest: New Quest
+  nameQuest:
+  - Name Quest
+  - "T\xEAn Nhi\xEAm vu"
   typeColectionQuest: 0
   statusQuest: 0
   typeQuest: 0
-  information: New Item information
+  information:
+  - Information Quest
+  - "Th\xF4ng tin chi ti\xEAt"
   dialogBefore: {fileID: 0}
   dialogAfter: {fileID: 0}
   listRequest: []
