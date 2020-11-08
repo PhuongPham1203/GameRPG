@@ -24,12 +24,23 @@ public class Inventory : MonoBehaviour
 
     }
     #endregion
+    private void Start()
+    {
+        StartCoroutine(EquipDefaultItems(1f));
+    }
+
+
+
     [Header("List Item")]
     public List<SourceItemSlot> items;
     public int spaceItem = 300;
     [Header("List Weapon")]
     public List<SourceItemSlot> weapons;
     public int spaceWeapon = 200;
+    [Header("Fast Items")]
+    public InventorySlot[] listFastItems;
+    public SourceItemSlot[] defaultItems;
+
     public GameObject ButtonActionWithObj;
     public bool Add(SourceItemSlot item, int number)
     {
@@ -65,7 +76,7 @@ public class Inventory : MonoBehaviour
                 else
                 { // canAdd
                     item.currentNumberItem += number;
-                    Mathf.Clamp(item.currentNumberItem, 0, item.maxNumberItem);
+                    item.currentNumberItem = Mathf.Clamp(item.currentNumberItem, 0, item.maxNumberItem);
 
                     canAdd = true;
                 }
@@ -125,6 +136,37 @@ public class Inventory : MonoBehaviour
 
     }
 
+    public void SetFastItems(int indexSlot, SourceItemSlot item)
+    {
+        if (indexSlot >= 0 && indexSlot < this.listFastItems.Length)
+        {
+            this.listFastItems[indexSlot].itemSlot = item;
+            this.listFastItems[indexSlot].icon.sprite = item.icon;
+            this.listFastItems[indexSlot].numberCurrentItem.text = item.currentNumberItem.ToString();
 
+        }
+    }
+
+    public void UpdateFastItemUI()
+    {
+        foreach (InventorySlot s in this.listFastItems)
+        {
+            if (s != null)
+            {
+                if (s.itemSlot != null)
+                {
+                    s.numberCurrentItem.text = s.itemSlot.currentNumberItem.ToString();
+                }
+            }
+        }
+    }
+    private IEnumerator EquipDefaultItems(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        
+        foreach(SourceItemSlot s in defaultItems){
+            this.Add(s,s.maxNumberItem);
+        }
+    }
 
 }

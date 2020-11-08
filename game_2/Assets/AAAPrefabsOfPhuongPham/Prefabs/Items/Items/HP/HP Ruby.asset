@@ -16,7 +16,7 @@ MonoBehaviour:
   - Ruby
   - "Huy\u1EBFt ng\u1ECDc"
   maxNumberItem: 6
-  currentNumberItem: 2
+  currentNumberItem: 6
   typeUnit: 1
   information:
   - This ruby can heal .You can update this ruby can use in future.

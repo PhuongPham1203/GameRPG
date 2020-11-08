@@ -213,7 +213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3e7bd581a136a884baaf0ca5b55d1560, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a11d092ef92be049b7f7cef16a50192, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -405,8 +405,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetTest
+      - m_Target: {fileID: 5763153703417777747}
+        m_MethodName: UseItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -465,11 +465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e50a9f5fc2a82444a0f0f964f2d1e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  itemSlot: {fileID: 0}
+  icon: {fileID: 5763153703220803291}
+  numberCurrentItem: {fileID: 5763153703223299514}
   nameItem: {fileID: 0}
-  inforButton: {fileID: 0}
-  addButton: {fileID: 0}
-  removeButton: {fileID: 0}
+  informationItem: {fileID: 0}
 --- !u!1 &5763153703891831901
 GameObject:
   m_ObjectHideFlags: 0

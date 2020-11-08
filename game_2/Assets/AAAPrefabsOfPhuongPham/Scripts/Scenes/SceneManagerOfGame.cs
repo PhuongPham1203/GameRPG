@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-
+using System;
 
 public class SceneManagerOfGame : MonoBehaviour
 {
@@ -86,6 +86,8 @@ public class SceneManagerOfGame : MonoBehaviour
     {
         loadingScene.gameObject.SetActive(true);
         canvasMainMenu.gameObject.SetActive(false);
+        this.cameraInScene.SetActive(true);        
+        this.sceneLoading = new List<AsyncOperation>();
 
         foreach (SceneIndexes scene in listSceneIndexNewGame)
         {
@@ -106,6 +108,10 @@ public class SceneManagerOfGame : MonoBehaviour
         animatorIcon.SetInteger("type", 2);
     }
     public void RestartGameFromCheckPoint(){
+        SceneManager.UnloadScene(SceneManager.GetActiveScene());
+        SceneManager.UnloadScene(1);
+
+        this.LoadNewGame();
 
     }
     #region TestLoading
@@ -237,6 +243,12 @@ public class SceneManagerOfGame : MonoBehaviour
         animatorIcon.SetInteger("type", 0);
         cameraInScene.gameObject.SetActive(false);
         loadingScene.gameObject.SetActive(false);
+
+        try{
+            PlayerManager.instance.player.SetActive(true);
+        }catch(Exception e){
+
+        }
 
     }
     public void SetVolumeTheme(Slider number)

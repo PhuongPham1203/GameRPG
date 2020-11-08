@@ -53,6 +53,10 @@ public class InventoryIU : MonoBehaviour
                 slotsWeapon[i].ClearSlot();
             }
         }
+
+        // Update UI Fast Items
+        Inventory.instance.UpdateFastItemUI();
+        
     }
 
 }

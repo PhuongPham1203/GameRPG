@@ -8,30 +8,31 @@ public class InventorySlot : MonoBehaviour
     public SourceItemSlot itemSlot;
     public Image icon;
     public Text numberCurrentItem;
-    public Button openInformationButton;// Check information button
-    public Button useItemButton; // button use item
-    public Button setSlotButton;// set slot item button
-    public Button cancelButton;// on off UI button
+    //public Button openInformationButton;// Check information button
+    //public Button useItemButton; // button use item
+    //public Button setSlotButton;// set slot item button
+    //public Button cancelButton;// on off UI button
 
 
+    
     [Header("UI Information Item")]
     public Text nameItem;
     public Text informationItem;
-    public Text numberItem;
+    //public Text numberItem; // number current Item
 
 
     //private SlotInformation slot;
     //SourceItemSlot slot;
     public void AddItem(SourceItemSlot newItem)
     {
-        
-            this.itemSlot = newItem;
-            this.icon.sprite = this.itemSlot.icon;
-            this.icon.enabled = true;
 
-            this.numberCurrentItem.text = this.itemSlot.currentNumberItem.ToString();
+        this.itemSlot = newItem;
+        this.icon.sprite = this.itemSlot.icon;
+        this.icon.enabled = true;
 
-        
+        this.numberCurrentItem.text = this.itemSlot.currentNumberItem.ToString();
+
+
 
 
         /*
@@ -66,7 +67,7 @@ public class InventorySlot : MonoBehaviour
         inventoryS.itemSlot = itemNew;
         inventoryS.nameItem.text = inventoryS.itemSlot.nameItem[languageIndex];
         inventoryS.informationItem.text = inventoryS.itemSlot.information[languageIndex];
-        inventoryS.numberItem.text = "Total : " + inventoryS.itemSlot.currentNumberItem + " / " + inventoryS.itemSlot.maxNumberItem;
+        inventoryS.numberCurrentItem.text = "Total : " + inventoryS.itemSlot.currentNumberItem + " / " + inventoryS.itemSlot.maxNumberItem;
 
         MenuController.instance.uiInformationItem.SetActive(true);
 
@@ -91,7 +92,13 @@ public class InventorySlot : MonoBehaviour
     {
         if (this.itemSlot != null)
         {
-            this.itemSlot.Use();
+            if (this.itemSlot.currentNumberItem > 0)
+            {
+                this.itemSlot.Use();
+                this.itemSlot.currentNumberItem-- ;
+                this.numberCurrentItem.text = this.itemSlot.currentNumberItem.ToString();
+
+            }
         }
     }
 
@@ -102,6 +109,11 @@ public class InventorySlot : MonoBehaviour
             this.CheckInforButtonSlot(this.itemSlot);
 
         }
+    }
+
+    public void SetFastItems(int slot)
+    {
+        Inventory.instance.SetFastItems(slot,this.itemSlot);
     }
 
 
