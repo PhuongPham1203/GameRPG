@@ -65,6 +65,20 @@ public class WeaponControllerOfBoss : MonoBehaviour
 
     }
 
+    public void CheckIfPlayerDeflect(IsHit i){
+        if (i == IsHit.Deflect)
+            {
+                // For Enemy
+                this.GetComponent<Collider>().enabled = false;
+                this.enemyController.StopCoroutine(this.enemyController.actionLeaveAction);
+                this.enemyController.PlayerDeflectEnemy(this.inforAttack);
+                this.enemyController.GetComponent<Animator>().SetTrigger("triggerDeflect");
+
+                
+            }
+
+    }
+
 
 
 }

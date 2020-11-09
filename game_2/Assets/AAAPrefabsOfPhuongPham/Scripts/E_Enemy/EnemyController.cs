@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
+//using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -49,6 +49,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Alent : 0:die 1-Idle 2:Warning 3-OnTarget")]
     public AlertEnemy alertEnemy = AlertEnemy.Idle;
+    public Collider triggerActivateEnemy;
     //public int alert = (int)AlertEnemy.Idle;
     public bool canFinish = false;
     public GameObject vfxFinishBot;
@@ -164,7 +165,7 @@ public class EnemyController : MonoBehaviour
         switch (setAlent)
         {
             case AlertEnemy.Die:// ! Die
-
+                this.triggerActivateEnemy.enabled = false;
                 StopAllCoroutines();
                 canFinish = false;
                 Debug.Log("Set alert Die " + gameObject.name);
@@ -185,6 +186,10 @@ public class EnemyController : MonoBehaviour
 
             case AlertEnemy.Idle:// !Idle
                 //Debug.Log("Set alert Idle " + gameObject.name);
+                this.triggerActivateEnemy.enabled = true;
+
+                this.animator.SetFloat("x", 0);
+                this.animator.SetFloat("z", 0);
 
                 textAlert.text = "";
                 if (actionLeaveAction != null)
@@ -198,7 +203,7 @@ public class EnemyController : MonoBehaviour
 
             case AlertEnemy.Warning:// !Warning
                 //Debug.Log("Set alert Warning " + gameObject.name);
-
+                this.triggerActivateEnemy.enabled = true;
                 textAlert.text = "?";
 
                 if (actionLeaveAction != null)
@@ -213,6 +218,7 @@ public class EnemyController : MonoBehaviour
 
             case AlertEnemy.OnTarget:// !OnTarget
                 //Debug.Log("Set alert OnTarget " + gameObject.name);
+                this.triggerActivateEnemy.enabled = false;
 
                 textAlert.text = "!";
                 if (actionLeaveAction != null)
@@ -384,12 +390,14 @@ public class EnemyController : MonoBehaviour
             Debug.Log(this.inforAttackCurrent.hitBox.name + " " + this.inforAttackCurrent.hitBox.enabled);
         }
         */
-        
+
 
     }
 
-    public void ActivateVFX(){
-        if(this.inforAttackCurrent.particleSystemVFX != null){
+    public void ActivateVFX()
+    {
+        if (this.inforAttackCurrent.particleSystemVFX != null)
+        {
             this.inforAttackCurrent.particleSystemVFX.Play();
         }
     }
@@ -418,17 +426,22 @@ public class EnemyController : MonoBehaviour
 
     public void Stun(float t)
     {
+
+        if (this.actionLeaveAction != null) StopCoroutine(this.actionLeaveAction);
+
         this.canAction = false;
         this.animator.SetInteger("InAction", 10);
         this.animator.SetFloat("SpeedMove", 0);
         this.animator.SetFloat("x", 0);
         this.animator.SetFloat("z", 0);
         this.lookAt = false;
-        if (actionLeaveAction != null)
-        {
-            StopCoroutine(actionLeaveAction);
-        }
+
+        this.animator.SetInteger("AttackCombo", 0);
+        this.animator.ResetTrigger("triggerAttack");
+
+        if (actionLeaveAction != null)StopCoroutine(actionLeaveAction);
         actionLeaveAction = StartCoroutine(CanAction(t));
+
     }
 
     protected IEnumerator CanAction(float waitTime)
@@ -526,11 +539,19 @@ public class EnemyController : MonoBehaviour
     {
         //Debug.Log("Finish1");
         //StopAllCoroutines();
-        canAction = false;
+        this.canAction = false;
+        this.triggerActivateEnemy.enabled = false;
+        this.lookAt = false;
+
+        if (this.actionFinishBot != null) StopCoroutine(actionFinishBot);
+        if (this.actionLeaveAction != null) StopCoroutine(this.actionLeaveAction);
+        
+
         if (TryGetComponent<SelectEnemy>(out SelectEnemy se))
         {
             se.enabled = false;
         }
+
         //SetAlentCombat(AlertEnemy.Die);
         animator.SetInteger("InAction", 10);
 
@@ -548,16 +569,21 @@ public class EnemyController : MonoBehaviour
         this.lookAt = false;
 
     }
-    /*
-    IEnumerator BotDie(float t)  
+
+
+    public IEnumerator BotDieAfter(float t)
     {
-        yield return new WaitForSeconds(t);
-        this.animator.SetInteger("InAction",8);
-        characterStats.TakeTrueDamegeFinish(999999);
-        characterStats.Die();
-        
+        this.Finish1();
+
+        yield return new WaitForSeconds(0);
+        //this.animator.SetInteger("InAction",8);
+        //characterStats.TakeTrueDamegeFinish(999999);
+        //characterStats.Die();
+
+        this.Finish2();
+
     }
-    */
+
     public virtual void EnemyDie()
     {
         Debug.Log("run EnemyDie");
@@ -603,7 +629,16 @@ public class EnemyController : MonoBehaviour
         this.characterStats.Reduction(this.timeReduction);
 
         this.animator.SetInteger("AttackCombo", 0);
-        StartCoroutine(this.CanBlockAffter(1.5f));
+
+        if (this.characterStats.currentPosture >= this.characterStats.maxPosture)
+        {
+            this.CanFinishBot(4f);
+        }
+        else
+        {
+            StartCoroutine(this.CanBlockAffter(1.5f));
+
+        }
         //this.animator.SetBool("Block", true);
     }
 

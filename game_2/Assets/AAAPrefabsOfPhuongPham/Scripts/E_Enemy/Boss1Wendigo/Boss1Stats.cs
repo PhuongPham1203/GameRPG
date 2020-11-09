@@ -94,8 +94,9 @@ public class Boss1Stats : CharacterStats
             {
 
                 //Debug.Log("Can Finish");
-                this.Die();
+                //this.Die();
 
+                StartCoroutine(this.enemyController.BotDieAfter(1.2f));
 
 
             }
@@ -119,7 +120,7 @@ public class Boss1Stats : CharacterStats
         if (this.enemyController.ReLive())
         {
 
-            StartCoroutine(SetStatRelive(1f));
+            StartCoroutine(SetStatRelive(3f));
             //this.animator.SetInteger("InAction", 0);
 
 
@@ -178,12 +179,22 @@ public class Boss1Stats : CharacterStats
             //{
             this.enemyController.SetAlentCombat(AlertEnemy.OnTarget);
             this.enemyController.canAction = true;
-            if (AudioManager.instance.IsPlayAnyTheme())
+            this.enemyController.lookAt = true;
+
+            if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
             {
-                AudioManager.instance.StopAllTheme();
+
             }
-            
-            AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
+            else
+            {
+                if (AudioManager.instance.IsPlayAnyTheme())
+                {
+                    AudioManager.instance.StopAllTheme();
+                }
+
+                AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
+
+            }
 
             //}
         }
@@ -213,16 +224,9 @@ public class Boss1Stats : CharacterStats
 
         this.ResetAllCurrentAndMaxValue(this.phaseBossStats[this.indexPhaseBossStat].HP, 0, this.phaseBossStats[this.indexPhaseBossStat].Posture);
 
-        this.animator.SetInteger("InAction", 0);
-        this.enemyController.canAction = true;
+        //this.animator.SetInteger("InAction", 0);
+        //this.enemyController.canAction = true;
 
-
-        if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
-        {
-            //Debug.Log("Activate by player  hit");
-            this.ActivateBot();
-        }
-        // disable Current Weapon
         foreach (GameObject g in this.phaseBossStats[this.indexPhaseBossStat - 1].listWeapon)
         {
             g.SetActive(false);
@@ -233,6 +237,17 @@ public class Boss1Stats : CharacterStats
         {
             g.SetActive(true);
         }
+
+        yield return new WaitForSeconds(3f);
+
+        if (this.enemyController.alertEnemy != AlertEnemy.OnTarget)
+        {
+            //Debug.Log("Activate by player  hit");
+            this.ActivateBot();
+        }
+        this.enemyController.canAction = true;
+        // disable Current Weapon
+
 
     }
 

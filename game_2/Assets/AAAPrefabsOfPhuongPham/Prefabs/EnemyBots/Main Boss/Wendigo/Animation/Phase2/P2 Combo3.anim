@@ -87978,7 +87978,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.4583334
-    functionName: ActivateWeapon
+    functionName: AttackCreateFlyWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

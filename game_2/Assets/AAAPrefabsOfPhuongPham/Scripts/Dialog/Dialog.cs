@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Contexts;
+//using System.Runtime.Remoting.Contexts;
 using UnityEngine;
 //using UnityEditor.SceneManagement;
 [CreateAssetMenu(fileName = "New Dialog", menuName = "Inventory/Dialog")]

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7349676064759624921}
   - component: {fileID: 542509189013296261}
   - component: {fileID: 542509189013296262}
-  - component: {fileID: 4584351916157946932}
   - component: {fileID: 5910557217111979025}
   - component: {fileID: 8246543909538425172}
   m_Layer: 23
@@ -125,6 +124,7 @@ MonoBehaviour:
   target: {fileID: 0}
   textAlert: {fileID: 542509190249411054}
   alertEnemy: 1
+  triggerActivateEnemy: {fileID: 5919532650086024901}
   canFinish: 1
   vfxFinishBot: {fileID: 2109782001471439413}
   canAction: 1
@@ -136,6 +136,7 @@ MonoBehaviour:
   - 4
   - 2
   - 5
+  timeReduction: 5
   numberListAttack: 0
   startListAttack: 0
   currentListAttack: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
     distanceAttack: 2
     timeToNextAction: 0
     hitBox: {fileID: 0}
+    particleSystemVFX: {fileID: 0}
   isHitPlayer: 1
 --- !u!114 &542509189013296262
 MonoBehaviour:
@@ -188,30 +190,6 @@ MonoBehaviour:
   itemKeep:
   - {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
   itemDrop: []
---- !u!114 &4584351916157946932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542509189013296266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f77ea5748d576db4fb97cea42ff71ee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorCharacter: {fileID: 542509189013296267}
-  transformRoot: {fileID: 542509189013296260}
-  targetEnemy: {fileID: 0}
-  maxAngle: 50
-  maxRadius: 25
-  layerEnemyTarget:
-    serializedVersion: 2
-    m_Bits: 16777216
-  layerLineCastToTarget:
-    serializedVersion: 2
-    m_Bits: 24118019
-  enemyController: {fileID: 0}
 --- !u!114 &5910557217111979025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +699,65 @@ MonoBehaviour:
   characterStats: {fileID: 0}
   timeWait: 1
   combo: 02000000
+--- !u!1 &7181080549450676120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8322476965922832371}
+  - component: {fileID: 7255219842823014075}
+  - component: {fileID: 5919532650086024901}
+  m_Layer: 2
+  m_Name: Trigger Activate Bot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8322476965922832371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7181080549450676120}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7601578607924211002}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7255219842823014075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7181080549450676120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6f1feeef728ea47b5eb873b1f71b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
+--- !u!136 &5919532650086024901
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7181080549450676120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 10
+  m_Height: 25
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7601578607924211001
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +788,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 310502324990221953}
+  - {fileID: 8322476965922832371}
   m_Father: {fileID: 542509189013296260}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1094,12 +1132,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 739b833abdb2e3940bbb4eb8a20dd83e, type: 3}
---- !u!65 &5554560760390244187 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 8454205365854600645, guid: 739b833abdb2e3940bbb4eb8a20dd83e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4055101592676117150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5327932086864629379 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8193740320604447773, guid: 739b833abdb2e3940bbb4eb8a20dd83e,
@@ -1112,6 +1144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ceb339997c8304e9354d4ce5ddc9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5554560760390244187 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8454205365854600645, guid: 739b833abdb2e3940bbb4eb8a20dd83e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4055101592676117150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1413153580422752288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3159867604940604094, guid: 739b833abdb2e3940bbb4eb8a20dd83e,
@@ -1187,15 +1225,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c7823a39c161334289178acd9219fb3, type: 3}
---- !u!198 &4303102424140043134 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9188496273426554239, guid: 4c7823a39c161334289178acd9219fb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4914456845624167937}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4667391267703466265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 357561007814731544, guid: 4c7823a39c161334289178acd9219fb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4914456845624167937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4303102424140043134 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9188496273426554239, guid: 4c7823a39c161334289178acd9219fb3,
     type: 3}
   m_PrefabInstance: {fileID: 4914456845624167937}
   m_PrefabAsset: {fileID: 0}

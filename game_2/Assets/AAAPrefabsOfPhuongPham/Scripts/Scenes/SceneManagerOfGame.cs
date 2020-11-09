@@ -40,13 +40,15 @@ public class SceneManagerOfGame : MonoBehaviour
 
     [Header("List Scene Index")]
     public List<SceneIndexes> listSceneIndexNewGame;
+    /*
     public List<SceneIndexes> listSceneIndex;
     public List<SceneIndexes> listSceneIndex2;
+    */
     List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
 
     private void Start()
     {
-        LoadDataQuestAndTeleport();
+        //LoadDataQuestAndTeleport();
     }
 
     void LoadDataQuestAndTeleport()
@@ -115,6 +117,7 @@ public class SceneManagerOfGame : MonoBehaviour
 
     }
     #region TestLoading
+    /*
     public void LoadGame()
     {
 
@@ -135,18 +138,13 @@ public class SceneManagerOfGame : MonoBehaviour
             async.allowSceneActivation = false;
         }
 
-        /*
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_PLAYER, LoadSceneMode.Additive));
-        //sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_APOCALYPSE, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CITY, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.SCENE_CLOUDFOREST, LoadSceneMode.Additive));
-        //SceneManager.UnloadSceneAsync((int)SceneIndexes.SCENE_MANAGER,LoadSceneMode.Additive);
-        */
+        
         StartCoroutine(GetSceneLoadProgress());
         Debug.Log("point");
         animatorIcon.SetInteger("type", 2);
 
     }
+    */
 
     public void LoadGameTestContinue()
     {

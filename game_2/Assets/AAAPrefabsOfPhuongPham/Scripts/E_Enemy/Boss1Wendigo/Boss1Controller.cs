@@ -680,6 +680,7 @@ public class Boss1Controller : EnemyController
 
         // Set Layer Animator - Phase
 
+        /*
         for (int i = 1; i < this.animator.layerCount; i++)
         {
             if ((int)this.phaseBossCurrent == i)
@@ -691,6 +692,7 @@ public class Boss1Controller : EnemyController
                 this.animator.SetLayerWeight(i, 0);
             }
         }
+        */
 
     }
 
@@ -707,7 +709,7 @@ public class Boss1Controller : EnemyController
 
 
 
-            StartCoroutine(CanTakeDamageIn(4f));
+            StartCoroutine(CanTakeDamageIn(3f));
             this.inforAttackCurrent = new InforAttack();
             this.phaseBossCurrent = this.phaseBossCurrent + 1;
 
@@ -729,6 +731,8 @@ public class Boss1Controller : EnemyController
         this.animator.SetLayerWeight((int)this.phaseBossCurrent, 1);
 
         this.lookAt = true;
+
+        this.animator.SetInteger("InAction", 0);
 
 
 

@@ -206,6 +206,8 @@ public class PlayerStats : CharacterStats
 
                 canBlockMore = false;
                 this.animator.SetInteger("InAction", 0);
+                this.animator.SetFloat("x", 0);
+                this.animator.SetFloat("z", 0);
 
             }
             if (currentPosture < maxPosture)
@@ -336,10 +338,12 @@ public class PlayerStats : CharacterStats
         foreach (EnemyController enemy in allEnemy)
         {
             enemy.SetAlentCombat(AlertEnemy.Idle);
+            /*
             if (enemy.TryGetComponent<SelectEnemy>(out SelectEnemy s))
             {
                 s.enabled = true;
             }
+            */
         }
     }
 
@@ -361,6 +365,8 @@ public class PlayerStats : CharacterStats
 
     public void RestartGame()
     {
+        AudioManager.instance.StopAllTheme();
+
         SceneManagerOfGame.instance.RestartGameFromCheckPoint();
     }
     public void Standing()

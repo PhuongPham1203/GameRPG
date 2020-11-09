@@ -74,7 +74,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0983c4cb48a2722428b5e1f138cccd06, type: 2}
   listSceneIndex2:
   - {fileID: 11400000, guid: 0983c4cb48a2722428b5e1f138cccd06, type: 2}
-  - {fileID: 11400000, guid: 890ed2b671395a349af7b2a1b6746157, type: 2}
+  - {fileID: 11400000, guid: 01bd1e5e9fd76394687c96860bdee891, type: 2}
 --- !u!114 &8443958868542939356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,3 +122,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40952f2010ffa9548965d1b5707e023b, type: 2}
   - {fileID: 11400000, guid: 54479c6e56edc9449a6c0b35668a7e94, type: 2}
   - {fileID: 11400000, guid: b26e36f4b676dd44eb5624e280cfa080, type: 2}
+  teleportUI: {fileID: 0}
