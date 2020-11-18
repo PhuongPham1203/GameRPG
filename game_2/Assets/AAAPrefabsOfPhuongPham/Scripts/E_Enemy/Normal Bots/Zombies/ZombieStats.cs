@@ -11,21 +11,21 @@ public class ZombieStats : CharacterStats
         //SetAllBaseValue();
         this.enemyController = GetComponent<EnemyController>();
         this.animator = GetComponent<Animator>();
-        this.ResetAllCurrentAndMaxValue( startHP ,startAttackDame,startPosture );
+        //this.ResetAllCurrentAndMaxValue(startHP, startAttackDame, startPosture);
         this.audioEnemy = GetComponent<AudioEnemy>();
 
-
+        this.StartLife();
     }
 
-    
-    public override IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect,EnemyController enemyC)
+
+    public override IsHit TakeDamage(int damage, float timeStun, AttackTypeEffect attackTypeEffect, EnemyController enemyC)
     {
         //base.TakeDamage(damage);
         //Debug.Log("Zombie"+transform.name+" take: " + damage);
 
         if (animator.GetInteger("InAction") != 8 /*&& animator.GetInteger("InAction") != 10*/)
         {
-            if(this.enemyController.alertEnemy == AlertEnemy.Idle)
+            if (this.enemyController.alertEnemy == AlertEnemy.Idle)
             {
                 float distanc = Vector3.Distance(transform.position, PlayerManager.instance.player.transform.position);
                 if (distanc < 5)
@@ -77,7 +77,7 @@ public class ZombieStats : CharacterStats
 
             if (canBlockMore && animator.GetBool("Block")) // ! In Block
             {
-                
+
             }
             else
             { // ! Not Block
@@ -91,7 +91,7 @@ public class ZombieStats : CharacterStats
 
                 if (canBlockMore)
                 {
-                    animator.SetBool("Block",true);
+                    animator.SetBool("Block", true);
                 }
 
                 //Debug.Log(transform.name + " HP Take " + damage + " damege.");
@@ -113,7 +113,7 @@ public class ZombieStats : CharacterStats
                 this.enemyController.CanFinishBot(2f);
                 //enemyController.Stun(2f);
                 //playerController.PlayerStun();
-                
+
             }
         }
         return IsHit.Hit;
@@ -147,19 +147,19 @@ public class ZombieStats : CharacterStats
         //SetUIActivate(false);
         enemyController.EnemyDie();
         //animator.SetInteger("InAction", 8);
-        
+
 
         PlayerManager.instance.player.GetComponent<PlayerController>().LockTarget();
         this.gameObject.layer = 2;
         PlayerManager.instance.player.GetComponent<SelectPlayer>().targetEnemy = null;
-        
+
 
         //new WaitForSeconds(0.2f);
 
         //Invoke("MyDelayedCode", 0.5f);
 
         StartCoroutine(MyDelayedCode(2f));
-        
+
         StartCoroutine(DisableAfter(3f));
 
         //Destroy(gameObject,3);
@@ -173,15 +173,17 @@ public class ZombieStats : CharacterStats
 
     public override void UpdateHPAndPosture()
     {
-        if (currentPosture>= maxPosture)
+        if (currentPosture >= maxPosture)
         {
             enemyController.canFinish = true;
-        }else if (enemyController.alertEnemy == AlertEnemy.OnTarget ){
+        }
+        else if (enemyController.alertEnemy == AlertEnemy.OnTarget)
+        {
             enemyController.canFinish = false;
 
         }
 
-        if (hpUI!=null)
+        if (hpUI != null)
         {
             base.UpdateHPAndPosture();
 

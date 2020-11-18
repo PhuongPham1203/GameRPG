@@ -19,39 +19,15 @@ public class WeaponControllerOfBoss : MonoBehaviour
     protected EnemyController enemyController;
     private void OnTriggerEnter(Collider other)
     {
-        /*
-        if (other.gameObject.layer == 2 && other.gameObject.CompareTag("Deflect"))
-        { // layer ignore Raycast
-            if (this.enemyController == null)
-            {
-                this.enemyController = transform.root.GetComponent<EnemyController>();
-            }
-            if (this.enemyController.inforAttackCurrent.attackTypeEffect == AttackTypeEffect.Dead)
-            {
-                return;
-            }
-            this.GetComponent<Collider>().enabled = false;
-            this.inforAttack = this.enemyController.inforAttackCurrent;
-
-            // For Player
-            AudioManager.instance.PlaySoundOfPlayer("Deflect");
-
-            other.GetComponentInParent<CharacterStats>().vfxSteel.Play();
-            other.GetComponentInParent<CharacterStats>().AddPostureDeflect(this.inforAttack.damageAttack / 4);
-
-            // For Enemy
-            this.enemyController.StopCoroutine(this.enemyController.actionLeaveAction);
-            this.enemyController.PlayerDeflectEnemy(this.inforAttack);
-            this.enemyController.GetComponent<Animator>().SetTrigger("triggerDeflect");
-        }
-        else 
-        */
+        
         if (other.gameObject.layer == 24)
         {
 
             this.inforAttack = this.enemyController.inforAttackCurrent;
             //Debug.Log("Player take Damage");
             IsHit isHit = other.GetComponent<CharacterStats>().TakeDamage(this.inforAttack.damageAttack, this.inforAttack.timeStun, this.inforAttack.attackTypeEffect, this.enemyController);
+            this.CheckIfPlayerDeflect(isHit);
+            /*
             if (isHit == IsHit.Deflect)
             {
                 // For Enemy
@@ -60,12 +36,13 @@ public class WeaponControllerOfBoss : MonoBehaviour
                 this.enemyController.PlayerDeflectEnemy(this.inforAttack);
                 this.enemyController.GetComponent<Animator>().SetTrigger("triggerDeflect");
 
-            }
+            }*/
+
         }
 
     }
 
-    public void CheckIfPlayerDeflect(IsHit i){
+    protected void CheckIfPlayerDeflect(IsHit i){
         if (i == IsHit.Deflect)
             {
                 // For Enemy

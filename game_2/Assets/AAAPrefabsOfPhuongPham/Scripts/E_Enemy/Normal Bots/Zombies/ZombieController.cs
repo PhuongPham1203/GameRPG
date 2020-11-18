@@ -1,49 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ZombieController : EnemyController
 {
+    private void Start()
+    {
+        playerController = PlayerManager.instance.player.GetComponent<PlayerController>();
+        audioEnemy = GetComponent<AudioEnemy>();
+        characterStats = GetComponent<CharacterStats>();
 
+        // set combo of this phase , run befor
+        this.SetComboOfPhase(this.phaseBossCurrent);
+
+    }
     private void Update()
     {
         /*
-        FOVDetectTarget();
-        if (alertEnemy == AlertEnemy.OnTarget) // have target
-        {
-            // Action with Target When OnCombat
-            distance = Vector3.Distance(target.position, transform.position);
-            if(distance > distanceCanAttack){
-                MoveToTarget();    
-            }else if (distance <= distanceCanAttack)
-            {
-                animator.SetFloat("SpeedMove", 0);
-
-                if (canAction)
-                {
-                    
-                    Attack(1);
-                }
-            }
-
-        }
-        else if (alertEnemy == AlertEnemy.Warning) // Warning
-        {
-            // Action When Waring
-        }
-        else if (alertEnemy == AlertEnemy.Idle) //Idle
-        {
-            // Action When Idle
-
-        }
-        */
-
         if (curTimeWait > 0)
         {
             curTimeWait -= Time.deltaTime;
 
         }
-
+        */
         if (canAction)
         {
 
@@ -92,7 +73,8 @@ public class ZombieController : EnemyController
                 if (timeTryMoveToPos > 0)
                 {
                     timeTryMoveToPos -= Time.deltaTime;
-                    if (MoveToPosition(posionTryMoveTo, 1f, runSpeed))
+                    this.posionTryMoveTo = PlayerManager.instance.player.transform.position;
+                    if (MoveToPosition(posionTryMoveTo, 2f, runSpeed))
                     {
                         timeTryMoveToPos = 0;
                     }
@@ -111,9 +93,14 @@ public class ZombieController : EnemyController
     protected override void RunListAttack()
     {
 
-        if (currentAttackDone)
+        if (this.currentAttackDone)
         {
-            currentAttackDone = false;
+            this.timeTryMoveToPos = 0;
+
+            this.distanceCanAttack = this.distanceAttack[this.currentListAttack].distanceAttack;
+            this.currentAttackDone = false;
+
+
         }
 
         switch (currentListAttack)
@@ -121,208 +108,148 @@ public class ZombieController : EnemyController
 
             case 0:
                 // code
-
-                AttackFirstTime();
+                if (MustRunRandomWalkAround(1f)) break;
+                this.AttackBase();
                 break;
             case 1:
                 // code
 
-                AttackSecondTime();
+                if (MustRunRandomWalkAround(2f)) break;
+                //this.AttackBase();
+                this.AttackPhase1Combo2();
                 break;
             case 2:
                 // code
-
-
-
-                if (curTimeWait > 0)
-                {
-                    MoveLockTargetWalkAround(directionShoulGo, 0.5f, moveSpeed);
-
-                }
-                else
-                {
-                    currentAttackDone = true;
-                    animator.SetBool("Block", false);
-
-                }
+                if (MustRunRandomWalkAround(1f)) break;
+                this.AttackBase();
 
                 break;
-            case 3:
-                // code
 
-                AttackThirdTime();
-
-                break;
-            case 4:
-                // code
-
-                if (curTimeWait > 0)
-                {
-                    MoveLockTargetWalkAround(directionShoulGo, 0.5f, moveSpeed);
-
-                }
-                else
-                {
-                    currentAttackDone = true;
-                    animator.SetBool("Block", false);
-
-
-                }
-                break;
 
         }
-        if (!currentAttackDone)
-        {
-            return;
-        }
 
-        currentListAttack += 1;
-        if (currentListAttack >= numberListAttack)
-        {
-            currentListAttack = startListAttack;
-        }
 
     }
 
-    protected override void AttackFirstTime()
+
+    protected override void AttackBase()
     {
-        //base.AttackFirstTime();
-        if (distance < distanceCanAttack)
+        if (this.distance < this.distanceCanAttack) // Attack
         {
+            this.StopLookAndMove();
+            // look At
+            Vector3 t = this.target.position;
+            t.y = this.transform.position.y;
+            this.transform.LookAt(t);
 
-            currentAttackDone = Attack(currentListAttack);
-            animator.SetFloat("SpeedMove", 0);
+            // Attack
+            this.currentAttackDone = this.Attack(this.currentListAttack);
 
         }
-        else
+        else // Move to Player
         {
-            MoveToPosition(target.position, 1f, runSpeed);
-
+            this.MoveToPosition(this.target.position, 0.5f, this.moveSpeed);
         }
 
-
-        if (currentAttackDone)
-        {
-            startListAttack = 1;
-        }
+        this.CheckCurrentAttackDone();
     }
 
-
-    protected override void AttackSecondTime()
+    void AttackPhase1Combo2()
     {
-        //base.AttackSecondTime();
-
-        if (distance < distanceCanAttack)
+        if (this.distance < this.distanceCanAttack) // Attack
         {
+            this.StopLookAndMove();
+            // look At
+            Vector3 t = this.target.position;
+            t.y = this.transform.position.y;
+            this.transform.LookAt(t);
 
-            currentAttackDone = Attack(currentListAttack);
-            animator.SetFloat("SpeedMove", 0);
+            // Attack
+            this.currentAttackDone = this.Attack(this.currentListAttack);
 
         }
-        else
+        else // Move to Player
         {
-            MoveToPosition(target.position, 0.5f, moveSpeed);
-
+            this.MoveToPosition(this.target.position, 1f, this.runSpeed);
         }
 
-        
-        if (currentAttackDone)
-        {
-            //startListAttack = 1;
-            Vector3 direc = (transform.position - PlayerManager.instance.player.transform.position).normalized;
-            direc.x += Random.Range(-0.7f,0.7f);
-            direc.z += Random.Range(-0.7f, 0.7f);
-            directionShoulGo = direc.normalized;
-
-            curTimeWait = timeToNextAction[currentListAttack+1];
-
-            animator.SetBool("Block",true);
-
-        }
-        
-
+        this.CheckCurrentAttackDone();
     }
 
-    protected override void AttackThirdTime()
+    public override bool Attack(int attackCombo)
     {
-        //base.AttackThirdTime();
 
-        if (distance < distanceCanAttack)
+        if (canAction)
         {
+            this.animator.SetBool("Block", false);
+            this.isHitPlayer = IsHit.Miss;
+            this.canAction = false;
 
-            currentAttackDone = Attack(2);
-            animator.SetFloat("SpeedMove", 0);
-
-        }
-        else
-        {
-            MoveToPosition(target.position, 0.5f * 1.5f, moveSpeed * 1.5f);
-
-        }
-
-        if (currentAttackDone)
-        {
-            //startListAttack = 1;
-            Vector3 direc = (transform.position - PlayerManager.instance.player.transform.position).normalized;
-            direc.x += Random.Range(-0.7f, 0.7f);
-            direc.z += Random.Range(-0.7f, 0.7f);
-            directionShoulGo = direc.normalized;
-            
-            curTimeWait = timeToNextAction[currentListAttack + 1];
-
-            animator.SetBool("Block", true);
+            this.inforAttackCurrent = this.distanceAttack[this.currentListAttack];
 
 
+            if (this.actionLeaveAction != null) StopCoroutine(this.actionLeaveAction);
+
+            this.actionLeaveAction = StartCoroutine(this.CanAttackAgain(this.inforAttackCurrent.timeToNextAction)); // time can do something again
+
+            this.animator.SetInteger("AttackCombo", this.inforAttackCurrent.combo);
+            this.animator.SetTrigger("triggerAttack");
+
+            // for Hit Box
+            //this.inforAttackCurrent.hitBox.enabled = true;
+
+            characterStats.Reduction(this.timeReduction);
+
+            return true;
         }
 
+        return false;
+        //return base.Attack(attackCombo);
     }
-
-    public override void HitBox(int numberHit)
+    protected override void SetComboOfPhase(PhaseBoss phaseBoss)
     {
-        
-        //base.HitBox(numberHit);
-
-        //Quaternion rot ;
-        switch (numberHit)
+        this.currentListAttack = 0;
+        int number = 0;
+        bool f = true;
+        foreach (InforAttack i in this.distanceAttack)
         {
-
-            case 11:
-                // code
-                audioEnemy.PlaySoundOfEnemy("Attack1_1");
-                //Instantiate(hitBox[0], parentVfxEnemy);
-
-                hitBox[1].enabled = true;
-                //SetHitBox();
-                break;
-            case 12:
-                // code
-                audioEnemy.PlaySoundOfEnemy("Attack1_2");
-                //Instantiate(hitBox[1], parentVfxEnemy);
-                hitBox[1].enabled = true;
-
-                break;
-            case 2:
-                // code
-                //Instantiate(hitBox[2], parentVfxEnemy);
-                audioEnemy.PlaySoundOfEnemy("Attack2");
-                hitBox[0].enabled = true;
-
-                break;
-            case 3:
-                // code
-
-                //Instantiate(hitBox[2], parentVfxEnemy);
-                audioEnemy.PlaySoundOfEnemy("Attack3");
-                hitBox[1].enabled = true;
-
-                break;
-
+            if (i.phaseBoss == phaseBoss)
+            {
+                number++;
+                if (f)
+                {
+                    f = false;
+                    this.startListAttack = Array.IndexOf(this.distanceAttack, i);
+                    this.currentListAttack = this.startListAttack;
+                }
+            }
 
         }
 
-
+        this.numberListAttack = number;
+        this.currentAttackDone = true;
     }
 
-    
+    public override bool MoveToPosition(Vector3 positionTarget, float typeMove, float speed)
+    {
+        Vector3 way = (positionTarget - transform.position).normalized;
+        way.y = 0;
+        characterController.Move(way * speed * Time.deltaTime);
+        animator.SetFloat("z", typeMove);
+
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(way.x, 0, way.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (float)speedTrackTarget);
+
+        Vector3 a = transform.position;
+
+        if (Math.Abs(a.x - positionTarget.x) < 1 && Math.Abs(a.z - positionTarget.z) < 1)
+        {
+            return true;
+        }
+
+        return false;
+
+        //return base.MoveToPosition(positionTarget, typeMove, speed);
+    }
 
 }

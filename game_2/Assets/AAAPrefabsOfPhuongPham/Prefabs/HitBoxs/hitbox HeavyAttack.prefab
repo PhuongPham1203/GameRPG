@@ -57,6 +57,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954020862aa43be4e881e298a6a9b504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDetroy: 0.5
+  timeDetroy: 0.25
   characterStats: {fileID: 0}
   weapon: 2

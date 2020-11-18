@@ -5,10 +5,6 @@ using UnityEngine;
 public class Boss1Stats : CharacterStats
 {
 
-    [Header("Phase Boss Stats")]
-    public PhaseBossStats[] phaseBossStats;
-    public int indexPhaseBossStat = 0;
-
     private void Start()
     {
         this.enemyController = GetComponent<EnemyController>();
@@ -251,18 +247,7 @@ public class Boss1Stats : CharacterStats
 
     }
 
-    void StartLife()
-    {
-        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[this.indexPhaseBossStat].HP, 0, this.phaseBossStats[this.indexPhaseBossStat].Posture);
-
-        this.animator.SetInteger("InAction", 0);
-        this.enemyController.canAction = true;
-        // enable new weapon
-        foreach (GameObject g in this.phaseBossStats[this.indexPhaseBossStat].listWeapon)
-        {
-            g.SetActive(true);
-        }
-    }
+    
 }
 
 

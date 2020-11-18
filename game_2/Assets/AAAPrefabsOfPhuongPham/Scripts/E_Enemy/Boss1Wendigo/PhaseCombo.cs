@@ -53,9 +53,9 @@ public class PhaseCombo : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //this.swooshVFXTrailWeapon = animator.GetComponent<SwooshVFXTrailWeapon>();
-        if (animator.TryGetComponent<Boss1Controller>(out Boss1Controller boss1Controller))
+        if (animator.TryGetComponent<EnemyController>(out EnemyController enemyController))
         {
-            this.hitBox = boss1Controller.inforAttackCurrent.hitBox;
+            this.hitBox = enemyController.inforAttackCurrent.hitBox;
         }
         //Debug.Log("Out Light Attack 1");
         /*

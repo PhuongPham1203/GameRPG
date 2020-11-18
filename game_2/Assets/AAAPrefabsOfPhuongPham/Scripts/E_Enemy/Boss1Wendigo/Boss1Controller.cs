@@ -5,13 +5,7 @@ using UnityEngine;
 
 public class Boss1Controller : EnemyController
 {
-    [Header("Boss Controller")]
-    public BossRangeCenter bossRangeCenter;
-    public PhaseBoss phaseBossCurrent = PhaseBoss.Phase_1;
-    public PhaseBoss phaseEnd = PhaseBoss.Phase_3;
-    Vector3 vectorWayWalk = Vector3.zero;
-    public InforAttack[] distanceAttack;
-    private int loopAttack = 0;
+    
     //public InforAttack inforAttackCurrent;
 
 
@@ -76,39 +70,7 @@ public class Boss1Controller : EnemyController
 
         switch (this.currentListAttack)
         {
-            #region Testing
-            case -1:
-                if (this.timeTryMoveToPos > 0)
-                {
-                    this.MoveLockTargetWalkAround(this.vectorWayWalk, 0.5f, this.moveSpeed);
-
-                }
-                else
-                {
-                    // Start Walk Around
-
-                    // find find location between boss and center boss
-                    Vector3 vectorTwoPoint = (this.transform.position + this.bossRangeCenter.transform.position).normalized;
-                    if (vectorTwoPoint == Vector3.zero)
-                    {
-                        vectorTwoPoint.x = UnityEngine.Random.Range(0.1f, 0.9f);
-                        vectorTwoPoint.z = UnityEngine.Random.Range(0.1f, 0.9f);
-                    }
-
-                    // way need to walk
-                    //int r = Random.Range(-1,1);
-                    //if (r == 0) r = -1;
-
-                    this.vectorWayWalk = (vectorTwoPoint + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f))).normalized;
-                    this.vectorWayWalk.y = 0;
-                    //Debug.Log(this.vectorWayWalk);
-                    this.timeTryMoveToPos = 4f;
-                    StartCoroutine(this.WalkAround(4f));
-                }
-
-
-                break;
-            #endregion
+            
             #region Phase 1
             case 0: // ! phase 1 combo1 
                     // code
@@ -262,27 +224,7 @@ public class Boss1Controller : EnemyController
 
     }
 
-    private void AttackBase()
-    {
-        if (this.distance < this.distanceCanAttack) // Attack
-        {
-            this.StopLookAndMove();
-            // look At
-            Vector3 t = this.target.position;
-            t.y = this.transform.position.y;
-            this.transform.LookAt(t);
-
-            // Attack
-            this.currentAttackDone = this.Attack(this.currentListAttack);
-
-        }
-        else // Move to Player
-        {
-            this.MoveToPosition(this.target.position, 0.5f, this.moveSpeed);
-        }
-
-        this.CheckCurrentAttackDone();
-    }
+    
 
 
     // ! Phase 1
@@ -490,47 +432,9 @@ public class Boss1Controller : EnemyController
             w.CreateFlyWeapon(this.GetComponent<EnemyController>());
         }
     }
-    private void SetRandomWalkAround(float timeWalkAround)
-    {
-        // Start Walk Around
-        // find find location between boss and center boss
+    
 
-        Vector3 vectorTwoPoint = (this.transform.position + this.bossRangeCenter.transform.position).normalized;
-        if (vectorTwoPoint == Vector3.zero)
-        {
-            vectorTwoPoint.x = UnityEngine.Random.Range(0.1f, 0.9f);
-            vectorTwoPoint.z = UnityEngine.Random.Range(0.1f, 0.9f);
-        }
-
-        this.vectorWayWalk = (vectorTwoPoint + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f))).normalized;
-        this.vectorWayWalk.y = 0;
-        //Debug.Log(this.vectorWayWalk);
-        this.timeTryMoveToPos = timeWalkAround;
-        StartCoroutine(this.WalkAround(timeWalkAround));
-    }
-
-    private bool MustRunRandomWalkAround(float timeWalkAround)
-    {
-        if (this.isHitPlayer != IsHit.Miss)
-        {
-            return false;
-            //this.isHitPlayer = IsHit.Miss;
-        }
-        else if (this.timeTryMoveToPos <= 0)
-        {
-            this.SetRandomWalkAround(timeWalkAround);
-            //break;
-            this.isHitPlayer = IsHit.Block;
-            return true;
-        }
-        else if (this.timeTryMoveToPos > 0)
-        {
-            this.MoveLockTargetWalkAround(this.vectorWayWalk, 0.5f, this.moveSpeed);
-            //break;
-            return true;
-        }
-        return false;
-    }
+    
 
     public override bool Attack(int attackCombo)
     {
@@ -629,33 +533,14 @@ public class Boss1Controller : EnemyController
 
 
 
-    void StopLookAndMove()
-    {
-        this.animator.SetFloat("x", 0);
-        this.animator.SetFloat("z", 0);
+    
+    
 
-        this.lookAt = false;
-    }
-    IEnumerator WalkAround(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        timeTryMoveToPos = -1;
-    }
-
-    protected IEnumerator CanAttackAgain(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        this.canAction = true;
-        this.lookAt = true;
-        animator.SetInteger("AttackCombo", 0);
-
-        this.animator.SetBool("Block", true);
-
-    }
+    
 
 
 
-    void SetComboOfPhase(PhaseBoss phaseBoss)
+    protected override void SetComboOfPhase(PhaseBoss phaseBoss)
     {
         this.currentListAttack = 0;
         int number = 0;

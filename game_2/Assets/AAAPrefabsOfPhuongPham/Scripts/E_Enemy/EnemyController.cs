@@ -5,6 +5,7 @@ using System.Collections.Generic;
 //using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 using UnityEngine.UIElements;
+using PathCreation;
 
 public class EnemyController : MonoBehaviour
 {
@@ -82,9 +83,16 @@ public class EnemyController : MonoBehaviour
     //public Transform parentVfxEnemy;
     public List<Collider> hitBox;
     public InforAttack inforAttackCurrent;
+    public InforAttack[] distanceAttack;
     public IsHit isHitPlayer;//= new IsHit.Miss;
 
+    [Header("Boss Controller")]
+    public BossRangeCenter bossRangeCenter;
+    public PhaseBoss phaseBossCurrent = PhaseBoss.Phase_1;
+    public PhaseBoss phaseEnd = PhaseBoss.Phase_3;
+    protected Vector3 vectorWayWalk = Vector3.zero;
 
+    protected int loopAttack = 0;
 
 
     private void Awake()
@@ -115,15 +123,15 @@ public class EnemyController : MonoBehaviour
 
     void LateUpdate()
     {
-        /*
-        if (alertEnemy == AlertEnemy.OnTarget)
+
+        if (alertEnemy == AlertEnemy.OnTarget && this.lookAt)
         {
             Vector3 direction = (target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (float)speedTrackTarget);
 
         }
-        */
+
     }
 
     private void OnDrawGizmosSelected()
@@ -335,6 +343,74 @@ public class EnemyController : MonoBehaviour
 
 
     }
+    protected virtual bool MustRunRandomWalkAround(float timeWalkAround)
+    {
+        if (this.isHitPlayer != IsHit.Miss)
+        {
+            return false;
+            //this.isHitPlayer = IsHit.Miss;
+        }
+        else if (this.timeTryMoveToPos <= 0)
+        {
+            this.SetRandomWalkAround(timeWalkAround);
+            //break;
+            this.isHitPlayer = IsHit.Block;
+            return true;
+        }
+        else if (this.timeTryMoveToPos > 0)
+        {
+            this.MoveLockTargetWalkAround(this.vectorWayWalk, 0.5f, this.moveSpeed);
+            //break;
+            return true;
+        }
+        return false;
+    }
+    protected void SetRandomWalkAround(float timeWalkAround)
+    {
+        // Start Walk Around
+        // find find location between boss and center boss
+        Vector3 vectorTwoPoint = Vector3.zero;
+        if (this.bossRangeCenter != null)
+        {
+            vectorTwoPoint = (this.transform.position + this.bossRangeCenter.transform.position).normalized;
+        }
+        else if (this.way != null)
+        {
+            vectorTwoPoint = (this.transform.position + this.way.GetComponent<Transform>().position).normalized;
+        }else if (vectorTwoPoint == Vector3.zero)
+        {
+            vectorTwoPoint.x = UnityEngine.Random.Range(0.1f, 0.9f);
+            vectorTwoPoint.z = UnityEngine.Random.Range(0.1f, 0.9f);
+        }
+
+        this.vectorWayWalk = (vectorTwoPoint + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f))).normalized;
+        this.vectorWayWalk.y = 0;
+        //Debug.Log(this.vectorWayWalk);
+        this.timeTryMoveToPos = timeWalkAround;
+        StartCoroutine(this.WalkAround(timeWalkAround));
+    }
+
+    protected virtual void AttackBase()
+    {
+        if (this.distance < this.distanceCanAttack) // Attack
+        {
+            this.StopLookAndMove();
+            // look At
+            Vector3 t = this.target.position;
+            t.y = this.transform.position.y;
+            this.transform.LookAt(t);
+
+            // Attack
+            this.currentAttackDone = this.Attack(this.currentListAttack);
+
+        }
+        else // Move to Player
+        {
+            this.MoveToPosition(this.target.position, 0.5f, this.moveSpeed);
+        }
+
+        this.CheckCurrentAttackDone();
+    }
 
 
     public virtual bool Attack(int attackCombo)
@@ -393,6 +469,13 @@ public class EnemyController : MonoBehaviour
 
 
     }
+    protected void StopLookAndMove()
+    {
+        this.animator.SetFloat("x", 0);
+        this.animator.SetFloat("z", 0);
+
+        this.lookAt = false;
+    }
 
     public void ActivateVFX()
     {
@@ -439,11 +522,16 @@ public class EnemyController : MonoBehaviour
         this.animator.SetInteger("AttackCombo", 0);
         this.animator.ResetTrigger("triggerAttack");
 
-        if (actionLeaveAction != null)StopCoroutine(actionLeaveAction);
+        if (actionLeaveAction != null) StopCoroutine(actionLeaveAction);
         actionLeaveAction = StartCoroutine(CanAction(t));
 
     }
 
+    protected IEnumerator WalkAround(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        timeTryMoveToPos = -1;
+    }
     protected IEnumerator CanAction(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -545,7 +633,7 @@ public class EnemyController : MonoBehaviour
 
         if (this.actionFinishBot != null) StopCoroutine(actionFinishBot);
         if (this.actionLeaveAction != null) StopCoroutine(this.actionLeaveAction);
-        
+
 
         if (TryGetComponent<SelectEnemy>(out SelectEnemy se))
         {
@@ -650,7 +738,20 @@ public class EnemyController : MonoBehaviour
         //this.animator.SetBool("Block", true);
     }
     */
+    protected virtual void SetComboOfPhase(PhaseBoss phaseBoss)
+    {
+        Debug.Log("Set combo of phase");
+    }
+    protected IEnumerator CanAttackAgain(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        this.canAction = true;
+        this.lookAt = true;
+        animator.SetInteger("AttackCombo", 0);
 
+        this.animator.SetBool("Block", true);
+
+    }
     IEnumerator CanBlockAffter(float t)
     {
         yield return new WaitForSeconds(t);

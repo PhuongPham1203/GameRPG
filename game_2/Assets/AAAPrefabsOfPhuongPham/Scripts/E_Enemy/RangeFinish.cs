@@ -62,6 +62,15 @@ public class RangeFinish : MonoBehaviour
                 //Debug.Log("Set vfx");
             }
         }
+        else if (other.gameObject.layer == 2 && other.CompareTag("Player"))
+        {
+            if (enemyController.canFinish)
+            {
+                //enemyController.canFinish = false;
+                enemyController.SetFinishVFX(false);
+                //Debug.Log("Set vfx");
+            }
+        }
     }
 
 

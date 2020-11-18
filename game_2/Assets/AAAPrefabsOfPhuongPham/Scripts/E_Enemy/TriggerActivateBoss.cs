@@ -12,17 +12,6 @@ public class TriggerActivateBoss : MonoBehaviour
         this.enemyController = transform.root.GetComponent<EnemyController>();
     }
 
-    /*
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == 24)// player
-        {
-
-            this.ActivateBot();
-
-        }
-    }
-    */
 
     void OnTriggerStay(Collider other)
     {
@@ -33,28 +22,29 @@ public class TriggerActivateBoss : MonoBehaviour
 
         }
     }
-    public virtual void ActivateBot(){
-        if (enemyController != null )
+    public virtual void ActivateBot()
+    {
+        if (enemyController != null)
+        {
+            if (enemyController.alertEnemy != AlertEnemy.Die && enemyController.alertEnemy != AlertEnemy.OnTarget)
             {
-                if(enemyController.alertEnemy != AlertEnemy.Die && enemyController.alertEnemy != AlertEnemy.OnTarget)
+                enemyController.SetAlentCombat(AlertEnemy.OnTarget);
+
+                if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
                 {
-                    enemyController.SetAlentCombat(AlertEnemy.OnTarget);
 
-                    if (AudioManager.instance.IsPlayTheme("OnCombat_Weindigo"))
+                }
+                else
+                {
+                    AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
+
+                    if (AudioManager.instance.IsPlayTheme("OnCombat"))
                     {
-
-                    }
-                    else
-                    {
-                        AudioManager.instance.PlaySoundOfTheme("OnCombat_Weindigo");
-
-                        if (AudioManager.instance.IsPlayTheme("OnCombat"))
-                        {
-                            AudioManager.instance.StopSoundOfTheme("OnCombat");
-                        }
+                        AudioManager.instance.StopSoundOfTheme("OnCombat");
                     }
                 }
             }
+        }
     }
 
     public void WarningAllEnemy()

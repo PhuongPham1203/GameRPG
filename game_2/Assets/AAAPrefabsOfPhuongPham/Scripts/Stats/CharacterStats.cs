@@ -74,6 +74,11 @@ public class CharacterStats : MonoBehaviour
     [Header("List Item Drop Affter Die")]
     public List<GameObject> itemDrop = new List<GameObject>();
 
+    [Header("Phase Boss Stats")]
+    public PhaseBossStats[] phaseBossStats;
+    public int indexPhaseBossStat = 0;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -276,6 +281,18 @@ public class CharacterStats : MonoBehaviour
         if (actionReduction != null) StopCoroutine(actionReduction);
         reduction = false;
         actionReduction = StartCoroutine(CanReduction(t));
+    }
+    protected virtual void StartLife()
+    {
+        this.ResetAllCurrentAndMaxValue(this.phaseBossStats[this.indexPhaseBossStat].HP, 0, this.phaseBossStats[this.indexPhaseBossStat].Posture);
+
+        this.animator.SetInteger("InAction", 0);
+        this.enemyController.canAction = true;
+        // enable new weapon
+        foreach (GameObject g in this.phaseBossStats[this.indexPhaseBossStat].listWeapon)
+        {
+            g.SetActive(true);
+        }
     }
 
 
