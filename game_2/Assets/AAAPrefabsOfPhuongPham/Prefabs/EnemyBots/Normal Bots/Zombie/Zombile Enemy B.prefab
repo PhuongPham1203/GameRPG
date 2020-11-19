@@ -4966,9 +4966,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameSelf: Zombie B 5
-  startHP: 150
+  startHP: 100
   startAttackDame: 20
-  startPosture: 100
+  startPosture: 80
   reduction: 1
   timeWaitToReduction: 4
   percenReduction: 0.005

@@ -11,21 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AAAPrefabsOfPhuongPham/Scene/SceneOfPlayer.unity
     guid: b9e9714f848b60d46b59779ccbaa7a9f
-  - enabled: 0
-    path: Assets/Scene/Suburb.unity
-    guid: 2b69c911fc8a2e8488dc7c0a704a9ee6
-  - enabled: 0
-    path: Assets/Scene/City.unity
-    guid: d98f45cb4f2e7704cb6b2b7269562ea9
-  - enabled: 0
-    path: Assets/Scene/Cathedral.unity
-    guid: 832cbbe91ea36ce439681132c717a0bf
-  - enabled: 0
-    path: Assets/Scene/Hospital.unity
-    guid: 4217bd460374b1948bfcae25f58605c2
-  - enabled: 0
-    path: Assets/Scene/Cloud Forest.unity
-    guid: 433c02c0739f9bd4183302872760dcb9
   - enabled: 1
     path: Assets/Scene/Demo.unity
     guid: 88a8fb9dc556b3443bc5b27cf5a62ccd
