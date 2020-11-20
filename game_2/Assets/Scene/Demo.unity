@@ -70744,7 +70744,6 @@ GameObject:
   - component: {fileID: 715812816}
   - component: {fileID: 715812815}
   - component: {fileID: 715812814}
-  - component: {fileID: 715812813}
   m_Layer: 23
   m_Name: Boss 1 Wendigo (1)
   m_TagString: SelectAbleTarget
@@ -70752,156 +70751,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &715812813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715812812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246455474a0d74a4291b3cedc896ebdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonePaths:
-  - 
-  - cameraLookAt
-  - LockTarget
-  - 3D Text Alert
-  - wendigo
-  - wendigo/metarig
-  - wendigo/metarig/spine
-  - wendigo/metarig/spine/spine.001
-  - wendigo/metarig/spine/spine.001/spine.002
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16/VFX
-    Sword 5
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/Polearm25
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/Polearm25/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/Polearm25/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Axe09
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Axe09/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Axe09/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a/VFX
-    Sword Set 12
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a/7
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006/2
-  - wendigo/metarig/spine/spine.001/Blood_stream_Green
-  - wendigo/metarig/spine/thigh.L
-  - wendigo/metarig/spine/thigh.L/shin.L
-  - wendigo/metarig/spine/thigh.L/shin.L/foot.L
-  - wendigo/metarig/spine/thigh.L/shin.L/foot.L/Foot Kick
-  - wendigo/metarig/spine/thigh.R
-  - wendigo/metarig/spine/thigh.R/shin.R
-  - wendigo/metarig/spine/thigh.R/shin.R/foot.R
-  - wendigo/Wendgo
-  - CenterPoint
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks/Blood_splash
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks/Blood_streaks_miror
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_col
-  - CenterPoint/VFX Sparks_Enemy
-  - CenterPoint2
-  - CenterPoint2/Heart Point Light
-  showBones: 000000000700000008000000090000000a0000000b0000000c0000000d0000001600000017000000180000001900000027000000280000002b0000002c0000002d0000002f0000003000000031000000
-  foldoutBones: 35000000340000002c00000030000000190000002b0000002f000000180000000600000028000000270000000700000017000000160000000800000026000000090000000a0000000b0000000c0000000d00000005000000040000000e0000001a0000003a0000000000000033000000
-  mirrorBones: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff160000001700000018000000190000001a000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff0a0000000b0000000c0000000d0000000e000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2f0000003000000031000000ffffffff2b0000002c0000002d000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-  mirrorBlendShape: []
-  animatorIkData:
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  originalIkData: []
-  selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: bc977198130bbb444988b0b00d4aca88,
-    type: 2}
-  blendShapeList: []
 --- !u!114 &715812814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71892,7 +71741,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448731180, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
 --- !u!1001 &824699272
 PrefabInstance:
@@ -77186,7 +77036,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448731180, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
 --- !u!1 &992205021
 GameObject:
@@ -93042,7 +92893,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448731180, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
 --- !u!4 &1394850037 stripped
 Transform:
@@ -132398,7 +132250,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448731180, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d802a6ac1d4d5ae4c9d7ed7e5d35bdba, type: 3}
 --- !u!1 &1870717263
 GameObject:
@@ -137184,7 +137037,6 @@ GameObject:
   - component: {fileID: 1871621241}
   - component: {fileID: 1871621242}
   - component: {fileID: 1871621243}
-  - component: {fileID: 1871621244}
   m_Layer: 23
   m_Name: Boss 1 Wendigo
   m_TagString: SelectAbleTarget
@@ -137753,156 +137605,6 @@ MonoBehaviour:
   - {fileID: 548695415}
   - {fileID: 848234991}
   - {fileID: 496117083}
---- !u!114 &1871621244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871621235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246455474a0d74a4291b3cedc896ebdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonePaths:
-  - 
-  - cameraLookAt
-  - LockTarget
-  - 3D Text Alert
-  - wendigo
-  - wendigo/metarig
-  - wendigo/metarig/spine
-  - wendigo/metarig/spine/spine.001
-  - wendigo/metarig/spine/spine.001/spine.002
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/TH_Mace16/VFX
-    Sword 5
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/Polearm25
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/Polearm25/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/WL/Polearm25/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Axe09
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Axe09/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Axe09/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/TH_Sword01_a/VFX
-    Sword Set 12
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a/base
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a/tip
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/WR/Sword18_a/7
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006
-  - wendigo/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006/2
-  - wendigo/metarig/spine/spine.001/Blood_stream_Green
-  - wendigo/metarig/spine/thigh.L
-  - wendigo/metarig/spine/thigh.L/shin.L
-  - wendigo/metarig/spine/thigh.L/shin.L/foot.L
-  - wendigo/metarig/spine/thigh.L/shin.L/foot.L/Foot Kick
-  - wendigo/metarig/spine/thigh.R
-  - wendigo/metarig/spine/thigh.R/shin.R
-  - wendigo/metarig/spine/thigh.R/shin.R/foot.R
-  - wendigo/Wendgo
-  - CenterPoint
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks/Blood_splash
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks/Blood_streaks_miror
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_col
-  - CenterPoint/VFX Sparks_Enemy
-  - CenterPoint2
-  - CenterPoint2/Heart Point Light
-  showBones: 000000000700000008000000090000000a0000000b0000000c0000000d0000001600000017000000180000001900000027000000280000002b0000002c0000002d0000002f0000003000000031000000
-  foldoutBones: 35000000340000002c00000030000000190000002b0000002f000000180000000600000028000000270000000700000017000000160000000800000026000000090000000a0000000b0000000c0000000d00000005000000040000000e0000001a0000003a0000000000000033000000
-  mirrorBones: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff160000001700000018000000190000001a000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff0a0000000b0000000c0000000d0000000e000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2f0000003000000031000000ffffffff2b0000002c0000002d000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-  mirrorBlendShape: []
-  animatorIkData:
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  originalIkData: []
-  selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: bc977198130bbb444988b0b00d4aca88,
-    type: 2}
-  blendShapeList: []
 --- !u!1001 &1883135997
 PrefabInstance:
   m_ObjectHideFlags: 0
