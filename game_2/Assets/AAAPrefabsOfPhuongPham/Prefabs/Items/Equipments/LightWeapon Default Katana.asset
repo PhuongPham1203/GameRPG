@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d88cab153b3514fb118529a3d99077, type: 3}
   m_Name: LightWeapon Default Katana
   m_EditorClassIdentifier: 
-  id: 0
-  nameItem: New Item
+  nameItem:
+  - katana
+  - katana
+  maxNumberItem: 0
+  currentNumberItem: 0
   typeUnit: 2
-  information: LightSword Katana Default information
+  information: []
   icon: {fileID: 21300000, guid: 843ad3b5e1d21403799cd295e6b58371, type: 3}
   isDefaultItem: 1
   equipSlot: 2
@@ -24,3 +27,4 @@ MonoBehaviour:
   hpModifier: 1
   attackDameModifier: 30
   postureModifier: 1
+  timeStum: 0.15

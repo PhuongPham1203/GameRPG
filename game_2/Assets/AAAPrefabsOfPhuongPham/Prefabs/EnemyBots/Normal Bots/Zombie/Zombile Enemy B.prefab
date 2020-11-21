@@ -4778,7 +4778,6 @@ GameObject:
   - component: {fileID: 542509189013296261}
   - component: {fileID: 542509189013296262}
   - component: {fileID: 8246543909538425172}
-  - component: {fileID: 448731180}
   m_Layer: 23
   m_Name: Zombile Enemy B
   m_TagString: SelectAbleTarget
@@ -4986,9 +4985,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31d051aaa4cb03946ac994c63a284c9e, type: 2}
   itemDrop: []
   phaseBossStats:
-  - phaseBoss: 0
-    HP: 150
-    Posture: 150
+  - phaseBoss: 1
+    HP: 115
+    Posture: 100
     listWeapon:
     - {fileID: 1413153580422853632}
     - {fileID: 5637553465666581649}
@@ -5064,180 +5063,6 @@ MonoBehaviour:
     pitch: 1
     is3dSound: 0.35
     source: {fileID: 0}
---- !u!114 &448731180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542509189013296266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246455474a0d74a4291b3cedc896ebdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonePaths:
-  - 
-  - cameraLookAt
-  - LockTarget
-  - 3D Text Alert
-  - Mesh
-  - Mesh/CATRigHub001
-  - Mesh/CATRigHub001/CATRigHub001Bone001
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit11
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit11/CATRigLArmDigit12
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit11/CATRigLArmDigit12/CATRigLArmDigit13
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit21
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit21/CATRigLArmDigit22
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit21/CATRigLArmDigit22/CATRigLArmDigit23
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit31
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit31/CATRigLArmDigit32
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit31/CATRigLArmDigit32/CATRigLArmDigit33
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit41
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit41/CATRigLArmDigit42
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit41/CATRigLArmDigit42/CATRigLArmDigit43
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit51
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit51/CATRigLArmDigit52
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/CATRigLArmDigit51/CATRigLArmDigit52/CATRigLArmDigit53
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/Weapon
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/Weapon/Axe01
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigLArmCollarbone/CATRigLArm1/CATRigLArm21/CATRigLArm22/CATRigLArmPalm/Weapon/Axe01/Trail
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/backsword_mesh
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/backsword_mesh/Trail
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit11
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit11/CATRigRArmDigit12
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit11/CATRigRArmDigit12/CATRigRArmDigit13
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit21
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit21/CATRigRArmDigit22
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit21/CATRigRArmDigit22/CATRigRArmDigit23
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit31
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit31/CATRigRArmDigit32
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit31/CATRigRArmDigit32/CATRigRArmDigit33
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit41
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit41/CATRigRArmDigit42
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit41/CATRigRArmDigit42/CATRigRArmDigit43
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit51
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit51/CATRigRArmDigit52
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigRArmCollarbone/CATRigRArm1/CATRigRArm21/CATRigRArm22/CATRigRArmPalm/CATRigRArmDigit51/CATRigRArmDigit52/CATRigRArmDigit53
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigSpine
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigSpine/CATRigHub003
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigSpine/CATRigHub003/CATRigHub003Bone001
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigSpine/CATRigHub003/CATRigHub003Bone002
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigSpine/CATRigHub003/CATRigHub003Bone003
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/CATRigHub002/CATRigSpine/CATRigHub003/eyes_mesh001
-  - Mesh/CATRigHub001/CATRigHub001Bone001/CATRigSpine1/CATRigSpine2/Blood_stream_Green
-  - Mesh/CATRigHub001/CATRigLLeg1
-  - Mesh/CATRigHub001/CATRigLLeg1/CATRigLLeg2
-  - Mesh/CATRigHub001/CATRigLLeg1/CATRigLLeg2/CATRigLLegAnkle
-  - Mesh/CATRigHub001/CATRigLLeg1/CATRigLLeg2/CATRigLLegAnkle/CATRigLLegDigit11
-  - Mesh/CATRigHub001/CATRigRLeg1
-  - Mesh/CATRigHub001/CATRigRLeg1/CATRigRLeg2
-  - Mesh/CATRigHub001/CATRigRLeg1/CATRigRLeg2/CATRigRLegAnkle
-  - Mesh/CATRigHub001/CATRigRLeg1/CATRigRLeg2/CATRigRLegAnkle/CATRigRLegDigit11
-  - Mesh/CATRigLLegPlatform
-  - Mesh/CATRigRLegPlatform
-  - Mesh/Character zombie
-  - Mesh/Character zombie/Body_mesh
-  - Mesh/Character zombie/jaw_mesh
-  - Mesh/Character001
-  - CenterPoint
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks/Blood_splash
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_streaks/Blood_streaks_miror
-  - CenterPoint/Blood_VFX_Simple_Green_Enemy/Blood_col
-  - CenterPoint/VFX Sparks_Enemy
-  - CenterPoint2
-  - CenterPoint2/Heart Point Light
-  - CenterPoint2/Trigger Activate Bot
-  showBones: 00000000
-  foldoutBones: 2200000038000000100000000c0000000b0000001900000016000000130000001c0000002900000021000000230000002f0000002c0000003500000032000000370000000f0000000a0000000d0000001800000015000000120000001b0000002800000024000000310000002e0000002b000000340000004400000009000000400000000e000000430000002500000008000000070000003f0000001e00000042000000060000003e0000004e00000048000000050000004c00000053000000040000001f0000004d0000002600000000000000
-  mirrorBones: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff210000002200000023000000240000002500000028000000290000002a0000002b0000002c0000002d0000002e0000002f00000030000000310000003200000033000000340000003500000036000000ffffffffffffffffffffffff0a0000000b0000000c0000000d0000000e000000ffffffffffffffff0f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d000000ffffffffffffffffffffffff3c000000ffffffff3a000000ffffffff420000004300000044000000450000003e0000003f00000040000000410000004700000046000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-  mirrorBlendShape: []
-  animatorIkData:
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  - enable: 0
-    _fixed: 0
-    autoRotation: 0
-    spaceType: 0
-    parent: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    target: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-    headWeight: 1
-    eyesWeight: 0
-    swivelRotation: 0
-    swivelPosition: {x: 0, y: 0, z: 0}
-  originalIkData: []
-  selectionData: []
-  lastSelectAnimationClip: {fileID: 7400000, guid: fa779dcfff2e3c74f8ac513677818740,
-    type: 2}
-  blendShapeList: []
 --- !u!1 &542509189568629498
 GameObject:
   m_ObjectHideFlags: 0
@@ -6009,15 +5834,15 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 4055101592676117150}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1413153580422752288 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3159867604940604094, guid: 739b833abdb2e3940bbb4eb8a20dd83e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4055101592676117150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &5554560760390244187 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 8454205365854600645, guid: 739b833abdb2e3940bbb4eb8a20dd83e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4055101592676117150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1413153580422752288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3159867604940604094, guid: 739b833abdb2e3940bbb4eb8a20dd83e,
     type: 3}
   m_PrefabInstance: {fileID: 4055101592676117150}
   m_PrefabAsset: {fileID: 0}

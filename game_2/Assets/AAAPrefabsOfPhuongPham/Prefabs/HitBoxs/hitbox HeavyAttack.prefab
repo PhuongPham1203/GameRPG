@@ -60,3 +60,4 @@ MonoBehaviour:
   timeDetroy: 0.25
   characterStats: {fileID: 0}
   weapon: 2
+  weaponEquipment: {fileID: 11400000, guid: 35223a148d9991b44b8a464460af0e82, type: 2}

@@ -12,6 +12,7 @@ public class Equipment : SourceItemSlot
     public int attackDameModifier;// attack
     public int postureModifier;// posture
     //public int defendModifier;// defend
+    public float timeStum;
 
 
     public override void Use()
